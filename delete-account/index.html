@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Delete Account / Data - Arcadia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-dark: #020617;
@@ -23,7 +26,7 @@
         
         body {
             margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Outfit', sans-serif;
             background-color: var(--bg-dark);
             background-image: 
                 radial-gradient(circle at 10% 10%, rgba(59, 130, 246, 0.1), transparent 40%),
@@ -33,33 +36,24 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative;
         }
 
-        .container {
-            width: min(1000px, calc(100% - 40px));
-            margin: 0 auto;
-            padding: 2rem 0 4rem;
-        }
-
-        /* Header */
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-bottom: 2rem;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid var(--border-glass);
-        }
-
-        .brand {
-            display: flex;
-            flex-direction: column;
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 60;
         }
 
         .brand-title {
-            font-size: 1.75rem;
-            font-weight: 800;
-            letter-spacing: -0.03em;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
             background: linear-gradient(to right, #fff, var(--accent-glow));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;

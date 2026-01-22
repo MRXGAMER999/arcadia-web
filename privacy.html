@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - Arcadia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-dark: #020617;
@@ -23,7 +26,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg-dark);
             background-image: 
                 radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.15), transparent 25%),
@@ -33,6 +36,17 @@
             min-height: 100vh;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 60;
         }
 
         .container {
@@ -49,9 +63,10 @@
         }
 
         .logo {
-            font-size: 3.5rem;
-            font-weight: 800;
-            letter-spacing: -0.05em;
+            font-family: "Bebas Neue", sans-serif;
+            font-size: 4.5rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
             background: linear-gradient(135deg, #fff 30%, var(--accent-primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -59,6 +74,13 @@
             display: inline-block;
             text-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
         }
+
+        .contact-value {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 1.1rem;
+            color: #f8fafc;
+        }
+
 
         .subtitle {
             font-size: 1.25rem;
