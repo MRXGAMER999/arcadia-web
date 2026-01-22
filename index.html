@@ -6,37 +6,60 @@
     <title>Arcadia | Your Gaming Universe</title>
     <meta name="description" content="Arcadia: The AI-powered gaming companion. Track, analyze, and get roasted.">
     
-    <!-- Fonts -->
+    <!-- Critical CSS to prevent FOUC -->
+    <style>
+        body {
+            background-color: #0F0F23;
+            color: #ffffff;
+            font-family: sans-serif;
+            margin: 0;
+            opacity: 1; /* Ensure visible by default */
+        }
+        .cloak {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .loaded .cloak {
+            opacity: 1;
+        }
+        /* Glassmorphism utilities that don't rely on Tailwind immediately */
+        .glass-fallback {
+            background: rgba(30, 42, 71, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        arcadia: {
-                            bg: '#0F0F23',
-                            surface: '#1E2A47',
-                            primary: '#7C3AED',
-                            secondary: '#A78BFA',
-                            red: '#FF1744',
-                            gold: '#FBB02E',
+                        navy: {
+                            900: '#0F0F23',
+                            800: '#151530',
+                        },
+                        violet: {
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            glow: '#A78BFA',
+                        },
+                        red: {
+                            500: '#ef4444',
+                            600: '#FF1744',
                         }
                     },
                     fontFamily: {
                         display: ['"Bebas Neue"', 'sans-serif'],
-                        body: ['"Roboto Condensed"', 'sans-serif'],
-                    },
-                    borderRadius: {
-                        '3xl': '24px',
-                        '4xl': '32px',
+                        body: ['"Outfit"', 'sans-serif'],
                     },
                     backgroundImage: {
-                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
                         'hero-glow': 'radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.15) 0%, rgba(15, 15, 35, 0) 70%)',
                     }
                 }
@@ -44,41 +67,20 @@
         }
     </script>
 
-    <style>
-        /* Avant-Garde Custom Utilities */
-        body {
-            background-color: #0F0F23;
-            color: white;
-            overflow-x: hidden;
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .glass-panel {
+                @apply bg-navy-800/40 backdrop-blur-xl border border-white/10;
+            }
+            .text-glow {
+                text-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+            }
+            .text-stroke {
+                -webkit-text-stroke: 1px rgba(255,255,255,0.1);
+            }
         }
-
-        .glass-panel {
-            background: rgba(30, 42, 71, 0.4);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .text-glow {
-            text-shadow: 0 0 20px rgba(167, 139, 250, 0.3);
-        }
-
-        .card-hover {
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        .card-hover:hover {
-            transform: scale(1.02);
-        }
-
-        /* Chart Animations */
-        @keyframes fillBar {
-            from { width: 0%; }
-        }
-        .animate-bar {
-            animation: fillBar 1.5s ease-out forwards;
-        }
-
-        /* Hide scrollbar for gallery */
+        
+        /* Smooth scrolling for horizontal lists */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
@@ -88,261 +90,223 @@
         }
     </style>
 </head>
-<body class="antialiased selection:bg-arcadia-primary selection:text-white">
+<body class="bg-navy-900 text-white antialiased overflow-x-hidden selection:bg-violet-600 selection:text-white">
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 px-4 py-4">
-        <div class="max-w-6xl mx-auto glass-panel rounded-full px-6 py-3 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-arcadia-primary to-arcadia-secondary flex items-center justify-center font-display text-xl">A</div>
-                <span class="font-display text-2xl tracking-wide hidden sm:block">Arcadia</span>
+    <nav class="fixed top-0 w-full z-50 px-4 py-4 pointer-events-none">
+        <div class="max-w-7xl mx-auto flex justify-between items-center pointer-events-auto">
+            <!-- Logo -->
+            <div class="glass-panel rounded-full px-5 py-2 flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-violet-600 to-violet-400 flex items-center justify-center font-display text-xl text-white shadow-lg shadow-violet-500/30">A</div>
+                <span class="font-display text-2xl tracking-wide hidden sm:block pt-1">Arcadia</span>
             </div>
-            <a href="#" class="bg-white text-arcadia-bg px-6 py-2 rounded-full font-body font-bold uppercase tracking-wider text-sm hover:bg-arcadia-secondary transition-colors">
-                Get the App
+            
+            <!-- CTA -->
+            <a href="#" class="bg-white text-navy-900 px-6 py-2.5 rounded-full font-body font-bold text-sm tracking-wide hover:bg-violet-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+                GET THE APP
             </a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="relative pt-40 pb-20 px-4 min-h-[90vh] flex flex-col justify-center items-center text-center bg-hero-glow">
-        <div class="absolute inset-0 overflow-hidden pointer-events-none">
-            <div class="absolute top-20 left-10 w-64 h-64 bg-arcadia-primary opacity-20 blur-[100px] rounded-full mix-blend-screen"></div>
-            <div class="absolute bottom-20 right-10 w-72 h-72 bg-arcadia-red opacity-10 blur-[120px] rounded-full mix-blend-screen"></div>
+    <header class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden">
+        <!-- Background Effects -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-600/20 blur-[120px] rounded-full mix-blend-screen"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-600/10 blur-[120px] rounded-full mix-blend-screen"></div>
         </div>
 
-        <h1 class="font-display text-7xl md:text-9xl tracking-tight leading-[0.9] mb-6">
-            YOUR GAMING<br>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-arcadia-secondary to-arcadia-primary text-glow">UNIVERSE</span>
-        </h1>
-        
-        <p class="font-body text-gray-400 text-lg md:text-2xl max-w-xl mx-auto mb-10 font-light">
-            No spam. No ads. Just your games. <br>
-            <span class="text-arcadia-secondary">Unified. Analyzed. Roasted.</span>
-        </p>
+        <div class="relative z-10 max-w-5xl mx-auto mt-20">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 mb-8 backdrop-blur-md">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                <span class="text-xs font-body font-medium tracking-wide text-violet-200 uppercase">Now in Beta 2.0</span>
+            </div>
 
-        <div class="flex flex-col sm:flex-row gap-4">
-            <button class="bg-arcadia-primary hover:bg-violet-500 text-white px-8 py-4 rounded-3xl font-display text-xl tracking-wide transition-all hover:shadow-[0_0_20px_rgba(124,58,237,0.4)]">
-                Start Tracking
-            </button>
-            <button class="glass-panel px-8 py-4 rounded-3xl font-display text-xl tracking-wide hover:bg-white/5 transition-colors">
-                View Demo
-            </button>
-        </div>
+            <h1 class="font-display text-[5rem] sm:text-[7rem] md:text-[9rem] leading-[0.85] tracking-tight mb-8">
+                YOUR GAMING<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-violet-200 to-white text-glow">UNIVERSE</span>
+            </h1>
+            
+            <p class="font-body text-slate-400 text-lg md:text-2xl max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+                Stop juggling platforms. Arcadia unifies your entire library, tracks your stats, and serves you an AI assistant with <span class="text-white font-medium">zero filter</span>.
+            </p>
 
-        <!-- App Mockup Hint -->
-        <div class="mt-20 relative w-full max-w-xs mx-auto animate-bounce duration-[3000ms]">
-            <svg class="w-6 h-6 mx-auto text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button class="group relative bg-violet-600 text-white px-8 py-4 rounded-full font-body font-bold text-lg tracking-wide transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(124,58,237,0.5)] overflow-hidden">
+                    <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                    <span class="relative">START TRACKING FREE</span>
+                </button>
+                <button class="glass-panel px-8 py-4 rounded-full font-body font-medium text-lg tracking-wide hover:bg-white/10 transition-colors flex items-center gap-2 group">
+                    <span>View Showreel</span>
+                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </button>
+            </div>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-4 space-y-24 pb-32">
-
-        <!-- Feature 1: The Judge (Roast) -->
-        <section class="relative">
+    <main class="space-y-32 pb-32">
+        
+        <!-- Section 1: The Roast (Cards) -->
+        <section class="max-w-7xl mx-auto px-4">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="order-2 lg:order-1">
-                    <div class="bg-arcadia-red rounded-4xl p-8 md:p-12 shadow-[0_20px_50px_-12px_rgba(255,23,68,0.3)] card-hover relative overflow-hidden">
-                        <!-- Decorative bg pattern -->
-                        <div class="absolute top-0 right-0 w-64 h-64 bg-black opacity-10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
+                <!-- Content -->
+                <div class="order-2 lg:order-1 relative">
+                    <!-- Glass Card -->
+                    <div class="glass-panel rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden group">
+                        <!-- Gradient Blob -->
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-violet-500/20 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 group-hover:bg-red-500/20 transition-colors duration-700"></div>
                         
-                        <div class="relative z-10 space-y-6">
-                            <!-- AI Chat Bubble -->
-                            <div class="flex gap-4 items-end">
-                                <div class="w-10 h-10 rounded-xl bg-black/20 flex items-center justify-center shrink-0">
-                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <div class="relative z-10 space-y-8">
+                            <!-- Chat Bubble 1 (AI) -->
+                            <div class="flex gap-4">
+                                <div class="w-12 h-12 rounded-2xl bg-black/40 flex items-center justify-center shrink-0 border border-white/5">
+                                    <svg class="w-6 h-6 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                                 </div>
-                                <div class="bg-black/20 p-4 rounded-2xl rounded-bl-none text-white font-body text-lg leading-snug">
-                                    "Oh, another 100 hours in Skyrim? Someone's avoiding their real-life side quests again."
+                                <div class="bg-navy-800/80 p-5 rounded-3xl rounded-tl-none border border-white/5 shadow-xl max-w-sm">
+                                    <p class="text-gray-200 font-body text-lg">"150 hours in <em class="text-white not-italic">Stardew Valley</em>? Are you optimizing your farm or just avoiding your actual job?"</p>
                                 </div>
-                            </div>
-                            
-                            <div class="flex gap-4 items-end justify-end">
-                                <div class="bg-white text-arcadia-red p-3 rounded-2xl rounded-br-none font-body font-bold text-sm">
-                                    Why are you like this? 😭
-                                </div>
-                                <div class="w-8 h-8 rounded-full bg-white/90 shrink-0"></div>
                             </div>
 
-                            <div class="pt-6 border-t border-white/10 mt-6">
-                                <div class="font-display text-4xl mb-1">FACE THE JUDGE</div>
-                                <p class="opacity-90 font-body">Our AI doesn't just track games. It judges them.</p>
+                            <!-- Chat Bubble 2 (User) -->
+                            <div class="flex gap-4 flex-row-reverse">
+                                <div class="w-12 h-12 rounded-full bg-white/10 shrink-0 border border-white/5"></div>
+                                <div class="bg-violet-600 p-5 rounded-3xl rounded-tr-none shadow-xl shadow-violet-900/20 max-w-xs">
+                                    <p class="text-white font-body font-medium">Why are you so mean? 😭</p>
+                                </div>
                             </div>
+                        </div>
+
+                        <div class="mt-12 pt-8 border-t border-white/5">
+                            <h3 class="font-display text-3xl text-white mb-2">AI WITH ATTITUDE</h3>
+                            <p class="text-gray-400 font-body">Arcadia doesn't just track. It judges. Get personalized roasts based on your questionable gaming habits.</p>
                         </div>
                     </div>
                 </div>
-                
-                <div class="order-1 lg:order-2 space-y-6">
+
+                <!-- Text -->
+                <div class="order-1 lg:order-2 space-y-6 text-center lg:text-left">
                     <h2 class="font-display text-6xl md:text-8xl leading-none">
-                        AI WITH<br>
-                        <span class="text-arcadia-red">ATTITUDE</span>
+                        FACE THE<br>
+                        <span class="text-red-500 text-glow">JUDGE</span>
                     </h2>
-                    <p class="font-body text-xl text-gray-400 max-w-md">
-                        Arcadia isn't a passive spreadsheet. It's an active participant in your gaming life. Get personalized roasts, praise, and insights based on your play habits.
+                    <p class="font-body text-xl text-gray-400 max-w-md mx-auto lg:mx-0">
+                        Stop boring stats. Get an AI companion that knows your library better than you do—and isn't afraid to call you out on it.
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- Feature 2: Stats (Gaming DNA) -->
-        <section>
-            <div class="grid lg:grid-cols-12 gap-8">
-                <div class="lg:col-span-5 space-y-6 flex flex-col justify-center">
-                    <div class="inline-flex items-center gap-2 text-arcadia-gold font-display text-xl tracking-wider">
-                        <span class="w-2 h-2 rounded-full bg-arcadia-gold"></span>
-                        INSIGHTS
-                    </div>
-                    <h2 class="font-display text-6xl md:text-7xl leading-none">
-                        UNLOCK YOUR<br>STATS
-                    </h2>
-                    <p class="font-body text-xl text-gray-400">
-                        Visualized data that actually means something. Understand your genres, habits, and what makes you tick as a gamer.
-                    </p>
+        <!-- Section 2: Library Gallery -->
+        <section class="w-full overflow-hidden py-10">
+            <div class="max-w-7xl mx-auto px-4 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+                <div>
+                    <h2 class="font-display text-5xl md:text-7xl mb-2">YOUR COLLECTION</h2>
+                    <p class="text-gray-400 font-body text-lg">Steam. PSN. Xbox. All in one beautiful place.</p>
                 </div>
-
-                <!-- Visual Chart Component -->
-                <div class="lg:col-span-7">
-                    <div class="bg-arcadia-surface/50 rounded-4xl p-8 border border-white/5 backdrop-blur-sm">
-                        <div class="flex items-center justify-between mb-8">
-                            <h3 class="font-display text-2xl text-gray-200">Gaming DNA</h3>
-                            <span class="bg-arcadia-gold/20 text-arcadia-gold px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Weekly Report</span>
-                        </div>
-
-                        <!-- Custom Bar Chart Representation -->
-                        <div class="space-y-6">
-                            <!-- RPG -->
-                            <div>
-                                <div class="flex justify-between text-sm font-bold mb-2">
-                                    <span class="text-white">RPG</span>
-                                    <span class="text-arcadia-secondary">80%</span>
-                                </div>
-                                <div class="h-4 bg-black/30 rounded-full overflow-hidden">
-                                    <div class="h-full bg-gradient-to-r from-arcadia-primary to-arcadia-secondary w-[80%] rounded-full shadow-[0_0_15px_rgba(167,139,250,0.5)]"></div>
-                                </div>
-                            </div>
-
-                            <!-- FPS -->
-                            <div>
-                                <div class="flex justify-between text-sm font-bold mb-2">
-                                    <span class="text-white">FPS</span>
-                                    <span class="text-gray-400">15%</span>
-                                </div>
-                                <div class="h-4 bg-black/30 rounded-full overflow-hidden">
-                                    <div class="h-full bg-white/20 w-[15%] rounded-full"></div>
-                                </div>
-                            </div>
-
-                            <!-- Strategy -->
-                            <div>
-                                <div class="flex justify-between text-sm font-bold mb-2">
-                                    <span class="text-white">Strategy</span>
-                                    <span class="text-gray-400">5%</span>
-                                </div>
-                                <div class="h-4 bg-black/30 rounded-full overflow-hidden">
-                                    <div class="h-full bg-white/10 w-[5%] rounded-full"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Insight Card inside the component -->
-                        <div class="mt-8 bg-arcadia-bg/60 p-4 rounded-2xl border-l-4 border-arcadia-gold flex gap-4">
-                            <div class="shrink-0 pt-1">
-                                <svg class="w-5 h-5 text-arcadia-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-white text-sm uppercase">Analysis</h4>
-                                <p class="text-gray-400 text-sm leading-relaxed mt-1">You are heavily biased towards narrative-driven experiences. Maybe try going outside? (Just kidding).</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="flex gap-2">
+                    <button class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
                 </div>
             </div>
-        </section>
 
-        <!-- Feature 3: Library (Chaos) -->
-        <section class="py-12">
-            <div class="text-center mb-12">
-                <h2 class="font-display text-5xl md:text-6xl mb-4">ORGANIZE YOUR CHAOS</h2>
-                <p class="font-body text-gray-400">Track, manage, and discover across all platforms.</p>
-            </div>
-
-            <!-- Horizontal Scroll Mockup -->
-            <div class="relative w-full overflow-hidden">
-                <div class="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-arcadia-bg to-transparent z-10"></div>
-                <div class="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-arcadia-bg to-transparent z-10"></div>
+            <!-- Scroll Container -->
+            <div class="flex gap-6 overflow-x-auto no-scrollbar px-4 md:px-[max(1rem,calc((100vw-80rem)/2))] pb-12 snap-x">
                 
-                <div class="flex gap-6 overflow-x-auto no-scrollbar py-10 px-10">
-                    <!-- Game Card 1 -->
-                    <div class="shrink-0 w-64 aspect-[3/4] bg-gray-800 rounded-3xl relative group overflow-hidden shadow-2xl transition-transform hover:-translate-y-2 duration-300">
-                        <div class="absolute inset-0 bg-gradient-to-br from-indigo-900 to-purple-900"></div>
-                        <!-- Mock Art -->
-                        <div class="absolute inset-0 flex items-center justify-center font-display text-4xl text-white/10 rotate-[-10deg]">ELDEN RING</div>
-                        <div class="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-black/90 to-transparent">
-                            <h4 class="font-display text-2xl">Elden Ring</h4>
-                            <div class="flex gap-2 mt-2">
-                                <span class="text-xs bg-white/20 px-2 py-1 rounded text-white">RPG</span>
-                                <span class="text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded">96</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Game Card 2 -->
-                    <div class="shrink-0 w-64 aspect-[3/4] bg-gray-800 rounded-3xl relative group overflow-hidden shadow-2xl transition-transform hover:-translate-y-2 duration-300 delay-75">
-                        <div class="absolute inset-0 bg-gradient-to-br from-red-900 to-orange-900"></div>
-                        <div class="absolute inset-0 flex items-center justify-center font-display text-4xl text-white/10 rotate-[-10deg]">HADES II</div>
-                        <div class="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-black/90 to-transparent">
-                            <h4 class="font-display text-2xl">Hades II</h4>
-                            <div class="flex gap-2 mt-2">
-                                <span class="text-xs bg-white/20 px-2 py-1 rounded text-white">Roguelike</span>
-                                <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Early Access</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Game Card 3 -->
-                    <div class="shrink-0 w-64 aspect-[3/4] bg-gray-800 rounded-3xl relative group overflow-hidden shadow-2xl transition-transform hover:-translate-y-2 duration-300 delay-100">
-                        <div class="absolute inset-0 bg-gradient-to-br from-blue-900 to-cyan-900"></div>
-                        <div class="absolute inset-0 flex items-center justify-center font-display text-4xl text-white/10 rotate-[-10deg]">CYBERPUNK</div>
-                        <div class="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-black/90 to-transparent">
-                            <h4 class="font-display text-2xl">Cyberpunk</h4>
-                            <div class="flex gap-2 mt-2">
-                                <span class="text-xs bg-white/20 px-2 py-1 rounded text-white">Action</span>
-                                <span class="text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded">90</span>
-                            </div>
-                        </div>
-                    </div>
-
-                     <!-- Game Card 4 -->
-                     <div class="shrink-0 w-64 aspect-[3/4] bg-gray-800 rounded-3xl relative group overflow-hidden shadow-2xl transition-transform hover:-translate-y-2 duration-300 delay-150">
-                        <div class="absolute inset-0 bg-gradient-to-br from-emerald-900 to-teal-900"></div>
-                        <div class="absolute inset-0 flex items-center justify-center font-display text-4xl text-white/10 rotate-[-10deg]">ZELDA</div>
-                        <div class="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-black/90 to-transparent">
-                            <h4 class="font-display text-2xl">TOTK</h4>
-                            <div class="flex gap-2 mt-2">
-                                <span class="text-xs bg-white/20 px-2 py-1 rounded text-white">Adventure</span>
-                                <span class="text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded">98</span>
-                            </div>
+                <!-- Card 1 -->
+                <div class="snap-center shrink-0 w-[280px] md:w-[340px] aspect-[3/4] rounded-3xl relative group overflow-hidden cursor-pointer shadow-2xl shadow-black/50">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2670&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Action Game">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
+                    <div class="absolute bottom-0 inset-x-0 p-8">
+                        <div class="bg-white/10 backdrop-blur-md self-start inline-block px-3 py-1 rounded-lg text-xs font-bold mb-3 border border-white/10">PLAYSTATION 5</div>
+                        <h3 class="font-display text-4xl text-white mb-2 leading-none">CYBER PUNK</h3>
+                        <div class="flex items-center gap-2 text-sm text-gray-300">
+                            <span class="text-green-400 font-bold">94% MATCH</span>
+                            <span>•</span>
+                            <span>124 HRS</span>
                         </div>
                     </div>
                 </div>
+
+                <!-- Card 2 -->
+                <div class="snap-center shrink-0 w-[280px] md:w-[340px] aspect-[3/4] rounded-3xl relative group overflow-hidden cursor-pointer shadow-2xl shadow-black/50">
+                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2671&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Shooter">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
+                    <div class="absolute bottom-0 inset-x-0 p-8">
+                        <div class="bg-white/10 backdrop-blur-md self-start inline-block px-3 py-1 rounded-lg text-xs font-bold mb-3 border border-white/10">PC / STEAM</div>
+                        <h3 class="font-display text-4xl text-white mb-2 leading-none">APEX LEGENDS</h3>
+                        <div class="flex items-center gap-2 text-sm text-gray-300">
+                            <span class="text-yellow-400 font-bold">GOLD III</span>
+                            <span>•</span>
+                            <span>400 HRS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="snap-center shrink-0 w-[280px] md:w-[340px] aspect-[3/4] rounded-3xl relative group overflow-hidden cursor-pointer shadow-2xl shadow-black/50">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2568&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Adventure">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
+                    <div class="absolute bottom-0 inset-x-0 p-8">
+                        <div class="bg-white/10 backdrop-blur-md self-start inline-block px-3 py-1 rounded-lg text-xs font-bold mb-3 border border-white/10">NINTENDO</div>
+                        <h3 class="font-display text-4xl text-white mb-2 leading-none">ZELDA: TOTK</h3>
+                        <div class="flex items-center gap-2 text-sm text-gray-300">
+                            <span class="text-green-400 font-bold">COMPLETED</span>
+                            <span>•</span>
+                            <span>85 HRS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="snap-center shrink-0 w-[280px] md:w-[340px] aspect-[3/4] rounded-3xl relative group overflow-hidden cursor-pointer shadow-2xl shadow-black/50">
+                    <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=2670&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="RPG">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
+                    <div class="absolute bottom-0 inset-x-0 p-8">
+                        <div class="bg-white/10 backdrop-blur-md self-start inline-block px-3 py-1 rounded-lg text-xs font-bold mb-3 border border-white/10">XBOX</div>
+                        <h3 class="font-display text-4xl text-white mb-2 leading-none">STARFIELD</h3>
+                        <div class="flex items-center gap-2 text-sm text-gray-300">
+                            <span class="text-gray-400 font-bold">UNPLAYED</span>
+                            <span>•</span>
+                            <span>0 HRS</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="max-w-4xl mx-auto px-4 text-center">
+            <div class="glass-panel p-12 md:p-20 rounded-[3rem] relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-b from-violet-500/10 to-transparent pointer-events-none"></div>
+                
+                <h2 class="font-display text-6xl md:text-8xl mb-6 relative z-10">READY TO <br> PLAY?</h2>
+                <p class="font-body text-xl text-gray-400 mb-10 max-w-lg mx-auto relative z-10">Join 50,000+ gamers tracking their backlog and getting roasted daily.</p>
+                
+                <button class="bg-white text-black px-10 py-5 rounded-full font-body font-bold text-xl tracking-wide hover:bg-violet-200 hover:scale-105 transition-all shadow-xl relative z-10">
+                    DOWNLOAD FOR FREE
+                </button>
             </div>
         </section>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="border-t border-white/5 bg-arcadia-bg pt-16 pb-8 px-4">
-        <div class="max-w-6xl mx-auto flex flex-col items-center">
-            <h2 class="font-display text-8xl md:text-[10rem] leading-none text-white/5 select-none pointer-events-none">ARCADIA</h2>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16 mt-[-2rem] md:mt-[-4rem] mb-12 z-10">
-                <a href="./privacy.html" class="text-gray-400 hover:text-arcadia-primary transition-colors">Privacy</a>
-                <a href="./delete-account/" class="text-gray-400 hover:text-arcadia-primary transition-colors">Data & Rights</a>
-                <a href="#" class="text-gray-400 hover:text-arcadia-primary transition-colors">Twitter</a>
-                <a href="#" class="text-gray-400 hover:text-arcadia-primary transition-colors">GitHub</a>
-            </div>
-
-            <p class="text-gray-600 text-sm">© 2026 Arcadia Inc. Crafted with <span class="text-arcadia-red">♥</span> for gamers.</p>
+    <footer class="border-t border-white/5 bg-black py-12 px-4 text-center">
+        <h2 class="font-display text-[15vw] leading-none text-white/5 select-none pointer-events-none mb-8">ARCADIA</h2>
+        <div class="flex justify-center gap-8 text-sm text-gray-500 font-body">
+            <a href="#" class="hover:text-white transition-colors">Privacy</a>
+            <a href="#" class="hover:text-white transition-colors">Terms</a>
+            <a href="#" class="hover:text-white transition-colors">Twitter</a>
+            <a href="#" class="hover:text-white transition-colors">Discord</a>
         </div>
+        <p class="mt-8 text-gray-700 text-xs">© 2026 Arcadia Inc. All rights reserved.</p>
     </footer>
 
 </body>
