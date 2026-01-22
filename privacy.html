@@ -5,259 +5,274 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - Arcadia</title>
     <style>
-        *,
-        *::before,
-        *::after {
+        :root {
+            --bg-dark: #020617;
+            --bg-card: rgba(30, 41, 59, 0.4);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-primary: #3b82f6;
+            --accent-glow: #0ea5e9;
+            --border-glass: rgba(255, 255, 255, 0.1);
+            --glass-shine: rgba(255, 255, 255, 0.05);
+        }
+
+        *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        html {
-            font-size: 16px;
-            scroll-behavior: smooth;
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-            background: linear-gradient(135deg, #1a1625 0%, #1e1b2e 50%, #252136 100%);
-            color: #e2e0ea;
-            line-height: 1.7;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(14, 165, 233, 0.15), transparent 25%);
+            color: var(--text-main);
+            line-height: 1.6;
             min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 2rem 1.5rem 4rem;
+            padding: 2rem 1.5rem 6rem;
         }
 
+        /* Header */
         header {
             text-align: center;
-            padding: 3rem 0 2rem;
-            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
-            margin-bottom: 2.5rem;
+            padding: 4rem 0 3rem;
+            position: relative;
         }
 
         .logo {
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #a78bfa 0%, #c4b5fd 50%, #8b5cf6 100%);
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            background: linear-gradient(135deg, #fff 30%, var(--accent-primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.02em;
             margin-bottom: 0.5rem;
+            display: inline-block;
+            text-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
         }
 
         .subtitle {
-            font-size: 1.125rem;
-            color: #a5a3b3;
-            font-weight: 400;
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
         }
 
         .last-updated {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 0.5rem 1rem;
-            background: rgba(139, 92, 246, 0.1);
-            border: 1px solid rgba(139, 92, 246, 0.2);
+            display: inline-flex;
+            margin-top: 1.5rem;
+            padding: 0.5rem 1.25rem;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
             border-radius: 9999px;
             font-size: 0.875rem;
-            color: #c4b5fd;
+            color: #60a5fa;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.1);
+        }
+
+        /* Content */
+        main {
+            display: grid;
+            gap: 3rem;
+        }
+
+        section {
+            position: relative;
         }
 
         h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #f3f0ff;
-            margin: 2.5rem 0 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid rgba(139, 92, 246, 0.3);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        h2::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 1.75rem;
+            background: linear-gradient(to bottom, var(--accent-primary), var(--accent-glow));
+            border-radius: 2px;
+            box-shadow: 0 0 10px var(--accent-primary);
         }
 
         h3 {
-            font-size: 1.125rem;
+            font-size: 1.25rem;
             font-weight: 600;
-            color: #d8d5e6;
-            margin: 1.75rem 0 0.75rem;
+            color: #e2e8f0;
+            margin: 1.5rem 0 0.75rem;
         }
 
-        p {
-            margin-bottom: 1rem;
-            color: #c9c7d6;
+        p, li {
+            color: var(--text-muted);
+            font-size: 1.05rem;
         }
 
         ul {
-            margin: 1rem 0 1.5rem 1.5rem;
-            color: #c9c7d6;
+            list-style: none;
+            padding-left: 0;
         }
 
         li {
+            position: relative;
+            padding-left: 1.5rem;
             margin-bottom: 0.5rem;
-            padding-left: 0.25rem;
         }
 
-        li::marker {
-            color: #8b5cf6;
+        li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: var(--accent-glow);
+            font-weight: bold;
+            font-size: 1.2rem;
+            line-height: 1.5rem;
         }
 
         strong {
-            color: #e9e7f2;
+            color: #f1f5f9;
             font-weight: 600;
         }
 
         a {
-            color: #a78bfa;
+            color: #60a5fa;
             text-decoration: none;
-            transition: color 0.2s ease;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s;
         }
 
         a:hover {
-            color: #c4b5fd;
-            text-decoration: underline;
+            color: #93c5fd;
+            border-bottom-color: #93c5fd;
+            text-shadow: 0 0 8px rgba(96, 165, 250, 0.4);
         }
 
-        .card {
-            background: rgba(30, 27, 46, 0.6);
-            border: 1px solid rgba(139, 92, 246, 0.15);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            backdrop-filter: blur(10px);
+        /* Glass Cards */
+        .glass-panel {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .glass-panel:hover {
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.15);
         }
 
+        /* Table */
         .table-wrapper {
             overflow-x: auto;
-            margin: 1.5rem 0;
             border-radius: 12px;
-            border: 1px solid rgba(139, 92, 246, 0.2);
+            border: 1px solid var(--border-glass);
+            background: rgba(15, 23, 42, 0.6);
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.9375rem;
+            text-align: left;
         }
 
         th {
-            background: rgba(139, 92, 246, 0.15);
-            color: #e9e7f2;
+            background: rgba(59, 130, 246, 0.1);
+            color: #fff;
             font-weight: 600;
-            text-align: left;
-            padding: 1rem;
-            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
-        }
-
-        td {
-            padding: 0.875rem 1rem;
-            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
-            color: #c9c7d6;
-        }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        tr:hover td {
-            background: rgba(139, 92, 246, 0.05);
-        }
-
-        .highlight-box {
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(167, 139, 250, 0.05) 100%);
-            border-left: 4px solid #8b5cf6;
-            padding: 1.25rem 1.5rem;
-            border-radius: 0 8px 8px 0;
-            margin: 1.5rem 0;
-        }
-
-        .contact-section {
-            background: rgba(30, 27, 46, 0.8);
-            border: 1px solid rgba(139, 92, 246, 0.2);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-top: 2.5rem;
-            text-align: center;
-        }
-
-        .contact-section h2 {
-            border-bottom: none;
-            margin-top: 0;
-            text-align: center;
-        }
-
-        .contact-item {
-            margin: 0.75rem 0;
-        }
-
-        .contact-label {
-            color: #a5a3b3;
-            font-size: 0.875rem;
+            padding: 1rem 1.5rem;
             text-transform: uppercase;
+            font-size: 0.85rem;
             letter-spacing: 0.05em;
         }
 
+        td {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid var(--border-glass);
+            color: var(--text-muted);
+        }
+
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(90deg, rgba(59, 130, 246, 0.1), transparent);
+            border-left: 3px solid var(--accent-primary);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-glass);
+            transition: background 0.3s;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .contact-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #64748b;
+            margin-bottom: 0.5rem;
+        }
+
         .contact-value {
-            color: #e9e7f2;
-            font-size: 1.0625rem;
-            margin-top: 0.25rem;
+            font-size: 1.1rem;
+            color: #f8fafc;
         }
 
-        .contact-value a {
-            color: #c4b5fd;
-        }
-
+        /* Footer */
         footer {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(139, 92, 246, 0.2);
+            margin-top: 5rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border-glass);
             text-align: center;
         }
 
         .agreement-text {
-            font-size: 0.9375rem;
-            color: #a5a3b3;
+            color: #64748b;
+            font-size: 0.9rem;
             font-style: italic;
         }
 
-        .divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.3), transparent);
-            margin: 2rem 0;
-        }
-
+        /* Mobile */
         @media (max-width: 640px) {
-            .container {
-                padding: 1.5rem 1rem 3rem;
-            }
-
-            header {
-                padding: 2rem 0 1.5rem;
-            }
-
-            .logo {
-                font-size: 2rem;
-            }
-
-            h2 {
-                font-size: 1.25rem;
-            }
-
-            h3 {
-                font-size: 1rem;
-            }
-
-            table {
-                font-size: 0.875rem;
-            }
-
-            th, td {
-                padding: 0.75rem;
-            }
-
-            .card, .contact-section {
-                padding: 1.25rem;
-            }
+            .logo { font-size: 2.5rem; }
+            .container { padding: 1.5rem 1rem 4rem; }
+            .glass-panel { padding: 1.5rem; }
+            h2 { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -270,7 +285,7 @@
         </header>
 
         <main>
-            <section>
+            <section class="glass-panel">
                 <h2>Overview</h2>
                 <p>Arcadia ("we", "our", or "the app") is a game library management and social gaming companion. This Privacy Policy explains how we collect, use, and protect your information when you use our Android application.</p>
             </section>
@@ -278,34 +293,36 @@
             <section>
                 <h2>Information We Collect</h2>
                 
-                <h3>Account Information</h3>
-                <p>When you sign in with Google, we collect:</p>
-                <ul>
-                    <li>Email address</li>
-                    <li>Display name</li>
-                    <li>Profile picture URL</li>
-                    <li>Google account ID</li>
-                </ul>
+                <div class="glass-panel">
+                    <h3>Account Information</h3>
+                    <p>When you sign in with Google, we collect:</p>
+                    <ul>
+                        <li>Email address</li>
+                        <li>Display name</li>
+                        <li>Profile picture URL</li>
+                        <li>Google account ID</li>
+                    </ul>
 
-                <h3>User-Generated Content</h3>
-                <ul>
-                    <li>Game library entries (games you add, status, ratings, hours played)</li>
-                    <li>Reviews you write</li>
-                    <li>Friend connections and friend requests</li>
-                    <li>Profile information you provide (bio, location, gaming platform IDs)</li>
-                    <li>AI-generated roasts and badges you choose to save</li>
-                </ul>
+                    <h3>User-Generated Content</h3>
+                    <ul>
+                        <li>Game library entries (games you add, status, ratings, hours played)</li>
+                        <li>Reviews you write</li>
+                        <li>Friend connections and friend requests</li>
+                        <li>Profile information you provide (bio, location, gaming platform IDs)</li>
+                        <li>AI-generated roasts and badges you choose to save</li>
+                    </ul>
 
-                <h3>Automatically Collected Data</h3>
-                <ul>
-                    <li>OneSignal Player ID (for push notifications)</li>
-                    <li>Basic device information for app functionality</li>
-                </ul>
+                    <h3>Automatically Collected Data</h3>
+                    <ul>
+                        <li>OneSignal Player ID (for push notifications)</li>
+                        <li>Basic device information for app functionality</li>
+                    </ul>
+                </div>
             </section>
 
             <section>
                 <h2>How We Use Your Information</h2>
-                <div class="card">
+                <div class="glass-panel">
                     <ul>
                         <li><strong>Core Functionality:</strong> To manage your game library, display your profile, and enable social features</li>
                         <li><strong>AI Recommendations:</strong> Your library data is sent to AI services (Groq, Google Gemini) to generate personalized game recommendations and roasts</li>
@@ -317,7 +334,7 @@
 
             <section>
                 <h2>Third-Party Services</h2>
-                <p>We use the following third-party services:</p>
+                <p style="margin-bottom: 1.5rem;">We use the following third-party services:</p>
                 <div class="table-wrapper">
                     <table>
                         <thead>
@@ -365,7 +382,7 @@
 
             <section>
                 <h2>Data Storage and Security</h2>
-                <div class="card">
+                <div class="glass-panel">
                     <ul>
                         <li>Your data is stored securely on Appwrite cloud infrastructure</li>
                         <li>Authentication tokens are stored in encrypted SharedPreferences on your device</li>
@@ -384,32 +401,40 @@
 
             <section>
                 <h2>Data Sharing</h2>
-                <p>We do not sell your personal information. Your data may be shared only:</p>
-                <ul>
-                    <li>With AI providers (Groq, Gemini) to generate recommendations based on your library</li>
-                    <li>With other users according to your privacy settings (profile visibility, friend connections)</li>
-                    <li>If required by law</li>
-                </ul>
+                <div class="glass-panel">
+                    <p>We do not sell your personal information. Your data may be shared only:</p>
+                    <ul>
+                        <li>With AI providers (Groq, Gemini) to generate recommendations based on your library</li>
+                        <li>With other users according to your privacy settings (profile visibility, friend connections)</li>
+                        <li>If required by law</li>
+                    </ul>
+                </div>
             </section>
 
              <section>
                  <h2>Your Rights</h2>
-                 <p>You can:</p>
-                 <ul>
-                     <li><strong>Access</strong> your data through the app's profile and settings</li>
-                     <li><strong>Delete</strong> your reviews, library entries, and friend connections at any time</li>
-                     <li><strong>Request account deletion</strong> via our deletion request page or by contacting us at the email below</li>
-                 </ul>
+                 <div class="glass-panel">
+                     <p>You can:</p>
+                     <ul>
+                         <li><strong>Access</strong> your data through the app's profile and settings</li>
+                         <li><strong>Delete</strong> your reviews, library entries, and friend connections at any time</li>
+                         <li><strong>Request account deletion</strong> via our deletion request page or by contacting us at the email below</li>
+                     </ul>
+                 </div>
              </section>
 
              <section>
                  <h2>Account Deletion</h2>
-                 <p>You can request deletion of your Arcadia account and/or specific data at:</p>
-                 <div class="highlight-box">
-                     <p style="margin-bottom: 0;"><a href="./delete-account/">Delete Account / Data Request</a></p>
+                 <div class="glass-panel">
+                    <p>You can request deletion of your Arcadia account and/or specific data at:</p>
+                    <div style="margin: 1.5rem 0;">
+                        <a href="./delete-account/" style="display: inline-block; padding: 0.8rem 1.5rem; background: var(--accent-primary); color: white; border-radius: 8px; font-weight: 600; box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);">
+                            Delete Account / Data Request
+                        </a>
+                    </div>
+                    <p>To process requests and prevent fraud, we may ask you to verify ownership by replying from the same email address used in Arcadia.</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: #94a3b8;"><strong>Retention:</strong> We retain deletion request emails (and any minimal audit trail required to complete the request) for up to 90 days after completion, then delete it.</p>
                  </div>
-                 <p>To process requests and prevent fraud, we may ask you to verify ownership by replying from the same email address used in Arcadia.</p>
-                 <p><strong>Retention:</strong> we retain deletion request emails (and any minimal audit trail required to complete the request) for up to 90 days after completion, then delete it.</p>
              </section>
 
             <section>
@@ -424,23 +449,24 @@
 
             <section class="contact-section">
                 <h2>Contact Us</h2>
-                <p style="color: #a5a3b3; margin-bottom: 1.5rem;">If you have questions about this Privacy Policy or your data, please contact:</p>
-                <div class="contact-item">
-                    <div class="contact-label">Email</div>
-                    <div class="contact-value"><a href="mailto:ahmedbobos.rashid@gmail.com">ahmedbobos.rashid@gmail.com</a></div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-label">Developer</div>
-                    <div class="contact-value">Ahmad Abbas</div>
+                <p style="margin-bottom: 2rem;">If you have questions about this Privacy Policy or your data, please contact:</p>
+                
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value"><a href="mailto:ahmedbobos.rashid@gmail.com">ahmedbobos.rashid@gmail.com</a></div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label">Developer</div>
+                        <div class="contact-value">Ahmad Abbas</div>
+                    </div>
                 </div>
             </section>
 
             <footer>
-                <div class="divider"></div>
                 <p class="agreement-text">By using Arcadia, you agree to this Privacy Policy.</p>
             </footer>
         </main>
     </div>
 </body>
 </html>
-

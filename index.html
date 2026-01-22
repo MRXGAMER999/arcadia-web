@@ -3,67 +3,535 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arcadia</title>
+    <title>Arcadia - Next Gen Game Collection Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --md-sys-color-background: #05080f;
+            --md-sys-color-on-background: #e2e2e6;
+            --md-sys-color-surface: #0f131e;
+            --md-sys-color-surface-variant: #1a1f2e;
+            
+            --primary-navy: #0b0f19;
+            --electric-blue: #2952ff;
+            --vivid-purple: #7c3aed;
+            --neon-cyan: #06b6d4;
+            --hot-pink: #ec4899;
+            
+            --glass-surface: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-highlight: rgba(255, 255, 255, 0.12);
+            
+            --radius-xl: 32px;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #0a1628 0%, #1a2744 100%);
-            min-height: 100vh;
-            display: flex;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--md-sys-color-background);
+            color: var(--md-sys-color-on-background);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, .logo {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* --- Background Effects --- */
+        .ambient-glow {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 15% 50%, rgba(41, 82, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 90%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+            filter: blur(60px);
+        }
+
+        /* --- Components --- */
+        .glass-panel {
+            background: var(--glass-surface);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            padding: 16px 32px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            border: 1px solid transparent;
+            cursor: pointer;
+            letter-spacing: 0.02em;
         }
-        .container { text-align: center; padding: 40px; }
-        .logo { font-size: 64px; margin-bottom: 20px; }
-        h1 { font-size: 28px; margin-bottom: 10px; color: #00d4ff; }
-        p { color: #a0aec0; line-height: 1.6; }
 
-        .links {
-            margin-top: 28px;
+        .btn-primary {
+            background: linear-gradient(135deg, var(--electric-blue), var(--vivid-purple));
+            color: white;
+            box-shadow: 0 8px 24px -4px rgba(41, 82, 255, 0.5);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 12px 32px -4px rgba(124, 58, 237, 0.6);
+        }
+
+        .btn-ghost {
+            background: rgba(255,255,255,0.05);
+            color: white;
+            border: 1px solid var(--glass-border);
+        }
+        .btn-ghost:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--glass-highlight);
+        }
+
+        /* --- Navigation --- */
+        nav {
+            padding: 24px 5%;
             display: flex;
-            gap: 12px;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            transition: background 0.3s ease;
+        }
+        nav.scrolled {
+            background: rgba(5, 8, 15, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #fff, #a5b4fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.03em;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            display: none; /* Mobile first hidden */
+        }
+        @media(min-width: 768px) { .nav-links { display: flex; } }
+        
+        .nav-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: white; }
+
+        /* --- Hero Section --- */
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 24px 60px;
+            position: relative;
+        }
+
+        .hero-badge {
+            padding: 8px 16px;
+            background: rgba(41, 82, 255, 0.15);
+            border: 1px solid rgba(41, 82, 255, 0.3);
+            border-radius: 100px;
+            color: #818cf8;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            display: inline-block;
+            backdrop-filter: blur(4px);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            max-width: 800px;
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #fff 30%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .text-gradient-accent {
+            background: linear-gradient(135deg, var(--neon-cyan), var(--electric-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            font-size: 1.25rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin-bottom: 40px;
+        }
+
+        /* --- Floating UI Mockup (CSS Art) --- */
+        .ui-showcase {
+            width: 100%;
+            max-width: 1000px;
+            height: 500px;
+            position: relative;
+            margin-top: 60px;
+            perspective: 1000px;
+        }
+        .phone-frame {
+            width: 300px;
+            height: 600px;
+            background: #0f131e;
+            border: 8px solid #2d3748;
+            border-radius: 40px;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%) rotateX(10deg) rotateY(-10deg) rotateZ(-2deg);
+            box-shadow: 
+                20px 20px 60px rgba(0,0,0,0.5),
+                -5px -5px 20px rgba(255,255,255,0.05) inset;
+            overflow: hidden;
+            z-index: 2;
+        }
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #1a1f2e 0%, #0b0f19 100%);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        /* UI Elements Mockup */
+        .ui-header { height: 40px; display: flex; justify-content: space-between; align-items: center; }
+        .ui-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--electric-blue); }
+        .ui-card { height: 120px; background: rgba(255,255,255,0.05); border-radius: 16px; width: 100%; }
+        .ui-row { height: 60px; background: rgba(255,255,255,0.03); border-radius: 12px; width: 100%; }
+        
+        .floating-card {
+            position: absolute;
+            padding: 20px;
+            border-radius: 20px;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            animation: float 6s ease-in-out infinite;
+        }
+        .card-icon {
+            width: 48px; height: 48px; 
+            border-radius: 12px; 
+            background: linear-gradient(135deg, var(--electric-blue), var(--vivid-purple));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px;
+        }
+        .fc-1 { top: 20%; left: 10%; animation-delay: 0s; }
+        .fc-2 { bottom: 30%; right: 10%; animation-delay: 2s; }
+        .fc-3 { top: 60%; left: 15%; animation-delay: 1.5s; z-index: 1;}
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* --- Features Grid --- */
+        .features {
+            padding: 100px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .section-header {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        .feature-card {
+            padding: 40px;
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .feature-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255,255,255,0.05);
+        }
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--electric-blue), var(--vivid-purple));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .feature-card:hover::before { opacity: 1; }
+
+        .f-icon {
+            font-size: 2rem;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+        .feature-card p {
+            color: #94a3b8;
+            font-size: 1rem;
+        }
+
+        /* --- Tech Stack Ticker --- */
+        .tech-stack {
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 40px 0;
+            background: rgba(0,0,0,0.2);
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .tech-track {
+            display: inline-block;
+            animation: scroll 20s linear infinite;
+        }
+        .tech-item {
+            display: inline-block;
+            margin: 0 40px;
+            color: #64748b;
+            font-weight: 700;
+            font-size: 1.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 80px 5% 40px;
+            border-top: 1px solid var(--glass-border);
+            margin-top: 80px;
+            text-align: center;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 40px;
             flex-wrap: wrap;
         }
-        .btn {
-            display: inline-block;
-            padding: 12px 16px;
-            border-radius: 12px;
+        .footer-links a {
+            color: #94a3b8;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            border: 1px solid rgba(0, 212, 255, 0.25);
-            color: white;
-            background: rgba(0, 212, 255, 0.08);
-            backdrop-filter: blur(8px);
-            transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+            transition: color 0.2s;
         }
-        .btn:hover {
-            transform: translateY(-1px);
-            border-color: rgba(0, 212, 255, 0.55);
-            background: rgba(0, 212, 255, 0.12);
+        .footer-links a:hover { color: var(--electric-blue); }
+        .copyright {
+            color: #475569;
+            font-size: 0.875rem;
         }
-        .btn.primary {
-            border-color: rgba(99, 102, 241, 0.35);
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.45) 0%, rgba(139, 92, 246, 0.35) 100%);
-        }
-        .btn.primary:hover {
-            border-color: rgba(139, 92, 246, 0.6);
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .ui-showcase { height: 400px; display: none; } /* Hide complicated CSS art on mobile for simplicity */
+            .grid { grid-template-columns: 1fr; }
+            .hero-badge { margin-top: 40px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo">🎮</div>
-        <h1>Arcadia</h1>
-        <p>Your gaming library companion</p>
 
-        <div class="links">
-            <a class="btn" href="./privacy.html">Privacy Policy</a>
-            <a class="btn primary" href="./delete-account/">Delete Account / Data</a>
+    <div class="ambient-glow"></div>
+
+    <nav id="navbar">
+        <div class="logo">Arcadia</div>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#tech">Technology</a>
+            <a href="./privacy.html">Privacy</a>
+        </div>
+        <a href="#" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.9rem;">Download Beta</a>
+    </nav>
+
+    <header>
+        <span class="hero-badge">✨ V2.0 Now Available</span>
+        <h1>
+            Your Universe of Games,<br>
+            <span class="text-gradient-accent">Unified & Intelligent.</span>
+        </h1>
+        <p>
+            The next-generation collection manager powered by Gemini AI. 
+            Track, discover, and socialize across all platforms in one avant-garde interface.
+        </p>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;">
+            <a href="#" class="btn btn-primary">Get Early Access</a>
+            <a href="#features" class="btn btn-ghost">Explore Features</a>
+        </div>
+
+        <div class="ui-showcase">
+            <!-- Central Phone -->
+            <div class="phone-frame">
+                <div class="phone-screen">
+                    <div class="ui-header">
+                        <div style="width: 20px; height: 2px; background: #475569;"></div>
+                        <div class="ui-avatar"></div>
+                    </div>
+                    <div style="font-size: 24px; font-weight: 800; color: white; margin: 10px 0;">Library</div>
+                    <div style="display: flex; gap: 8px;">
+                        <div style="padding: 6px 12px; background: #2952ff; border-radius: 50px; font-size: 10px; color: white;">Playing</div>
+                        <div style="padding: 6px 12px; background: rgba(255,255,255,0.1); border-radius: 50px; font-size: 10px; color: #94a3b8;">Backlog</div>
+                    </div>
+                    <div class="ui-card" style="background: linear-gradient(135deg, #1e293b, #0f172a);"></div>
+                    <div class="ui-row"></div>
+                    <div class="ui-row"></div>
+                    <div class="ui-row"></div>
+                </div>
+            </div>
+
+            <!-- Floating Feature Cards -->
+            <div class="glass-panel floating-card fc-1">
+                <div class="card-icon">🧠</div>
+                <div>
+                    <div style="font-weight: 700; color: white;">AI Insights</div>
+                    <div style="font-size: 0.8rem; color: #94a3b8;">"You might like Elden Ring"</div>
+                </div>
+            </div>
+
+            <div class="glass-panel floating-card fc-2">
+                <div class="card-icon">⚡</div>
+                <div>
+                    <div style="font-weight: 700; color: white;">Realtime</div>
+                    <div style="font-size: 0.8rem; color: #94a3b8;">Sync across devices</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="tech-stack" id="tech">
+        <div class="tech-track">
+            <span class="tech-item">Jetpack Compose</span>
+            <span class="tech-item">Material 3 Expressive</span>
+            <span class="tech-item">Google Gemini</span>
+            <span class="tech-item">Groq AI</span>
+            <span class="tech-item">Room Database</span>
+            <span class="tech-item">Appwrite Cloud</span>
+            <span class="tech-item">Kotlin Multiplatform</span>
+            <!-- Duplicate for scroll effect -->
+            <span class="tech-item">Jetpack Compose</span>
+            <span class="tech-item">Material 3 Expressive</span>
+            <span class="tech-item">Google Gemini</span>
+            <span class="tech-item">Groq AI</span>
+            <span class="tech-item">Room Database</span>
+            <span class="tech-item">Appwrite Cloud</span>
+            <span class="tech-item">Kotlin Multiplatform</span>
         </div>
     </div>
+
+    <section class="features" id="features">
+        <div class="section-header">
+            <h2>Engineered for the Obsessed</h2>
+            <p>Every pixel designed to honor your gaming journey.</p>
+        </div>
+
+        <div class="grid">
+            <div class="glass-panel feature-card">
+                <div class="f-icon">📚</div>
+                <h3>Unified Library</h3>
+                <p>Seamlessly powered by local Room caching and Appwrite cloud sync. Your collection, offline or online, always accessible.</p>
+            </div>
+
+            <div class="glass-panel feature-card">
+                <div class="f-icon">🤖</div>
+                <h3>AI-Powered Search</h3>
+                <p>Natural language discovery via Groq & Gemini. Ask "Find me a cozy RPG under 10 hours" and get instant, curated results.</p>
+            </div>
+
+            <div class="glass-panel feature-card">
+                <div class="f-icon">👥</div>
+                <h3>Social Gaming</h3>
+                <p>Realtime reviews, friend activity, and live updates. Share your victories and discover what your circle is playing.</p>
+            </div>
+
+            <div class="glass-panel feature-card">
+                <div class="f-icon">📊</div>
+                <h3>Deep Analytics</h3>
+                <p>Visualize your gaming DNA. Dynamic charts breakdown your genre preferences, playtime trends, and completion rates.</p>
+            </div>
+
+            <div class="glass-panel feature-card">
+                <div class="f-icon">🎨</div>
+                <h3>Avant-Garde UX</h3>
+                <p>Built with Material 3 Expressive. Fluid animations, haptic feedback, and a stunning dark mode that respects your eyes.</p>
+            </div>
+
+            <div class="glass-panel feature-card">
+                <div class="f-icon">🔒</div>
+                <h3>Privacy First</h3>
+                <p>Your data belongs to you. Granular controls and transparent policies ensure your gaming habits stay private.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="./privacy.html">Privacy Policy</a>
+            <a href="./delete-account/">Delete Account Data</a>
+            <a href="#">Support</a>
+            <a href="#">Twitter</a>
+            <a href="#">GitHub</a>
+        </div>
+        <p class="copyright">&copy; 2024 Arcadia Project. Built with ❤️ for Gamers.</p>
+    </footer>
+
+    <script>
+        // Simple scroll effect for navbar
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html>

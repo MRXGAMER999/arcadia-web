@@ -3,59 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arcadia - View Profile</title>
+    <title>Arcadia - Redirecting...</title>
+    <meta name="theme-color" content="#0a0a0a">
     <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #141414;
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.4);
+            --text-main: #ffffff;
+            --text-muted: #a1a1aa;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #0a1628 0%, #1a2744 100%);
-            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 24px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 320px;
+            width: 100%;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        /* Logo Container */
+        .logo-container {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
         }
-        .container {
-            text-align: center;
-            padding: 40px;
-            max-width: 400px;
+
+        /* Abstract A / Controller Logo */
+        .logo-svg {
+            width: 48px;
+            height: 48px;
+            fill: var(--text-main);
+            z-index: 2;
         }
-        .logo { font-size: 64px; margin-bottom: 20px; }
-        h1 { font-size: 28px; margin-bottom: 10px; color: #00d4ff; }
-        p { color: #a0aec0; margin-bottom: 30px; line-height: 1.6; }
+
+        /* Pulse Animation */
+        .pulse-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            opacity: 0;
+            animation: pulse 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+
+        .pulse-ring:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        h1 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+        }
+
+        p.status {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 48px;
+        }
+
+        /* Primary Action Button */
         .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            background: var(--primary);
             color: white;
-            padding: 16px 32px;
+            padding: 14px 24px;
             border-radius: 12px;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: 500;
+            font-size: 15px;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+
+        .btn:active {
+            transform: scale(0.98);
         }
-        .fallback {
-            margin-top: 20px;
-            font-size: 14px;
-            color: #718096;
+
+        .footer-note {
+            margin-top: 32px;
+            font-size: 12px;
+            color: #52525b;
         }
-        .fallback a { color: #00d4ff; }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(0.8); opacity: 0.8; border-width: 2px; }
+            100% { transform: scale(1.6); opacity: 0; border-width: 0px; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <div class="logo">🎮</div>
-        <h1>Arcadia</h1>
-        <p>Opening profile in the Arcadia app...</p>
-        <a href="#" id="openApp" class="btn">Open in Arcadia</a>
-        <p class="fallback">
-            Don't have the app yet? <br>
-            Coming soon!
-        </p>
+        <div class="logo-container">
+            <!-- Pulsing Rings -->
+            <div class="pulse-ring"></div>
+            <div class="pulse-ring"></div>
+            
+            <!-- Logo Icon -->
+            <svg class="logo-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 19H7L9 15H15L17 19H22L12 2ZM10 12L12 6.5L14 12H10Z"/>
+            </svg>
+        </div>
+
+        <h1>Redirecting...</h1>
+        <p class="status">Launching Arcadia</p>
+
+        <a href="#" id="openApp" class="btn">Open in App</a>
+
+        <p class="footer-note">If nothing happens, click the button above.</p>
     </div>
 
     <script>
@@ -63,19 +154,25 @@
         const urlParams = new URLSearchParams(window.location.search);
         const userId = urlParams.get('id');
         
+        const statusText = document.querySelector('.status');
+        const openAppBtn = document.getElementById('openApp');
+
         if (userId) {
             // Create the deep link
             const appLink = `arcadia://profile/${userId}`;
             
             // Update button href
-            document.getElementById('openApp').href = appLink;
+            openAppBtn.href = appLink;
             
             // Try to open app automatically
             setTimeout(() => {
                 window.location.href = appLink;
-            }, 500);
+            }, 800); // Slight delay to let the animation play a bit
         } else {
-            document.querySelector('p').textContent = 'Invalid profile link.';
+            statusText.textContent = 'Link is missing profile ID';
+            openAppBtn.style.display = 'none';
+            openAppBtn.removeAttribute('href');
+            document.querySelector('.logo-container').style.opacity = '0.5';
         }
     </script>
 </body>
