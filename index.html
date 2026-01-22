@@ -13,26 +13,27 @@
             color: #ffffff;
             font-family: sans-serif;
             margin: 0;
-            opacity: 1; /* Ensure visible by default */
-        }
-        .cloak {
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        .loaded .cloak {
             opacity: 1;
         }
-        /* Glassmorphism utilities that don't rely on Tailwind immediately */
+        /* Glassmorphism utilities */
         .glass-fallback {
             background: rgba(30, 42, 71, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        /* Hide scrollbar for bento grid if needed */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;800&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -44,6 +45,7 @@
                         navy: {
                             900: '#0F0F23',
                             800: '#151530',
+                            700: '#1E1E3F',
                         },
                         violet: {
                             500: '#8b5cf6',
@@ -72,21 +74,12 @@
             .glass-panel {
                 @apply bg-navy-800/40 backdrop-blur-xl border border-white/10;
             }
+            .glass-card {
+                @apply bg-navy-800/60 backdrop-blur-md border border-white/5 hover:border-white/20 transition-all duration-300;
+            }
             .text-glow {
                 text-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
             }
-            .text-stroke {
-                -webkit-text-stroke: 1px rgba(255,255,255,0.1);
-            }
-        }
-        
-        /* Smooth scrolling for horizontal lists */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
         }
     </style>
 </head>
@@ -96,7 +89,7 @@
     <nav class="fixed top-0 w-full z-50 px-4 py-4 pointer-events-none">
         <div class="max-w-7xl mx-auto flex justify-between items-center pointer-events-auto">
             <!-- Logo -->
-            <div class="glass-panel rounded-full px-5 py-2 flex items-center gap-3">
+            <div class="glass-panel rounded-full px-5 py-2 flex items-center gap-3 shadow-2xl">
                 <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-violet-600 to-violet-400 flex items-center justify-center font-display text-xl text-white shadow-lg shadow-violet-500/30">A</div>
                 <span class="font-display text-2xl tracking-wide hidden sm:block pt-1">Arcadia</span>
             </div>
@@ -109,14 +102,14 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden">
+    <header class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden pt-20">
         <!-- Background Effects -->
         <div class="absolute inset-0 pointer-events-none">
-            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-600/20 blur-[120px] rounded-full mix-blend-screen"></div>
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-600/20 blur-[120px] rounded-full mix-blend-screen animate-pulse"></div>
             <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-600/10 blur-[120px] rounded-full mix-blend-screen"></div>
         </div>
 
-        <div class="relative z-10 max-w-5xl mx-auto mt-20">
+        <div class="relative z-10 max-w-5xl mx-auto">
             <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 mb-8 backdrop-blur-md">
                 <span class="relative flex h-2 w-2">
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -148,8 +141,91 @@
     </header>
 
     <main class="space-y-32 pb-32">
-        
-        <!-- Section 1: The Roast (Cards) -->
+
+        <!-- NEW: Feature Bento Grid -->
+        <section class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col items-center text-center mb-16">
+                <h2 class="font-display text-5xl md:text-7xl mb-4">POWERED BY <span class="text-violet-500">INTELLIGENCE</span></h2>
+                <p class="text-gray-400 font-body text-lg max-w-2xl">Everything you need to manage your gaming life, packed into one fluid experience.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6 h-auto md:h-[800px]">
+                
+                <!-- 1. AI Search (Large Tile) -->
+                <div class="md:col-span-2 md:row-span-1 group relative rounded-[2rem] overflow-hidden glass-card">
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2532&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-700" alt="AI Brain">
+                    <div class="absolute inset-0 bg-gradient-to-r from-navy-900 via-navy-900/80 to-transparent"></div>
+                    <div class="absolute inset-0 p-8 flex flex-col justify-center items-start z-10">
+                        <div class="bg-violet-500/20 text-violet-300 text-xs font-bold px-3 py-1 rounded-full mb-4 border border-violet-500/30 backdrop-blur-sm">GROQ + GEMINI POWERED</div>
+                        <h3 class="font-display text-4xl md:text-5xl mb-2">ASK NATURALLY.<br>GET ANSWERS.</h3>
+                        <p class="text-gray-300 font-body max-w-md">"Find me a game like Elden Ring but with sci-fi vibes and under 20 hours." Arcadia understands context, genre, and your personal taste.</p>
+                        
+                        <!-- Fake Chat UI -->
+                        <div class="mt-8 bg-black/40 backdrop-blur-md rounded-2xl p-4 w-full max-w-md border border-white/5 shadow-2xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                            <div class="flex gap-3 mb-3">
+                                <div class="w-8 h-8 rounded-full bg-violet-600 flex items-center justify-center text-xs">A</div>
+                                <div class="text-sm text-gray-300 bg-white/5 p-2 rounded-lg rounded-tl-none">Try <span class="text-white font-medium">Cyberpunk 2077</span>. It hits that open-world sci-fi itch perfectly.</div>
+                            </div>
+                            <div class="h-2 w-16 bg-white/10 rounded-full animate-pulse"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Smart Discovery -->
+                <div class="md:col-span-1 md:row-span-1 group relative rounded-[2rem] overflow-hidden glass-card p-8 flex flex-col justify-end">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2670&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700" alt="Discovery">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-transparent to-transparent"></div>
+                    <div class="relative z-10">
+                        <div class="text-violet-400 mb-2">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        </div>
+                        <h3 class="font-display text-3xl mb-2">SMART DISCOVERY</h3>
+                        <p class="text-gray-400 text-sm font-body">Find hidden gems with granular filters. Sort by playtime, rating, or release year instantly.</p>
+                    </div>
+                </div>
+
+                <!-- 3. Social Squad -->
+                <div class="md:col-span-1 md:row-span-1 group relative rounded-[2rem] overflow-hidden glass-card p-8 flex flex-col justify-end">
+                    <img src="https://images.unsplash.com/photo-1511882150382-421056c89033?q=80&w=2671&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-700" alt="Social">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-transparent to-transparent"></div>
+                    <div class="relative z-10">
+                        <div class="flex -space-x-4 mb-4">
+                            <img class="w-10 h-10 rounded-full border-2 border-navy-900" src="https://i.pravatar.cc/100?img=3" alt="">
+                            <img class="w-10 h-10 rounded-full border-2 border-navy-900" src="https://i.pravatar.cc/100?img=4" alt="">
+                            <img class="w-10 h-10 rounded-full border-2 border-navy-900" src="https://i.pravatar.cc/100?img=8" alt="">
+                            <div class="w-10 h-10 rounded-full border-2 border-navy-900 bg-violet-600 flex items-center justify-center text-xs font-bold">+5</div>
+                        </div>
+                        <h3 class="font-display text-3xl mb-2">SOCIAL SQUAD</h3>
+                        <p class="text-gray-400 text-sm font-body">See what friends are playing in real-time. Compare stats and compete on leaderboards.</p>
+                    </div>
+                </div>
+
+                <!-- 4. Offline First -->
+                <div class="md:col-span-1 md:row-span-1 group relative rounded-[2rem] overflow-hidden glass-card p-8 flex flex-col justify-end">
+                    <div class="absolute inset-0 bg-gradient-to-br from-violet-900/20 to-navy-900"></div>
+                    <div class="relative z-10">
+                        <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-4 text-green-400">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <h3 class="font-display text-3xl mb-2">OFFLINE FIRST</h3>
+                        <p class="text-gray-400 text-sm font-body">Your library, available anywhere. Changes sync automatically when you're back online.</p>
+                    </div>
+                </div>
+
+                <!-- 5. Rich Details -->
+                <div class="md:col-span-1 md:row-span-1 group relative rounded-[2rem] overflow-hidden glass-card p-8 flex flex-col justify-end">
+                    <img src="https://images.unsplash.com/photo-1593305841991-05c29736f9fa?q=80&w=2670&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700" alt="Details">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-transparent to-transparent"></div>
+                    <div class="relative z-10">
+                        <h3 class="font-display text-3xl mb-2">RICH DETAILS</h3>
+                        <p class="text-gray-400 text-sm font-body">Trailers, HD screenshots, and deep stats. Every game card is a visual feast.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section: The Roast (Cards) -->
         <section class="max-w-7xl mx-auto px-4">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <!-- Content -->
@@ -199,12 +275,12 @@
             </div>
         </section>
 
-        <!-- Section 2: Library Gallery -->
-        <section class="w-full overflow-hidden py-10">
+        <!-- Section: Gaming DNA / Library -->
+        <section class="w-full overflow-hidden py-10 bg-navy-800/30 border-y border-white/5">
             <div class="max-w-7xl mx-auto px-4 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
                 <div>
-                    <h2 class="font-display text-5xl md:text-7xl mb-2">YOUR COLLECTION</h2>
-                    <p class="text-gray-400 font-body text-lg">Steam. PSN. Xbox. All in one beautiful place.</p>
+                    <h2 class="font-display text-5xl md:text-7xl mb-2">GAMING DNA</h2>
+                    <p class="text-gray-400 font-body text-lg">Your entire history. Visualized. Analyzed.</p>
                 </div>
                 <div class="flex gap-2">
                     <button class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-colors">
@@ -220,7 +296,7 @@
             <div class="flex gap-6 overflow-x-auto no-scrollbar px-4 md:px-[max(1rem,calc((100vw-80rem)/2))] pb-12 snap-x">
                 
                 <!-- Card 1 -->
-                <div class="snap-center shrink-0 w-[280px] md:w-[340px] aspect-[3/4] rounded-3xl relative group overflow-hidden cursor-pointer shadow-2xl shadow-black/50">
+                <div class="snap-center shrink-0 w-[280px] md:w-[340px] aspect-[3/4] rounded-3xl relative group overflow-hidden cursor-pointer shadow-2xl shadow-black/50 border border-white/5">
                     <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2670&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Action Game">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
                     <div class="absolute bottom-0 inset-x-0 p-8">
@@ -235,7 +311,7 @@
                 </div>
 
                 <!-- Card 2 -->
-                <div class="snap-center shrink-0 w-[280px] md:w-[340px] aspect-[3/4] rounded-3xl relative group overflow-hidden cursor-pointer shadow-2xl shadow-black/50">
+                <div class="snap-center shrink-0 w-[280px] md:w-[340px] aspect-[3/4] rounded-3xl relative group overflow-hidden cursor-pointer shadow-2xl shadow-black/50 border border-white/5">
                     <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2671&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Shooter">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
                     <div class="absolute bottom-0 inset-x-0 p-8">
@@ -250,7 +326,7 @@
                 </div>
 
                 <!-- Card 3 -->
-                <div class="snap-center shrink-0 w-[280px] md:w-[340px] aspect-[3/4] rounded-3xl relative group overflow-hidden cursor-pointer shadow-2xl shadow-black/50">
+                <div class="snap-center shrink-0 w-[280px] md:w-[340px] aspect-[3/4] rounded-3xl relative group overflow-hidden cursor-pointer shadow-2xl shadow-black/50 border border-white/5">
                     <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2568&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Adventure">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
                     <div class="absolute bottom-0 inset-x-0 p-8">
@@ -265,7 +341,7 @@
                 </div>
 
                 <!-- Card 4 -->
-                <div class="snap-center shrink-0 w-[280px] md:w-[340px] aspect-[3/4] rounded-3xl relative group overflow-hidden cursor-pointer shadow-2xl shadow-black/50">
+                <div class="snap-center shrink-0 w-[280px] md:w-[340px] aspect-[3/4] rounded-3xl relative group overflow-hidden cursor-pointer shadow-2xl shadow-black/50 border border-white/5">
                     <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=2670&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="RPG">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
                     <div class="absolute bottom-0 inset-x-0 p-8">
@@ -278,7 +354,43 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
+        <!-- NEW: Tech Stack -->
+        <section class="max-w-7xl mx-auto px-4 py-8">
+            <div class="text-center mb-12">
+                <h3 class="font-body text-sm font-bold tracking-widest text-gray-500 uppercase">Engineered for Performance</h3>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center opacity-60 hover:opacity-100 transition-opacity duration-500">
+                <!-- Tech 1 -->
+                <div class="flex flex-col items-center gap-3">
+                    <div class="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-violet-400 font-bold text-2xl">
+                        K
+                    </div>
+                    <span class="font-display text-lg tracking-wide">Kotlin</span>
+                </div>
+                <!-- Tech 2 -->
+                <div class="flex flex-col items-center gap-3">
+                    <div class="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-green-400 font-bold text-2xl">
+                        JC
+                    </div>
+                    <span class="font-display text-lg tracking-wide">Jetpack Compose</span>
+                </div>
+                <!-- Tech 3 -->
+                <div class="flex flex-col items-center gap-3">
+                    <div class="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-pink-400 font-bold text-2xl">
+                        Aw
+                    </div>
+                    <span class="font-display text-lg tracking-wide">Appwrite</span>
+                </div>
+                <!-- Tech 4 -->
+                <div class="flex flex-col items-center gap-3">
+                    <div class="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 font-bold text-2xl">
+                        Rm
+                    </div>
+                    <span class="font-display text-lg tracking-wide">Room</span>
+                </div>
             </div>
         </section>
 
