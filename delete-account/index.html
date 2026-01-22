@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delete Account / Data - Arcadia</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { font-size: 16px; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+      background: radial-gradient(1200px 800px at 20% 10%, rgba(0, 212, 255, 0.14) 0%, transparent 60%),
+                  radial-gradient(1000px 700px at 85% 25%, rgba(139, 92, 246, 0.16) 0%, transparent 55%),
+                  linear-gradient(135deg, #0a1628 0%, #1a2744 60%, #101a2b 100%);
+      color: #e9eef8;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: min(920px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 64px;
+    }
+
+    header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 0 22px;
+      border-bottom: 1px solid rgba(0, 212, 255, 0.18);
+    }
+
+    .brand {
+      display: grid;
+      gap: 4px;
+    }
+
+    .brand-title {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #00d4ff;
+    }
+
+    .brand-subtitle {
+      font-size: 14px;
+      color: rgba(233, 238, 248, 0.72);
+    }
+
+    nav a {
+      color: rgba(233, 238, 248, 0.86);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      background: rgba(255, 255, 255, 0.04);
+      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+    }
+
+    nav a:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(0, 212, 255, 0.30);
+    }
+
+    main {
+      display: grid;
+      gap: 18px;
+      padding-top: 22px;
+    }
+
+    .hero {
+      padding: 18px 18px 8px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 26px;
+      letter-spacing: -0.03em;
+    }
+
+    .muted {
+      color: rgba(233, 238, 248, 0.74);
+      margin: 0;
+      line-height: 1.65;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .card {
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      background: rgba(16, 26, 43, 0.55);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
+      overflow: hidden;
+    }
+
+    .card-header {
+      padding: 16px 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.10) 0%, rgba(139, 92, 246, 0.08) 100%);
+    }
+    .card-header strong { font-size: 14px; letter-spacing: 0.02em; text-transform: uppercase; }
+
+    .card-body { padding: 18px; }
+
+    form { display: grid; gap: 12px; }
+
+    label {
+      display: grid;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(233, 238, 248, 0.88);
+    }
+
+    input[type="email"],
+    input[type="text"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(0, 0, 0, 0.20);
+      color: #e9eef8;
+      outline: none;
+    }
+
+    textarea { min-height: 110px; resize: vertical; }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: rgba(0, 212, 255, 0.55);
+      box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.12);
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .hint {
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(233, 238, 248, 0.62);
+      margin-top: 2px;
+      line-height: 1.45;
+    }
+
+    .checkbox {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 12px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .checkbox input {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      accent-color: #00d4ff;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+      align-items: center;
+    }
+
+    .btn {
+      appearance: none;
+      border: 0;
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 14px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      color: #07101f;
+      background: linear-gradient(135deg, #00d4ff 0%, #7dd3fc 70%, #a78bfa 140%);
+      transition: transform 0.15s ease, filter 0.15s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); filter: brightness(1.05); }
+    .btn:active { transform: translateY(0px); }
+
+    .btn.secondary {
+      background: rgba(255, 255, 255, 0.06);
+      color: rgba(233, 238, 248, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .status {
+      font-size: 13px;
+      color: rgba(233, 238, 248, 0.78);
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.05);
+      font-size: 12px;
+      color: rgba(233, 238, 248, 0.78);
+    }
+
+    .fineprint {
+      font-size: 13px;
+      color: rgba(233, 238, 248, 0.70);
+      line-height: 1.7;
+    }
+
+    .fineprint a { color: #00d4ff; text-decoration: none; }
+    .fineprint a:hover { text-decoration: underline; }
+
+    .list {
+      margin: 0;
+      padding-left: 18px;
+      color: rgba(233, 238, 248, 0.74);
+      line-height: 1.7;
+      font-size: 13px;
+    }
+    .list li { margin: 8px 0; }
+
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 520px) {
+      header { align-items: flex-start; flex-direction: column; }
+      nav { display: flex; gap: 10px; flex-wrap: wrap; }
+      .row { grid-template-columns: 1fr; }
+    }
+  </style>
+
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="brand-title">Arcadia</div>
+        <div class="brand-subtitle">Account / data deletion request</div>
+      </div>
+      <nav>
+        <a href="../">Home</a>
+        <a href="../privacy.html">Privacy</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h1>Request deletion</h1>
+        <p class="muted">
+          Use this form to request deletion of your Arcadia account or specific data.
+          We will email you a confirmation and proceed after verifying ownership.
+        </p>
+      </section>
+
+      <section class="grid">
+        <div class="card" aria-label="Deletion request form">
+          <div class="card-header"><strong>Request Form</strong></div>
+          <div class="card-body">
+            <form id="deleteForm" autocomplete="on">
+              <div class="row">
+                <label>
+                  Email used in Arcadia
+                  <input id="userEmail" name="userEmail" type="email" autocomplete="email" placeholder="you@example.com" required />
+                  <span class="hint">Use the email you signed in with (Google sign-in).</span>
+                </label>
+
+                <label>
+                  Arcadia username
+                  <input id="arcadiaUsername" name="arcadiaUsername" type="text" autocomplete="username" placeholder="your_username" required />
+                  <span class="hint">If you are unsure, add a note below and we will help.</span>
+                </label>
+              </div>
+
+              <label>
+                Deletion type
+                <select id="deletionType" name="deletionType" required>
+                  <option value="full" selected>Full deletion (account + all associated data)</option>
+                  <option value="partial">Partial deletion (only specific data)</option>
+                </select>
+                <span class="hint">Choose partial if you only want certain items removed (for example: reviews).</span>
+              </label>
+
+              <label>
+                Notes (optional)
+                <textarea id="notes" name="notes" placeholder="Tell us what to delete (for partial requests), or any details that help us locate your account."></textarea>
+              </label>
+
+              <div class="checkbox">
+                <input id="confirm" name="confirm" type="checkbox" required />
+                <div>
+                  <label for="confirm" style="font-weight: 700; margin: 0;">I confirm I own this Arcadia account.</label>
+                  <div class="hint" style="margin: 4px 0 0;">
+                    We may request additional verification before deletion.
+                  </div>
+                </div>
+              </div>
+
+              <div class="actions">
+                <button class="btn" type="submit">Send deletion request</button>
+                <button class="btn secondary" type="button" id="fallbackMailto">Use email app instead</button>
+                <span class="status" id="status" role="status" aria-live="polite"></span>
+              </div>
+
+              <div class="hint">
+                Having trouble? Email us directly at <a href="mailto:ahmedbobos.rashid@gmail.com">ahmedbobos.rashid@gmail.com</a>.
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <aside class="card" aria-label="Privacy and retention information">
+          <div class="card-header"><strong>What happens next</strong></div>
+          <div class="card-body">
+            <div class="pill">Typical processing: up to 30 days</div>
+            <p class="fineprint" style="margin-top: 12px;">
+              We use your request details only to locate your account and process deletion.
+              We do not use this information for marketing.
+            </p>
+
+            <ul class="list">
+              <li><strong>Full deletion:</strong> we delete your Arcadia account and associated app data (subject to technical constraints and legal obligations).</li>
+              <li><strong>Partial deletion:</strong> we delete only the items you specify in notes (example: reviews, friend links).</li>
+              <li><strong>Verification:</strong> we may ask you to reply from the same email address used in Arcadia.</li>
+              <li><strong>Retention:</strong> we retain the request email (and any necessary audit trail) for up to 90 days after completion to prevent fraud and confirm compliance, then delete it.</li>
+            </ul>
+
+            <p class="fineprint" style="margin-top: 12px;">
+              See our <a href="../privacy.html">Privacy Policy</a> for details on data handling.
+            </p>
+          </div>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Email sending options:
+    // - Recommended: Formspree (no backend; no secrets needed in repo; works on GitHub Pages).
+    // - Fallback: mailto: (opens user's email app).
+    // If Formspree isn't configured, we fall back to `mailto:`.
+
+    const DEVELOPER_EMAIL = 'ahmedbobos.rashid@gmail.com';
+
+    function buildRequestText(payload) {
+      return [
+        'Arcadia deletion request',
+        '',
+        `Email used in Arcadia: ${payload.userEmail}`,
+        `Arcadia username: ${payload.arcadiaUsername}`,
+        `Deletion type: ${payload.deletionType}`,
+        `Notes: ${payload.notes || '(none)'}`,
+        '',
+        `Requested at (client): ${new Date().toISOString()}`,
+        `User agent: ${navigator.userAgent}`
+      ].join('\n');
+    }
+
+    function openMailto(payload) {
+      const subject = encodeURIComponent('Arcadia - Account/Data Deletion Request');
+      const body = encodeURIComponent(buildRequestText(payload));
+      window.location.href = `mailto:${DEVELOPER_EMAIL}?subject=${subject}&body=${body}`;
+    }
+
+    async function sendViaFormspree(payload) {
+      // Replace this with your Formspree endpoint after you create the form.
+      // Example: https://formspree.io/f/abcdwxyz
+      const FORMSPREE_ENDPOINT = 'REPLACE_WITH_YOUR_FORMSPREE_ENDPOINT';
+      if (!FORMSPREE_ENDPOINT) {
+        throw new Error('Formspree not configured');
+      }
+
+      if (FORMSPREE_ENDPOINT === 'REPLACE_WITH_YOUR_FORMSPREE_ENDPOINT') {
+        throw new Error('Formspree not configured');
+      }
+
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          subject: 'Arcadia - Account/Data Deletion Request',
+          userEmail: payload.userEmail,
+          arcadiaUsername: payload.arcadiaUsername,
+          deletionType: payload.deletionType,
+          notes: payload.notes || '',
+          requestText: buildRequestText(payload)
+        })
+      });
+
+      if (!res.ok) {
+        throw new Error('Formspree request failed');
+      }
+
+      return res.json().catch(() => ({}));
+    }
+
+    function getPayloadFromForm(form) {
+      const userEmail = (form.userEmail.value || '').trim();
+      const arcadiaUsername = (form.arcadiaUsername.value || '').trim();
+      const deletionType = form.deletionType.value;
+      const notes = (form.notes.value || '').trim();
+
+      return { userEmail, arcadiaUsername, deletionType, notes };
+    }
+
+    const form = document.getElementById('deleteForm');
+    const statusEl = document.getElementById('status');
+    const fallbackBtn = document.getElementById('fallbackMailto');
+
+    fallbackBtn.addEventListener('click', () => {
+      const payload = getPayloadFromForm(form);
+      openMailto(payload);
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusEl.textContent = '';
+
+      const payload = getPayloadFromForm(form);
+
+      const btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      try {
+        await sendViaFormspree(payload);
+        statusEl.textContent = 'Sent. We will follow up by email if needed.';
+        form.reset();
+      } catch (err) {
+        statusEl.textContent = 'Online form not configured. Opening your email app...';
+        setTimeout(() => openMailto(payload), 300);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Send deletion request';
+      }
+    });
+  </script>
+</body>
+</html>
