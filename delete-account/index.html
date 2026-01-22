@@ -454,17 +454,19 @@
 
     async function sendViaAppwriteFunction(payload) {
       // Set this after you deploy the function.
-      // Example: https://cloud.appwrite.io/v1/functions/FUNCTION_ID/executions
-      const APPWRITE_FUNCTION_EXECUTIONS_URL = 'REPLACE_WITH_APPWRITE_FUNCTION_EXECUTIONS_URL';
+      // Recommended: use the function's generated domain (works like a normal HTTPS endpoint).
+      // Example: https://xxxxxx.appwrite.global
+      const APPWRITE_FUNCTION_URL = 'https://69729caf0037838b51e0.fra.appwrite.run';
 
-      if (!APPWRITE_FUNCTION_EXECUTIONS_URL || APPWRITE_FUNCTION_EXECUTIONS_URL === 'REPLACE_WITH_APPWRITE_FUNCTION_EXECUTIONS_URL') {
+      if (!APPWRITE_FUNCTION_URL || APPWRITE_FUNCTION_URL === 'REPLACE_WITH_APPWRITE_FUNCTION_URL') {
         throw new Error('Appwrite endpoint not configured');
       }
 
-      const res = await fetch(APPWRITE_FUNCTION_EXECUTIONS_URL, {
+      const res = await fetch(APPWRITE_FUNCTION_URL, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
         body: JSON.stringify({
           userEmail: payload.userEmail,
