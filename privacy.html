@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Arcadia</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #1a1625 0%, #1e1b2e 50%, #252136 100%);
+            color: #e2e0ea;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+            margin-bottom: 2.5rem;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #a78bfa 0%, #c4b5fd 50%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.125rem;
+            color: #a5a3b3;
+            font-weight: 400;
+        }
+
+        .last-updated {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            color: #c4b5fd;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #f3f0ff;
+            margin: 2.5rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(139, 92, 246, 0.3);
+        }
+
+        h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #d8d5e6;
+            margin: 1.75rem 0 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: #c9c7d6;
+        }
+
+        ul {
+            margin: 1rem 0 1.5rem 1.5rem;
+            color: #c9c7d6;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            padding-left: 0.25rem;
+        }
+
+        li::marker {
+            color: #8b5cf6;
+        }
+
+        strong {
+            color: #e9e7f2;
+            font-weight: 600;
+        }
+
+        a {
+            color: #a78bfa;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: #c4b5fd;
+            text-decoration: underline;
+        }
+
+        .card {
+            background: rgba(30, 27, 46, 0.6);
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9375rem;
+        }
+
+        th {
+            background: rgba(139, 92, 246, 0.15);
+            color: #e9e7f2;
+            font-weight: 600;
+            text-align: left;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        td {
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+            color: #c9c7d6;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: rgba(139, 92, 246, 0.05);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(167, 139, 250, 0.05) 100%);
+            border-left: 4px solid #8b5cf6;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+
+        .contact-section {
+            background: rgba(30, 27, 46, 0.8);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 2.5rem;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            border-bottom: none;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .contact-item {
+            margin: 0.75rem 0;
+        }
+
+        .contact-label {
+            color: #a5a3b3;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .contact-value {
+            color: #e9e7f2;
+            font-size: 1.0625rem;
+            margin-top: 0.25rem;
+        }
+
+        .contact-value a {
+            color: #c4b5fd;
+        }
+
+        footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(139, 92, 246, 0.2);
+            text-align: center;
+        }
+
+        .agreement-text {
+            font-size: 0.9375rem;
+            color: #a5a3b3;
+            font-style: italic;
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.3), transparent);
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 1.5rem 1rem 3rem;
+            }
+
+            header {
+                padding: 2rem 0 1.5rem;
+            }
+
+            .logo {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            h3 {
+                font-size: 1rem;
+            }
+
+            table {
+                font-size: 0.875rem;
+            }
+
+            th, td {
+                padding: 0.75rem;
+            }
+
+            .card, .contact-section {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">Arcadia</div>
+            <p class="subtitle">Privacy Policy</p>
+            <span class="last-updated">Last updated: January 22, 2026</span>
+        </header>
+
+        <main>
+            <section>
+                <h2>Overview</h2>
+                <p>Arcadia ("we", "our", or "the app") is a game library management and social gaming companion. This Privacy Policy explains how we collect, use, and protect your information when you use our Android application.</p>
+            </section>
+
+            <section>
+                <h2>Information We Collect</h2>
+                
+                <h3>Account Information</h3>
+                <p>When you sign in with Google, we collect:</p>
+                <ul>
+                    <li>Email address</li>
+                    <li>Display name</li>
+                    <li>Profile picture URL</li>
+                    <li>Google account ID</li>
+                </ul>
+
+                <h3>User-Generated Content</h3>
+                <ul>
+                    <li>Game library entries (games you add, status, ratings, hours played)</li>
+                    <li>Reviews you write</li>
+                    <li>Friend connections and friend requests</li>
+                    <li>Profile information you provide (bio, location, gaming platform IDs)</li>
+                    <li>AI-generated roasts and badges you choose to save</li>
+                </ul>
+
+                <h3>Automatically Collected Data</h3>
+                <ul>
+                    <li>OneSignal Player ID (for push notifications)</li>
+                    <li>Basic device information for app functionality</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>How We Use Your Information</h2>
+                <div class="card">
+                    <ul>
+                        <li><strong>Core Functionality:</strong> To manage your game library, display your profile, and enable social features</li>
+                        <li><strong>AI Recommendations:</strong> Your library data is sent to AI services (Groq, Google Gemini) to generate personalized game recommendations and roasts</li>
+                        <li><strong>Push Notifications:</strong> To notify you of friend requests and other relevant updates</li>
+                        <li><strong>Social Features:</strong> To connect you with friends and display shared gaming activity</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Third-Party Services</h2>
+                <p>We use the following third-party services:</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Service</th>
+                                <th>Purpose</th>
+                                <th>Privacy Policy</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Appwrite</strong></td>
+                                <td>Authentication, database, real-time sync</td>
+                                <td><a href="https://appwrite.io/privacy" target="_blank" rel="noopener">appwrite.io/privacy</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Google Sign-In</strong></td>
+                                <td>Account authentication</td>
+                                <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>OneSignal</strong></td>
+                                <td>Push notifications</td>
+                                <td><a href="https://onesignal.com/privacy_policy" target="_blank" rel="noopener">onesignal.com/privacy</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Groq</strong></td>
+                                <td>AI recommendations</td>
+                                <td><a href="https://groq.com/privacy-policy/" target="_blank" rel="noopener">groq.com/privacy</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Google Gemini</strong></td>
+                                <td>AI recommendations (fallback)</td>
+                                <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>IGDB</strong></td>
+                                <td>Game metadata and information</td>
+                                <td><a href="https://www.igdb.com/privacy_policy" target="_blank" rel="noopener">igdb.com/privacy</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h2>Data Storage and Security</h2>
+                <div class="card">
+                    <ul>
+                        <li>Your data is stored securely on Appwrite cloud infrastructure</li>
+                        <li>Authentication tokens are stored in encrypted SharedPreferences on your device</li>
+                        <li>We use HTTPS for all network communications</li>
+                        <li>API keys are proxied through secure servers and not embedded in the app</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Camera Permission</h2>
+                <div class="highlight-box">
+                    <p style="margin-bottom: 0;">The app requests camera access solely for QR code scanning to add friends. Camera data is processed locally and is not stored or transmitted.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Data Sharing</h2>
+                <p>We do not sell your personal information. Your data may be shared only:</p>
+                <ul>
+                    <li>With AI providers (Groq, Gemini) to generate recommendations based on your library</li>
+                    <li>With other users according to your privacy settings (profile visibility, friend connections)</li>
+                    <li>If required by law</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Your Rights</h2>
+                <p>You can:</p>
+                <ul>
+                    <li><strong>Access</strong> your data through the app's profile and settings</li>
+                    <li><strong>Delete</strong> your reviews, library entries, and friend connections at any time</li>
+                    <li><strong>Request account deletion</strong> by contacting us at the email below</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Children's Privacy</h2>
+                <p>Arcadia is not directed at children under 13. We do not knowingly collect personal information from children under 13. If you believe we have collected such information, please contact us immediately.</p>
+            </section>
+
+            <section>
+                <h2>Changes to This Policy</h2>
+                <p>We may update this Privacy Policy from time to time. We will notify you of significant changes through the app or by updating the "Last updated" date above.</p>
+            </section>
+
+            <section class="contact-section">
+                <h2>Contact Us</h2>
+                <p style="color: #a5a3b3; margin-bottom: 1.5rem;">If you have questions about this Privacy Policy or your data, please contact:</p>
+                <div class="contact-item">
+                    <div class="contact-label">Email</div>
+                    <div class="contact-value"><a href="mailto:ahmedbobos.rashid@gmail.com">ahmedbobos.rashid@gmail.com</a></div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">Developer</div>
+                    <div class="contact-value">Ahmad Abbas</div>
+                </div>
+            </section>
+
+            <footer>
+                <div class="divider"></div>
+                <p class="agreement-text">By using Arcadia, you agree to this Privacy Policy.</p>
+            </footer>
+        </main>
+    </div>
+</body>
+</html>
+
