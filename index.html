@@ -398,15 +398,7 @@
 
         <!-- Screens -->
         <section id="screens" class="relative py-20 overflow-hidden" x-data="{ 
-            screens: ['Home', 'Search', 'Details', 'Reviews', 'Analytics', 'Friends'],
-            descriptions: {
-                'Home': 'Your gaming hub with personalized recommendations',
-                'Search': 'AI-powered discovery to find your next favorite game',
-                'Details': 'Comprehensive game information and media',
-                'Reviews': 'Community feedback and ratings in real-time',
-                'Analytics': 'Track your gaming stats and achievements',
-                'Friends': 'Connect with friends and share experiences'
-            },
+            screens: [1, 2, 3, 4, 5, 6, 7, 8],
             currentIndex: 0,
             autoRotate: null,
             touchStartX: 0,
@@ -484,39 +476,35 @@
                     <!-- Left Side Images -->
                     <button @click="selectScreen((currentIndex - 2 + screens.length) % screens.length)"
                         class="hidden md:block relative w-32 rounded-2xl overflow-hidden transition-all duration-500 hover:scale-105 cursor-pointer group">
-                        <img :src="'screenshots/' + getScreenAtOffset(-2).toLowerCase() + '.jpg'" 
-                             :alt="getScreenAtOffset(-2)"
+                        <img :src="'features/' + getScreenAtOffset(-2) + '.jpg'" 
+                             :alt="'Feature ' + getScreenAtOffset(-2)"
                              class="w-full h-auto object-contain brightness-[0.3] group-hover:brightness-50 transition-all"
-                             @error="$event.target.src='screenshots/home.jpg'">
+                             @error="$event.target.src='features/1.jpg'">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                     </button>
                     
                     <button @click="selectScreen((currentIndex - 1 + screens.length) % screens.length)"
                         class="hidden md:block relative w-40 rounded-2xl overflow-hidden transition-all duration-500 hover:scale-105 cursor-pointer group">
-                        <img :src="'screenshots/' + getScreenAtOffset(-1).toLowerCase() + '.jpg'" 
-                             :alt="getScreenAtOffset(-1)"
+                        <img :src="'features/' + getScreenAtOffset(-1) + '.jpg'" 
+                             :alt="'Feature ' + getScreenAtOffset(-1)"
                              class="w-full h-auto object-contain brightness-[0.4] group-hover:brightness-[0.6] transition-all"
-                             @error="$event.target.src='screenshots/home.jpg'">
+                             @error="$event.target.src='features/1.jpg'">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                     </button>
 
                     <!-- Center Main Image -->
                     <div class="relative">
                         <div class="absolute inset-0 bg-gradient-to-br from-violet-500/40 via-blue-500/40 to-pink-500/40 blur-[80px] scale-110"></div>
-                        <div class="relative glass-panel rounded-[3rem] p-4 shadow-2xl w-72 md:w-80">
-                            <div class="relative overflow-hidden rounded-[2.5rem]">
-                                <img :src="'screenshots/' + screens[currentIndex].toLowerCase() + '.jpg'" 
-                                     :alt="screens[currentIndex]"
+                        <div class="relative glass-panel rounded-[2.5rem] p-3 shadow-2xl w-72 md:w-80">
+                            <div class="relative overflow-hidden rounded-[2rem]">
+                                <img :src="'features/' + screens[currentIndex] + '.jpg'" 
+                                     :alt="'Feature ' + screens[currentIndex]"
                                      :key="currentIndex"
                                      class="w-full h-auto"
-                                     @error="$event.target.src='screenshots/home.jpg'"
+                                     @error="$event.target.src='features/1.jpg'"
                                      x-transition:enter="transition ease-out duration-500"
                                      x-transition:enter-start="opacity-0 scale-90"
                                      x-transition:enter-end="opacity-100 scale-100">
-                            </div>
-                            <!-- Screen Name Badge -->
-                            <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 glass-panel px-6 py-3 rounded-full">
-                                <span class="text-white font-display font-bold text-lg" x-text="screens[currentIndex]"></span>
                             </div>
                         </div>
                     </div>
@@ -524,19 +512,19 @@
                     <!-- Right Side Images -->
                     <button @click="selectScreen((currentIndex + 1) % screens.length)"
                         class="hidden md:block relative w-40 rounded-2xl overflow-hidden transition-all duration-500 hover:scale-105 cursor-pointer group">
-                        <img :src="'screenshots/' + getScreenAtOffset(1).toLowerCase() + '.jpg'" 
-                             :alt="getScreenAtOffset(1)"
+                        <img :src="'features/' + getScreenAtOffset(1) + '.jpg'" 
+                             :alt="'Feature ' + getScreenAtOffset(1)"
                              class="w-full h-auto object-contain brightness-[0.4] group-hover:brightness-[0.6] transition-all"
-                             @error="$event.target.src='screenshots/home.jpg'">
+                             @error="$event.target.src='features/1.jpg'">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                     </button>
                     
                     <button @click="selectScreen((currentIndex + 2) % screens.length)"
                         class="hidden md:block relative w-32 rounded-2xl overflow-hidden transition-all duration-500 hover:scale-105 cursor-pointer group">
-                        <img :src="'screenshots/' + getScreenAtOffset(2).toLowerCase() + '.jpg'" 
-                             :alt="getScreenAtOffset(2)"
+                        <img :src="'features/' + getScreenAtOffset(2) + '.jpg'" 
+                             :alt="'Feature ' + getScreenAtOffset(2)"
                              class="w-full h-auto object-contain brightness-[0.3] group-hover:brightness-50 transition-all"
-                             @error="$event.target.src='screenshots/home.jpg'">
+                             @error="$event.target.src='features/1.jpg'">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                     </button>
                 </div>
