@@ -105,6 +105,57 @@
             .m3-primary-container {
                 @apply bg-violet-500/20 text-violet-300 border border-violet-500/30;
             }
+
+            @keyframes marquee-scroll {
+                from {
+                    transform: translateX(0);
+                }
+
+                to {
+                    transform: translateX(-50%);
+                }
+            }
+
+            .marquee {
+                --marquee-duration: 36s;
+                position: relative;
+                overflow: hidden;
+                -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+                mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+            }
+
+            .marquee__track {
+                display: flex;
+                width: max-content;
+                animation: marquee-scroll var(--marquee-duration) linear infinite;
+                will-change: transform;
+            }
+
+            .marquee__group {
+                display: flex;
+                align-items: center;
+                gap: 3rem;
+                padding-right: 3rem;
+            }
+
+            .marquee__item {
+                flex: 0 0 auto;
+            }
+
+            .marquee:hover .marquee__track {
+                animation-play-state: paused;
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .marquee__track {
+                    animation: none;
+                    transform: none;
+                }
+
+                .marquee__group[aria-hidden="true"] {
+                    display: none;
+                }
+            }
         }
     </style>
 </head>
@@ -452,8 +503,11 @@
         }">
             <!-- Animated Background -->
             <div class="absolute inset-0 -z-10">
-                <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-500/30 rounded-full blur-[120px] animate-pulse"></div>
-                <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-[120px] animate-pulse" style="animation-delay: 1s;"></div>
+                <div
+                    class="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-500/30 rounded-full blur-[120px] animate-pulse">
+                </div>
+                <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-[120px] animate-pulse"
+                    style="animation-delay: 1s;"></div>
             </div>
 
             <div class="max-w-7xl mx-auto px-4">
@@ -461,7 +515,8 @@
                 <div class="text-center mb-16">
                     <h2 class="font-display text-5xl md:text-7xl leading-none mb-4">
                         <span class="text-white">POWERFUL</span><br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-violet-200 to-white text-glow">FEATURES.</span>
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-violet-200 to-white text-glow">FEATURES.</span>
                     </h2>
                     <p class="text-lg text-white/60 font-body max-w-2xl mx-auto">
                         Everything you need to track, discover, and enjoy your gaming journey
@@ -470,40 +525,39 @@
 
                 <!-- Carousel -->
                 <div class="relative flex items-center justify-center gap-4 md:gap-6 px-4"
-                     @touchstart="handleTouchStart($event)"
-                     @touchend="handleTouchEnd($event)">
+                    @touchstart="handleTouchStart($event)" @touchend="handleTouchEnd($event)">
                     <!-- Left Side Images -->
                     <button @click="selectScreen((currentIndex - 2 + screens.length) % screens.length)"
                         class="hidden md:block relative w-32 rounded-2xl overflow-hidden transition-all duration-500 hover:scale-105 cursor-pointer group">
-                        <img :src="'features/' + getScreenAtOffset(-2) + '.jpg'" 
-                             :alt="'Feature ' + getScreenAtOffset(-2)"
-                             class="w-full h-auto object-contain brightness-[0.3] group-hover:brightness-50 transition-all"
-                             @error="$event.target.src='features/1.jpg'">
+                        <img :src="'features/' + getScreenAtOffset(-2) + '.jpg'"
+                            :alt="'Feature ' + getScreenAtOffset(-2)"
+                            class="w-full h-auto object-contain brightness-[0.3] group-hover:brightness-50 transition-all"
+                            @error="$event.target.src='features/1.jpg'">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                     </button>
-                    
+
                     <button @click="selectScreen((currentIndex - 1 + screens.length) % screens.length)"
                         class="hidden md:block relative w-40 rounded-2xl overflow-hidden transition-all duration-500 hover:scale-105 cursor-pointer group">
-                        <img :src="'features/' + getScreenAtOffset(-1) + '.jpg'" 
-                             :alt="'Feature ' + getScreenAtOffset(-1)"
-                             class="w-full h-auto object-contain brightness-[0.4] group-hover:brightness-[0.6] transition-all"
-                             @error="$event.target.src='features/1.jpg'">
+                        <img :src="'features/' + getScreenAtOffset(-1) + '.jpg'"
+                            :alt="'Feature ' + getScreenAtOffset(-1)"
+                            class="w-full h-auto object-contain brightness-[0.4] group-hover:brightness-[0.6] transition-all"
+                            @error="$event.target.src='features/1.jpg'">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                     </button>
 
                     <!-- Center Main Image -->
                     <div class="relative">
-                        <div class="absolute inset-0 bg-gradient-to-br from-violet-500/40 via-blue-500/40 to-pink-500/40 blur-[80px] scale-110"></div>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-violet-500/40 via-blue-500/40 to-pink-500/40 blur-[80px] scale-110">
+                        </div>
                         <div class="relative glass-panel rounded-[2.5rem] p-3 shadow-2xl w-72 md:w-80">
                             <div class="relative overflow-hidden rounded-[2rem]">
-                                <img :src="'features/' + screens[currentIndex] + '.jpg'" 
-                                     :alt="'Feature ' + screens[currentIndex]"
-                                     :key="currentIndex"
-                                     class="w-full h-auto"
-                                     @error="$event.target.src='features/1.jpg'"
-                                     x-transition:enter="transition ease-out duration-500"
-                                     x-transition:enter-start="opacity-0 scale-90"
-                                     x-transition:enter-end="opacity-100 scale-100">
+                                <img :src="'features/' + screens[currentIndex] + '.jpg'"
+                                    :alt="'Feature ' + screens[currentIndex]" :key="currentIndex" class="w-full h-auto"
+                                    @error="$event.target.src='features/1.jpg'"
+                                    x-transition:enter="transition ease-out duration-500"
+                                    x-transition:enter-start="opacity-0 scale-90"
+                                    x-transition:enter-end="opacity-100 scale-100">
                             </div>
                         </div>
                     </div>
@@ -511,19 +565,17 @@
                     <!-- Right Side Images -->
                     <button @click="selectScreen((currentIndex + 1) % screens.length)"
                         class="hidden md:block relative w-40 rounded-2xl overflow-hidden transition-all duration-500 hover:scale-105 cursor-pointer group">
-                        <img :src="'features/' + getScreenAtOffset(1) + '.jpg'" 
-                             :alt="'Feature ' + getScreenAtOffset(1)"
-                             class="w-full h-auto object-contain brightness-[0.4] group-hover:brightness-[0.6] transition-all"
-                             @error="$event.target.src='features/1.jpg'">
+                        <img :src="'features/' + getScreenAtOffset(1) + '.jpg'" :alt="'Feature ' + getScreenAtOffset(1)"
+                            class="w-full h-auto object-contain brightness-[0.4] group-hover:brightness-[0.6] transition-all"
+                            @error="$event.target.src='features/1.jpg'">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                     </button>
-                    
+
                     <button @click="selectScreen((currentIndex + 2) % screens.length)"
                         class="hidden md:block relative w-32 rounded-2xl overflow-hidden transition-all duration-500 hover:scale-105 cursor-pointer group">
-                        <img :src="'features/' + getScreenAtOffset(2) + '.jpg'" 
-                             :alt="'Feature ' + getScreenAtOffset(2)"
-                             class="w-full h-auto object-contain brightness-[0.3] group-hover:brightness-50 transition-all"
-                             @error="$event.target.src='features/1.jpg'">
+                        <img :src="'features/' + getScreenAtOffset(2) + '.jpg'" :alt="'Feature ' + getScreenAtOffset(2)"
+                            class="w-full h-auto object-contain brightness-[0.3] group-hover:brightness-50 transition-all"
+                            @error="$event.target.src='features/1.jpg'">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                     </button>
                 </div>
@@ -727,177 +779,164 @@
                 <h3 class="font-body text-sm font-bold tracking-widest text-gray-500 uppercase">Kotlin 2.3.0 + Material3
                     Expressive</h3>
             </div>
-            <div
-                class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 items-center justify-items-center opacity-60 hover:opacity-100 transition-opacity duration-500">
-                <!-- Kotlin -->
-                <div class="flex flex-col items-center gap-2">
-                    <div
-                        class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-violet-400">
-                        <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" aria-hidden="true"
-                            focusable="false">
-                            <defs>
-                                <linearGradient id="kotlinGradient" x1="99.991%" x2=".01%" y1="-.011%" y2="100.01%">
-                                    <stop offset=".344%" stop-color="#e44857" />
-                                    <stop offset="46.89%" stop-color="#c711e1" />
-                                    <stop offset="100%" stop-color="#7f52ff" />
-                                </linearGradient>
-                            </defs>
-                            <path fill="url(#kotlinGradient)" d="M256 256H0V0h256L128 127.949z" />
-                        </svg>
-                    </div>
-                    <span class="font-display text-sm tracking-wide">Kotlin</span>
-                </div>
-                <!-- Jetpack Compose -->
-                <div class="flex flex-col items-center gap-2">
-                    <div
-                        class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-green-400">
-                        <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true"
-                            focusable="false">
-                            <g fill="none">
-                                <path fill="#083042"
-                                    d="M41.226 76.778a4 4 0 0 1-.47-1.29c.09.452.25.887.47 1.29m.578.713c.222.22.472.411.749.548l18.88 10.565l-18.88-10.565a2.9 2.9 0 0 1-.747-.548z" />
-                                <path fill="#083042"
-                                    d="M64.342 101.967h-.14a8.3 8.3 0 0 1-4.014-1.016l-28.182-15.75c-1.663-.932-2.686-2.66-2.686-4.527V48.628c0-1.373.249-2.69.83-3.842L8.114 32.522c-.913 1.92-1.383 4.088-1.356 6.366v52.927a8.68 8.68 0 0 0 4.458 7.49l46.481 26.012c2.05 1.152 4.347 1.701 6.617 1.701v-.027c.055-3.32.028-16.628.028-25.023z" />
-                                <path fill="#3ddb85"
-                                    d="m86.46 50.6l-.167-.246c-.138-.192-.275-.357-.413-.548c.138.164.275.356.413.547a1 1 0 0 1 .167.247M63.262 37.76c.14 0 .251-.027.39-.027c-.139.027-.278.027-.39.027" />
-                                <path fill="#3ddc84"
-                                    d="M30.122 44.757a7.2 7.2 0 0 1 2.825-3.072l26.52-15.503a8.07 8.07 0 0 1 8.03-.082l26.798 15.009a9 9 0 0 1 3.018 2.743L118.99 31.04a14.9 14.9 0 0 0-4.955-4.5L69.766 1.764a13.32 13.32 0 0 0-13.233.137L12.765 27.472a11.7 11.7 0 0 0-4.651 5.049l22.009 12.236z" />
-                                <path fill="#3ddb85"
-                                    d="M62.157 37.983c.057-.028.114-.028.17-.056c-.056.028-.113.028-.17.056m-20.88 12.949c.056-.11.111-.22.168-.3c-.057.109-.111.19-.168.3l-.082.246z" />
-                                <path fill="#4285f4"
-                                    d="M118.962 31.04L97.285 43.852c.83 1.207 1.329 2.633 1.355 4.089v30.51a7.88 7.88 0 0 1-3.93 6.914L68.188 100.87a8.1 8.1 0 0 1-3.849 1.097c.029 8.369.029 21.677-.027 24.997v.027a13.53 13.53 0 0 0 6.617-1.812l43.769-25.599c4.07-2.387 6.562-6.723 6.506-11.415V37.817c-.028-2.442-.858-4.774-2.242-6.777" />
-                                <path fill="#4285f4"
-                                    d="M86.963 75.187c-.028.056-.028.111-.056.168a.4.4 0 0 0 .056-.168m-.278-24.227c-.057-.138-.14-.248-.223-.385c.083.137.166.275.222.385zM66.807 88.576L84.58 78.178c.111-.054.195-.138.306-.192c-.111.054-.195.138-.306.192l-17.773 10.4zM86.74 75.818c-.056.138-.139.275-.196.413c.057-.165.112-.303.196-.413" />
-                                <path fill="#d6f0ff"
-                                    d="M41.198 51.178a5.5 5.5 0 0 0-.415 1.675c-.028.218-.028.438-.028.686v21.483c0 .164 0 .302.028.467c.056.465.222.905.47 1.29c.167.274.36.492.555.712c.222.22.47.411.746.55l18.882 10.563a5.5 5.5 0 0 0 2.684.685h.195a5.16 5.16 0 0 0 2.492-.74L84.58 78.15c.111-.055.194-.138.305-.192c.194-.137.388-.275.554-.44q.391-.354.719-.768c.138-.192.277-.383.388-.576c.082-.136.139-.274.193-.412c.056-.135.14-.301.195-.465c.027-.056.027-.111.055-.165a5.4 5.4 0 0 0 .249-1.647V53.044c0-.383-.056-.74-.138-1.096c-.055-.248-.14-.468-.222-.688l-.166-.328c-.055-.138-.14-.247-.222-.385l-.166-.246c-.138-.193-.277-.357-.415-.549a5.6 5.6 0 0 0-1.606-1.29L66.337 38.394a6 6 0 0 0-.97-.44a6 6 0 0 0-1.385-.246h-.36c-.137 0-.248 0-.386.026a5.7 5.7 0 0 0-.942.165c-.055.027-.11.027-.166.056c-.415.11-.803.301-1.191.52l-17.773 10.4a4.6 4.6 0 0 0-1.33 1.18c-.137.192-.276.384-.387.576c-.055.11-.11.192-.166.302l-.083.246Z" />
-                                <path fill="#083042"
-                                    d="M64.312 89.288h-.194a5.5 5.5 0 0 1-2.686-.684L42.552 78.04a3.7 3.7 0 0 1-.748-.549a3.3 3.3 0 0 1-.554-.714a4 4 0 0 1-.47-1.29c-.029-.163-.029-.301-.029-.465V53.537c0-.219 0-.465.029-.686c.053-.575.192-1.14.415-1.674L36.1 48.078l-5.98-3.32c-.554 1.152-.83 2.468-.83 3.841v32.047a5.32 5.32 0 0 0 2.685 4.528l28.157 15.776a8 8 0 0 0 4.014 1.016h.14c0-4.089-.029-6.997-.029-6.997l.055-5.68z" />
-                                <path fill="#041619"
-                                    d="M64.312 89.288h-.194a5.5 5.5 0 0 1-2.686-.684L42.552 78.04a3.7 3.7 0 0 1-.748-.549a3.3 3.3 0 0 1-.554-.714a4 4 0 0 1-.47-1.29c-.029-.163-.029-.301-.029-.465V53.537c0-.219 0-.465.029-.686c.053-.575.192-1.14.415-1.674L36.1 48.078l-5.98-3.32c-.554 1.152-.83 2.468-.83 3.841v32.047a5.32 5.32 0 0 0 2.685 4.528l28.157 15.776a8 8 0 0 0 4.014 1.016h.14c0-4.089-.029-6.997-.029-6.997l.055-5.68z" />
-                                <path fill="#3ddb85"
-                                    d="m94.266 41.109l-26.799-15.01a8.07 8.07 0 0 0-8.029.083l-26.52 15.504a7.05 7.05 0 0 0-2.826 3.073l6.01 3.32l5.093 3.099l.082-.246c.056-.111.111-.22.166-.302c.111-.192.25-.384.388-.576c.36-.467.803-.85 1.33-1.18l17.772-10.4q.57-.32 1.191-.52c.056-.027.111-.027.166-.056q.463-.126.941-.164c.138 0 .249-.028.388-.028h.36c.469.03.933.111 1.384.246q.512.162.969.441l17.966 10.07a6 6 0 0 1 1.608 1.289c.137.164.277.357.414.548l.167.246l4.595-3.044l6.229-3.704c-.803-1.071-1.827-2.032-3.045-2.69z" />
-                                <path fill="#37bf6e"
-                                    d="m94.266 41.109l-26.799-15.01a8.07 8.07 0 0 0-8.029.083l-26.52 15.504a7.05 7.05 0 0 0-2.826 3.073l6.01 3.32l5.093 3.099l.082-.246c.056-.111.111-.22.166-.302c.111-.192.25-.384.388-.576c.36-.467.803-.85 1.33-1.18l17.772-10.4q.57-.32 1.191-.52c.056-.027.111-.027.166-.056q.463-.126.941-.164c.138 0 .249-.028.388-.028h.36c.469.03.933.111 1.384.246q.512.162.969.441l17.966 10.07a6 6 0 0 1 1.608 1.289c.137.164.277.357.414.548l.167.246l4.595-3.044l6.229-3.704c-.803-1.071-1.827-2.032-3.045-2.69z" />
-                                <path fill="#4285f4"
-                                    d="M86.46 50.602c.083.136.139.246.221.384l.167.329a4.8 4.8 0 0 1 .36 1.783V73.54a5.4 5.4 0 0 1-.25 1.646c-.027.054-.027.11-.055.164a3.4 3.4 0 0 1-.193.468c-.057.135-.14.273-.195.41c-.11.193-.249.384-.388.577a6 6 0 0 1-.719.767c-.166.165-.36.302-.554.44c-.111.054-.193.137-.304.192L66.776 88.602a5.84 5.84 0 0 1-2.492.742v5.679s0 2.909.028 6.997a7.8 7.8 0 0 0 3.849-1.097l26.52-15.504c2.465-1.453 3.96-4.088 3.932-6.913V47.995c-.027-1.482-.525-2.882-1.355-4.089l-6.231 3.705z" />
-                                <path fill="#3870b2"
-                                    d="M86.46 50.602c.083.136.139.246.221.384l.167.329a4.8 4.8 0 0 1 .36 1.783V73.54a5.4 5.4 0 0 1-.25 1.646c-.027.054-.027.11-.055.164a3.4 3.4 0 0 1-.193.468c-.057.135-.14.273-.195.41c-.11.193-.249.384-.388.577a6 6 0 0 1-.719.767c-.166.165-.36.302-.554.44c-.111.054-.193.137-.304.192L66.776 88.602a5.84 5.84 0 0 1-2.492.742v5.679s0 2.909.028 6.997a7.8 7.8 0 0 0 3.849-1.097l26.52-15.504c2.465-1.453 3.96-4.088 3.932-6.913V47.995c-.027-1.482-.525-2.882-1.355-4.089l-6.231 3.705z" />
-                                <path fill="#d6f0ff"
-                                    d="M62.155 37.982c-.416.11-.804.302-1.19.52l-17.774 10.4l17.772-10.398a4.5 4.5 0 0 1 1.19-.52z" />
-                                <path fill="#000"
-                                    d="M62.155 37.982c-.416.11-.804.302-1.19.52l-17.774 10.4l17.772-10.398a4.5 4.5 0 0 1 1.19-.52z"
-                                    opacity="0.1" />
-                                <path fill="#d6f0ff"
-                                    d="M85.88 49.806a5.6 5.6 0 0 0-1.605-1.29l-17.968-10.07l17.967 10.07a5.6 5.6 0 0 1 1.606 1.29" />
-                                <path fill="#000"
-                                    d="M85.88 49.806a5.6 5.6 0 0 0-1.605-1.29l-17.968-10.07l17.967 10.07a5.6 5.6 0 0 1 1.606 1.29"
-                                    opacity="0.1" />
-                                <path fill="#d6f0ff"
-                                    d="M86.848 51.289a7 7 0 0 1 .22.684c-.055-.219-.14-.438-.222-.684z" />
-                                <path fill="#000" d="M86.848 51.289a7 7 0 0 1 .22.684c-.055-.219-.14-.438-.222-.684z"
-                                    opacity="0.1" />
-                                <path fill="#d6f0ff"
-                                    d="M86.956 75.186a5.3 5.3 0 0 0 .249-1.646V53.098V73.54a5.3 5.3 0 0 1-.25 1.646z" />
-                                <path fill="#000"
-                                    d="M86.956 75.186a5.3 5.3 0 0 0 .249-1.646V53.098V73.54a5.3 5.3 0 0 1-.25 1.646z"
-                                    opacity="0.1" />
-                            </g>
-                        </svg>
-                    </div>
-                    <span class="font-display text-sm tracking-wide">Compose</span>
-                </div>
-                <!-- Material3 -->
-                <div class="flex flex-col items-center gap-2">
-                    <div
-                        class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-cyan-400">
-                        <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true"
-                            focusable="false">
-                            <path fill="currentColor"
-                                d="M16 0C7.172 0 0 7.172 0 16s7.172 16 16 16s16-7.172 16-16S24.828 0 16 0m0 1c3.828 0 7.307 1.443 9.958 3.802H6.041A14.92 14.92 0 0 1 15.999 1zM6.417 5.802h19.167l-9.583 19.161zm-1.615.24v19.917A14.92 14.92 0 0 1 1 16.001c0-3.828 1.443-7.307 3.802-9.958zm22.396 0A14.92 14.92 0 0 1 31 16c0 3.828-1.443 7.307-3.802 9.958zm-21.396.76L15.5 26.198H5.802zm20.396 0v19.396H16.5l9.703-19.396zM6.042 27.198h19.917C23.219 29.651 19.673 31 16.001 31s-7.219-1.349-9.958-3.802z" />
-                        </svg>
-                    </div>
-                    <span class="font-display text-sm tracking-wide">Material3</span>
-                </div>
-                <!-- Navigation3 -->
-                <div class="flex flex-col items-center gap-2">
-                    <div
-                        class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-amber-400">
-                        <i class="fa-solid fa-route text-2xl"></i>
-                    </div>
-                    <span class="font-display text-sm tracking-wide">Nav3</span>
-                </div>
-                <!-- Appwrite -->
-                <div class="flex flex-col items-center gap-2">
-                    <div
-                        class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-pink-400">
-                        <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true"
-                            focusable="false">
-                            <path fill="#fd366e"
-                                d="M56.305 7.568c-25.833 0-47.611 17.355-54.309 41.042A55.7 55.7 0 0 0 0 60.187v7.628a56.1 56.1 0 0 0 7.421 24.402c9.758 16.868 27.996 28.215 48.884 28.215H128V92.217H56.305a28.1 28.1 0 0 1-19.363-7.696c-5.453-5.143-8.855-12.432-8.855-20.52c0-2.668.37-5.248 1.063-7.696c.78-2.76 1.97-5.348 3.503-7.695c5.033-7.722 13.746-12.827 23.652-12.827s18.617 5.105 23.65 12.827h30.655C103.913 24.923 82.14 7.568 56.305 7.568M83.46 56.305a28.2 28.2 0 0 1 1.062 7.696c0 8.088-3.401 15.377-8.855 20.52H128V56.305Z" />
-                        </svg>
-                    </div>
-                    <span class="font-display text-sm tracking-wide">Appwrite</span>
-                </div>
-                <!-- Room -->
-                <div class="flex flex-col items-center gap-2">
-                    <div
-                        class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400">
-                        <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"
-                            focusable="false">
-                            <path fill="currentColor"
-                                d="M12 10c4.418 0 8-1.79 8-4s-3.582-4-8-4s-8 1.79-8 4s3.582 4 8 4" />
-                            <path fill="currentColor"
-                                d="M4 12v6c0 2.21 3.582 4 8 4s8-1.79 8-4v-6c0 2.21-3.582 4-8 4s-8-1.79-8-4"
-                                opacity="0.5" />
-                            <path fill="currentColor"
-                                d="M4 6v6c0 2.21 3.582 4 8 4s8-1.79 8-4V6c0 2.21-3.582 4-8 4S4 8.21 4 6"
-                                opacity="0.7" />
-                        </svg>
-                    </div>
-                    <span class="font-display text-sm tracking-wide">Room</span>
-                </div>
-                <!-- Koin -->
-                <div class="flex flex-col items-center gap-2">
-                    <div
-                        class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-orange-400">
-                        <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"
-                            focusable="false">
-                            <g fill="#6f00f6">
-                                <path fill-rule="evenodd"
-                                    d="M12 3.98L5 7.99v8.02l7 4.01l7-4.01V7.99zm8 3.52L12 3L4 7.5v9l8 4.5l8-4.5z"
-                                    clip-rule="evenodd" />
-                                <path fill-rule="evenodd"
-                                    d="m12.001 9l-2.5 1.475v3.05l2.5 1.474l2.5-1.475v-3.05zm3.5 1l-3.5-2l-3.5 2v4l3.5 2l3.5-2z"
-                                    clip-rule="evenodd" />
-                                <path
-                                    d="M11.5 12.2L4.26 8.127l.436-.74L12 11.5l7.13-4.11l.435.73L12.5 12.2v8.165h-1z" />
-                            </g>
-                        </svg>
-                    </div>
-                    <span class="font-display text-sm tracking-wide">Koin</span>
-                </div>
-                <!-- Coil -->
-                <div class="flex flex-col items-center gap-2">
-                    <div
-                        class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-teal-400">
-                        <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="344 268 56 56"
-                            aria-hidden="true" focusable="false">
-                            <g>
-                                <g>
-                                    <path fill="#45DFF4"
-                                        d="M368.196,311.956l-13.756-10.297l-1.377,1.032c-2.347,1.755-2.347,4.604,0,6.358l15.134,11.33    c2.347,1.756,6.15,1.756,8.497,0l15.134-11.33c2.348-1.755,2.348-4.604,0-6.358l-1.379-1.032l-13.755,10.297    C374.346,313.712,370.543,313.712,368.196,311.956z">
-                                    </path>
-                                    <path fill="#42A5F5"
-                                        d="M391.827,294.269l-1.379-1.032l-13.755,10.296c-2.347,1.756-6.15,1.756-8.497,0l-13.756-10.296    l-1.377,1.032c-2.347,1.755-2.347,4.603,0,6.359l1.377,1.031l13.756,10.297c2.347,1.756,6.15,1.756,8.497,0l13.755-10.297    l1.379-1.031C394.174,298.871,394.174,296.023,391.827,294.269z">
-                                    </path>
-                                    <path fill="#3B6BB4"
-                                        d="M376.693,303.532l13.755-10.296l1.379-1.033c2.348-1.755,2.348-4.604,0-6.359l-1.267-0.948l-15.861,11.827    c-1.245,0.933-3.264,0.933-4.509,0l-8.033-6.011c-1.245-0.933-1.245-2.443,0-3.376l16.104-11.647l-1.567-1.173    c-2.347-1.757-6.15-1.757-8.497,0l-15.134,11.328c-2.347,1.756-2.347,4.604,0,6.359l1.377,1.033l13.756,10.296    C370.543,305.288,374.346,305.288,376.693,303.532z">
+            <div class="marquee opacity-70 hover:opacity-100 transition-opacity duration-500">
+                <div class="marquee__track" data-marquee-track>
+                    <div class="marquee__group" data-marquee-group>
+                        <!-- Kotlin -->
+                        <div class="marquee__item flex items-center gap-5">
+                            <svg class="w-12 h-12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"
+                                aria-hidden="true" focusable="false">
+                                <defs>
+                                    <linearGradient id="kotlinGradient1" x1="99.991%" x2=".01%" y1="-.011%"
+                                        y2="100.01%">
+                                        <stop offset=".344%" stop-color="#e44857" />
+                                        <stop offset="46.89%" stop-color="#c711e1" />
+                                        <stop offset="100%" stop-color="#7f52ff" />
+                                    </linearGradient>
+                                </defs>
+                                <path fill="url(#kotlinGradient1)" d="M256 256H0V0h256L128 127.949z" />
+                            </svg>
+                            <span
+                                class="font-display text-2xl md:text-3xl tracking-wide whitespace-nowrap">Kotlin</span>
+                        </div>
+                        <!-- Jetpack Compose -->
+                        <div class="marquee__item flex items-center gap-5">
+                            <svg class="w-12 h-12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"
+                                aria-hidden="true" focusable="false">
+                                <g fill="none">
+                                    <path fill="#083042"
+                                        d="M41.226 76.778a4 4 0 0 1-.47-1.29c.09.452.25.887.47 1.29m.578.713c.222.22.472.411.749.548l18.88 10.565l-18.88-10.565a2.9 2.9 0 0 1-.747-.548z" />
+                                    <path fill="#083042"
+                                        d="M64.342 101.967h-.14a8.3 8.3 0 0 1-4.014-1.016l-28.182-15.75c-1.663-.932-2.686-2.66-2.686-4.527V48.628c0-1.373.249-2.69.83-3.842L8.114 32.522c-.913 1.92-1.383 4.088-1.356 6.366v52.927a8.68 8.68 0 0 0 4.458 7.49l46.481 26.012c2.05 1.152 4.347 1.701 6.617 1.701v-.027c.055-3.32.028-16.628.028-25.023z" />
+                                    <path fill="#3ddb85"
+                                        d="m86.46 50.6l-.167-.246c-.138-.192-.275-.357-.413-.548c.138.164.275.356.413.547a1 1 0 0 1 .167.247M63.262 37.76c.14 0 .251-.027.39-.027c-.139.027-.278.027-.39.027" />
+                                    <path fill="#3ddc84"
+                                        d="M30.122 44.757a7.2 7.2 0 0 1 2.825-3.072l26.52-15.503a8.07 8.07 0 0 1 8.03-.082l26.798 15.009a9 9 0 0 1 3.018 2.743L118.99 31.04a14.9 14.9 0 0 0-4.955-4.5L69.766 1.764a13.32 13.32 0 0 0-13.233.137L12.765 27.472a11.7 11.7 0 0 0-4.651 5.049l22.009 12.236z" />
+                                    <path fill="#3ddb85"
+                                        d="M62.157 37.983c.057-.028.114-.028.17-.056c-.056.028-.113.028-.17.056m-20.88 12.949c.056-.11.111-.22.168-.3c-.057.109-.111.19-.168.3l-.082.246z" />
+                                    <path fill="#4285f4"
+                                        d="M118.962 31.04L97.285 43.852c.83 1.207 1.329 2.633 1.355 4.089v30.51a7.88 7.88 0 0 1-3.93 6.914L68.188 100.87a8.1 8.1 0 0 1-3.849 1.097c.029 8.369.029 21.677-.027 24.997v.027a13.53 13.53 0 0 0 6.617-1.812l43.769-25.599c4.07-2.387 6.562-6.723 6.506-11.415V37.817c-.028-2.442-.858-4.774-2.242-6.777" />
+                                    <path fill="#4285f4"
+                                        d="M86.963 75.187c-.028.056-.028.111-.056.168a.4.4 0 0 0 .056-.168m-.278-24.227c-.057-.138-.14-.248-.223-.385c.083.137.166.275.222.385zM66.807 88.576L84.58 78.178c.111-.054.195-.138.306-.192c-.111.054-.195.138-.306.192l-17.773 10.4zM86.74 75.818c-.056.138-.139.275-.196.413c.057-.165.112-.303.196-.413" />
+                                    <path fill="#d6f0ff"
+                                        d="M41.198 51.178a5.5 5.5 0 0 0-.415 1.675c-.028.218-.028.438-.028.686v21.483c0 .164 0 .302.028.467c.056.465.222.905.47 1.29c.167.274.36.492.555.712c.222.22.47.411.746.55l18.882 10.563a5.5 5.5 0 0 0 2.684.685h.195a5.16 5.16 0 0 0 2.492-.74L84.58 78.15c.111-.055.194-.138.305-.192c.194-.137.388-.275.554-.44q.391-.354.719-.768c.138-.192.277-.383.388-.576c.082-.136.139-.274.193-.412c.056-.135.14-.301.195-.465c.027-.056.027-.111.055-.165a5.4 5.4 0 0 0 .249-1.647V53.044c0-.383-.056-.74-.138-1.096c-.055-.248-.14-.468-.222-.688l-.166-.328c-.055-.138-.14-.247-.222-.385l-.166-.246c-.138-.193-.277-.357-.415-.549a5.6 5.6 0 0 0-1.606-1.29L66.337 38.394a6 6 0 0 0-.97-.44a6 6 0 0 0-1.385-.246h-.36c-.137 0-.248 0-.386.026a5.7 5.7 0 0 0-.942.165c-.055.027-.11.027-.166.056c-.415.11-.803.301-1.191.52l-17.773 10.4a4.6 4.6 0 0 0-1.33 1.18c-.137.192-.276.384-.387.576c-.055.11-.11.192-.166.302l-.083.246Z" />
+                                    <path fill="#083042"
+                                        d="M64.312 89.288h-.194a5.5 5.5 0 0 1-2.686-.684L42.552 78.04a3.7 3.7 0 0 1-.748-.549a3.3 3.3 0 0 1-.554-.714a4 4 0 0 1-.47-1.29c-.029-.163-.029-.301-.029-.465V53.537c0-.219 0-.465.029-.686c.053-.575.192-1.14.415-1.674L36.1 48.078l-5.98-3.32c-.554 1.152-.83 2.468-.83 3.841v32.047a5.32 5.32 0 0 0 2.685 4.528l28.157 15.776a8 8 0 0 0 4.014 1.016h.14c0-4.089-.029-6.997-.029-6.997l.055-5.68z" />
+                                    <path fill="#041619"
+                                        d="M64.312 89.288h-.194a5.5 5.5 0 0 1-2.686-.684L42.552 78.04a3.7 3.7 0 0 1-.748-.549a3.3 3.3 0 0 1-.554-.714a4 4 0 0 1-.47-1.29c-.029-.163-.029-.301-.029-.465V53.537c0-.219 0-.465.029-.686c.053-.575.192-1.14.415-1.674L36.1 48.078l-5.98-3.32c-.554 1.152-.83 2.468-.83 3.841v32.047a5.32 5.32 0 0 0 2.685 4.528l28.157 15.776a8 8 0 0 0 4.014 1.016h.14c0-4.089-.029-6.997-.029-6.997l.055-5.68z" />
+                                    <path fill="#3ddb85"
+                                        d="m94.266 41.109l-26.799-15.01a8.07 8.07 0 0 0-8.029.083l-26.52 15.504a7.05 7.05 0 0 0-2.826 3.073l6.01 3.32l5.093 3.099l.082-.246c.056-.111.111-.22.166-.302c.111-.192.25-.384.388-.576c.36-.467.803-.85 1.33-1.18l17.772-10.4q.57-.32 1.191-.52c.056-.027.111-.027.166-.056q.463-.126.941-.164c.138 0 .249-.028.388-.028h.36c.469.03.933.111 1.384.246q.512.162.969.441l17.966 10.07a6 6 0 0 1 1.608 1.289c.137.164.277.357.414.548l.167.246l4.595-3.044l6.229-3.704c-.803-1.071-1.827-2.032-3.045-2.69z" />
+                                    <path fill="#37bf6e"
+                                        d="m94.266 41.109l-26.799-15.01a8.07 8.07 0 0 0-8.029.083l-26.52 15.504a7.05 7.05 0 0 0-2.826 3.073l6.01 3.32l5.093 3.099l.082-.246c.056-.111.111-.22.166-.302c.111-.192.25-.384.388-.576c.36-.467.803-.85 1.33-1.18l17.772-10.4q.57-.32 1.191-.52c.056-.027.111-.027.166-.056q.463-.126.941-.164c.138 0 .249-.028.388-.028h.36c.469.03.933.111 1.384.246q.512.162.969.441l17.966 10.07a6 6 0 0 1 1.608 1.289c.137.164.277.357.414.548l.167.246l4.595-3.044l6.229-3.704c-.803-1.071-1.827-2.032-3.045-2.69z" />
+                                    <path fill="#4285f4"
+                                        d="M86.46 50.602c.083.136.139.246.221.384l.167.329a4.8 4.8 0 0 1 .36 1.783V73.54a5.4 5.4 0 0 1-.25 1.646c-.027.054-.027.11-.055.164a3.4 3.4 0 0 1-.193.468c-.057.135-.14.273-.195.41c-.11.193-.249.384-.388.577a6 6 0 0 1-.719.767c-.166.165-.36.302-.554.44c-.111.054-.193.137-.304.192L66.776 88.602a5.84 5.84 0 0 1-2.492.742v5.679s0 2.909.028 6.997a7.8 7.8 0 0 0 3.849-1.097l26.52-15.504c2.465-1.453 3.96-4.088 3.932-6.913V47.995c-.027-1.482-.525-2.882-1.355-4.089l-6.231 3.705z" />
+                                    <path fill="#3870b2"
+                                        d="M86.46 50.602c.083.136.139.246.221.384l.167.329a4.8 4.8 0 0 1 .36 1.783V73.54a5.4 5.4 0 0 1-.25 1.646c-.027.054-.027.11-.055.164a3.4 3.4 0 0 1-.193.468c-.057.135-.14.273-.195.41c-.11.193-.249.384-.388.577a6 6 0 0 1-.719.767c-.166.165-.36.302-.554.44c-.111.054-.193.137-.304.192L66.776 88.602a5.84 5.84 0 0 1-2.492.742v5.679s0 2.909.028 6.997a7.8 7.8 0 0 0 3.849-1.097l26.52-15.504c2.465-1.453 3.96-4.088 3.932-6.913V47.995c-.027-1.482-.525-2.882-1.355-4.089l-6.231 3.705z" />
+                                    <path fill="#d6f0ff"
+                                        d="M62.155 37.982c-.416.11-.804.302-1.19.52l-17.774 10.4l17.772-10.398a4.5 4.5 0 0 1 1.19-.52z" />
+                                    <path fill="#000"
+                                        d="M62.155 37.982c-.416.11-.804.302-1.19.52l-17.774 10.4l17.772-10.398a4.5 4.5 0 0 1 1.19-.52z"
+                                        opacity="0.1" />
+                                    <path fill="#d6f0ff"
+                                        d="M85.88 49.806a5.6 5.6 0 0 0-1.605-1.29l-17.968-10.07l17.967 10.07a5.6 5.6 0 0 1 1.606 1.29" />
+                                    <path fill="#000"
+                                        d="M85.88 49.806a5.6 5.6 0 0 0-1.605-1.29l-17.968-10.07l17.967 10.07a5.6 5.6 0 0 1 1.606 1.29"
+                                        opacity="0.1" />
+                                    <path fill="#d6f0ff"
+                                        d="M86.848 51.289a7 7 0 0 1 .22.684c-.055-.219-.14-.438-.222-.684z" />
+                                    <path fill="#000"
+                                        d="M86.848 51.289a7 7 0 0 1 .22.684c-.055-.219-.14-.438-.222-.684z"
+                                        opacity="0.1" />
+                                    <path fill="#d6f0ff"
+                                        d="M86.956 75.186a5.3 5.3 0 0 0 .249-1.646V53.098V73.54a5.3 5.3 0 0 1-.25 1.646z" />
+                                    <path fill="#000"
+                                        d="M86.956 75.186a5.3 5.3 0 0 0 .249-1.646V53.098V73.54a5.3 5.3 0 0 1-.25 1.646z"
+                                        opacity="0.1" />
+                                </g>
+                            </svg>
+                            <span class="font-display text-2xl md:text-3xl tracking-wide whitespace-nowrap">Jetpack
+                                Compose</span>
+                        </div>
+                        <!-- Material3 -->
+                        <div class="marquee__item flex items-center gap-5">
+                            <svg class="w-12 h-12 text-cyan-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
+                                aria-hidden="true" focusable="false">
+                                <path fill="currentColor"
+                                    d="M16 0C7.172 0 0 7.172 0 16s7.172 16 16 16s16-7.172 16-16S24.828 0 16 0m0 1c3.828 0 7.307 1.443 9.958 3.802H6.041A14.92 14.92 0 0 1 15.999 1zM6.417 5.802h19.167l-9.583 19.161zm-1.615.24v19.917A14.92 14.92 0 0 1 1 16.001c0-3.828 1.443-7.307 3.802-9.958zm22.396 0A14.92 14.92 0 0 1 31 16c0 3.828-1.443 7.307-3.802 9.958zm-21.396.76L15.5 26.198H5.802zm20.396 0v19.396H16.5l9.703-19.396zM6.042 27.198h19.917C23.219 29.651 19.673 31 16.001 31s-7.219-1.349-9.958-3.802z" />
+                            </svg>
+                            <span class="font-display text-2xl md:text-3xl tracking-wide whitespace-nowrap">Material
+                                3</span>
+                        </div>
+                        <!-- Navigation3 -->
+                        <div class="marquee__item flex items-center gap-5">
+                            <i class="fa-solid fa-route text-4xl text-amber-400" aria-hidden="true"></i>
+                            <span class="font-display text-2xl md:text-3xl tracking-wide whitespace-nowrap">Navigation
+                                3</span>
+                        </div>
+                        <!-- Appwrite -->
+                        <div class="marquee__item flex items-center gap-5">
+                            <svg class="w-12 h-12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"
+                                aria-hidden="true" focusable="false">
+                                <path fill="#fd366e"
+                                    d="M56.305 7.568c-25.833 0-47.611 17.355-54.309 41.042A55.7 55.7 0 0 0 0 60.187v7.628a56.1 56.1 0 0 0 7.421 24.402c9.758 16.868 27.996 28.215 48.884 28.215H128V92.217H56.305a28.1 28.1 0 0 1-19.363-7.696c-5.453-5.143-8.855-12.432-8.855-20.52c0-2.668.37-5.248 1.063-7.696c.78-2.76 1.97-5.348 3.503-7.695c5.033-7.722 13.746-12.827 23.652-12.827s18.617 5.105 23.65 12.827h30.655C103.913 24.923 82.14 7.568 56.305 7.568M83.46 56.305a28.2 28.2 0 0 1 1.062 7.696c0 8.088-3.401 15.377-8.855 20.52H128V56.305Z" />
+                            </svg>
+                            <span
+                                class="font-display text-2xl md:text-3xl tracking-wide whitespace-nowrap">Appwrite</span>
+                        </div>
+                        <!-- Room -->
+                        <div class="marquee__item flex items-center gap-5">
+                            <svg class="w-12 h-12 text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                aria-hidden="true" focusable="false">
+                                <path fill="currentColor"
+                                    d="M12 10c4.418 0 8-1.79 8-4s-3.582-4-8-4s-8 1.79-8 4s3.582 4 8 4" />
+                                <path fill="currentColor"
+                                    d="M4 12v6c0 2.21 3.582 4 8 4s8-1.79 8-4v-6c0 2.21-3.582 4-8 4s-8-1.79-8-4"
+                                    opacity="0.5" />
+                                <path fill="currentColor"
+                                    d="M4 6v6c0 2.21 3.582 4 8 4s8-1.79 8-4V6c0 2.21-3.582 4-8 4S4 8.21 4 6"
+                                    opacity="0.7" />
+                            </svg>
+                            <span class="font-display text-2xl md:text-3xl tracking-wide whitespace-nowrap">Room</span>
+                        </div>
+                        <!-- Koin -->
+                        <div class="marquee__item flex items-center gap-5">
+                            <svg class="w-12 h-12" xmlns="http://www.w3.org/2000/svg" viewBox="2 2 20 20">
+                                <g fill="#6f00f6">
+                                    <path fill-rule="evenodd"
+                                        d="M12 3.98L5 7.99v8.02l7 4.01l7-4.01V7.99zm8 3.52L12 3L4 7.5v9l8 4.5l8-4.5z"
+                                        clip-rule="evenodd"></path>
+                                    <path fill-rule="evenodd"
+                                        d="m12.001 9l-2.5 1.475v3.05l2.5 1.474l2.5-1.475v-3.05zm3.5 1l-3.5-2l-3.5 2v4l3.5 2l3.5-2z"
+                                        clip-rule="evenodd"></path>
+                                    <path
+                                        d="M11.5 12.2L4.26 8.127l.436-.74L12 11.5l7.13-4.11l.435.73L12.5 12.2v8.165h-1z">
                                     </path>
                                 </g>
-                            </g>
-                        </svg>
+                            </svg>
+                            <span class="font-display text-2xl md:text-3xl tracking-wide whitespace-nowrap">Koin</span>
+                        </div>
+                        <!-- Coil -->
+                        <div class="marquee__item flex items-center gap-5">
+                            <svg class="w-12 h-12" xmlns="http://www.w3.org/2000/svg" viewBox="344 268 56 56"
+                                aria-hidden="true" focusable="false">
+                                <g>
+                                    <g>
+                                        <path fill="#45DFF4"
+                                            d="M368.196,311.956l-13.756-10.297l-1.377,1.032c-2.347,1.755-2.347,4.604,0,6.358l15.134,11.33    c2.347,1.756,6.15,1.756,8.497,0l15.134-11.33c2.348-1.755,2.348-4.604,0-6.358l-1.379-1.032l-13.755,10.297    C374.346,313.712,370.543,313.712,368.196,311.956z">
+                                        </path>
+                                        <path fill="#42A5F5"
+                                            d="M391.827,294.269l-1.379-1.032l-13.755,10.296c-2.347,1.756-6.15,1.756-8.497,0l-13.756-10.296    l-1.377,1.032c-2.347,1.755-2.347,4.603,0,6.359l1.377,1.031l13.756,10.297c2.347,1.756,6.15,1.756,8.497,0l13.755-10.297    l1.379-1.031C394.174,298.871,394.174,296.023,391.827,294.269z">
+                                        </path>
+                                        <path fill="#3B6BB4"
+                                            d="M376.693,303.532l13.755-10.296l1.379-1.033c2.348-1.755,2.348-4.604,0-6.359l-1.267-0.948l-15.861,11.827    c-1.245,0.933-3.264,0.933-4.509,0l-8.033-6.011c-1.245-0.933-1.245-2.443,0-3.376l16.104-11.647l-1.567-1.173    c-2.347-1.757-6.15-1.757-8.497,0l-15.134,11.328c-2.347,1.756-2.347,4.604,0,6.359l1.377,1.033l13.756,10.296    C370.543,305.288,374.346,305.288,376.693,303.532z">
+                                        </path>
+                                    </g>
+                                </g>
+                            </svg>
+                            <span class="font-display text-2xl md:text-3xl tracking-wide whitespace-nowrap">Coil
+                                3</span>
+                        </div>
                     </div>
-                    <span class="font-display text-sm tracking-wide">Coil 3</span>
                 </div>
             </div>
         </section>
@@ -1106,6 +1145,27 @@
         </div>
         <p class="mt-8 text-gray-700 text-xs">© 2026 Arcadia Inc. All rights reserved.</p>
     </footer>
+
+    <script>
+            (function () {
+                const track = document.querySelector('[data-marquee-track]');
+                const group = document.querySelector('[data-marquee-group]');
+                if (!track || !group) return;
+
+                const clone = group.cloneNode(true);
+                clone.setAttribute('aria-hidden', 'true');
+
+                const kotlinGradient = clone.querySelector('#kotlinGradient1');
+                if (kotlinGradient) {
+                    kotlinGradient.id = 'kotlinGradient2';
+                    clone.querySelectorAll('[fill="url(#kotlinGradient1)"]').forEach((el) => {
+                        el.setAttribute('fill', 'url(#kotlinGradient2)');
+                    });
+                }
+
+                track.appendChild(clone);
+            })();
+    </script>
 
 </body>
 
