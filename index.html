@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arcadia | Your Gaming Universe</title>
     <meta name="description" content="Arcadia: The AI-powered gaming companion. Track, analyze, and get roasted.">
-    
+
     <!-- Critical CSS to prevent FOUC -->
     <style>
         body {
@@ -15,15 +16,18 @@
             margin: 0;
             opacity: 1;
         }
+
         /* Glassmorphism utilities */
         .glass-fallback {
             background: rgba(30, 42, 71, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
+
         /* Hide scrollbar for bento grid if needed */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
+
         .no-scrollbar {
             -ms-overflow-style: none;
             scrollbar-width: none;
@@ -33,11 +37,15 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- Alpine.js -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
@@ -100,6 +108,7 @@
         }
     </style>
 </head>
+
 <body class="bg-navy-900 text-white antialiased overflow-x-hidden selection:bg-violet-600 selection:text-white">
 
     <!-- Navigation -->
@@ -107,46 +116,111 @@
         <div class="max-w-7xl mx-auto flex justify-between items-center pointer-events-auto">
             <!-- Logo -->
             <div class="flex items-center">
-                <span class="font-display text-3xl tracking-wide sm:block pt-1">Arcadia</span>
+                <span class="font-display text-3xl tracking-wide flex items-center pt-1 gap-0.5">
+                    <span>A</span>
+                    <svg class="h-7 w-7 mb-1" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="30 30 320 320">
+                        <defs>
+                            <clipPath id="1bc524fdbf">
+                                <path
+                                    d="M 135 59.429688 L 329.863281 59.429688 L 329.863281 324.929688 L 135 324.929688 Z M 135 59.429688 "
+                                    clip-rule="nonzero"></path>
+                            </clipPath>
+                            <clipPath id="b307a93635">
+                                <path
+                                    d="M 53.863281 59.429688 L 179 59.429688 L 179 126 L 53.863281 126 Z M 53.863281 59.429688 "
+                                    clip-rule="nonzero"></path>
+                            </clipPath>
+                            <clipPath id="0f2c6a1c71">
+                                <path d="M 136 92 L 297 92 L 297 324.929688 L 136 324.929688 Z M 136 92 "
+                                    clip-rule="nonzero"></path>
+                            </clipPath>
+                            <clipPath id="f8e2f9d8ea">
+                                <path
+                                    d="M 53.863281 59.429688 L 179 59.429688 L 179 126 L 53.863281 126 Z M 53.863281 59.429688 "
+                                    clip-rule="nonzero"></path>
+                            </clipPath>
+                        </defs>
+                        <g clip-path="url(#1bc524fdbf)">
+                            <path fill="#fbb02e"
+                                d="M 258.703125 245.925781 L 311.164062 324.566406 L 230.675781 324.566406 L 180.15625 248.816406 L 135.984375 182.53125 C 135.984375 182.53125 235.371094 182.53125 235.410156 182.53125 C 250.863281 182.53125 263.820312 169.5625 263.820312 154.125 C 263.820312 138.453125 251.082031 125.714844 235.410156 125.714844 L 211.5 125.714844 L 167.328125 59.429688 L 235.410156 59.429688 C 287.726562 59.429688 330.101562 101.808594 330.101562 154.125 C 330.101562 180.257812 319.496094 203.933594 302.355469 221.070312 C 290.578125 232.847656 274.832031 241.8125 258.703125 245.925781 "
+                                fill-opacity="1" fill-rule="evenodd"></path>
+                        </g>
+                        <g clip-path="url(#b307a93635)">
+                            <path fill="#e8e5de"
+                                d="M 178.582031 125.714844 L 98.089844 125.714844 L 53.898438 59.429688 L 134.398438 59.429688 Z M 178.582031 125.714844 "
+                                fill-opacity="1" fill-rule="evenodd"></path>
+                        </g>
+                        <g clip-path="url(#0f2c6a1c71)">
+                            <path fill="#fbb02e"
+                                d="M 234.335938 217.777344 L 203.699219 217.777344 L 224.320312 248.78125 L 274.84375 324.566406 L 230.652344 324.566406 L 198.839844 276.769531 L 136.015625 182.5 C 136.015625 182.5 235.371094 182.5 235.441406 182.5 C 250.832031 182.5 263.796875 169.539062 263.796875 154.144531 C 263.796875 138.457031 251.054688 125.714844 235.441406 125.714844 L 211.515625 125.714844 L 189.425781 92.574219 L 234.335938 92.574219 C 268.953125 92.574219 296.9375 120.632812 296.9375 155.175781 C 296.9375 189.71875 268.953125 217.777344 234.335938 217.777344 "
+                                fill-opacity="1" fill-rule="evenodd"></path>
+                        </g>
+                        <g clip-path="url(#f8e2f9d8ea)">
+                            <path fill="#e8e5de"
+                                d="M 53.898438 59.429688 L 98.089844 125.714844 L 178.582031 125.714844 L 156.488281 92.574219 L 122.957031 92.574219 C 97.167969 92.574219 72.660156 81.308594 55.875 61.734375 Z M 53.898438 59.429688 "
+                                fill-opacity="1" fill-rule="evenodd"></path>
+                        </g>
+                    </svg>
+                    <span>CADIA</span>
+                </span>
             </div>
 
             <!-- Links -->
             <div class="hidden md:flex items-center gap-6 text-sm font-body text-white/70">
-                <a href="#screens" class="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 rounded-md">Screens</a>
-                <a href="#architecture" class="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 rounded-md">Architecture</a>
-                <a href="#reviews" class="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 rounded-md">Reviews</a>
-                <a href="#stack" class="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 rounded-md">Stack</a>
-                <a href="#faq" class="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 rounded-md">FAQ</a>
+                <a href="#screens"
+                    class="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 rounded-md">Screens</a>
+                <a href="#architecture"
+                    class="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 rounded-md">Architecture</a>
+                <a href="#reviews"
+                    class="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 rounded-md">Reviews</a>
+                <a href="#stack"
+                    class="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 rounded-md">Stack</a>
+                <a href="#faq"
+                    class="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 rounded-md">FAQ</a>
             </div>
-             
+
             <!-- CTA -->
-            <a href="#playstore-link" class="bg-white text-navy-900 px-6 py-2.5 rounded-full font-body font-bold text-sm tracking-wide hover:bg-violet-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900">
+            <a href="https://play.google.com/store/apps/details?id=com.arcadia.game.tracker"
+                class="bg-white text-navy-900 px-6 py-2.5 rounded-full font-body font-bold text-sm tracking-wide hover:bg-violet-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900">
                 GET THE APP
             </a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden pt-20">
+    <header
+        class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden pt-20">
         <!-- Background Effects -->
         <div class="absolute inset-0 pointer-events-none">
-            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-600/20 blur-[120px] rounded-full mix-blend-screen animate-pulse"></div>
-            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-600/10 blur-[120px] rounded-full mix-blend-screen"></div>
+            <div
+                class="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-600/20 blur-[120px] rounded-full mix-blend-screen animate-pulse">
+            </div>
+            <div
+                class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-600/10 blur-[120px] rounded-full mix-blend-screen">
+            </div>
         </div>
 
         <div class="relative z-10 max-w-5xl mx-auto">
             <h1 class="font-display text-[5rem] sm:text-[7rem] md:text-[9rem] leading-[0.85] tracking-tight mb-8">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-violet-200 to-white text-glow">ARCADIA</span>
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-violet-200 to-white text-glow">ARCADIA</span>
             </h1>
-            <p class="font-display text-2xl sm:text-3xl md:text-4xl text-gray-300 tracking-widest mb-4 uppercase">Your Gaming Universe</p>
-            
+            <p class="font-display text-2xl sm:text-3xl md:text-4xl text-gray-300 tracking-widest mb-4 uppercase">Your
+                Gaming Universe</p>
+
             <p class="font-body text-slate-400 text-lg md:text-2xl max-w-2xl mx-auto mb-12 font-light leading-relaxed">
-                Track your library, write reviews, connect with friends, and get brutally honest AI roasts. Built with <span class="text-white font-medium">Jetpack Compose</span> and <span class="text-white font-medium">Material3 Expressive</span>.
+                Track your library, write reviews, connect with friends, and get brutally honest AI roasts. Built with
+                <span class="text-white font-medium">Jetpack Compose</span> and <span
+                    class="text-white font-medium">Material3 Expressive</span>.
             </p>
 
             <div class="flex justify-center items-center">
-                <a id="playstore-link" href="https://play.google.com/store/apps/details?id=com.arcadia.game.tracker" class="group relative bg-violet-600 text-white px-10 py-5 rounded-full font-body font-bold text-xl tracking-wide transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(124,58,237,0.5)] overflow-hidden flex items-center gap-3 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-300 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900">
-                    <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                <a id="playstore-link" href="https://play.google.com/store/apps/details?id=com.arcadia.game.tracker"
+                    class="group relative bg-violet-600 text-white px-10 py-5 rounded-full font-body font-bold text-xl tracking-wide transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(124,58,237,0.5)] overflow-hidden flex items-center gap-3 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-300 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900">
+                    <div
+                        class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    </div>
                     <i class="fa-brands fa-google-play relative text-2xl"></i>
                     <span class="relative">GET THE APP</span>
                 </a>
@@ -157,28 +231,40 @@
     <main class="space-y-32 pb-32">
 
         <!-- NEW: Feature Bento Grid -->
-        <section class="max-w-7xl mx-auto px-4">
+        <section class="max-w-7xl mx-auto px-4 scroll-mt-24">
             <div class="flex flex-col items-center text-center mb-16">
-                <h2 class="font-display text-5xl md:text-7xl mb-4">POWERED BY <span class="text-violet-500">INTELLIGENCE</span></h2>
-                <p class="text-gray-400 font-body text-lg max-w-2xl">MVVM architecture with Koin DI. Every screen is a destination with type-safe Navigation3 keys.</p>
+                <h2 class="font-display text-5xl md:text-7xl mb-4">POWERED BY <span
+                        class="text-violet-500">INTELLIGENCE</span></h2>
+                <p class="text-gray-400 font-body text-lg max-w-2xl">MVVM architecture with Koin DI. Every screen is a
+                    destination with type-safe Navigation3 keys.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6 h-auto md:h-[800px]">
-                
+
                 <!-- 1. AI Search (Large Tile) -->
                 <div class="md:col-span-2 md:row-span-1 group relative rounded-[2rem] overflow-hidden glass-card">
-                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2532&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-700" alt="AI Brain">
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2532&auto=format&fit=crop"
+                        class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-700"
+                        alt="AI Brain">
                     <div class="absolute inset-0 bg-gradient-to-r from-navy-900 via-navy-900/80 to-transparent"></div>
                     <div class="absolute inset-0 p-8 flex flex-col justify-center items-start z-10">
-                        <div class="bg-violet-500/20 text-violet-300 text-xs font-bold px-3 py-1 rounded-full mb-4 border border-violet-500/30 backdrop-blur-sm">GROQ + GEMINI POWERED</div>
+                        <div
+                            class="bg-violet-500/20 text-violet-300 text-xs font-bold px-3 py-1 rounded-full mb-4 border border-violet-500/30 backdrop-blur-sm">
+                            GROQ + GEMINI POWERED</div>
                         <h3 class="font-display text-4xl md:text-5xl mb-2">ASK NATURALLY.<br>GET ANSWERS.</h3>
-                        <p class="text-gray-300 font-body max-w-md">"Find me a game like Elden Ring but with sci-fi vibes and under 20 hours." Arcadia understands context, genre, and your personal taste.</p>
-                        
+                        <p class="text-gray-300 font-body max-w-md">"Find me a game like Elden Ring but with sci-fi
+                            vibes and under 20 hours." Arcadia understands context, genre, and your personal taste.</p>
+
                         <!-- Fake Chat UI -->
-                        <div class="mt-8 bg-black/40 backdrop-blur-md rounded-2xl p-4 w-full max-w-md border border-white/5 shadow-2xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <div
+                            class="mt-8 bg-black/40 backdrop-blur-md rounded-2xl p-4 w-full max-w-md border border-white/5 shadow-2xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                             <div class="flex gap-3 mb-3">
-                                <div class="w-8 h-8 rounded-full bg-violet-600 flex items-center justify-center text-xs">A</div>
-                                <div class="text-sm text-gray-300 bg-white/5 p-2 rounded-lg rounded-tl-none">Try <span class="text-white font-medium">Cyberpunk 2077</span>. It hits that open-world sci-fi itch perfectly.</div>
+                                <div
+                                    class="w-8 h-8 rounded-full bg-violet-600 flex items-center justify-center text-xs">
+                                    A</div>
+                                <div class="text-sm text-gray-300 bg-white/5 p-2 rounded-lg rounded-tl-none">Try <span
+                                        class="text-white font-medium">Cyberpunk 2077</span>. It hits that open-world
+                                    sci-fi itch perfectly.</div>
                             </div>
                             <div class="h-2 w-16 bg-white/10 rounded-full animate-pulse"></div>
                         </div>
@@ -186,55 +272,73 @@
                 </div>
 
                 <!-- 2. Smart Discovery -->
-                <div class="md:col-span-1 md:row-span-1 group relative rounded-[2rem] overflow-hidden glass-card p-8 flex flex-col justify-end">
-                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2670&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700" alt="Discovery">
+                <div
+                    class="md:col-span-1 md:row-span-1 group relative rounded-[2rem] overflow-hidden glass-card p-8 flex flex-col justify-end">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2670&auto=format&fit=crop"
+                        class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700"
+                        alt="Discovery">
                     <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-transparent to-transparent"></div>
                     <div class="relative z-10">
                         <div class="text-violet-400 mb-2">
                             <i class="fa-solid fa-magnifying-glass text-3xl"></i>
                         </div>
                         <h3 class="font-display text-3xl mb-2">AI-TOGGLE SEARCH</h3>
-                        <p class="text-gray-400 text-sm font-body">Switch between standard and AI-powered search. Get suggestions, filter results, and rate games directly from search.</p>
+                        <p class="text-gray-400 text-sm font-body">Switch between standard and AI-powered search. Get
+                            suggestions, filter results, and rate games directly from search.</p>
                     </div>
                 </div>
 
                 <!-- 3. Social Squad -->
-                <div class="md:col-span-1 md:row-span-1 group relative rounded-[2rem] overflow-hidden glass-card p-8 flex flex-col justify-end">
-                    <img src="https://images.unsplash.com/photo-1511882150382-421056c89033?q=80&w=2671&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-700" alt="Social">
+                <div
+                    class="md:col-span-1 md:row-span-1 group relative rounded-[2rem] overflow-hidden glass-card p-8 flex flex-col justify-end">
+                    <img src="https://images.unsplash.com/photo-1511882150382-421056c89033?q=80&w=2671&auto=format&fit=crop"
+                        class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-700"
+                        alt="Social">
                     <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-transparent to-transparent"></div>
                     <div class="relative z-10">
                         <div class="flex -space-x-4 mb-4">
-                            <img class="w-10 h-10 rounded-full border-2 border-navy-900" src="https://i.pravatar.cc/100?img=3" alt="">
-                            <img class="w-10 h-10 rounded-full border-2 border-navy-900" src="https://i.pravatar.cc/100?img=4" alt="">
-                            <img class="w-10 h-10 rounded-full border-2 border-navy-900" src="https://i.pravatar.cc/100?img=8" alt="">
-                            <div class="w-10 h-10 rounded-full border-2 border-navy-900 bg-violet-600 flex items-center justify-center text-xs font-bold">+5</div>
+                            <img class="w-10 h-10 rounded-full border-2 border-navy-900"
+                                src="https://i.pravatar.cc/100?img=3" alt="">
+                            <img class="w-10 h-10 rounded-full border-2 border-navy-900"
+                                src="https://i.pravatar.cc/100?img=4" alt="">
+                            <img class="w-10 h-10 rounded-full border-2 border-navy-900"
+                                src="https://i.pravatar.cc/100?img=8" alt="">
+                            <div
+                                class="w-10 h-10 rounded-full border-2 border-navy-900 bg-violet-600 flex items-center justify-center text-xs font-bold">
+                                +5</div>
                         </div>
                         <h3 class="font-display text-3xl mb-2">FRIENDS + REQUESTS</h3>
-                        <p class="text-gray-400 text-sm font-body">Send friend requests, manage friendships, and see what your squad is playing via Appwrite Realtime sync.</p>
+                        <p class="text-gray-400 text-sm font-body">Send friend requests, manage friendships, and see
+                            what your squad is playing via Appwrite Realtime sync.</p>
                     </div>
                 </div>
 
                 <!-- 4. Offline First -->
-                <div class="md:col-span-1 md:row-span-1 group relative rounded-[2rem] overflow-hidden glass-card p-8 flex flex-col justify-end">
+                <div
+                    class="md:col-span-1 md:row-span-1 group relative rounded-[2rem] overflow-hidden glass-card p-8 flex flex-col justify-end">
                     <div class="absolute inset-0 bg-gradient-to-br from-violet-900/20 to-navy-900"></div>
                     <div class="relative z-10">
-                        <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-4 text-green-400">
+                        <div
+                            class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-4 text-green-400">
                             <i class="fa-solid fa-check text-xl"></i>
                         </div>
                         <h3 class="font-display text-3xl mb-2">OFFLINE FIRST</h3>
-                        <p class="text-gray-400 text-sm font-body">Room cache with TTL-based refresh. Your library and reviews stay available offline, syncing automatically.</p>
+                        <p class="text-gray-400 text-sm font-body">Room cache with TTL-based refresh. Your library and
+                            reviews stay available offline, syncing automatically.</p>
                     </div>
                 </div>
 
                 <!-- 5. Analytics -->
-                <div class="md:col-span-1 md:row-span-1 group relative rounded-[2rem] overflow-hidden glass-card p-8 flex flex-col justify-end">
+                <div
+                    class="md:col-span-1 md:row-span-1 group relative rounded-[2rem] overflow-hidden glass-card p-8 flex flex-col justify-end">
                     <div class="absolute inset-0 bg-gradient-to-br from-cyan-900/20 to-navy-900"></div>
                     <div class="relative z-10">
                         <div class="text-cyan-400 mb-2">
                             <i class="fa-solid fa-chart-simple text-3xl"></i>
                         </div>
                         <h3 class="font-display text-3xl mb-2">ANALYTICS</h3>
-                        <p class="text-gray-400 text-sm font-body">Deep insights into your gaming habits. Navigate to search or roast directly from your stats dashboard.</p>
+                        <p class="text-gray-400 text-sm font-body">Deep insights into your gaming habits. Navigate to
+                            search or roast directly from your stats dashboard.</p>
                     </div>
                 </div>
 
@@ -242,30 +346,48 @@
         </section>
 
         <!-- Screens -->
-        <section id="screens" class="max-w-7xl mx-auto px-4" x-data="{ screen: 'Home' }">
+        <section id="screens" class="max-w-7xl mx-auto px-4 scroll-mt-24" x-data="{ screen: 'Home' }">
             <div class="grid lg:grid-cols-2 gap-12 items-start">
                 <div class="space-y-6">
                     <div>
-                        <h2 class="font-display text-5xl md:text-7xl leading-none">ONE APP.<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-violet-200 to-white text-glow">EVERY DESTINATION.</span></h2>
-                        <p class="mt-4 font-body text-lg text-gray-400 max-w-xl">Arcadia is built around a type-safe Navigation3 stack. Pick a screen to preview the experience.</p>
+                        <h2 class="font-display text-5xl md:text-7xl leading-none">ONE APP.<br><span
+                                class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-violet-200 to-white text-glow">EVERY
+                                DESTINATION.</span></h2>
+                        <p class="mt-4 font-body text-lg text-gray-400 max-w-xl">Arcadia is built around a type-safe
+                            Navigation3 stack. Pick a screen to preview the experience.</p>
                     </div>
 
                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                        <button @click="screen = 'Home'" class="glass-panel px-4 py-3 rounded-2xl font-body text-sm tracking-wide transition-colors" :class="screen === 'Home' ? 'bg-white/10 border-white/20 text-white' : 'text-white/70 hover:text-white'">Home</button>
-                        <button @click="screen = 'Search'" class="glass-panel px-4 py-3 rounded-2xl font-body text-sm tracking-wide transition-colors" :class="screen === 'Search' ? 'bg-white/10 border-white/20 text-white' : 'text-white/70 hover:text-white'">Search</button>
-                        <button @click="screen = 'Details'" class="glass-panel px-4 py-3 rounded-2xl font-body text-sm tracking-wide transition-colors" :class="screen === 'Details' ? 'bg-white/10 border-white/20 text-white' : 'text-white/70 hover:text-white'">Details</button>
-                        <button @click="screen = 'Reviews'" class="glass-panel px-4 py-3 rounded-2xl font-body text-sm tracking-wide transition-colors" :class="screen === 'Reviews' ? 'bg-white/10 border-white/20 text-white' : 'text-white/70 hover:text-white'">Reviews</button>
-                        <button @click="screen = 'Analytics'" class="glass-panel px-4 py-3 rounded-2xl font-body text-sm tracking-wide transition-colors" :class="screen === 'Analytics' ? 'bg-white/10 border-white/20 text-white' : 'text-white/70 hover:text-white'">Analytics</button>
-                        <button @click="screen = 'Friends'" class="glass-panel px-4 py-3 rounded-2xl font-body text-sm tracking-wide transition-colors" :class="screen === 'Friends' ? 'bg-white/10 border-white/20 text-white' : 'text-white/70 hover:text-white'">Friends</button>
+                        <button @click="screen = 'Home'"
+                            class="glass-panel px-4 py-3 rounded-2xl font-body text-sm tracking-wide transition-colors"
+                            :class="screen === 'Home' ? 'bg-white/10 border-white/20 text-white' : 'text-white/70 hover:text-white'">Home</button>
+                        <button @click="screen = 'Search'"
+                            class="glass-panel px-4 py-3 rounded-2xl font-body text-sm tracking-wide transition-colors"
+                            :class="screen === 'Search' ? 'bg-white/10 border-white/20 text-white' : 'text-white/70 hover:text-white'">Search</button>
+                        <button @click="screen = 'Details'"
+                            class="glass-panel px-4 py-3 rounded-2xl font-body text-sm tracking-wide transition-colors"
+                            :class="screen === 'Details' ? 'bg-white/10 border-white/20 text-white' : 'text-white/70 hover:text-white'">Details</button>
+                        <button @click="screen = 'Reviews'"
+                            class="glass-panel px-4 py-3 rounded-2xl font-body text-sm tracking-wide transition-colors"
+                            :class="screen === 'Reviews' ? 'bg-white/10 border-white/20 text-white' : 'text-white/70 hover:text-white'">Reviews</button>
+                        <button @click="screen = 'Analytics'"
+                            class="glass-panel px-4 py-3 rounded-2xl font-body text-sm tracking-wide transition-colors"
+                            :class="screen === 'Analytics' ? 'bg-white/10 border-white/20 text-white' : 'text-white/70 hover:text-white'">Analytics</button>
+                        <button @click="screen = 'Friends'"
+                            class="glass-panel px-4 py-3 rounded-2xl font-body text-sm tracking-wide transition-colors"
+                            :class="screen === 'Friends' ? 'bg-white/10 border-white/20 text-white' : 'text-white/70 hover:text-white'">Friends</button>
                     </div>
                 </div>
 
                 <div class="glass-panel rounded-[2.5rem] p-6 md:p-10 relative overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-br from-violet-500/10 via-transparent to-red-500/10 pointer-events-none"></div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-violet-500/10 via-transparent to-red-500/10 pointer-events-none">
+                    </div>
                     <div class="relative z-10">
                         <div class="flex items-center justify-between mb-6">
                             <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
+                                <div
+                                    class="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
                                     <span class="font-display text-xl">A</span>
                                 </div>
                                 <div>
@@ -298,10 +420,12 @@
                                 </div>
                             </div>
 
-                            <div x-show="screen === 'Search'" x-transition.opacity class="space-y-4" style="display:none">
+                            <div x-show="screen === 'Search'" x-transition.opacity class="space-y-4"
+                                style="display:none">
                                 <div class="glass-card rounded-2xl p-5">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-xl bg-violet-600/20 border border-violet-500/30 flex items-center justify-center">
+                                        <div
+                                            class="w-10 h-10 rounded-xl bg-violet-600/20 border border-violet-500/30 flex items-center justify-center">
                                             <i class="fa-solid fa-magnifying-glass text-violet-200"></i>
                                         </div>
                                         <div>
@@ -317,13 +441,16 @@
                                 </div>
                             </div>
 
-                            <div x-show="screen === 'Details'" x-transition.opacity class="space-y-4" style="display:none">
+                            <div x-show="screen === 'Details'" x-transition.opacity class="space-y-4"
+                                style="display:none">
                                 <div class="glass-card rounded-2xl p-5">
                                     <div class="flex items-center justify-between">
                                         <div class="text-white font-body font-semibold">Game Details</div>
                                         <div class="text-xs text-white/50 font-mono">Details(gameId)</div>
                                     </div>
-                                    <div class="mt-4 h-28 rounded-2xl bg-gradient-to-br from-white/10 to-white/0 border border-white/10"></div>
+                                    <div
+                                        class="mt-4 h-28 rounded-2xl bg-gradient-to-br from-white/10 to-white/0 border border-white/10">
+                                    </div>
                                     <div class="mt-3 flex items-center gap-3">
                                         <div class="h-10 w-24 rounded-xl bg-white/5 border border-white/10"></div>
                                         <div class="h-10 flex-1 rounded-xl bg-white/5 border border-white/10"></div>
@@ -331,7 +458,8 @@
                                 </div>
                             </div>
 
-                            <div x-show="screen === 'Reviews'" x-transition.opacity class="space-y-4" style="display:none">
+                            <div x-show="screen === 'Reviews'" x-transition.opacity class="space-y-4"
+                                style="display:none">
                                 <div class="glass-card rounded-2xl p-5">
                                     <div class="flex items-center justify-between">
                                         <div class="text-white font-body font-semibold">Community Reviews</div>
@@ -341,7 +469,9 @@
                                         <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
                                             <div class="flex items-center justify-between">
                                                 <div class="text-white/80 text-sm font-body">"Updated 2m ago"</div>
-                                                <div class="text-white/60 flex items-center gap-2"><i class="fa-solid fa-heart"></i><span class="text-xs font-mono">12</span></div>
+                                                <div class="text-white/60 flex items-center gap-2"><i
+                                                        class="fa-solid fa-heart"></i><span
+                                                        class="text-xs font-mono">12</span></div>
                                             </div>
                                             <div class="mt-2 h-3 w-4/5 rounded-full bg-white/10"></div>
                                         </div>
@@ -356,7 +486,8 @@
                                 </div>
                             </div>
 
-                            <div x-show="screen === 'Analytics'" x-transition.opacity class="space-y-4" style="display:none">
+                            <div x-show="screen === 'Analytics'" x-transition.opacity class="space-y-4"
+                                style="display:none">
                                 <div class="glass-card rounded-2xl p-5">
                                     <div class="flex items-center justify-between">
                                         <div class="text-white font-body font-semibold">Analytics</div>
@@ -370,7 +501,8 @@
                                 </div>
                             </div>
 
-                            <div x-show="screen === 'Friends'" x-transition.opacity class="space-y-4" style="display:none">
+                            <div x-show="screen === 'Friends'" x-transition.opacity class="space-y-4"
+                                style="display:none">
                                 <div class="glass-card rounded-2xl p-5">
                                     <div class="flex items-center justify-between">
                                         <div class="text-white font-body font-semibold">Friends + Requests</div>
@@ -391,30 +523,37 @@
         </section>
 
         <!-- Section: The Roast (Cards) -->
-        <section class="max-w-7xl mx-auto px-4">
+        <section class="max-w-7xl mx-auto px-4 scroll-mt-24">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <!-- Content -->
                 <div class="order-2 lg:order-1 relative">
                     <!-- Glass Card -->
                     <div class="glass-panel rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden group">
                         <!-- Gradient Blob -->
-                        <div class="absolute top-0 right-0 w-64 h-64 bg-violet-500/20 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 group-hover:bg-red-500/20 transition-colors duration-700"></div>
-                        
+                        <div
+                            class="absolute top-0 right-0 w-64 h-64 bg-violet-500/20 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 group-hover:bg-red-500/20 transition-colors duration-700">
+                        </div>
+
                         <div class="relative z-10 space-y-8">
                             <!-- Chat Bubble 1 (AI) -->
                             <div class="flex gap-4">
-                                <div class="w-12 h-12 rounded-2xl bg-black/40 flex items-center justify-center shrink-0 border border-white/5">
+                                <div
+                                    class="w-12 h-12 rounded-2xl bg-black/40 flex items-center justify-center shrink-0 border border-white/5">
                                     <i class="fa-solid fa-robot text-violet-400 text-xl"></i>
                                 </div>
-                                <div class="bg-navy-800/80 p-5 rounded-3xl rounded-tl-none border border-white/5 shadow-xl max-w-sm">
-                                    <p class="text-gray-200 font-mono text-lg">"150 hours in <em class="text-white not-italic">Stardew Valley</em>? Are you optimizing your farm or just avoiding your actual job?"</p>
+                                <div
+                                    class="bg-navy-800/80 p-5 rounded-3xl rounded-tl-none border border-white/5 shadow-xl max-w-sm">
+                                    <p class="text-gray-200 font-mono text-lg">"150 hours in <em
+                                            class="text-white not-italic">Stardew Valley</em>? Are you optimizing your
+                                        farm or just avoiding your actual job?"</p>
                                 </div>
                             </div>
 
                             <!-- Chat Bubble 2 (User) -->
                             <div class="flex gap-4 flex-row-reverse">
                                 <div class="w-12 h-12 rounded-full bg-white/10 shrink-0 border border-white/5"></div>
-                                <div class="bg-violet-600 p-5 rounded-3xl rounded-tr-none shadow-xl shadow-violet-900/20 max-w-xs">
+                                <div
+                                    class="bg-violet-600 p-5 rounded-3xl rounded-tr-none shadow-xl shadow-violet-900/20 max-w-xs">
                                     <p class="text-white font-body font-medium">Why are you so mean? 😭</p>
                                 </div>
                             </div>
@@ -422,7 +561,8 @@
 
                         <div class="mt-12 pt-8 border-t border-white/5">
                             <h3 class="font-display text-3xl text-white mb-2">THE ROAST SCREEN</h3>
-                            <p class="text-gray-400 font-body">A dedicated screen to get roasted. Target yourself or friends. The AI analyzes your library and delivers personalized burns.</p>
+                            <p class="text-gray-400 font-body">A dedicated screen to get roasted. Target yourself or
+                                friends. The AI analyzes your library and delivers personalized burns.</p>
                         </div>
                     </div>
                 </div>
@@ -434,25 +574,31 @@
                         <span class="text-red-500 text-glow">JUDGE</span>
                     </h2>
                     <p class="font-body text-xl text-gray-400 max-w-md mx-auto lg:mx-0">
-                        Stop boring stats. Get an AI companion that knows your library better than you do—and isn't afraid to call you out on it.
+                        Stop boring stats. Get an AI companion that knows your library better than you do—and isn't
+                        afraid to call you out on it.
                     </p>
                 </div>
             </div>
         </section>
 
         <!-- Architecture -->
-        <section id="architecture" class="max-w-7xl mx-auto px-4">
+        <section id="architecture" class="max-w-7xl mx-auto px-4 scroll-mt-24">
             <div class="flex flex-col items-center text-center mb-16">
-                <h2 class="font-display text-5xl md:text-7xl mb-4">BUILT LIKE A <span class="text-violet-500">PRODUCT</span></h2>
-                <p class="text-gray-400 font-body text-lg max-w-3xl">Arcadia is MVVM + Koin DI with a cache-first data layer. Reviews stream via Appwrite Realtime, backed by Room TTL caching.</p>
+                <h2 class="font-display text-5xl md:text-7xl mb-4">BUILT LIKE A <span
+                        class="text-violet-500">PRODUCT</span></h2>
+                <p class="text-gray-400 font-body text-lg max-w-3xl">Arcadia is MVVM + Koin DI with a cache-first data
+                    layer. Reviews stream via Appwrite Realtime, backed by Room TTL caching.</p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div class="glass-card rounded-[2rem] p-8 relative overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-br from-violet-500/10 via-transparent to-transparent pointer-events-none"></div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-violet-500/10 via-transparent to-transparent pointer-events-none">
+                    </div>
                     <div class="relative z-10">
                         <div class="flex items-center gap-3 mb-4">
-                            <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-violet-200">
+                            <div
+                                class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-violet-200">
                                 <i class="fa-solid fa-route"></i>
                             </div>
                             <div>
@@ -460,18 +606,23 @@
                                 <p class="text-xs text-white/50 font-mono">type-safe NavKey destinations</p>
                             </div>
                         </div>
-                        <div class="rounded-2xl bg-black/30 border border-white/5 p-4 font-mono text-xs text-white/80 overflow-x-auto">
+                        <div
+                            class="rounded-2xl bg-black/30 border border-white/5 p-4 font-mono text-xs text-white/80 overflow-x-auto">
                             <div>@Serializable sealed interface ArcadiaDestination : NavKey</div>
-                            <div class="text-white/50 mt-2">Auth • Onboarding • Home • Search • Details • Analytics • Roast • Friends</div>
+                            <div class="text-white/50 mt-2">Auth • Onboarding • Home • Search • Details • Analytics •
+                                Roast • Friends</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="glass-card rounded-[2rem] p-8 relative overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-br from-pink-500/10 via-transparent to-transparent pointer-events-none"></div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-pink-500/10 via-transparent to-transparent pointer-events-none">
+                    </div>
                     <div class="relative z-10">
                         <div class="flex items-center gap-3 mb-4">
-                            <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-pink-200">
+                            <div
+                                class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-pink-200">
                                 <i class="fa-solid fa-satellite-dish"></i>
                             </div>
                             <div>
@@ -480,15 +631,18 @@
                             </div>
                         </div>
                         <div class="space-y-3">
-                            <div class="flex items-center justify-between rounded-2xl bg-white/5 border border-white/10 p-4">
+                            <div
+                                class="flex items-center justify-between rounded-2xl bg-white/5 border border-white/10 p-4">
                                 <div class="text-sm font-body text-white/80">Like / Unlike</div>
                                 <div class="text-xs font-mono text-white/60">Room optimistic</div>
                             </div>
-                            <div class="flex items-center justify-between rounded-2xl bg-white/5 border border-white/10 p-4">
+                            <div
+                                class="flex items-center justify-between rounded-2xl bg-white/5 border border-white/10 p-4">
                                 <div class="text-sm font-body text-white/80">Updates</div>
                                 <div class="text-xs font-mono text-white/60">Appwrite Realtime</div>
                             </div>
-                            <div class="flex items-center justify-between rounded-2xl bg-white/5 border border-white/10 p-4">
+                            <div
+                                class="flex items-center justify-between rounded-2xl bg-white/5 border border-white/10 p-4">
                                 <div class="text-sm font-body text-white/80">Trust cue</div>
                                 <div class="text-xs font-mono text-white/60">Updated Xm ago</div>
                             </div>
@@ -497,10 +651,13 @@
                 </div>
 
                 <div class="glass-card rounded-[2rem] p-8 relative overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-transparent pointer-events-none"></div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-transparent pointer-events-none">
+                    </div>
                     <div class="relative z-10">
                         <div class="flex items-center gap-3 mb-4">
-                            <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-cyan-200">
+                            <div
+                                class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-cyan-200">
                                 <i class="fa-solid fa-database"></i>
                             </div>
                             <div>
@@ -518,7 +675,8 @@
                                 <div class="text-sm font-body text-white/80">Appwrite</div>
                                 <div class="text-xs font-mono text-white/60">sync + realtime</div>
                             </div>
-                            <div class="mt-4 text-xs text-white/50 font-mono">CacheTTLConfig.REVIEWS_TTL_MS = 1 hour</div>
+                            <div class="mt-4 text-xs text-white/50 font-mono">CacheTTLConfig.REVIEWS_TTL_MS = 1 hour
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -528,30 +686,37 @@
                 <div class="grid md:grid-cols-3 gap-6">
                     <div>
                         <div class="text-xs text-white/50 font-mono">DI</div>
-                        <div class="mt-2 text-white font-body">Koin modules split into critical (sync) + feature (lazy) sets.</div>
+                        <div class="mt-2 text-white font-body">Koin modules split into critical (sync) + feature (lazy)
+                            sets.</div>
                     </div>
                     <div>
                         <div class="text-xs text-white/50 font-mono">Auth</div>
-                        <div class="mt-2 text-white font-body">Sessions persisted with encrypted preferences (fallback supported).</div>
+                        <div class="mt-2 text-white font-body">Sessions persisted with encrypted preferences (fallback
+                            supported).</div>
                     </div>
                     <div>
                         <div class="text-xs text-white/50 font-mono">Media</div>
-                        <div class="mt-2 text-white font-body">Avatars + artwork via Coil 3. Video support via Media3.</div>
+                        <div class="mt-2 text-white font-body">Avatars + artwork via Coil 3. Video support via Media3.
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Tech Stack -->
-        <section id="stack" class="max-w-7xl mx-auto px-4 py-8">
+        <section id="stack" class="max-w-7xl mx-auto px-4 py-8 scroll-mt-24">
             <div class="text-center mb-12">
-                <h3 class="font-body text-sm font-bold tracking-widest text-gray-500 uppercase">Kotlin 2.3.0 + Material3 Expressive</h3>
+                <h3 class="font-body text-sm font-bold tracking-widest text-gray-500 uppercase">Kotlin 2.3.0 + Material3
+                    Expressive</h3>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 items-center justify-items-center opacity-60 hover:opacity-100 transition-opacity duration-500">
+            <div
+                class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 items-center justify-items-center opacity-60 hover:opacity-100 transition-opacity duration-500">
                 <!-- Kotlin -->
                 <div class="flex flex-col items-center gap-2">
-                    <div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-violet-400">
-                        <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" aria-hidden="true" focusable="false">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-violet-400">
+                        <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" aria-hidden="true"
+                            focusable="false">
                             <defs>
                                 <linearGradient id="kotlinGradient" x1="99.991%" x2=".01%" y1="-.011%" y2="100.01%">
                                     <stop offset=".344%" stop-color="#e44857" />
@@ -566,31 +731,58 @@
                 </div>
                 <!-- Jetpack Compose -->
                 <div class="flex flex-col items-center gap-2">
-                    <div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-green-400">
-                        <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true" focusable="false">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-green-400">
+                        <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true"
+                            focusable="false">
                             <g fill="none">
-                                <path fill="#083042" d="M41.226 76.778a4 4 0 0 1-.47-1.29c.09.452.25.887.47 1.29m.578.713c.222.22.472.411.749.548l18.88 10.565l-18.88-10.565a2.9 2.9 0 0 1-.747-.548z" />
-                                <path fill="#083042" d="M64.342 101.967h-.14a8.3 8.3 0 0 1-4.014-1.016l-28.182-15.75c-1.663-.932-2.686-2.66-2.686-4.527V48.628c0-1.373.249-2.69.83-3.842L8.114 32.522c-.913 1.92-1.383 4.088-1.356 6.366v52.927a8.68 8.68 0 0 0 4.458 7.49l46.481 26.012c2.05 1.152 4.347 1.701 6.617 1.701v-.027c.055-3.32.028-16.628.028-25.023z" />
-                                <path fill="#3ddb85" d="m86.46 50.6l-.167-.246c-.138-.192-.275-.357-.413-.548c.138.164.275.356.413.547a1 1 0 0 1 .167.247M63.262 37.76c.14 0 .251-.027.39-.027c-.139.027-.278.027-.39.027" />
-                                <path fill="#3ddc84" d="M30.122 44.757a7.2 7.2 0 0 1 2.825-3.072l26.52-15.503a8.07 8.07 0 0 1 8.03-.082l26.798 15.009a9 9 0 0 1 3.018 2.743L118.99 31.04a14.9 14.9 0 0 0-4.955-4.5L69.766 1.764a13.32 13.32 0 0 0-13.233.137L12.765 27.472a11.7 11.7 0 0 0-4.651 5.049l22.009 12.236z" />
-                                <path fill="#3ddb85" d="M62.157 37.983c.057-.028.114-.028.17-.056c-.056.028-.113.028-.17.056m-20.88 12.949c.056-.11.111-.22.168-.3c-.057.109-.111.19-.168.3l-.082.246z" />
-                                <path fill="#4285f4" d="M118.962 31.04L97.285 43.852c.83 1.207 1.329 2.633 1.355 4.089v30.51a7.88 7.88 0 0 1-3.93 6.914L68.188 100.87a8.1 8.1 0 0 1-3.849 1.097c.029 8.369.029 21.677-.027 24.997v.027a13.53 13.53 0 0 0 6.617-1.812l43.769-25.599c4.07-2.387 6.562-6.723 6.506-11.415V37.817c-.028-2.442-.858-4.774-2.242-6.777" />
-                                <path fill="#4285f4" d="M86.963 75.187c-.028.056-.028.111-.056.168a.4.4 0 0 0 .056-.168m-.278-24.227c-.057-.138-.14-.248-.223-.385c.083.137.166.275.222.385zM66.807 88.576L84.58 78.178c.111-.054.195-.138.306-.192c-.111.054-.195.138-.306.192l-17.773 10.4zM86.74 75.818c-.056.138-.139.275-.196.413c.057-.165.112-.303.196-.413" />
-                                <path fill="#d6f0ff" d="M41.198 51.178a5.5 5.5 0 0 0-.415 1.675c-.028.218-.028.438-.028.686v21.483c0 .164 0 .302.028.467c.056.465.222.905.47 1.29c.167.274.36.492.555.712c.222.22.47.411.746.55l18.882 10.563a5.5 5.5 0 0 0 2.684.685h.195a5.16 5.16 0 0 0 2.492-.74L84.58 78.15c.111-.055.194-.138.305-.192c.194-.137.388-.275.554-.44q.391-.354.719-.768c.138-.192.277-.383.388-.576c.082-.136.139-.274.193-.412c.056-.135.14-.301.195-.465c.027-.056.027-.111.055-.165a5.4 5.4 0 0 0 .249-1.647V53.044c0-.383-.056-.74-.138-1.096c-.055-.248-.14-.468-.222-.688l-.166-.328c-.055-.138-.14-.247-.222-.385l-.166-.246c-.138-.193-.277-.357-.415-.549a5.6 5.6 0 0 0-1.606-1.29L66.337 38.394a6 6 0 0 0-.97-.44a6 6 0 0 0-1.385-.246h-.36c-.137 0-.248 0-.386.026a5.7 5.7 0 0 0-.942.165c-.055.027-.11.027-.166.056c-.415.11-.803.301-1.191.52l-17.773 10.4a4.6 4.6 0 0 0-1.33 1.18c-.137.192-.276.384-.387.576c-.055.11-.11.192-.166.302l-.083.246Z" />
-                                <path fill="#083042" d="M64.312 89.288h-.194a5.5 5.5 0 0 1-2.686-.684L42.552 78.04a3.7 3.7 0 0 1-.748-.549a3.3 3.3 0 0 1-.554-.714a4 4 0 0 1-.47-1.29c-.029-.163-.029-.301-.029-.465V53.537c0-.219 0-.465.029-.686c.053-.575.192-1.14.415-1.674L36.1 48.078l-5.98-3.32c-.554 1.152-.83 2.468-.83 3.841v32.047a5.32 5.32 0 0 0 2.685 4.528l28.157 15.776a8 8 0 0 0 4.014 1.016h.14c0-4.089-.029-6.997-.029-6.997l.055-5.68z" />
-                                <path fill="#041619" d="M64.312 89.288h-.194a5.5 5.5 0 0 1-2.686-.684L42.552 78.04a3.7 3.7 0 0 1-.748-.549a3.3 3.3 0 0 1-.554-.714a4 4 0 0 1-.47-1.29c-.029-.163-.029-.301-.029-.465V53.537c0-.219 0-.465.029-.686c.053-.575.192-1.14.415-1.674L36.1 48.078l-5.98-3.32c-.554 1.152-.83 2.468-.83 3.841v32.047a5.32 5.32 0 0 0 2.685 4.528l28.157 15.776a8 8 0 0 0 4.014 1.016h.14c0-4.089-.029-6.997-.029-6.997l.055-5.68z" />
-                                <path fill="#3ddb85" d="m94.266 41.109l-26.799-15.01a8.07 8.07 0 0 0-8.029.083l-26.52 15.504a7.05 7.05 0 0 0-2.826 3.073l6.01 3.32l5.093 3.099l.082-.246c.056-.111.111-.22.166-.302c.111-.192.25-.384.388-.576c.36-.467.803-.85 1.33-1.18l17.772-10.4q.57-.32 1.191-.52c.056-.027.111-.027.166-.056q.463-.126.941-.164c.138 0 .249-.028.388-.028h.36c.469.03.933.111 1.384.246q.512.162.969.441l17.966 10.07a6 6 0 0 1 1.608 1.289c.137.164.277.357.414.548l.167.246l4.595-3.044l6.229-3.704c-.803-1.071-1.827-2.032-3.045-2.69z" />
-                                <path fill="#37bf6e" d="m94.266 41.109l-26.799-15.01a8.07 8.07 0 0 0-8.029.083l-26.52 15.504a7.05 7.05 0 0 0-2.826 3.073l6.01 3.32l5.093 3.099l.082-.246c.056-.111.111-.22.166-.302c.111-.192.25-.384.388-.576c.36-.467.803-.85 1.33-1.18l17.772-10.4q.57-.32 1.191-.52c.056-.027.111-.027.166-.056q.463-.126.941-.164c.138 0 .249-.028.388-.028h.36c.469.03.933.111 1.384.246q.512.162.969.441l17.966 10.07a6 6 0 0 1 1.608 1.289c.137.164.277.357.414.548l.167.246l4.595-3.044l6.229-3.704c-.803-1.071-1.827-2.032-3.045-2.69z" />
-                                <path fill="#4285f4" d="M86.46 50.602c.083.136.139.246.221.384l.167.329a4.8 4.8 0 0 1 .36 1.783V73.54a5.4 5.4 0 0 1-.25 1.646c-.027.054-.027.11-.055.164a3.4 3.4 0 0 1-.193.468c-.057.135-.14.273-.195.41c-.11.193-.249.384-.388.577a6 6 0 0 1-.719.767c-.166.165-.36.302-.554.44c-.111.054-.193.137-.304.192L66.776 88.602a5.84 5.84 0 0 1-2.492.742v5.679s0 2.909.028 6.997a7.8 7.8 0 0 0 3.849-1.097l26.52-15.504c2.465-1.453 3.96-4.088 3.932-6.913V47.995c-.027-1.482-.525-2.882-1.355-4.089l-6.231 3.705z" />
-                                <path fill="#3870b2" d="M86.46 50.602c.083.136.139.246.221.384l.167.329a4.8 4.8 0 0 1 .36 1.783V73.54a5.4 5.4 0 0 1-.25 1.646c-.027.054-.027.11-.055.164a3.4 3.4 0 0 1-.193.468c-.057.135-.14.273-.195.41c-.11.193-.249.384-.388.577a6 6 0 0 1-.719.767c-.166.165-.36.302-.554.44c-.111.054-.193.137-.304.192L66.776 88.602a5.84 5.84 0 0 1-2.492.742v5.679s0 2.909.028 6.997a7.8 7.8 0 0 0 3.849-1.097l26.52-15.504c2.465-1.453 3.96-4.088 3.932-6.913V47.995c-.027-1.482-.525-2.882-1.355-4.089l-6.231 3.705z" />
-                                <path fill="#d6f0ff" d="M62.155 37.982c-.416.11-.804.302-1.19.52l-17.774 10.4l17.772-10.398a4.5 4.5 0 0 1 1.19-.52z" />
-                                <path fill="#000" d="M62.155 37.982c-.416.11-.804.302-1.19.52l-17.774 10.4l17.772-10.398a4.5 4.5 0 0 1 1.19-.52z" opacity="0.1" />
-                                <path fill="#d6f0ff" d="M85.88 49.806a5.6 5.6 0 0 0-1.605-1.29l-17.968-10.07l17.967 10.07a5.6 5.6 0 0 1 1.606 1.29" />
-                                <path fill="#000" d="M85.88 49.806a5.6 5.6 0 0 0-1.605-1.29l-17.968-10.07l17.967 10.07a5.6 5.6 0 0 1 1.606 1.29" opacity="0.1" />
-                                <path fill="#d6f0ff" d="M86.848 51.289a7 7 0 0 1 .22.684c-.055-.219-.14-.438-.222-.684z" />
-                                <path fill="#000" d="M86.848 51.289a7 7 0 0 1 .22.684c-.055-.219-.14-.438-.222-.684z" opacity="0.1" />
-                                <path fill="#d6f0ff" d="M86.956 75.186a5.3 5.3 0 0 0 .249-1.646V53.098V73.54a5.3 5.3 0 0 1-.25 1.646z" />
-                                <path fill="#000" d="M86.956 75.186a5.3 5.3 0 0 0 .249-1.646V53.098V73.54a5.3 5.3 0 0 1-.25 1.646z" opacity="0.1" />
+                                <path fill="#083042"
+                                    d="M41.226 76.778a4 4 0 0 1-.47-1.29c.09.452.25.887.47 1.29m.578.713c.222.22.472.411.749.548l18.88 10.565l-18.88-10.565a2.9 2.9 0 0 1-.747-.548z" />
+                                <path fill="#083042"
+                                    d="M64.342 101.967h-.14a8.3 8.3 0 0 1-4.014-1.016l-28.182-15.75c-1.663-.932-2.686-2.66-2.686-4.527V48.628c0-1.373.249-2.69.83-3.842L8.114 32.522c-.913 1.92-1.383 4.088-1.356 6.366v52.927a8.68 8.68 0 0 0 4.458 7.49l46.481 26.012c2.05 1.152 4.347 1.701 6.617 1.701v-.027c.055-3.32.028-16.628.028-25.023z" />
+                                <path fill="#3ddb85"
+                                    d="m86.46 50.6l-.167-.246c-.138-.192-.275-.357-.413-.548c.138.164.275.356.413.547a1 1 0 0 1 .167.247M63.262 37.76c.14 0 .251-.027.39-.027c-.139.027-.278.027-.39.027" />
+                                <path fill="#3ddc84"
+                                    d="M30.122 44.757a7.2 7.2 0 0 1 2.825-3.072l26.52-15.503a8.07 8.07 0 0 1 8.03-.082l26.798 15.009a9 9 0 0 1 3.018 2.743L118.99 31.04a14.9 14.9 0 0 0-4.955-4.5L69.766 1.764a13.32 13.32 0 0 0-13.233.137L12.765 27.472a11.7 11.7 0 0 0-4.651 5.049l22.009 12.236z" />
+                                <path fill="#3ddb85"
+                                    d="M62.157 37.983c.057-.028.114-.028.17-.056c-.056.028-.113.028-.17.056m-20.88 12.949c.056-.11.111-.22.168-.3c-.057.109-.111.19-.168.3l-.082.246z" />
+                                <path fill="#4285f4"
+                                    d="M118.962 31.04L97.285 43.852c.83 1.207 1.329 2.633 1.355 4.089v30.51a7.88 7.88 0 0 1-3.93 6.914L68.188 100.87a8.1 8.1 0 0 1-3.849 1.097c.029 8.369.029 21.677-.027 24.997v.027a13.53 13.53 0 0 0 6.617-1.812l43.769-25.599c4.07-2.387 6.562-6.723 6.506-11.415V37.817c-.028-2.442-.858-4.774-2.242-6.777" />
+                                <path fill="#4285f4"
+                                    d="M86.963 75.187c-.028.056-.028.111-.056.168a.4.4 0 0 0 .056-.168m-.278-24.227c-.057-.138-.14-.248-.223-.385c.083.137.166.275.222.385zM66.807 88.576L84.58 78.178c.111-.054.195-.138.306-.192c-.111.054-.195.138-.306.192l-17.773 10.4zM86.74 75.818c-.056.138-.139.275-.196.413c.057-.165.112-.303.196-.413" />
+                                <path fill="#d6f0ff"
+                                    d="M41.198 51.178a5.5 5.5 0 0 0-.415 1.675c-.028.218-.028.438-.028.686v21.483c0 .164 0 .302.028.467c.056.465.222.905.47 1.29c.167.274.36.492.555.712c.222.22.47.411.746.55l18.882 10.563a5.5 5.5 0 0 0 2.684.685h.195a5.16 5.16 0 0 0 2.492-.74L84.58 78.15c.111-.055.194-.138.305-.192c.194-.137.388-.275.554-.44q.391-.354.719-.768c.138-.192.277-.383.388-.576c.082-.136.139-.274.193-.412c.056-.135.14-.301.195-.465c.027-.056.027-.111.055-.165a5.4 5.4 0 0 0 .249-1.647V53.044c0-.383-.056-.74-.138-1.096c-.055-.248-.14-.468-.222-.688l-.166-.328c-.055-.138-.14-.247-.222-.385l-.166-.246c-.138-.193-.277-.357-.415-.549a5.6 5.6 0 0 0-1.606-1.29L66.337 38.394a6 6 0 0 0-.97-.44a6 6 0 0 0-1.385-.246h-.36c-.137 0-.248 0-.386.026a5.7 5.7 0 0 0-.942.165c-.055.027-.11.027-.166.056c-.415.11-.803.301-1.191.52l-17.773 10.4a4.6 4.6 0 0 0-1.33 1.18c-.137.192-.276.384-.387.576c-.055.11-.11.192-.166.302l-.083.246Z" />
+                                <path fill="#083042"
+                                    d="M64.312 89.288h-.194a5.5 5.5 0 0 1-2.686-.684L42.552 78.04a3.7 3.7 0 0 1-.748-.549a3.3 3.3 0 0 1-.554-.714a4 4 0 0 1-.47-1.29c-.029-.163-.029-.301-.029-.465V53.537c0-.219 0-.465.029-.686c.053-.575.192-1.14.415-1.674L36.1 48.078l-5.98-3.32c-.554 1.152-.83 2.468-.83 3.841v32.047a5.32 5.32 0 0 0 2.685 4.528l28.157 15.776a8 8 0 0 0 4.014 1.016h.14c0-4.089-.029-6.997-.029-6.997l.055-5.68z" />
+                                <path fill="#041619"
+                                    d="M64.312 89.288h-.194a5.5 5.5 0 0 1-2.686-.684L42.552 78.04a3.7 3.7 0 0 1-.748-.549a3.3 3.3 0 0 1-.554-.714a4 4 0 0 1-.47-1.29c-.029-.163-.029-.301-.029-.465V53.537c0-.219 0-.465.029-.686c.053-.575.192-1.14.415-1.674L36.1 48.078l-5.98-3.32c-.554 1.152-.83 2.468-.83 3.841v32.047a5.32 5.32 0 0 0 2.685 4.528l28.157 15.776a8 8 0 0 0 4.014 1.016h.14c0-4.089-.029-6.997-.029-6.997l.055-5.68z" />
+                                <path fill="#3ddb85"
+                                    d="m94.266 41.109l-26.799-15.01a8.07 8.07 0 0 0-8.029.083l-26.52 15.504a7.05 7.05 0 0 0-2.826 3.073l6.01 3.32l5.093 3.099l.082-.246c.056-.111.111-.22.166-.302c.111-.192.25-.384.388-.576c.36-.467.803-.85 1.33-1.18l17.772-10.4q.57-.32 1.191-.52c.056-.027.111-.027.166-.056q.463-.126.941-.164c.138 0 .249-.028.388-.028h.36c.469.03.933.111 1.384.246q.512.162.969.441l17.966 10.07a6 6 0 0 1 1.608 1.289c.137.164.277.357.414.548l.167.246l4.595-3.044l6.229-3.704c-.803-1.071-1.827-2.032-3.045-2.69z" />
+                                <path fill="#37bf6e"
+                                    d="m94.266 41.109l-26.799-15.01a8.07 8.07 0 0 0-8.029.083l-26.52 15.504a7.05 7.05 0 0 0-2.826 3.073l6.01 3.32l5.093 3.099l.082-.246c.056-.111.111-.22.166-.302c.111-.192.25-.384.388-.576c.36-.467.803-.85 1.33-1.18l17.772-10.4q.57-.32 1.191-.52c.056-.027.111-.027.166-.056q.463-.126.941-.164c.138 0 .249-.028.388-.028h.36c.469.03.933.111 1.384.246q.512.162.969.441l17.966 10.07a6 6 0 0 1 1.608 1.289c.137.164.277.357.414.548l.167.246l4.595-3.044l6.229-3.704c-.803-1.071-1.827-2.032-3.045-2.69z" />
+                                <path fill="#4285f4"
+                                    d="M86.46 50.602c.083.136.139.246.221.384l.167.329a4.8 4.8 0 0 1 .36 1.783V73.54a5.4 5.4 0 0 1-.25 1.646c-.027.054-.027.11-.055.164a3.4 3.4 0 0 1-.193.468c-.057.135-.14.273-.195.41c-.11.193-.249.384-.388.577a6 6 0 0 1-.719.767c-.166.165-.36.302-.554.44c-.111.054-.193.137-.304.192L66.776 88.602a5.84 5.84 0 0 1-2.492.742v5.679s0 2.909.028 6.997a7.8 7.8 0 0 0 3.849-1.097l26.52-15.504c2.465-1.453 3.96-4.088 3.932-6.913V47.995c-.027-1.482-.525-2.882-1.355-4.089l-6.231 3.705z" />
+                                <path fill="#3870b2"
+                                    d="M86.46 50.602c.083.136.139.246.221.384l.167.329a4.8 4.8 0 0 1 .36 1.783V73.54a5.4 5.4 0 0 1-.25 1.646c-.027.054-.027.11-.055.164a3.4 3.4 0 0 1-.193.468c-.057.135-.14.273-.195.41c-.11.193-.249.384-.388.577a6 6 0 0 1-.719.767c-.166.165-.36.302-.554.44c-.111.054-.193.137-.304.192L66.776 88.602a5.84 5.84 0 0 1-2.492.742v5.679s0 2.909.028 6.997a7.8 7.8 0 0 0 3.849-1.097l26.52-15.504c2.465-1.453 3.96-4.088 3.932-6.913V47.995c-.027-1.482-.525-2.882-1.355-4.089l-6.231 3.705z" />
+                                <path fill="#d6f0ff"
+                                    d="M62.155 37.982c-.416.11-.804.302-1.19.52l-17.774 10.4l17.772-10.398a4.5 4.5 0 0 1 1.19-.52z" />
+                                <path fill="#000"
+                                    d="M62.155 37.982c-.416.11-.804.302-1.19.52l-17.774 10.4l17.772-10.398a4.5 4.5 0 0 1 1.19-.52z"
+                                    opacity="0.1" />
+                                <path fill="#d6f0ff"
+                                    d="M85.88 49.806a5.6 5.6 0 0 0-1.605-1.29l-17.968-10.07l17.967 10.07a5.6 5.6 0 0 1 1.606 1.29" />
+                                <path fill="#000"
+                                    d="M85.88 49.806a5.6 5.6 0 0 0-1.605-1.29l-17.968-10.07l17.967 10.07a5.6 5.6 0 0 1 1.606 1.29"
+                                    opacity="0.1" />
+                                <path fill="#d6f0ff"
+                                    d="M86.848 51.289a7 7 0 0 1 .22.684c-.055-.219-.14-.438-.222-.684z" />
+                                <path fill="#000" d="M86.848 51.289a7 7 0 0 1 .22.684c-.055-.219-.14-.438-.222-.684z"
+                                    opacity="0.1" />
+                                <path fill="#d6f0ff"
+                                    d="M86.956 75.186a5.3 5.3 0 0 0 .249-1.646V53.098V73.54a5.3 5.3 0 0 1-.25 1.646z" />
+                                <path fill="#000"
+                                    d="M86.956 75.186a5.3 5.3 0 0 0 .249-1.646V53.098V73.54a5.3 5.3 0 0 1-.25 1.646z"
+                                    opacity="0.1" />
                             </g>
                         </svg>
                     </div>
@@ -598,48 +790,69 @@
                 </div>
                 <!-- Material3 -->
                 <div class="flex flex-col items-center gap-2">
-                    <div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-cyan-400">
-                        <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-                            <path fill="currentColor" d="M16 0C7.172 0 0 7.172 0 16s7.172 16 16 16s16-7.172 16-16S24.828 0 16 0m0 1c3.828 0 7.307 1.443 9.958 3.802H6.041A14.92 14.92 0 0 1 15.999 1zM6.417 5.802h19.167l-9.583 19.161zm-1.615.24v19.917A14.92 14.92 0 0 1 1 16.001c0-3.828 1.443-7.307 3.802-9.958zm22.396 0A14.92 14.92 0 0 1 31 16c0 3.828-1.443 7.307-3.802 9.958zm-21.396.76L15.5 26.198H5.802zm20.396 0v19.396H16.5l9.703-19.396zM6.042 27.198h19.917C23.219 29.651 19.673 31 16.001 31s-7.219-1.349-9.958-3.802z" />
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-cyan-400">
+                        <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true"
+                            focusable="false">
+                            <path fill="currentColor"
+                                d="M16 0C7.172 0 0 7.172 0 16s7.172 16 16 16s16-7.172 16-16S24.828 0 16 0m0 1c3.828 0 7.307 1.443 9.958 3.802H6.041A14.92 14.92 0 0 1 15.999 1zM6.417 5.802h19.167l-9.583 19.161zm-1.615.24v19.917A14.92 14.92 0 0 1 1 16.001c0-3.828 1.443-7.307 3.802-9.958zm22.396 0A14.92 14.92 0 0 1 31 16c0 3.828-1.443 7.307-3.802 9.958zm-21.396.76L15.5 26.198H5.802zm20.396 0v19.396H16.5l9.703-19.396zM6.042 27.198h19.917C23.219 29.651 19.673 31 16.001 31s-7.219-1.349-9.958-3.802z" />
                         </svg>
                     </div>
                     <span class="font-display text-sm tracking-wide">Material3</span>
                 </div>
                 <!-- Navigation3 -->
                 <div class="flex flex-col items-center gap-2">
-                    <div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-amber-400">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-amber-400">
                         <i class="fa-solid fa-route text-2xl"></i>
                     </div>
                     <span class="font-display text-sm tracking-wide">Nav3</span>
                 </div>
                 <!-- Appwrite -->
                 <div class="flex flex-col items-center gap-2">
-                    <div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-pink-400">
-                        <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true" focusable="false">
-                            <path fill="#fd366e" d="M56.305 7.568c-25.833 0-47.611 17.355-54.309 41.042A55.7 55.7 0 0 0 0 60.187v7.628a56.1 56.1 0 0 0 7.421 24.402c9.758 16.868 27.996 28.215 48.884 28.215H128V92.217H56.305a28.1 28.1 0 0 1-19.363-7.696c-5.453-5.143-8.855-12.432-8.855-20.52c0-2.668.37-5.248 1.063-7.696c.78-2.76 1.97-5.348 3.503-7.695c5.033-7.722 13.746-12.827 23.652-12.827s18.617 5.105 23.65 12.827h30.655C103.913 24.923 82.14 7.568 56.305 7.568M83.46 56.305a28.2 28.2 0 0 1 1.062 7.696c0 8.088-3.401 15.377-8.855 20.52H128V56.305Z" />
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-pink-400">
+                        <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" aria-hidden="true"
+                            focusable="false">
+                            <path fill="#fd366e"
+                                d="M56.305 7.568c-25.833 0-47.611 17.355-54.309 41.042A55.7 55.7 0 0 0 0 60.187v7.628a56.1 56.1 0 0 0 7.421 24.402c9.758 16.868 27.996 28.215 48.884 28.215H128V92.217H56.305a28.1 28.1 0 0 1-19.363-7.696c-5.453-5.143-8.855-12.432-8.855-20.52c0-2.668.37-5.248 1.063-7.696c.78-2.76 1.97-5.348 3.503-7.695c5.033-7.722 13.746-12.827 23.652-12.827s18.617 5.105 23.65 12.827h30.655C103.913 24.923 82.14 7.568 56.305 7.568M83.46 56.305a28.2 28.2 0 0 1 1.062 7.696c0 8.088-3.401 15.377-8.855 20.52H128V56.305Z" />
                         </svg>
                     </div>
                     <span class="font-display text-sm tracking-wide">Appwrite</span>
                 </div>
                 <!-- Room -->
                 <div class="flex flex-col items-center gap-2">
-                    <div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400">
-                        <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                            <path fill="currentColor" d="M12 10c4.418 0 8-1.79 8-4s-3.582-4-8-4s-8 1.79-8 4s3.582 4 8 4" />
-                            <path fill="currentColor" d="M4 12v6c0 2.21 3.582 4 8 4s8-1.79 8-4v-6c0 2.21-3.582 4-8 4s-8-1.79-8-4" opacity="0.5" />
-                            <path fill="currentColor" d="M4 6v6c0 2.21 3.582 4 8 4s8-1.79 8-4V6c0 2.21-3.582 4-8 4S4 8.21 4 6" opacity="0.7" />
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400">
+                        <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"
+                            focusable="false">
+                            <path fill="currentColor"
+                                d="M12 10c4.418 0 8-1.79 8-4s-3.582-4-8-4s-8 1.79-8 4s3.582 4 8 4" />
+                            <path fill="currentColor"
+                                d="M4 12v6c0 2.21 3.582 4 8 4s8-1.79 8-4v-6c0 2.21-3.582 4-8 4s-8-1.79-8-4"
+                                opacity="0.5" />
+                            <path fill="currentColor"
+                                d="M4 6v6c0 2.21 3.582 4 8 4s8-1.79 8-4V6c0 2.21-3.582 4-8 4S4 8.21 4 6"
+                                opacity="0.7" />
                         </svg>
                     </div>
                     <span class="font-display text-sm tracking-wide">Room</span>
                 </div>
                 <!-- Koin -->
                 <div class="flex flex-col items-center gap-2">
-                    <div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-orange-400">
-                        <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-orange-400">
+                        <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"
+                            focusable="false">
                             <g fill="#6f00f6">
-                                <path fill-rule="evenodd" d="M12 3.98L5 7.99v8.02l7 4.01l7-4.01V7.99zm8 3.52L12 3L4 7.5v9l8 4.5l8-4.5z" clip-rule="evenodd" />
-                                <path fill-rule="evenodd" d="m12.001 9l-2.5 1.475v3.05l2.5 1.474l2.5-1.475v-3.05zm3.5 1l-3.5-2l-3.5 2v4l3.5 2l3.5-2z" clip-rule="evenodd" />
-                                <path d="M11.5 12.2L4.26 8.127l.436-.74L12 11.5l7.13-4.11l.435.73L12.5 12.2v8.165h-1z" />
+                                <path fill-rule="evenodd"
+                                    d="M12 3.98L5 7.99v8.02l7 4.01l7-4.01V7.99zm8 3.52L12 3L4 7.5v9l8 4.5l8-4.5z"
+                                    clip-rule="evenodd" />
+                                <path fill-rule="evenodd"
+                                    d="m12.001 9l-2.5 1.475v3.05l2.5 1.474l2.5-1.475v-3.05zm3.5 1l-3.5-2l-3.5 2v4l3.5 2l3.5-2z"
+                                    clip-rule="evenodd" />
+                                <path
+                                    d="M11.5 12.2L4.26 8.127l.436-.74L12 11.5l7.13-4.11l.435.73L12.5 12.2v8.165h-1z" />
                             </g>
                         </svg>
                     </div>
@@ -647,13 +860,21 @@
                 </div>
                 <!-- Coil -->
                 <div class="flex flex-col items-center gap-2">
-                    <div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-teal-400">
-                        <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="344 268 56 56" aria-hidden="true" focusable="false">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-teal-400">
+                        <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="344 268 56 56"
+                            aria-hidden="true" focusable="false">
                             <g>
                                 <g>
-                                    <path fill="#45DFF4" d="M368.196,311.956l-13.756-10.297l-1.377,1.032c-2.347,1.755-2.347,4.604,0,6.358l15.134,11.33    c2.347,1.756,6.15,1.756,8.497,0l15.134-11.33c2.348-1.755,2.348-4.604,0-6.358l-1.379-1.032l-13.755,10.297    C374.346,313.712,370.543,313.712,368.196,311.956z"></path>
-                                    <path fill="#42A5F5" d="M391.827,294.269l-1.379-1.032l-13.755,10.296c-2.347,1.756-6.15,1.756-8.497,0l-13.756-10.296    l-1.377,1.032c-2.347,1.755-2.347,4.603,0,6.359l1.377,1.031l13.756,10.297c2.347,1.756,6.15,1.756,8.497,0l13.755-10.297    l1.379-1.031C394.174,298.871,394.174,296.023,391.827,294.269z"></path>
-                                    <path fill="#3B6BB4" d="M376.693,303.532l13.755-10.296l1.379-1.033c2.348-1.755,2.348-4.604,0-6.359l-1.267-0.948l-15.861,11.827    c-1.245,0.933-3.264,0.933-4.509,0l-8.033-6.011c-1.245-0.933-1.245-2.443,0-3.376l16.104-11.647l-1.567-1.173    c-2.347-1.757-6.15-1.757-8.497,0l-15.134,11.328c-2.347,1.756-2.347,4.604,0,6.359l1.377,1.033l13.756,10.296    C370.543,305.288,374.346,305.288,376.693,303.532z"></path>
+                                    <path fill="#45DFF4"
+                                        d="M368.196,311.956l-13.756-10.297l-1.377,1.032c-2.347,1.755-2.347,4.604,0,6.358l15.134,11.33    c2.347,1.756,6.15,1.756,8.497,0l15.134-11.33c2.348-1.755,2.348-4.604,0-6.358l-1.379-1.032l-13.755,10.297    C374.346,313.712,370.543,313.712,368.196,311.956z">
+                                    </path>
+                                    <path fill="#42A5F5"
+                                        d="M391.827,294.269l-1.379-1.032l-13.755,10.296c-2.347,1.756-6.15,1.756-8.497,0l-13.756-10.296    l-1.377,1.032c-2.347,1.755-2.347,4.603,0,6.359l1.377,1.031l13.756,10.297c2.347,1.756,6.15,1.756,8.497,0l13.755-10.297    l1.379-1.031C394.174,298.871,394.174,296.023,391.827,294.269z">
+                                    </path>
+                                    <path fill="#3B6BB4"
+                                        d="M376.693,303.532l13.755-10.296l1.379-1.033c2.348-1.755,2.348-4.604,0-6.359l-1.267-0.948l-15.861,11.827    c-1.245,0.933-3.264,0.933-4.509,0l-8.033-6.011c-1.245-0.933-1.245-2.443,0-3.376l16.104-11.647l-1.567-1.173    c-2.347-1.757-6.15-1.757-8.497,0l-15.134,11.328c-2.347,1.756-2.347,4.604,0,6.359l1.377,1.033l13.756,10.296    C370.543,305.288,374.346,305.288,376.693,303.532z">
+                                    </path>
                                 </g>
                             </g>
                         </svg>
@@ -664,22 +885,28 @@
         </section>
 
         <!-- NEW: Game Reviews Section -->
-        <section id="reviews" class="max-w-7xl mx-auto px-4">
+        <section id="reviews" class="max-w-7xl mx-auto px-4 scroll-mt-24">
             <div class="flex flex-col items-center text-center mb-16">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 mb-4">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 mb-4">
                     <span class="relative flex h-2 w-2">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                     </span>
-                    <span class="text-[10px] font-bold tracking-widest text-green-400 uppercase">Live Community Feed</span>
+                    <span class="text-[10px] font-bold tracking-widest text-green-400 uppercase">Live Community
+                        Feed</span>
                 </div>
-                <h2 class="font-display text-5xl md:text-7xl mb-4">COMMUNITY <span class="text-violet-500">REVIEWS</span></h2>
-                <p class="text-gray-400 font-body text-lg max-w-2xl">Rate games, write reviews, and like others' opinions. All synced in real-time via Appwrite with optimistic UI updates.</p>
+                <h2 class="font-display text-5xl md:text-7xl mb-4">COMMUNITY <span
+                        class="text-violet-500">REVIEWS</span></h2>
+                <p class="text-gray-400 font-body text-lg max-w-2xl">Rate games, write reviews, and like others'
+                    opinions. All synced in real-time via Appwrite with optimistic UI updates.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Review 1 -->
-                <div x-data="{ expanded: false }" class="glass-card rounded-[2.5rem] p-8 transition-all hover:scale-[1.02] relative group">
+                <div x-data="{ expanded: false }"
+                    class="glass-card rounded-[2.5rem] p-8 transition-all hover:scale-[1.02] relative group">
                     <div class="flex items-start justify-between mb-6">
                         <div class="flex items-center space-x-4">
                             <div class="w-12 h-12 rounded-2xl overflow-hidden border border-white/10">
@@ -687,27 +914,35 @@
                             </div>
                             <div>
                                 <h4 class="font-bold text-white text-sm">Alex Rivera</h4>
-                                <p class="text-[10px] text-gray-500 uppercase tracking-widest font-mono">2m ago • edited</p>
+                                <p class="text-[10px] text-gray-500 uppercase tracking-widest font-mono">2m ago • edited
+                                </p>
                             </div>
                         </div>
-                        <div class="m3-primary-container px-3 py-1 rounded-xl flex items-center gap-1 text-sm font-bold">
+                        <div
+                            class="m3-primary-container px-3 py-1 rounded-xl flex items-center gap-1 text-sm font-bold">
                             <span>4.8</span>
                             <i class="fa-solid fa-star text-xs"></i>
                         </div>
                     </div>
-                    <div class="relative overflow-hidden transition-all duration-500" :style="expanded ? 'max-height: 1000px' : 'max-height: 80px'">
+                    <div class="relative overflow-hidden transition-all duration-500"
+                        :style="expanded ? 'max-height: 1000px' : 'max-height: 80px'">
                         <p class="text-gray-300 font-body leading-relaxed" :class="expanded ? '' : 'line-clamp-3'">
-                            "The new update is absolutely insane. The spring physics in the UI make every tap feel tactile. I spent 4 hours just organizing my backlog because it felt so good. Best gaming companion hands down."
+                            "The new update is absolutely insane. The spring physics in the UI make every tap feel
+                            tactile. I spent 4 hours just organizing my backlog because it felt so good. Best gaming
+                            companion hands down."
                         </p>
                     </div>
-                    <button @click="expanded = !expanded" class="mt-6 flex items-center gap-2 text-violet-400 text-xs font-bold uppercase tracking-tighter hover:text-white transition-colors cursor-pointer">
+                    <button @click="expanded = !expanded"
+                        class="mt-6 flex items-center gap-2 text-violet-400 text-xs font-bold uppercase tracking-tighter hover:text-white transition-colors cursor-pointer">
                         <span x-text="expanded ? 'Show Less' : 'Read Full Review'"></span>
-                        <i class="fa-solid fa-chevron-down transition-transform duration-300" :class="expanded ? 'rotate-180' : ''"></i>
+                        <i class="fa-solid fa-chevron-down transition-transform duration-300"
+                            :class="expanded ? 'rotate-180' : ''"></i>
                     </button>
                 </div>
 
                 <!-- Review 2 -->
-                <div x-data="{ expanded: false }" class="glass-card rounded-[2.5rem] p-8 transition-all hover:scale-[1.02] relative group border-violet-500/20 shadow-lg shadow-violet-500/5">
+                <div x-data="{ expanded: false }"
+                    class="glass-card rounded-[2.5rem] p-8 transition-all hover:scale-[1.02] relative group border-violet-500/20 shadow-lg shadow-violet-500/5">
                     <div class="flex items-start justify-between mb-6">
                         <div class="flex items-center space-x-4">
                             <div class="w-12 h-12 rounded-2xl overflow-hidden border border-white/10">
@@ -715,27 +950,35 @@
                             </div>
                             <div>
                                 <h4 class="font-bold text-white text-sm">Sarah Chen</h4>
-                                <p class="text-[10px] text-gray-500 uppercase tracking-widest font-mono">Just now • Friend</p>
+                                <p class="text-[10px] text-gray-500 uppercase tracking-widest font-mono">Just now •
+                                    Friend</p>
                             </div>
                         </div>
-                        <div class="bg-red-500/20 text-red-400 border border-red-500/30 px-3 py-1 rounded-xl flex items-center gap-1 text-sm font-bold">
+                        <div
+                            class="bg-red-500/20 text-red-400 border border-red-500/30 px-3 py-1 rounded-xl flex items-center gap-1 text-sm font-bold">
                             <span>5.0</span>
                             <i class="fa-solid fa-star text-xs"></i>
                         </div>
                     </div>
-                    <div class="relative overflow-hidden transition-all duration-500" :style="expanded ? 'max-height: 1000px' : 'max-height: 80px'">
+                    <div class="relative overflow-hidden transition-all duration-500"
+                        :style="expanded ? 'max-height: 1000px' : 'max-height: 80px'">
                         <p class="text-gray-300 font-body leading-relaxed" :class="expanded ? '' : 'line-clamp-3'">
-                            "Finally, a tracker that doesn't feel like a spreadsheet. The Appwrite realtime sync is flawless. Saw Alex's review pop up instantly. The judge (AI) called me out for 200 hours in Animal Crossing though... 10/10."
+                            "Finally, a tracker that doesn't feel like a spreadsheet. The Appwrite realtime sync is
+                            flawless. Saw Alex's review pop up instantly. The judge (AI) called me out for 200 hours in
+                            Animal Crossing though... 10/10."
                         </p>
                     </div>
-                    <button @click="expanded = !expanded" class="mt-6 flex items-center gap-2 text-violet-400 text-xs font-bold uppercase tracking-tighter hover:text-white transition-colors cursor-pointer">
+                    <button @click="expanded = !expanded"
+                        class="mt-6 flex items-center gap-2 text-violet-400 text-xs font-bold uppercase tracking-tighter hover:text-white transition-colors cursor-pointer">
                         <span x-text="expanded ? 'Show Less' : 'Read Full Review'"></span>
-                        <i class="fa-solid fa-chevron-down transition-transform duration-300" :class="expanded ? 'rotate-180' : ''"></i>
+                        <i class="fa-solid fa-chevron-down transition-transform duration-300"
+                            :class="expanded ? 'rotate-180' : ''"></i>
                     </button>
                 </div>
 
                 <!-- Review 3 (Teaser) -->
-                <div class="glass-card rounded-[2.5rem] p-8 flex flex-col items-center justify-center text-center border-dashed border-white/10 opacity-60">
+                <div
+                    class="glass-card rounded-[2.5rem] p-8 flex flex-col items-center justify-center text-center border-dashed border-white/10 opacity-60">
                     <div class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-4">
                         <i class="fa-solid fa-plus text-gray-500 text-2xl animate-pulse"></i>
                     </div>
@@ -746,64 +989,85 @@
         </section>
 
         <!-- FAQ -->
-        <section id="faq" class="max-w-5xl mx-auto px-4">
+        <section id="faq" class="max-w-5xl mx-auto px-4 scroll-mt-24">
             <div class="text-center mb-12">
                 <h2 class="font-display text-5xl md:text-7xl">FAQ</h2>
-                <p class="mt-3 text-gray-400 font-body">Quick answers based on the current architecture and feature set.</p>
+                <p class="mt-3 text-gray-400 font-body">Quick answers based on the current architecture and feature set.
+                </p>
             </div>
 
             <div class="space-y-4" x-data="{ open: 1 }">
                 <div class="glass-card rounded-[2rem] p-6">
-                    <button class="w-full flex items-center justify-between gap-4 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 rounded-xl" @click="open = open === 1 ? 0 : 1">
+                    <button
+                        class="w-full flex items-center justify-between gap-4 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 rounded-xl"
+                        @click="open = open === 1 ? 0 : 1">
                         <span class="font-body font-semibold text-white">How do reviews stay fast and up to date?</span>
-                        <i class="fa-solid fa-chevron-down text-white/60 transition-transform" :class="open === 1 ? 'rotate-180' : ''"></i>
+                        <i class="fa-solid fa-chevron-down text-white/60 transition-transform"
+                            :class="open === 1 ? 'rotate-180' : ''"></i>
                     </button>
                     <div class="mt-4 text-gray-400 font-body" x-show="open === 1" x-transition.opacity>
-                        Reviews load from Room first, refresh via Appwrite (TTL-based), and subscribe to realtime updates. Likes are optimistic with rollback on error.
+                        Reviews load from Room first, refresh via Appwrite (TTL-based), and subscribe to realtime
+                        updates. Likes are optimistic with rollback on error.
                     </div>
                 </div>
 
                 <div class="glass-card rounded-[2rem] p-6">
-                    <button class="w-full flex items-center justify-between gap-4 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 rounded-xl" @click="open = open === 2 ? 0 : 2">
+                    <button
+                        class="w-full flex items-center justify-between gap-4 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 rounded-xl"
+                        @click="open = open === 2 ? 0 : 2">
                         <span class="font-body font-semibold text-white">What powers navigation?</span>
-                        <i class="fa-solid fa-chevron-down text-white/60 transition-transform" :class="open === 2 ? 'rotate-180' : ''"></i>
+                        <i class="fa-solid fa-chevron-down text-white/60 transition-transform"
+                            :class="open === 2 ? 'rotate-180' : ''"></i>
                     </button>
                     <div class="mt-4 text-gray-400 font-body" x-show="open === 2" x-transition.opacity>
-                        AndroidX Navigation 3 with type-safe NavKey destinations (no string routes). Deep links are parsed and turned into a synthetic back stack.
+                        AndroidX Navigation 3 with type-safe NavKey destinations (no string routes). Deep links are
+                        parsed and turned into a synthetic back stack.
                     </div>
                 </div>
 
                 <div class="glass-card rounded-[2rem] p-6">
-                    <button class="w-full flex items-center justify-between gap-4 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 rounded-xl" @click="open = open === 3 ? 0 : 3">
+                    <button
+                        class="w-full flex items-center justify-between gap-4 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 rounded-xl"
+                        @click="open = open === 3 ? 0 : 3">
                         <span class="font-body font-semibold text-white">Is Arcadia offline-friendly?</span>
-                        <i class="fa-solid fa-chevron-down text-white/60 transition-transform" :class="open === 3 ? 'rotate-180' : ''"></i>
+                        <i class="fa-solid fa-chevron-down text-white/60 transition-transform"
+                            :class="open === 3 ? 'rotate-180' : ''"></i>
                     </button>
                     <div class="mt-4 text-gray-400 font-body" x-show="open === 3" x-transition.opacity>
-                        Yes. The app is cache-first with Room. Key lists and reviews stay available offline, and sync back when you're online.
+                        Yes. The app is cache-first with Room. Key lists and reviews stay available offline, and sync
+                        back when you're online.
                     </div>
                 </div>
 
                 <div class="glass-card rounded-[2rem] p-6">
-                    <button class="w-full flex items-center justify-between gap-4 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 rounded-xl" @click="open = open === 4 ? 0 : 4">
-                        <span class="font-body font-semibold text-white">What stack is the Android app built with?</span>
-                        <i class="fa-solid fa-chevron-down text-white/60 transition-transform" :class="open === 4 ? 'rotate-180' : ''"></i>
+                    <button
+                        class="w-full flex items-center justify-between gap-4 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 rounded-xl"
+                        @click="open = open === 4 ? 0 : 4">
+                        <span class="font-body font-semibold text-white">What stack is the Android app built
+                            with?</span>
+                        <i class="fa-solid fa-chevron-down text-white/60 transition-transform"
+                            :class="open === 4 ? 'rotate-180' : ''"></i>
                     </button>
                     <div class="mt-4 text-gray-400 font-body" x-show="open === 4" x-transition.opacity>
-                        Kotlin + Jetpack Compose + Material3, Koin DI, Room, Paging, Appwrite, Coil 3, Retrofit/OkHttp, Media3, and Baseline Profiles.
+                        Kotlin + Jetpack Compose + Material3, Koin DI, Room, Paging, Appwrite, Coil 3, Retrofit/OkHttp,
+                        Media3, and Baseline Profiles.
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- CTA Final -->
-        <section class="max-w-4xl mx-auto px-4 text-center">
+        <section class="max-w-4xl mx-auto px-4 text-center scroll-mt-24">
             <div class="glass-panel p-12 md:p-20 rounded-[3rem] relative overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-b from-violet-500/10 to-transparent pointer-events-none"></div>
-                
+                <div class="absolute inset-0 bg-gradient-to-b from-violet-500/10 to-transparent pointer-events-none">
+                </div>
+
                 <h2 class="font-display text-6xl md:text-8xl mb-6 relative z-10">READY TO <br> PLAY?</h2>
-                <p class="font-body text-xl text-gray-400 mb-10 max-w-lg mx-auto relative z-10">Join the beta and start tracking your library, reviews, and stats in one place.</p>
-                
-                <a href="#playstore-link" class="bg-white text-black px-10 py-5 rounded-full font-body font-bold text-xl tracking-wide hover:bg-violet-200 hover:scale-105 transition-all shadow-xl relative z-10 inline-flex items-center gap-3 cursor-pointer">
+                <p class="font-body text-xl text-gray-400 mb-10 max-w-lg mx-auto relative z-10">Join the beta and start
+                    tracking your library, reviews, and stats in one place.</p>
+
+                <a href="https://play.google.com/store/apps/details?id=com.arcadia.game.tracker"
+                    class="bg-white text-black px-10 py-5 rounded-full font-body font-bold text-xl tracking-wide hover:bg-violet-200 hover:scale-105 transition-all shadow-xl relative z-10 inline-flex items-center gap-3 cursor-pointer">
                     <i class="fa-brands fa-google-play text-2xl"></i>
                     GET THE APP
                 </a>
@@ -817,11 +1081,14 @@
         <div class="flex justify-center gap-8 text-sm text-gray-500 font-body">
             <a href="./privacy.html" class="hover:text-white transition-colors">Privacy</a>
             <a href="#" class="hover:text-white transition-colors">Terms</a>
-            <a href="#" class="hover:text-white transition-colors flex items-center gap-2"><i class="fa-brands fa-x-twitter"></i> Twitter</a>
-            <a href="#" class="hover:text-white transition-colors flex items-center gap-2"><i class="fa-brands fa-discord"></i> Discord</a>
+            <a href="#" class="hover:text-white transition-colors flex items-center gap-2"><i
+                    class="fa-brands fa-x-twitter"></i> Twitter</a>
+            <a href="#" class="hover:text-white transition-colors flex items-center gap-2"><i
+                    class="fa-brands fa-discord"></i> Discord</a>
         </div>
         <p class="mt-8 text-gray-700 text-xs">© 2026 Arcadia Inc. All rights reserved.</p>
     </footer>
 
 </body>
+
 </html>
