@@ -112,7 +112,9 @@
 <body class="bg-navy-900 text-white antialiased overflow-x-hidden selection:bg-violet-600 selection:text-white">
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 px-4 py-4 pointer-events-none">
+    <nav id="nav" x-data="{ scrolled: false }" @scroll.window="scrolled = (window.pageYOffset > 20)"
+        class="fixed top-0 w-full z-50 px-4 transition-all duration-300"
+        :class="scrolled ? 'bg-navy-900/90 backdrop-blur-md border-b border-white/10 py-3 shadow-2xl pointer-events-auto' : 'py-4 pointer-events-none'">
         <div class="max-w-7xl mx-auto flex justify-between items-center pointer-events-auto">
             <!-- Logo -->
             <div class="flex items-center">
