@@ -397,178 +397,158 @@
         </section>
 
         <!-- Screens -->
-        <section id="screens" class="max-w-7xl mx-auto px-4 scroll-mt-24" x-data="{ screen: 'Home' }">
-            <div class="grid lg:grid-cols-2 gap-12 items-start">
-                <div class="space-y-6">
-                    <div>
+        <section id="screens" class="relative py-20 overflow-hidden" x-data="{ 
+            screens: ['Home', 'Search', 'Details', 'Reviews', 'Analytics', 'Friends'],
+            descriptions: {
+                'Home': 'Your gaming hub with personalized recommendations',
+                'Search': 'AI-powered discovery to find your next favorite game',
+                'Details': 'Comprehensive game information and media',
+                'Reviews': 'Community feedback and ratings in real-time',
+                'Analytics': 'Track your gaming stats and achievements',
+                'Friends': 'Connect with friends and share experiences'
+            },
+            currentIndex: 0,
+            autoRotate: null,
+            touchStartX: 0,
+            touchEndX: 0,
+            init() {
+                this.startAutoRotate();
+            },
+            startAutoRotate() {
+                if (this.autoRotate) {
+                    clearInterval(this.autoRotate);
+                }
+                this.autoRotate = setInterval(() => {
+                    this.currentIndex = (this.currentIndex + 1) % this.screens.length;
+                }, 3000);
+            },
+            stopAutoRotate() {
+                if (this.autoRotate) {
+                    clearInterval(this.autoRotate);
+                    this.autoRotate = null;
+                }
+            },
+            selectScreen(index) {
+                this.currentIndex = index;
+                this.startAutoRotate();
+            },
+            getScreenAtOffset(offset) {
+                const index = (this.currentIndex + offset + this.screens.length) % this.screens.length;
+                return this.screens[index];
+            },
+            handleTouchStart(e) {
+                this.touchStartX = e.touches[0].clientX;
+            },
+            handleTouchEnd(e) {
+                this.touchEndX = e.changedTouches[0].clientX;
+                this.handleSwipe();
+            },
+            handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = this.touchStartX - this.touchEndX;
+                
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        // Swiped left - go to next
+                        this.selectScreen((this.currentIndex + 1) % this.screens.length);
+                    } else {
+                        // Swiped right - go to previous
+                        this.selectScreen((this.currentIndex - 1 + this.screens.length) % this.screens.length);
+                    }
+                }
+            }
+        }">
+            <!-- Animated Background -->
+            <div class="absolute inset-0 -z-10">
+                <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-500/30 rounded-full blur-[120px] animate-pulse"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-[120px] animate-pulse" style="animation-delay: 1s;"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4">
+                <!-- Header -->
+                <div class="text-center mb-16">
+                    <h2 class="font-display text-5xl md:text-7xl leading-none mb-4">
                         <h2 class="font-display text-5xl md:text-7xl leading-none">ONE APP.<br><span
                                 class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-violet-200 to-white text-glow">EVERY
                                 DESTINATION.</span></h2>
-                        <p class="mt-4 font-body text-lg text-gray-400 max-w-xl">Arcadia is built around a type-safe
-                            Navigation3 stack. Pick a screen to preview the experience.</p>
-                    </div>
-
-                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                        <button @click="screen = 'Home'"
-                            class="glass-panel px-4 py-3 rounded-2xl font-body text-sm tracking-wide transition-colors"
-                            :class="screen === 'Home' ? 'bg-white/10 border-white/20 text-white' : 'text-white/70 hover:text-white'">Home</button>
-                        <button @click="screen = 'Search'"
-                            class="glass-panel px-4 py-3 rounded-2xl font-body text-sm tracking-wide transition-colors"
-                            :class="screen === 'Search' ? 'bg-white/10 border-white/20 text-white' : 'text-white/70 hover:text-white'">Search</button>
-                        <button @click="screen = 'Details'"
-                            class="glass-panel px-4 py-3 rounded-2xl font-body text-sm tracking-wide transition-colors"
-                            :class="screen === 'Details' ? 'bg-white/10 border-white/20 text-white' : 'text-white/70 hover:text-white'">Details</button>
-                        <button @click="screen = 'Reviews'"
-                            class="glass-panel px-4 py-3 rounded-2xl font-body text-sm tracking-wide transition-colors"
-                            :class="screen === 'Reviews' ? 'bg-white/10 border-white/20 text-white' : 'text-white/70 hover:text-white'">Reviews</button>
-                        <button @click="screen = 'Analytics'"
-                            class="glass-panel px-4 py-3 rounded-2xl font-body text-sm tracking-wide transition-colors"
-                            :class="screen === 'Analytics' ? 'bg-white/10 border-white/20 text-white' : 'text-white/70 hover:text-white'">Analytics</button>
-                        <button @click="screen = 'Friends'"
-                            class="glass-panel px-4 py-3 rounded-2xl font-body text-sm tracking-wide transition-colors"
-                            :class="screen === 'Friends' ? 'bg-white/10 border-white/20 text-white' : 'text-white/70 hover:text-white'">Friends</button>
-                    </div>
+                    </h2>
+                    <p class="text-lg text-white/60 font-body max-w-2xl mx-auto">
+                        Seamlessly navigate through beautifully crafted experiences
+                    </p>
                 </div>
 
-                <div class="glass-panel rounded-[2.5rem] p-6 md:p-10 relative overflow-hidden">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-violet-500/10 via-transparent to-red-500/10 pointer-events-none">
-                    </div>
-                    <div class="relative z-10">
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="flex items-center gap-3">
-                                <div
-                                    class="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
-                                    <span class="font-display text-xl">A</span>
-                                </div>
-                                <div>
-                                    <div class="text-white font-body font-semibold" x-text="screen"></div>
-                                    <div class="text-xs text-white/50 font-mono">ArcadiaDestination</div>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-2 text-white/60">
-                                <i class="fa-solid fa-signal"></i>
-                                <i class="fa-solid fa-battery-three-quarters"></i>
-                            </div>
-                        </div>
+                <!-- Carousel -->
+                <div class="relative flex items-center justify-center gap-4 md:gap-6 px-4"
+                     @touchstart="handleTouchStart($event)"
+                     @touchend="handleTouchEnd($event)">
+                    <!-- Left Side Images -->
+                    <button @click="selectScreen((currentIndex - 2 + screens.length) % screens.length)"
+                        class="hidden md:block relative w-32 rounded-2xl overflow-hidden transition-all duration-500 hover:scale-105 cursor-pointer group">
+                        <img :src="'screenshots/' + getScreenAtOffset(-2).toLowerCase() + '.jpg'" 
+                             :alt="getScreenAtOffset(-2)"
+                             class="w-full h-auto object-contain brightness-[0.3] group-hover:brightness-50 transition-all"
+                             @error="$event.target.src='screenshots/home.jpg'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    </button>
+                    
+                    <button @click="selectScreen((currentIndex - 1 + screens.length) % screens.length)"
+                        class="hidden md:block relative w-40 rounded-2xl overflow-hidden transition-all duration-500 hover:scale-105 cursor-pointer group">
+                        <img :src="'screenshots/' + getScreenAtOffset(-1).toLowerCase() + '.jpg'" 
+                             :alt="getScreenAtOffset(-1)"
+                             class="w-full h-auto object-contain brightness-[0.4] group-hover:brightness-[0.6] transition-all"
+                             @error="$event.target.src='screenshots/home.jpg'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </button>
 
-                        <div class="space-y-4">
-                            <div x-show="screen === 'Home'" x-transition.opacity class="space-y-4">
-                                <div class="glass-card rounded-2xl p-5">
-                                    <div class="flex items-center justify-between">
-                                        <div class="text-white font-body font-semibold">Your Library</div>
-                                        <div class="text-xs text-white/50 font-mono">AnimatedContent tabs</div>
-                                    </div>
-                                    <div class="mt-3 grid grid-cols-3 gap-3">
-                                        <div class="h-16 rounded-xl bg-white/5 border border-white/10"></div>
-                                        <div class="h-16 rounded-xl bg-white/5 border border-white/10"></div>
-                                        <div class="h-16 rounded-xl bg-white/5 border border-white/10"></div>
-                                    </div>
-                                </div>
-                                <div class="glass-card rounded-2xl p-5 flex items-center justify-between">
-                                    <div class="text-white/80 font-body">Jump back in</div>
-                                    <i class="fa-solid fa-chevron-right text-white/50"></i>
-                                </div>
+                    <!-- Center Main Image -->
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-br from-violet-500/40 via-blue-500/40 to-pink-500/40 blur-[80px] scale-110"></div>
+                        <div class="relative glass-panel rounded-[3rem] p-4 shadow-2xl w-72 md:w-80">
+                            <div class="relative overflow-hidden rounded-[2.5rem]">
+                                <img :src="'screenshots/' + screens[currentIndex].toLowerCase() + '.jpg'" 
+                                     :alt="screens[currentIndex]"
+                                     :key="currentIndex"
+                                     class="w-full h-auto"
+                                     @error="$event.target.src='screenshots/home.jpg'"
+                                     x-transition:enter="transition ease-out duration-500"
+                                     x-transition:enter-start="opacity-0 scale-90"
+                                     x-transition:enter-end="opacity-100 scale-100">
                             </div>
-
-                            <div x-show="screen === 'Search'" x-transition.opacity class="space-y-4"
-                                style="display:none">
-                                <div class="glass-card rounded-2xl p-5">
-                                    <div class="flex items-center gap-3">
-                                        <div
-                                            class="w-10 h-10 rounded-xl bg-violet-600/20 border border-violet-500/30 flex items-center justify-center">
-                                            <i class="fa-solid fa-magnifying-glass text-violet-200"></i>
-                                        </div>
-                                        <div>
-                                            <div class="text-white font-body font-semibold">Search with AI toggle</div>
-                                            <div class="text-xs text-white/50 font-mono">suggestions + results</div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-4 h-10 rounded-xl bg-white/5 border border-white/10"></div>
-                                    <div class="mt-3 grid grid-cols-2 gap-3">
-                                        <div class="h-20 rounded-xl bg-white/5 border border-white/10"></div>
-                                        <div class="h-20 rounded-xl bg-white/5 border border-white/10"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div x-show="screen === 'Details'" x-transition.opacity class="space-y-4"
-                                style="display:none">
-                                <div class="glass-card rounded-2xl p-5">
-                                    <div class="flex items-center justify-between">
-                                        <div class="text-white font-body font-semibold">Game Details</div>
-                                        <div class="text-xs text-white/50 font-mono">Details(gameId)</div>
-                                    </div>
-                                    <div
-                                        class="mt-4 h-28 rounded-2xl bg-gradient-to-br from-white/10 to-white/0 border border-white/10">
-                                    </div>
-                                    <div class="mt-3 flex items-center gap-3">
-                                        <div class="h-10 w-24 rounded-xl bg-white/5 border border-white/10"></div>
-                                        <div class="h-10 flex-1 rounded-xl bg-white/5 border border-white/10"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div x-show="screen === 'Reviews'" x-transition.opacity class="space-y-4"
-                                style="display:none">
-                                <div class="glass-card rounded-2xl p-5">
-                                    <div class="flex items-center justify-between">
-                                        <div class="text-white font-body font-semibold">Community Reviews</div>
-                                        <div class="text-xs text-white/50 font-mono">Room + Appwrite</div>
-                                    </div>
-                                    <div class="mt-4 space-y-3">
-                                        <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
-                                            <div class="flex items-center justify-between">
-                                                <div class="text-white/80 text-sm font-body">"Updated 2m ago"</div>
-                                                <div class="text-white/60 flex items-center gap-2"><i
-                                                        class="fa-solid fa-heart"></i><span
-                                                        class="text-xs font-mono">12</span></div>
-                                            </div>
-                                            <div class="mt-2 h-3 w-4/5 rounded-full bg-white/10"></div>
-                                        </div>
-                                        <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
-                                            <div class="flex items-center justify-between">
-                                                <div class="text-white/80 text-sm font-body">Expand / collapse</div>
-                                                <i class="fa-solid fa-chevron-down text-white/60"></i>
-                                            </div>
-                                            <div class="mt-2 h-3 w-3/5 rounded-full bg-white/10"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div x-show="screen === 'Analytics'" x-transition.opacity class="space-y-4"
-                                style="display:none">
-                                <div class="glass-card rounded-2xl p-5">
-                                    <div class="flex items-center justify-between">
-                                        <div class="text-white font-body font-semibold">Analytics</div>
-                                        <div class="text-xs text-white/50 font-mono">navigateToSearch / Roast</div>
-                                    </div>
-                                    <div class="mt-4 grid grid-cols-2 gap-3">
-                                        <div class="h-24 rounded-2xl bg-white/5 border border-white/10"></div>
-                                        <div class="h-24 rounded-2xl bg-white/5 border border-white/10"></div>
-                                    </div>
-                                    <div class="mt-3 h-20 rounded-2xl bg-white/5 border border-white/10"></div>
-                                </div>
-                            </div>
-
-                            <div x-show="screen === 'Friends'" x-transition.opacity class="space-y-4"
-                                style="display:none">
-                                <div class="glass-card rounded-2xl p-5">
-                                    <div class="flex items-center justify-between">
-                                        <div class="text-white font-body font-semibold">Friends + Requests</div>
-                                        <div class="text-xs text-white/50 font-mono">realtime</div>
-                                    </div>
-                                    <div class="mt-4 grid grid-cols-3 gap-3">
-                                        <div class="h-16 rounded-2xl bg-white/5 border border-white/10"></div>
-                                        <div class="h-16 rounded-2xl bg-white/5 border border-white/10"></div>
-                                        <div class="h-16 rounded-2xl bg-white/5 border border-white/10"></div>
-                                    </div>
-                                    <div class="mt-3 h-10 rounded-xl bg-white/5 border border-white/10"></div>
-                                </div>
+                            <!-- Screen Name Badge -->
+                            <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 glass-panel px-6 py-3 rounded-full">
+                                <span class="text-white font-display font-bold text-lg" x-text="screens[currentIndex]"></span>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Right Side Images -->
+                    <button @click="selectScreen((currentIndex + 1) % screens.length)"
+                        class="hidden md:block relative w-40 rounded-2xl overflow-hidden transition-all duration-500 hover:scale-105 cursor-pointer group">
+                        <img :src="'screenshots/' + getScreenAtOffset(1).toLowerCase() + '.jpg'" 
+                             :alt="getScreenAtOffset(1)"
+                             class="w-full h-auto object-contain brightness-[0.4] group-hover:brightness-[0.6] transition-all"
+                             @error="$event.target.src='screenshots/home.jpg'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </button>
+                    
+                    <button @click="selectScreen((currentIndex + 2) % screens.length)"
+                        class="hidden md:block relative w-32 rounded-2xl overflow-hidden transition-all duration-500 hover:scale-105 cursor-pointer group">
+                        <img :src="'screenshots/' + getScreenAtOffset(2).toLowerCase() + '.jpg'" 
+                             :alt="getScreenAtOffset(2)"
+                             class="w-full h-auto object-contain brightness-[0.3] group-hover:brightness-50 transition-all"
+                             @error="$event.target.src='screenshots/home.jpg'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    </button>
+                </div>
+
+                <!-- Navigation Dots -->
+                <div class="flex justify-center gap-2 mt-12">
+                    <template x-for="(screen, index) in screens" :key="index">
+                        <button @click="selectScreen(index)"
+                            :class="currentIndex === index ? 'w-8 bg-white' : 'w-2 bg-white/30 hover:bg-white/50'"
+                            class="h-2 rounded-full transition-all duration-300">
+                        </button>
+                    </template>
                 </div>
             </div>
         </section>
