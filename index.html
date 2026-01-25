@@ -1637,20 +1637,35 @@
         </section>
 
         <!-- CTA Final -->
-        <section class="max-w-4xl mx-auto px-4 text-center scroll-mt-24">
-            <div class="glass-panel p-12 md:p-20 rounded-[3rem] relative overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-b from-violet-500/10 to-transparent pointer-events-none">
+        <section class="relative py-20 overflow-hidden">
+           
+
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <div class="relative glass-panel rounded-[3rem] p-12 md:p-20 overflow-hidden">
+                    <!-- Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-violet-500/10 via-transparent to-blue-500/10 pointer-events-none"></div>
+                    
+                    <!-- Floating Elements -->
+                    <div class="absolute top-10 right-10 w-24 h-24 bg-violet-500/20 rounded-full blur-3xl animate-pulse"></div>
+                    <div class="absolute bottom-10 left-10 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+
+                    <div class="relative z-10">
+                        <h2 class="font-display text-6xl md:text-8xl leading-none mb-6">
+                            <span class="text-white">READY TO</span><br>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-violet-200 to-white text-glow">LEVEL UP?</span>
+                        </h2>
+                        
+                        <p class="font-body text-xl text-gray-300 mb-10 max-w-lg mx-auto leading-relaxed">
+                            Join thousands of gamers tracking their libraries, discovering new games, and connecting with friends. Start your journey today.
+                        </p>
+
+                        <a href="https://play.google.com/store/apps/details?id=com.arcadia.game.tracker"
+                            class="group bg-white text-black px-10 py-5 rounded-full font-body font-bold text-xl tracking-wide hover:bg-violet-200 transition-all shadow-2xl inline-flex items-center gap-3 cursor-pointer hover:scale-105 hover:shadow-violet-500/50">
+                            <i class="fa-brands fa-google-play text-2xl group-hover:scale-110 transition-transform"></i>
+                            <span>GET THE APP</span>
+                        </a>
+                    </div>
                 </div>
-
-                <h2 class="font-display text-6xl md:text-8xl mb-6 relative z-10">READY TO <br> PLAY?</h2>
-                <p class="font-body text-xl text-gray-400 mb-10 max-w-lg mx-auto relative z-10">Join the beta and start
-                    tracking your library, reviews, and stats in one place.</p>
-
-                <a href="https://play.google.com/store/apps/details?id=com.arcadia.game.tracker"
-                    class="bg-white text-black px-10 py-5 rounded-full font-body font-bold text-xl tracking-wide hover:bg-violet-200 hover:scale-105 transition-all shadow-xl relative z-10 inline-flex items-center gap-3 cursor-pointer">
-                    <i class="fa-brands fa-google-play text-2xl"></i>
-                    GET THE APP
-                </a>
             </div>
         </section>
 
