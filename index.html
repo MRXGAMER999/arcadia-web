@@ -1600,20 +1600,24 @@
                 ];
 
                 root.querySelectorAll('*').forEach((el) => {
-                    for (const attr of attrs) {
-                        const val = el.getAttribute(attr);
-                        if (!val) continue;
+                        for (const attr of attrs) {
+                            const val = el.getAttribute(attr);
+                            if (!val) continue;
 
-                        let next = val;
-                        for (const [oldId, newId] of idMap) {
-                            next = next
-                                .replaceAll(`url(#${oldId})`, `url(#${newId})`)
-                                .replaceAll(`#${oldId}`, `#${newId}`);
+                            let next = val;
+                            for (const [oldId, newId] of idMap) {
+                                // Use regex to match exact IDs, not substrings
+                                // Match url(#id) pattern
+                                const urlPattern = new RegExp(`url\\(#${oldId.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\)`, 'g');
+                                next = next.replace(urlPattern, `url(#${newId})`);
+                                // Match #id at end of string or followed by ) for xlink:href
+                                const hashPattern = new RegExp(`#${oldId.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?=$|\\))`, 'g');
+                                next = next.replace(hashPattern, `#${newId}`);
+                            }
+
+                            if (next !== val) el.setAttribute(attr, next);
                         }
-
-                        if (next !== val) el.setAttribute(attr, next);
-                    }
-                });
+                    });
             }
 
             tracks.forEach((track, i) => {
