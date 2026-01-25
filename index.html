@@ -1523,13 +1523,8 @@
                             <i class="fa-solid fa-chevron-down text-white/40 transition-all duration-300 group-hover:text-violet-400"
                                 :class="open === 1 ? 'rotate-180' : ''"></i>
                         </button>
-                        <div class="overflow-hidden" x-show="open === 1" 
-                            x-transition:enter="transition ease-out duration-300"
-                            x-transition:enter-start="opacity-0 max-h-0"
-                            x-transition:enter-end="opacity-100 max-h-96"
-                            x-transition:leave="transition ease-in duration-200"
-                            x-transition:leave-start="opacity-100 max-h-96"
-                            x-transition:leave-end="opacity-0 max-h-0">
+                        <div class="transition-all duration-500 ease-in-out" 
+                            :style="open === 1 ? 'max-height: 500px; opacity: 1;' : 'max-height: 0; opacity: 0;'">
                             <div class="px-6 pb-6 text-gray-300 font-body leading-relaxed">
                                 Arcadia is your ultimate gaming companion app. Track your library, write reviews, get AI-powered recommendations, connect with friends, and analyze your gaming stats—all in one beautifully designed app.
                             </div>
@@ -1545,13 +1540,8 @@
                             <i class="fa-solid fa-chevron-down text-white/40 transition-all duration-300 group-hover:text-violet-400"
                                 :class="open === 2 ? 'rotate-180' : ''"></i>
                         </button>
-                        <div class="overflow-hidden" x-show="open === 2" 
-                            x-transition:enter="transition ease-out duration-300"
-                            x-transition:enter-start="opacity-0 max-h-0"
-                            x-transition:enter-end="opacity-100 max-h-96"
-                            x-transition:leave="transition ease-in duration-200"
-                            x-transition:leave-start="opacity-100 max-h-96"
-                            x-transition:leave-end="opacity-0 max-h-0">
+                        <div class="transition-all duration-500 ease-in-out" 
+                            :style="open === 2 ? 'max-height: 500px; opacity: 1;' : 'max-height: 0; opacity: 0;'">
                             <div class="px-6 pb-6 text-gray-300 font-body leading-relaxed">
                                 Yes! Arcadia is built with an offline-first architecture. Your library, reviews, and game details stay accessible even without internet. Changes sync automatically when you're back online.
                             </div>
@@ -1567,13 +1557,8 @@
                             <i class="fa-solid fa-chevron-down text-white/40 transition-all duration-300 group-hover:text-violet-400"
                                 :class="open === 3 ? 'rotate-180' : ''"></i>
                         </button>
-                        <div class="overflow-hidden" x-show="open === 3" 
-                            x-transition:enter="transition ease-out duration-300"
-                            x-transition:enter-start="opacity-0 max-h-0"
-                            x-transition:enter-end="opacity-100 max-h-96"
-                            x-transition:leave="transition ease-in duration-200"
-                            x-transition:leave-start="opacity-100 max-h-96"
-                            x-transition:leave-end="opacity-0 max-h-0">
+                        <div class="transition-all duration-500 ease-in-out" 
+                            :style="open === 3 ? 'max-height: 500px; opacity: 1;' : 'max-height: 0; opacity: 0;'">
                             <div class="px-6 pb-6 text-gray-300 font-body leading-relaxed">
                                 Arcadia uses AI to power personalized game recommendations, generate insights about your gaming profile, create shareable roasts, and help you discover games through natural language search.
                             </div>
@@ -1589,13 +1574,8 @@
                             <i class="fa-solid fa-chevron-down text-white/40 transition-all duration-300 group-hover:text-violet-400"
                                 :class="open === 4 ? 'rotate-180' : ''"></i>
                         </button>
-                        <div class="overflow-hidden" x-show="open === 4" 
-                            x-transition:enter="transition ease-out duration-300"
-                            x-transition:enter-start="opacity-0 max-h-0"
-                            x-transition:enter-end="opacity-100 max-h-96"
-                            x-transition:leave="transition ease-in duration-200"
-                            x-transition:leave-start="opacity-100 max-h-96"
-                            x-transition:leave-end="opacity-0 max-h-0">
+                        <div class="transition-all duration-500 ease-in-out" 
+                            :style="open === 4 ? 'max-height: 500px; opacity: 1;' : 'max-height: 0; opacity: 0;'">
                             <div class="px-6 pb-6 text-gray-300 font-body leading-relaxed">
                                 Absolutely! Add friends, see what they're playing, read their reviews, and compare libraries. Friend reviews appear first in game details, and you'll get notifications for friend requests.
                             </div>
@@ -1611,13 +1591,8 @@
                             <i class="fa-solid fa-chevron-down text-white/40 transition-all duration-300 group-hover:text-violet-400"
                                 :class="open === 5 ? 'rotate-180' : ''"></i>
                         </button>
-                        <div class="overflow-hidden" x-show="open === 5" 
-                            x-transition:enter="transition ease-out duration-300"
-                            x-transition:enter-start="opacity-0 max-h-0"
-                            x-transition:enter-end="opacity-100 max-h-96"
-                            x-transition:leave="transition ease-in duration-200"
-                            x-transition:leave-start="opacity-100 max-h-96"
-                            x-transition:leave-end="opacity-0 max-h-0">
+                        <div class="transition-all duration-500 ease-in-out" 
+                            :style="open === 5 ? 'max-height: 500px; opacity: 1;' : 'max-height: 0; opacity: 0;'">
                             <div class="px-6 pb-6 text-gray-300 font-body leading-relaxed">
                                 Reviews load instantly from local cache, then refresh from the cloud with smart updates. Real-time subscriptions keep content fresh without disruptive reordering. Likes use optimistic UI for instant feedback.
                             </div>
@@ -1633,13 +1608,8 @@
                             <i class="fa-solid fa-chevron-down text-white/40 transition-all duration-300 group-hover:text-violet-400"
                                 :class="open === 6 ? 'rotate-180' : ''"></i>
                         </button>
-                        <div class="overflow-hidden" x-show="open === 6" 
-                            x-transition:enter="transition ease-out duration-300"
-                            x-transition:enter-start="opacity-0 max-h-0"
-                            x-transition:enter-end="opacity-100 max-h-96"
-                            x-transition:leave="transition ease-in duration-200"
-                            x-transition:leave-start="opacity-100 max-h-96"
-                            x-transition:leave-end="opacity-0 max-h-0">
+                        <div class="transition-all duration-500 ease-in-out" 
+                            :style="open === 6 ? 'max-height: 500px; opacity: 1;' : 'max-height: 0; opacity: 0;'">
                             <div class="px-6 pb-6 text-gray-300 font-body leading-relaxed">
                                 Built with Kotlin 2.3.0, Jetpack Compose, Material3 Expressive, Navigation3, Koin DI, Room database, Paging 3, Appwrite, Coil 3, Retrofit/OkHttp, and Baseline Profiles for optimal performance.
                             </div>
@@ -1655,13 +1625,8 @@
                             <i class="fa-solid fa-chevron-down text-white/40 transition-all duration-300 group-hover:text-violet-400"
                                 :class="open === 7 ? 'rotate-180' : ''"></i>
                         </button>
-                        <div class="overflow-hidden" x-show="open === 7" 
-                            x-transition:enter="transition ease-out duration-300"
-                            x-transition:enter-start="opacity-0 max-h-0"
-                            x-transition:enter-end="opacity-100 max-h-96"
-                            x-transition:leave="transition ease-in duration-200"
-                            x-transition:leave-start="opacity-100 max-h-96"
-                            x-transition:leave-end="opacity-0 max-h-0">
+                        <div class="transition-all duration-500 ease-in-out" 
+                            :style="open === 7 ? 'max-height: 500px; opacity: 1;' : 'max-height: 0; opacity: 0;'">
                             <div class="px-6 pb-6 text-gray-300 font-body leading-relaxed">
                                 Yes! Arcadia uses Appwrite for secure cloud storage with encrypted sessions. Authentication is handled via Google Sign-In, and all data is stored with industry-standard security practices.
                             </div>
