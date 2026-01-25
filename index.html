@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 
 <head>
@@ -1504,68 +1504,168 @@
         </section>
 
         <!-- FAQ -->
-        <section id="faq" class="max-w-5xl mx-auto px-4 scroll-mt-24">
-            <div class="text-center mb-12">
-                <h2 class="font-display text-5xl md:text-7xl">FAQ</h2>
-                <p class="mt-3 text-gray-400 font-body">Quick answers based on the current architecture and feature set.
-                </p>
-            </div>
-
-            <div class="space-y-4" x-data="{ open: 1 }">
-                <div class="glass-card rounded-[2rem] p-6">
-                    <button
-                        class="w-full flex items-center justify-between gap-4 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 rounded-xl"
-                        @click="open = open === 1 ? 0 : 1">
-                        <span class="font-body font-semibold text-white">How do reviews stay fast and up to date?</span>
-                        <i class="fa-solid fa-chevron-down text-white/60 transition-transform"
-                            :class="open === 1 ? 'rotate-180' : ''"></i>
-                    </button>
-                    <div class="mt-4 text-gray-400 font-body" x-show="open === 1" x-transition.opacity>
-                        Reviews load from Room first, refresh via Appwrite (TTL-based), and subscribe to realtime
-                        updates. Likes are optimistic with rollback on error.
-                    </div>
+        <section id="faq" class="relative py-20 overflow-hidden">
+            <div class="max-w-4xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="font-display text-5xl md:text-7xl leading-none mb-4">
+                        <span class="text-white">QUESTIONS?</span><br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-violet-200 to-white text-glow">ANSWERED.</span>
+                    </h2>
                 </div>
 
-                <div class="glass-card rounded-[2rem] p-6">
-                    <button
-                        class="w-full flex items-center justify-between gap-4 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 rounded-xl"
-                        @click="open = open === 2 ? 0 : 2">
-                        <span class="font-body font-semibold text-white">What powers navigation?</span>
-                        <i class="fa-solid fa-chevron-down text-white/60 transition-transform"
-                            :class="open === 2 ? 'rotate-180' : ''"></i>
-                    </button>
-                    <div class="mt-4 text-gray-400 font-body" x-show="open === 2" x-transition.opacity>
-                        AndroidX Navigation 3 with type-safe NavKey destinations (no string routes). Deep links are
-                        parsed and turned into a synthetic back stack.
+                <div class="space-y-3" x-data="{ open: 1 }">
+                    <!-- FAQ 1 -->
+                    <div class="glass-panel rounded-2xl overflow-hidden transition-all duration-300">
+                        <button
+                            class="w-full flex items-center justify-between gap-4 text-left p-6 cursor-pointer group"
+                            @click="open = open === 1 ? 0 : 1">
+                            <span class="font-body text-lg font-semibold text-white group-hover:text-violet-300 transition-colors">What is Arcadia?</span>
+                            <i class="fa-solid fa-chevron-down text-white/40 transition-all duration-300 group-hover:text-violet-400"
+                                :class="open === 1 ? 'rotate-180' : ''"></i>
+                        </button>
+                        <div class="overflow-hidden" x-show="open === 1" 
+                            x-transition:enter="transition ease-out duration-300"
+                            x-transition:enter-start="opacity-0 max-h-0"
+                            x-transition:enter-end="opacity-100 max-h-96"
+                            x-transition:leave="transition ease-in duration-200"
+                            x-transition:leave-start="opacity-100 max-h-96"
+                            x-transition:leave-end="opacity-0 max-h-0">
+                            <div class="px-6 pb-6 text-gray-300 font-body leading-relaxed">
+                                Arcadia is your ultimate gaming companion app. Track your library, write reviews, get AI-powered recommendations, connect with friends, and analyze your gaming stats—all in one beautifully designed app.
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="glass-card rounded-[2rem] p-6">
-                    <button
-                        class="w-full flex items-center justify-between gap-4 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 rounded-xl"
-                        @click="open = open === 3 ? 0 : 3">
-                        <span class="font-body font-semibold text-white">Is Arcadia offline-friendly?</span>
-                        <i class="fa-solid fa-chevron-down text-white/60 transition-transform"
-                            :class="open === 3 ? 'rotate-180' : ''"></i>
-                    </button>
-                    <div class="mt-4 text-gray-400 font-body" x-show="open === 3" x-transition.opacity>
-                        Yes. The app is cache-first with Room. Key lists and reviews stay available offline, and sync
-                        back when you're online.
+                    <!-- FAQ 2 -->
+                    <div class="glass-panel rounded-2xl overflow-hidden transition-all duration-300">
+                        <button
+                            class="w-full flex items-center justify-between gap-4 text-left p-6 cursor-pointer group"
+                            @click="open = open === 2 ? 0 : 2">
+                            <span class="font-body text-lg font-semibold text-white group-hover:text-violet-300 transition-colors">Does Arcadia work offline?</span>
+                            <i class="fa-solid fa-chevron-down text-white/40 transition-all duration-300 group-hover:text-violet-400"
+                                :class="open === 2 ? 'rotate-180' : ''"></i>
+                        </button>
+                        <div class="overflow-hidden" x-show="open === 2" 
+                            x-transition:enter="transition ease-out duration-300"
+                            x-transition:enter-start="opacity-0 max-h-0"
+                            x-transition:enter-end="opacity-100 max-h-96"
+                            x-transition:leave="transition ease-in duration-200"
+                            x-transition:leave-start="opacity-100 max-h-96"
+                            x-transition:leave-end="opacity-0 max-h-0">
+                            <div class="px-6 pb-6 text-gray-300 font-body leading-relaxed">
+                                Yes! Arcadia is built with an offline-first architecture. Your library, reviews, and game details stay accessible even without internet. Changes sync automatically when you're back online.
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="glass-card rounded-[2rem] p-6">
-                    <button
-                        class="w-full flex items-center justify-between gap-4 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 rounded-xl"
-                        @click="open = open === 4 ? 0 : 4">
-                        <span class="font-body font-semibold text-white">What stack is the Android app built
-                            with?</span>
-                        <i class="fa-solid fa-chevron-down text-white/60 transition-transform"
-                            :class="open === 4 ? 'rotate-180' : ''"></i>
-                    </button>
-                    <div class="mt-4 text-gray-400 font-body" x-show="open === 4" x-transition.opacity>
-                        Kotlin + Jetpack Compose + Material3, Koin DI, Room, Paging, Appwrite, Coil 3, Retrofit/OkHttp,
-                        Media3, and Baseline Profiles.
+                    <!-- FAQ 3 -->
+                    <div class="glass-panel rounded-2xl overflow-hidden transition-all duration-300">
+                        <button
+                            class="w-full flex items-center justify-between gap-4 text-left p-6 cursor-pointer group"
+                            @click="open = open === 3 ? 0 : 3">
+                            <span class="font-body text-lg font-semibold text-white group-hover:text-violet-300 transition-colors">How does AI work in Arcadia?</span>
+                            <i class="fa-solid fa-chevron-down text-white/40 transition-all duration-300 group-hover:text-violet-400"
+                                :class="open === 3 ? 'rotate-180' : ''"></i>
+                        </button>
+                        <div class="overflow-hidden" x-show="open === 3" 
+                            x-transition:enter="transition ease-out duration-300"
+                            x-transition:enter-start="opacity-0 max-h-0"
+                            x-transition:enter-end="opacity-100 max-h-96"
+                            x-transition:leave="transition ease-in duration-200"
+                            x-transition:leave-start="opacity-100 max-h-96"
+                            x-transition:leave-end="opacity-0 max-h-0">
+                            <div class="px-6 pb-6 text-gray-300 font-body leading-relaxed">
+                                Arcadia uses AI to power personalized game recommendations, generate insights about your gaming profile, create shareable roasts, and help you discover games through natural language search.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="glass-panel rounded-2xl overflow-hidden transition-all duration-300">
+                        <button
+                            class="w-full flex items-center justify-between gap-4 text-left p-6 cursor-pointer group"
+                            @click="open = open === 4 ? 0 : 4">
+                            <span class="font-body text-lg font-semibold text-white group-hover:text-violet-300 transition-colors">Can I connect with friends?</span>
+                            <i class="fa-solid fa-chevron-down text-white/40 transition-all duration-300 group-hover:text-violet-400"
+                                :class="open === 4 ? 'rotate-180' : ''"></i>
+                        </button>
+                        <div class="overflow-hidden" x-show="open === 4" 
+                            x-transition:enter="transition ease-out duration-300"
+                            x-transition:enter-start="opacity-0 max-h-0"
+                            x-transition:enter-end="opacity-100 max-h-96"
+                            x-transition:leave="transition ease-in duration-200"
+                            x-transition:leave-start="opacity-100 max-h-96"
+                            x-transition:leave-end="opacity-0 max-h-0">
+                            <div class="px-6 pb-6 text-gray-300 font-body leading-relaxed">
+                                Absolutely! Add friends, see what they're playing, read their reviews, and compare libraries. Friend reviews appear first in game details, and you'll get notifications for friend requests.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 5 -->
+                    <div class="glass-panel rounded-2xl overflow-hidden transition-all duration-300">
+                        <button
+                            class="w-full flex items-center justify-between gap-4 text-left p-6 cursor-pointer group"
+                            @click="open = open === 5 ? 0 : 5">
+                            <span class="font-body text-lg font-semibold text-white group-hover:text-violet-300 transition-colors">How are reviews kept up to date?</span>
+                            <i class="fa-solid fa-chevron-down text-white/40 transition-all duration-300 group-hover:text-violet-400"
+                                :class="open === 5 ? 'rotate-180' : ''"></i>
+                        </button>
+                        <div class="overflow-hidden" x-show="open === 5" 
+                            x-transition:enter="transition ease-out duration-300"
+                            x-transition:enter-start="opacity-0 max-h-0"
+                            x-transition:enter-end="opacity-100 max-h-96"
+                            x-transition:leave="transition ease-in duration-200"
+                            x-transition:leave-start="opacity-100 max-h-96"
+                            x-transition:leave-end="opacity-0 max-h-0">
+                            <div class="px-6 pb-6 text-gray-300 font-body leading-relaxed">
+                                Reviews load instantly from local cache, then refresh from the cloud with smart updates. Real-time subscriptions keep content fresh without disruptive reordering. Likes use optimistic UI for instant feedback.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 6 -->
+                    <div class="glass-panel rounded-2xl overflow-hidden transition-all duration-300">
+                        <button
+                            class="w-full flex items-center justify-between gap-4 text-left p-6 cursor-pointer group"
+                            @click="open = open === 6 ? 0 : 6">
+                            <span class="font-body text-lg font-semibold text-white group-hover:text-violet-300 transition-colors">What tech stack powers Arcadia?</span>
+                            <i class="fa-solid fa-chevron-down text-white/40 transition-all duration-300 group-hover:text-violet-400"
+                                :class="open === 6 ? 'rotate-180' : ''"></i>
+                        </button>
+                        <div class="overflow-hidden" x-show="open === 6" 
+                            x-transition:enter="transition ease-out duration-300"
+                            x-transition:enter-start="opacity-0 max-h-0"
+                            x-transition:enter-end="opacity-100 max-h-96"
+                            x-transition:leave="transition ease-in duration-200"
+                            x-transition:leave-start="opacity-100 max-h-96"
+                            x-transition:leave-end="opacity-0 max-h-0">
+                            <div class="px-6 pb-6 text-gray-300 font-body leading-relaxed">
+                                Built with Kotlin 2.3.0, Jetpack Compose, Material3 Expressive, Navigation3, Koin DI, Room database, Paging 3, Appwrite, Coil 3, Retrofit/OkHttp, and Baseline Profiles for optimal performance.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 7 -->
+                    <div class="glass-panel rounded-2xl overflow-hidden transition-all duration-300">
+                        <button
+                            class="w-full flex items-center justify-between gap-4 text-left p-6 cursor-pointer group"
+                            @click="open = open === 7 ? 0 : 7">
+                            <span class="font-body text-lg font-semibold text-white group-hover:text-violet-300 transition-colors">Is my data secure?</span>
+                            <i class="fa-solid fa-chevron-down text-white/40 transition-all duration-300 group-hover:text-violet-400"
+                                :class="open === 7 ? 'rotate-180' : ''"></i>
+                        </button>
+                        <div class="overflow-hidden" x-show="open === 7" 
+                            x-transition:enter="transition ease-out duration-300"
+                            x-transition:enter-start="opacity-0 max-h-0"
+                            x-transition:enter-end="opacity-100 max-h-96"
+                            x-transition:leave="transition ease-in duration-200"
+                            x-transition:leave-start="opacity-100 max-h-96"
+                            x-transition:leave-end="opacity-0 max-h-0">
+                            <div class="px-6 pb-6 text-gray-300 font-body leading-relaxed">
+                                Yes! Arcadia uses Appwrite for secure cloud storage with encrypted sessions. Authentication is handled via Google Sign-In, and all data is stored with industry-standard security practices.
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
