@@ -134,8 +134,8 @@
             .marquee__group {
                 display: flex;
                 align-items: center;
-                gap: 3rem;
-                padding-right: 3rem;
+                gap: 1.75rem;
+                padding-right: 1.75rem;
             }
 
             .marquee__item {
@@ -146,6 +146,25 @@
                 animation-play-state: paused;
             }
 
+            .marquee--reverse .marquee__track {
+                animation-direction: reverse;
+            }
+
+            .review-card {
+                @apply glass-card rounded-[2.25rem] p-6 md:p-7;
+                background-image:
+                    radial-gradient(circle at 20% 10%, rgba(139, 92, 246, 0.18), transparent 55%),
+                    radial-gradient(circle at 90% 0%, rgba(255, 255, 255, 0.08), transparent 45%);
+            }
+
+            .review-score {
+                @apply inline-flex items-center gap-1 px-3 py-1 rounded-xl text-xs font-bold bg-violet-500/15 text-violet-200 border border-violet-500/25 flex-shrink-0;
+            }
+
+            .review-chip {
+                @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-white/5 border border-white/10 text-gray-300;
+            }
+
             @media (prefers-reduced-motion: reduce) {
                 .marquee__track {
                     animation: none;
@@ -154,6 +173,13 @@
 
                 .marquee__group[aria-hidden="true"] {
                     display: none;
+                }
+            }
+
+            @media (min-width: 768px) {
+                .marquee__group {
+                    gap: 3rem;
+                    padding-right: 3rem;
                 }
             }
         }
@@ -223,12 +249,10 @@
             <div class="hidden md:flex items-center gap-6 text-sm font-body text-white/70">
                 <a href="#screens"
                     class="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 rounded-md">Screens</a>
-                <a href="#architecture"
-                    class="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 rounded-md">Architecture</a>
-                <a href="#reviews"
-                    class="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 rounded-md">Reviews</a>
                 <a href="#stack"
                     class="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 rounded-md">Stack</a>
+                <a href="#reviews"
+                    class="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 rounded-md">Reviews</a>
                 <a href="#faq"
                     class="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900 rounded-md">FAQ</a>
             </div>
@@ -592,193 +616,6 @@
             </div>
         </section>
 
-        <!-- Section: The Roast (Cards) -->
-        <section class="max-w-7xl mx-auto px-4 scroll-mt-24">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <!-- Content -->
-                <div class="order-2 lg:order-1 relative">
-                    <!-- Glass Card -->
-                    <div class="glass-panel rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden group">
-                        <!-- Gradient Blob -->
-                        <div
-                            class="absolute top-0 right-0 w-64 h-64 bg-violet-500/20 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 group-hover:bg-red-500/20 transition-colors duration-700">
-                        </div>
-
-                        <div class="relative z-10 space-y-8">
-                            <!-- Chat Bubble 1 (AI) -->
-                            <div class="flex gap-4">
-                                <div
-                                    class="w-12 h-12 rounded-2xl bg-black/40 flex items-center justify-center shrink-0 border border-white/5">
-                                    <i class="fa-solid fa-robot text-violet-400 text-xl"></i>
-                                </div>
-                                <div
-                                    class="bg-navy-800/80 p-5 rounded-3xl rounded-tl-none border border-white/5 shadow-xl max-w-sm">
-                                    <p class="text-gray-200 font-mono text-lg">"150 hours in <em
-                                            class="text-white not-italic">Stardew Valley</em>? Are you optimizing your
-                                        farm or just avoiding your actual job?"</p>
-                                </div>
-                            </div>
-
-                            <!-- Chat Bubble 2 (User) -->
-                            <div class="flex gap-4 flex-row-reverse">
-                                <div class="w-12 h-12 rounded-full bg-white/10 shrink-0 border border-white/5"></div>
-                                <div
-                                    class="bg-violet-600 p-5 rounded-3xl rounded-tr-none shadow-xl shadow-violet-900/20 max-w-xs">
-                                    <p class="text-white font-body font-medium">Why are you so mean? 😭</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-12 pt-8 border-t border-white/5">
-                            <h3 class="font-display text-3xl text-white mb-2">THE ROAST SCREEN</h3>
-                            <p class="text-gray-400 font-body">A dedicated screen to get roasted. Target yourself or
-                                friends. The AI analyzes your library and delivers personalized burns.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Text -->
-                <div class="order-1 lg:order-2 space-y-6 text-center lg:text-left">
-                    <h2 class="font-display text-6xl md:text-8xl leading-none">
-                        FACE THE<br>
-                        <span class="text-red-500 text-glow">JUDGE</span>
-                    </h2>
-                    <p class="font-body text-xl text-gray-400 max-w-md mx-auto lg:mx-0">
-                        Stop boring stats. Get an AI companion that knows your library better than you do—and isn't
-                        afraid to call you out on it.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Architecture -->
-        <section id="architecture" class="max-w-7xl mx-auto px-4 scroll-mt-24">
-            <div class="flex flex-col items-center text-center mb-16">
-                <h2 class="font-display text-5xl md:text-7xl mb-4">BUILT LIKE A <span
-                        class="text-violet-500">PRODUCT</span></h2>
-                <p class="text-gray-400 font-body text-lg max-w-3xl">Arcadia is MVVM + Koin DI with a cache-first data
-                    layer. Reviews stream via Appwrite Realtime, backed by Room TTL caching.</p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <div class="glass-card rounded-[2rem] p-8 relative overflow-hidden">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-violet-500/10 via-transparent to-transparent pointer-events-none">
-                    </div>
-                    <div class="relative z-10">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div
-                                class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-violet-200">
-                                <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                                    stroke-linejoin="round" aria-hidden="true" focusable="false">
-                                    <path d="M12 21a9 9 0 1 0-9-9a9 9 0 0 0 9 9Z" />
-                                    <path d="m14.8 9.2l-1.5 5.6l-5.6 1.5l1.5-5.6Z" />
-                                    <path d="m10.4 10.4l3.2 3.2" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="font-display text-3xl">Navigation3</h3>
-                                <p class="text-xs text-white/50 font-mono">type-safe NavKey destinations</p>
-                            </div>
-                        </div>
-                        <div
-                            class="rounded-2xl bg-black/30 border border-white/5 p-4 font-mono text-xs text-white/80 overflow-x-auto">
-                            <div>@Serializable sealed interface ArcadiaDestination : NavKey</div>
-                            <div class="text-white/50 mt-2">Auth • Onboarding • Home • Search • Details • Analytics •
-                                Roast • Friends</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="glass-card rounded-[2rem] p-8 relative overflow-hidden">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-pink-500/10 via-transparent to-transparent pointer-events-none">
-                    </div>
-                    <div class="relative z-10">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div
-                                class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-pink-200">
-                                <i class="fa-solid fa-satellite-dish"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-display text-3xl">Realtime Reviews</h3>
-                                <p class="text-xs text-white/50 font-mono">optimistic likes + queued updates</p>
-                            </div>
-                        </div>
-                        <div class="space-y-3">
-                            <div
-                                class="flex items-center justify-between rounded-2xl bg-white/5 border border-white/10 p-4">
-                                <div class="text-sm font-body text-white/80">Like / Unlike</div>
-                                <div class="text-xs font-mono text-white/60">Room optimistic</div>
-                            </div>
-                            <div
-                                class="flex items-center justify-between rounded-2xl bg-white/5 border border-white/10 p-4">
-                                <div class="text-sm font-body text-white/80">Updates</div>
-                                <div class="text-xs font-mono text-white/60">Appwrite Realtime</div>
-                            </div>
-                            <div
-                                class="flex items-center justify-between rounded-2xl bg-white/5 border border-white/10 p-4">
-                                <div class="text-sm font-body text-white/80">Trust cue</div>
-                                <div class="text-xs font-mono text-white/60">Updated Xm ago</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="glass-card rounded-[2rem] p-8 relative overflow-hidden">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-transparent pointer-events-none">
-                    </div>
-                    <div class="relative z-10">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div
-                                class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-cyan-200">
-                                <i class="fa-solid fa-database"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-display text-3xl">Cache-First</h3>
-                                <p class="text-xs text-white/50 font-mono">Room TTL refresh (Reviews: 1h)</p>
-                            </div>
-                        </div>
-                        <div class="rounded-2xl bg-black/30 border border-white/5 p-4">
-                            <div class="flex items-center justify-between">
-                                <div class="text-sm font-body text-white/80">Room</div>
-                                <div class="text-xs font-mono text-white/60">read-first</div>
-                            </div>
-                            <div class="mt-3 h-px bg-white/10"></div>
-                            <div class="mt-3 flex items-center justify-between">
-                                <div class="text-sm font-body text-white/80">Appwrite</div>
-                                <div class="text-xs font-mono text-white/60">sync + realtime</div>
-                            </div>
-                            <div class="mt-4 text-xs text-white/50 font-mono">CacheTTLConfig.REVIEWS_TTL_MS = 1 hour
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-10 glass-panel rounded-[2.5rem] p-8 md:p-10">
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div>
-                        <div class="text-xs text-white/50 font-mono">DI</div>
-                        <div class="mt-2 text-white font-body">Koin modules split into critical (sync) + feature (lazy)
-                            sets.</div>
-                    </div>
-                    <div>
-                        <div class="text-xs text-white/50 font-mono">Auth</div>
-                        <div class="mt-2 text-white font-body">Sessions persisted with encrypted preferences (fallback
-                            supported).</div>
-                    </div>
-                    <div>
-                        <div class="text-xs text-white/50 font-mono">Media</div>
-                        <div class="mt-2 text-white font-body">Avatars + artwork via Coil 3. Video support via Media3.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Tech Stack -->
         <section id="stack" class="max-w-7xl mx-auto px-4 py-8 scroll-mt-24">
             <div class="text-center mb-12">
@@ -789,9 +626,9 @@
                 <div class="marquee__track" data-marquee-track>
                     <div class="marquee__group" data-marquee-group>
                         <!-- Kotlin -->
-                        <div class="marquee__item flex items-center gap-5">
-                            <svg class="w-12 h-12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"
-                                aria-hidden="true" focusable="false">
+                        <div class="marquee__item flex items-center gap-3 md:gap-5">
+                            <svg class="w-9 h-9 md:w-12 md:h-12" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 256 256" aria-hidden="true" focusable="false">
                                 <defs>
                                     <linearGradient id="kotlinGradient1" x1="99.991%" x2=".01%" y1="-.011%"
                                         y2="100.01%">
@@ -803,12 +640,12 @@
                                 <path fill="url(#kotlinGradient1)" d="M256 256H0V0h256L128 127.949z" />
                             </svg>
                             <span
-                                class="font-display text-2xl md:text-3xl tracking-wide whitespace-nowrap">Kotlin</span>
+                                class="font-display text-lg sm:text-xl md:text-3xl tracking-wide whitespace-nowrap">Kotlin</span>
                         </div>
                         <!-- Jetpack Compose -->
-                        <div class="marquee__item flex items-center gap-5">
-                            <svg class="w-12 h-12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"
-                                aria-hidden="true" focusable="false">
+                        <div class="marquee__item flex items-center gap-3 md:gap-5">
+                            <svg class="w-9 h-9 md:w-12 md:h-12" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 128 128" aria-hidden="true" focusable="false">
                                 <g fill="none">
                                     <path fill="#083042"
                                         d="M41.226 76.778a4 4 0 0 1-.47-1.29c.09.452.25.887.47 1.29m.578.713c.222.22.472.411.749.548l18.88 10.565l-18.88-10.565a2.9 2.9 0 0 1-.747-.548z" />
@@ -860,45 +697,48 @@
                                         opacity="0.1" />
                                 </g>
                             </svg>
-                            <span class="font-display text-2xl md:text-3xl tracking-wide whitespace-nowrap">Jetpack
+                            <span
+                                class="font-display text-lg sm:text-xl md:text-3xl tracking-wide whitespace-nowrap">Jetpack
                                 Compose</span>
                         </div>
                         <!-- Material3 -->
-                        <div class="marquee__item flex items-center gap-5">
-                            <svg class="w-12 h-12 text-cyan-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
-                                aria-hidden="true" focusable="false">
+                        <div class="marquee__item flex items-center gap-3 md:gap-5">
+                            <svg class="w-9 h-9 md:w-12 md:h-12 text-cyan-400" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 32 32" aria-hidden="true" focusable="false">
                                 <path fill="currentColor"
                                     d="M16 0C7.172 0 0 7.172 0 16s7.172 16 16 16s16-7.172 16-16S24.828 0 16 0m0 1c3.828 0 7.307 1.443 9.958 3.802H6.041A14.92 14.92 0 0 1 15.999 1zM6.417 5.802h19.167l-9.583 19.161zm-1.615.24v19.917A14.92 14.92 0 0 1 1 16.001c0-3.828 1.443-7.307 3.802-9.958zm22.396 0A14.92 14.92 0 0 1 31 16c0 3.828-1.443 7.307-3.802 9.958zm-21.396.76L15.5 26.198H5.802zm20.396 0v19.396H16.5l9.703-19.396zM6.042 27.198h19.917C23.219 29.651 19.673 31 16.001 31s-7.219-1.349-9.958-3.802z" />
                             </svg>
-                            <span class="font-display text-2xl md:text-3xl tracking-wide whitespace-nowrap">Material
+                            <span
+                                class="font-display text-lg sm:text-xl md:text-3xl tracking-wide whitespace-nowrap">Material
                                 3</span>
                         </div>
                         <!-- Navigation3 -->
-                        <div class="marquee__item flex items-center gap-5">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-amber-400"
+                        <div class="marquee__item flex items-center gap-3 md:gap-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 md:w-12 md:h-12 text-amber-400"
                                 viewBox="0 0 24 24">
                                 <path fill="currentColor"
                                     d="m15.94 7.62l-4.88 2a2.63 2.63 0 0 0-1.48 1.48l-2 4.88a.34.34 0 0 0 .19.44a.36.36 0 0 0 .25 0l4.88-2a2.63 2.63 0 0 0 1.48-1.48l2-4.88a.34.34 0 0 0-.19-.44a.36.36 0 0 0-.25 0M12 13a1 1 0 1 1 1-1a1 1 0 0 1-1 1" />
                                 <path fill="currentColor"
                                     d="M12 21a9 9 0 1 1 9-9a9 9 0 0 1-9 9m0-16.5a7.5 7.5 0 1 0 7.5 7.5A7.5 7.5 0 0 0 12 4.5" />
                             </svg>
-                            <span class="font-display text-2xl md:text-3xl tracking-wide whitespace-nowrap">Navigation
+                            <span
+                                class="font-display text-lg sm:text-xl md:text-3xl tracking-wide whitespace-nowrap">Navigation
                                 3</span>
                         </div>
                         <!-- Appwrite -->
-                        <div class="marquee__item flex items-center gap-5">
-                            <svg class="w-12 h-12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"
-                                aria-hidden="true" focusable="false">
+                        <div class="marquee__item flex items-center gap-3 md:gap-5">
+                            <svg class="w-9 h-9 md:w-12 md:h-12" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 128 128" aria-hidden="true" focusable="false">
                                 <path fill="#fd366e"
                                     d="M56.305 7.568c-25.833 0-47.611 17.355-54.309 41.042A55.7 55.7 0 0 0 0 60.187v7.628a56.1 56.1 0 0 0 7.421 24.402c9.758 16.868 27.996 28.215 48.884 28.215H128V92.217H56.305a28.1 28.1 0 0 1-19.363-7.696c-5.453-5.143-8.855-12.432-8.855-20.52c0-2.668.37-5.248 1.063-7.696c.78-2.76 1.97-5.348 3.503-7.695c5.033-7.722 13.746-12.827 23.652-12.827s18.617 5.105 23.65 12.827h30.655C103.913 24.923 82.14 7.568 56.305 7.568M83.46 56.305a28.2 28.2 0 0 1 1.062 7.696c0 8.088-3.401 15.377-8.855 20.52H128V56.305Z" />
                             </svg>
                             <span
-                                class="font-display text-2xl md:text-3xl tracking-wide whitespace-nowrap">Appwrite</span>
+                                class="font-display text-lg sm:text-xl md:text-3xl tracking-wide whitespace-nowrap">Appwrite</span>
                         </div>
                         <!-- Room -->
-                        <div class="marquee__item flex items-center gap-5">
-                            <svg class="w-12 h-12 text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                aria-hidden="true" focusable="false">
+                        <div class="marquee__item flex items-center gap-3 md:gap-5">
+                            <svg class="w-9 h-9 md:w-12 md:h-12 text-blue-400" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                                 <path fill="currentColor"
                                     d="M12 10c4.418 0 8-1.79 8-4s-3.582-4-8-4s-8 1.79-8 4s3.582 4 8 4" />
                                 <path fill="currentColor"
@@ -908,11 +748,12 @@
                                     d="M4 6v6c0 2.21 3.582 4 8 4s8-1.79 8-4V6c0 2.21-3.582 4-8 4S4 8.21 4 6"
                                     opacity="0.7" />
                             </svg>
-                            <span class="font-display text-2xl md:text-3xl tracking-wide whitespace-nowrap">Room</span>
+                            <span
+                                class="font-display text-lg sm:text-xl md:text-3xl tracking-wide whitespace-nowrap">Room</span>
                         </div>
                         <!-- Koin -->
-                        <div class="marquee__item flex items-center gap-5">
-                            <svg class="w-12 h-12" xmlns="http://www.w3.org/2000/svg" viewBox="2 2 20 20">
+                        <div class="marquee__item flex items-center gap-3 md:gap-5">
+                            <svg class="w-9 h-9 md:w-12 md:h-12" xmlns="http://www.w3.org/2000/svg" viewBox="2 2 20 20">
                                 <g fill="#6f00f6">
                                     <path fill-rule="evenodd"
                                         d="M12 3.98L5 7.99v8.02l7 4.01l7-4.01V7.99zm8 3.52L12 3L4 7.5v9l8 4.5l8-4.5z"
@@ -925,12 +766,13 @@
                                     </path>
                                 </g>
                             </svg>
-                            <span class="font-display text-2xl md:text-3xl tracking-wide whitespace-nowrap">Koin</span>
+                            <span
+                                class="font-display text-lg sm:text-xl md:text-3xl tracking-wide whitespace-nowrap">Koin</span>
                         </div>
                         <!-- Coil -->
-                        <div class="marquee__item flex items-center gap-5">
-                            <svg class="w-12 h-12" xmlns="http://www.w3.org/2000/svg" viewBox="344 268 56 56"
-                                aria-hidden="true" focusable="false">
+                        <div class="marquee__item flex items-center gap-3 md:gap-5">
+                            <svg class="w-9 h-9 md:w-12 md:h-12" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="344 268 56 56" aria-hidden="true" focusable="false">
                                 <g>
                                     <g>
                                         <path fill="#45DFF4"
@@ -945,7 +787,8 @@
                                     </g>
                                 </g>
                             </svg>
-                            <span class="font-display text-2xl md:text-3xl tracking-wide whitespace-nowrap">Coil
+                            <span
+                                class="font-display text-lg sm:text-xl md:text-3xl tracking-wide whitespace-nowrap">Coil
                                 3</span>
                         </div>
                     </div>
@@ -956,103 +799,706 @@
         <!-- NEW: Game Reviews Section -->
         <section id="reviews" class="max-w-7xl mx-auto px-4 scroll-mt-24">
             <div class="flex flex-col items-center text-center mb-16">
-                <div
-                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 mb-4">
-                    <span class="relative flex h-2 w-2">
-                        <span
-                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                    </span>
-                    <span class="text-[10px] font-bold tracking-widest text-green-400 uppercase">Live Community
-                        Feed</span>
-                </div>
                 <h2 class="font-display text-5xl md:text-7xl mb-4">COMMUNITY <span
                         class="text-violet-500">REVIEWS</span></h2>
                 <p class="text-gray-400 font-body text-lg max-w-2xl">Rate games, write reviews, and like others'
                     opinions. All synced in real-time via Appwrite with optimistic UI updates.</p>
+                <p class="mt-4 text-xs font-mono uppercase tracking-widest text-gray-600">Hover a row to pause</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Review 1 -->
-                <div x-data="{ expanded: false }"
-                    class="glass-card rounded-[2.5rem] p-8 transition-all hover:scale-[1.02] relative group">
-                    <div class="flex items-start justify-between mb-6">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 rounded-2xl overflow-hidden border border-white/10">
-                                <img src="https://i.pravatar.cc/100?img=12" class="w-full h-full object-cover">
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-white text-sm">Alex Rivera</h4>
-                                <p class="text-[10px] text-gray-500 uppercase tracking-widest font-mono">2m ago • edited
+            <div class="max-w-[72rem] mx-auto space-y-6">
+                <!-- Row 1: scroll left-to-right -->
+                <div class="marquee marquee--reverse" style="--marquee-duration: 42s;">
+                    <div class="marquee__track" data-marquee-track>
+                        <div class="marquee__group" data-marquee-group>
+                            <article class="marquee__item review-card w-[18rem] sm:w-[20rem] lg:w-[22rem]">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div class="flex items-center gap-3 min-w-0">
+                                        <div
+                                            class="w-10 h-10 rounded-xl overflow-hidden border border-white/10 flex-shrink-0">
+                                            <img src="https://i.pravatar.cc/80?img=12" alt="Avatar of Alex Rivera"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="min-w-0">
+                                            <p class="text-white font-semibold text-sm truncate">Alex Rivera</p>
+                                            <p
+                                                class="text-gray-500 text-[11px] font-mono uppercase tracking-widest truncate">
+                                                Hades II • 2d ago</p>
+                                        </div>
+                                    </div>
+                                    <div class="review-score">
+                                        <span>4.9</span>
+                                        <i class="fa-solid fa-star text-[10px]"></i>
+                                    </div>
+                                </div>
+                                <p class="mt-4 text-gray-300 text-sm leading-relaxed">
+                                    "Arcadia turned my backlog into a dopamine loop. Organizing feels like gameplay."
                                 </p>
-                            </div>
-                        </div>
-                        <div
-                            class="m3-primary-container px-3 py-1 rounded-xl flex items-center gap-1 text-sm font-bold">
-                            <span>4.8</span>
-                            <i class="fa-solid fa-star text-xs"></i>
+                                <div class="mt-5 flex items-center justify-between gap-3 text-xs text-gray-500">
+                                    <span class="review-chip">
+                                        <i class="fa-solid fa-wand-magic-sparkles text-violet-300 text-[10px]"></i>
+                                        AI Roast: Mild
+                                    </span>
+                                    <span class="inline-flex items-center gap-1">
+                                        <i class="fa-solid fa-heart text-pink-200 text-[10px]"></i>214
+                                    </span>
+                                </div>
+                            </article>
+
+                            <article class="marquee__item review-card w-[18rem] sm:w-[20rem] lg:w-[22rem]">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div class="flex items-center gap-3 min-w-0">
+                                        <div
+                                            class="w-10 h-10 rounded-xl overflow-hidden border border-white/10 flex-shrink-0">
+                                            <img src="https://i.pravatar.cc/80?img=32" alt="Avatar of Sarah Chen"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="min-w-0">
+                                            <p class="text-white font-semibold text-sm truncate">Sarah Chen</p>
+                                            <p
+                                                class="text-gray-500 text-[11px] font-mono uppercase tracking-widest truncate">
+                                                Baldur's Gate 3 • 5h ago</p>
+                                        </div>
+                                    </div>
+                                    <div class="review-score">
+                                        <span>5.0</span>
+                                        <i class="fa-solid fa-star text-[10px]"></i>
+                                    </div>
+                                </div>
+                                <p class="mt-4 text-gray-300 text-sm leading-relaxed">
+                                    "Realtime is scary fast. I liked a review and it felt instant. Love the friend feed."
+                                </p>
+                                <div class="mt-5 flex items-center justify-between gap-3 text-xs text-gray-500">
+                                    <span class="review-chip">
+                                        <i class="fa-solid fa-fire text-red-300 text-[10px]"></i>
+                                        AI Roast: Spicy
+                                    </span>
+                                    <span class="inline-flex items-center gap-1">
+                                        <i class="fa-solid fa-heart text-pink-200 text-[10px]"></i>391
+                                    </span>
+                                </div>
+                            </article>
+
+                            <article class="marquee__item review-card w-[18rem] sm:w-[20rem] lg:w-[22rem]">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div class="flex items-center gap-3 min-w-0">
+                                        <div
+                                            class="w-10 h-10 rounded-xl overflow-hidden border border-white/10 flex-shrink-0">
+                                            <img src="https://i.pravatar.cc/80?img=18" alt="Avatar of Jordan Miles"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="min-w-0">
+                                            <p class="text-white font-semibold text-sm truncate">Jordan Miles</p>
+                                            <p
+                                                class="text-gray-500 text-[11px] font-mono uppercase tracking-widest truncate">
+                                                Cyberpunk 2077 • 1d ago</p>
+                                        </div>
+                                    </div>
+                                    <div class="review-score">
+                                        <span>4.7</span>
+                                        <i class="fa-solid fa-star text-[10px]"></i>
+                                    </div>
+                                </div>
+                                <p class="mt-4 text-gray-300 text-sm leading-relaxed">
+                                    "Stats + tags are elite. I finally know what I actually enjoy playing."
+                                </p>
+                                <div class="mt-5 flex items-center justify-between gap-3 text-xs text-gray-500">
+                                    <span class="review-chip">
+                                        <i class="fa-solid fa-chart-line text-emerald-200 text-[10px]"></i>
+                                        Stats
+                                    </span>
+                                    <span class="inline-flex items-center gap-1">
+                                        <i class="fa-solid fa-heart text-pink-200 text-[10px]"></i>128
+                                    </span>
+                                </div>
+                            </article>
+
+                            <article class="marquee__item review-card w-[18rem] sm:w-[20rem] lg:w-[22rem]">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div class="flex items-center gap-3 min-w-0">
+                                        <div
+                                            class="w-10 h-10 rounded-xl overflow-hidden border border-white/10 flex-shrink-0">
+                                            <img src="https://i.pravatar.cc/80?img=47" alt="Avatar of Priya Nair"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="min-w-0">
+                                            <p class="text-white font-semibold text-sm truncate">Priya Nair</p>
+                                            <p
+                                                class="text-gray-500 text-[11px] font-mono uppercase tracking-widest truncate">
+                                                Stardew Valley • 3d ago</p>
+                                        </div>
+                                    </div>
+                                    <div class="review-score">
+                                        <span>4.8</span>
+                                        <i class="fa-solid fa-star text-[10px]"></i>
+                                    </div>
+                                </div>
+                                <p class="mt-4 text-gray-300 text-sm leading-relaxed">
+                                    "Offline mode saved my commute. Reviews stayed cached and synced later."
+                                </p>
+                                <div class="mt-5 flex items-center justify-between gap-3 text-xs text-gray-500">
+                                    <span class="review-chip">
+                                        <i class="fa-solid fa-bolt text-yellow-200 text-[10px]"></i>
+                                        Sync: Instant
+                                    </span>
+                                    <span class="inline-flex items-center gap-1">
+                                        <i class="fa-solid fa-heart text-pink-200 text-[10px]"></i>203
+                                    </span>
+                                </div>
+                            </article>
+
+                            <article class="marquee__item review-card w-[18rem] sm:w-[20rem] lg:w-[22rem]">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div class="flex items-center gap-3 min-w-0">
+                                        <div
+                                            class="w-10 h-10 rounded-xl overflow-hidden border border-white/10 flex-shrink-0">
+                                            <img src="https://i.pravatar.cc/80?img=7" alt="Avatar of Mateo Silva"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="min-w-0">
+                                            <p class="text-white font-semibold text-sm truncate">Mateo Silva</p>
+                                            <p
+                                                class="text-gray-500 text-[11px] font-mono uppercase tracking-widest truncate">
+                                                Helldivers 2 • 6h ago</p>
+                                        </div>
+                                    </div>
+                                    <div class="review-score">
+                                        <span>4.6</span>
+                                        <i class="fa-solid fa-star text-[10px]"></i>
+                                    </div>
+                                </div>
+                                <p class="mt-4 text-gray-300 text-sm leading-relaxed">
+                                    "The weekly recap is dangerous. It basically dares me to stop grinding."
+                                </p>
+                                <div class="mt-5 flex items-center justify-between gap-3 text-xs text-gray-500">
+                                    <span class="review-chip">
+                                        <i class="fa-solid fa-wand-magic-sparkles text-violet-300 text-[10px]"></i>
+                                        AI Roast: Brutal
+                                    </span>
+                                    <span class="inline-flex items-center gap-1">
+                                        <i class="fa-solid fa-heart text-pink-200 text-[10px]"></i>97
+                                    </span>
+                                </div>
+                            </article>
+
+                            <article class="marquee__item review-card w-[18rem] sm:w-[20rem] lg:w-[22rem]">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div class="flex items-center gap-3 min-w-0">
+                                        <div
+                                            class="w-10 h-10 rounded-xl overflow-hidden border border-white/10 flex-shrink-0">
+                                            <img src="https://i.pravatar.cc/80?img=28" alt="Avatar of Rina Park"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="min-w-0">
+                                            <p class="text-white font-semibold text-sm truncate">Rina Park</p>
+                                            <p
+                                                class="text-gray-500 text-[11px] font-mono uppercase tracking-widest truncate">
+                                                Hollow Knight • 4d ago</p>
+                                        </div>
+                                    </div>
+                                    <div class="review-score">
+                                        <span>4.9</span>
+                                        <i class="fa-solid fa-star text-[10px]"></i>
+                                    </div>
+                                </div>
+                                <p class="mt-4 text-gray-300 text-sm leading-relaxed">
+                                    "The UI is ridiculously smooth. Everything feels built for thumbs, not spreadsheets."
+                                </p>
+                                <div class="mt-5 flex items-center justify-between gap-3 text-xs text-gray-500">
+                                    <span class="review-chip">
+                                        <i class="fa-solid fa-shield text-emerald-200 text-[10px]"></i>
+                                        Verified
+                                    </span>
+                                    <span class="inline-flex items-center gap-1">
+                                        <i class="fa-solid fa-heart text-pink-200 text-[10px]"></i>142
+                                    </span>
+                                </div>
+                            </article>
+
+                            <article class="marquee__item review-card w-[18rem] sm:w-[20rem] lg:w-[22rem]">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div class="flex items-center gap-3 min-w-0">
+                                        <div
+                                            class="w-10 h-10 rounded-xl overflow-hidden border border-white/10 flex-shrink-0">
+                                            <img src="https://i.pravatar.cc/80?img=54" alt="Avatar of Omar Hassan"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="min-w-0">
+                                            <p class="text-white font-semibold text-sm truncate">Omar Hassan</p>
+                                            <p
+                                                class="text-gray-500 text-[11px] font-mono uppercase tracking-widest truncate">
+                                                The Witcher 3 • 1w ago</p>
+                                        </div>
+                                    </div>
+                                    <div class="review-score">
+                                        <span>4.8</span>
+                                        <i class="fa-solid fa-star text-[10px]"></i>
+                                    </div>
+                                </div>
+                                <p class="mt-4 text-gray-300 text-sm leading-relaxed">
+                                    "I love seeing my friends' notes next to mine. The social layer is perfect."
+                                </p>
+                                <div class="mt-5 flex items-center justify-between gap-3 text-xs text-gray-500">
+                                    <span class="review-chip">
+                                        <i class="fa-solid fa-users text-blue-200 text-[10px]"></i>
+                                        Friends
+                                    </span>
+                                    <span class="inline-flex items-center gap-1">
+                                        <i class="fa-solid fa-heart text-pink-200 text-[10px]"></i>176
+                                    </span>
+                                </div>
+                            </article>
+
+                            <article class="marquee__item review-card w-[18rem] sm:w-[20rem] lg:w-[22rem]">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div class="flex items-center gap-3 min-w-0">
+                                        <div
+                                            class="w-10 h-10 rounded-xl overflow-hidden border border-white/10 flex-shrink-0">
+                                            <img src="https://i.pravatar.cc/80?img=22" alt="Avatar of Liv Bennett"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="min-w-0">
+                                            <p class="text-white font-semibold text-sm truncate">Liv Bennett</p>
+                                            <p
+                                                class="text-gray-500 text-[11px] font-mono uppercase tracking-widest truncate">
+                                                Zelda: TOTK • 2w ago</p>
+                                        </div>
+                                    </div>
+                                    <div class="review-score">
+                                        <span>4.7</span>
+                                        <i class="fa-solid fa-star text-[10px]"></i>
+                                    </div>
+                                </div>
+                                <p class="mt-4 text-gray-300 text-sm leading-relaxed">
+                                    "The Discover feed is dangerously good. I bought two games because of it."
+                                </p>
+                                <div class="mt-5 flex items-center justify-between gap-3 text-xs text-gray-500">
+                                    <span class="review-chip">
+                                        <i class="fa-solid fa-compass text-violet-200 text-[10px]"></i>
+                                        Discover
+                                    </span>
+                                    <span class="inline-flex items-center gap-1">
+                                        <i class="fa-solid fa-heart text-pink-200 text-[10px]"></i>88
+                                    </span>
+                                </div>
+                            </article>
+
+                            <article class="marquee__item review-card w-[18rem] sm:w-[20rem] lg:w-[22rem]">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div class="flex items-center gap-3 min-w-0">
+                                        <div
+                                            class="w-10 h-10 rounded-xl overflow-hidden border border-white/10 flex-shrink-0">
+                                            <img src="https://i.pravatar.cc/80?img=36" alt="Avatar of Kai Nguyen"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="min-w-0">
+                                            <p class="text-white font-semibold text-sm truncate">Kai Nguyen</p>
+                                            <p
+                                                class="text-gray-500 text-[11px] font-mono uppercase tracking-widest truncate">
+                                                Apex Legends • 9h ago</p>
+                                        </div>
+                                    </div>
+                                    <div class="review-score">
+                                        <span>4.5</span>
+                                        <i class="fa-solid fa-star text-[10px]"></i>
+                                    </div>
+                                </div>
+                                <p class="mt-4 text-gray-300 text-sm leading-relaxed">
+                                    "Session tracking + notes is perfect for ranked. I remember what worked."
+                                </p>
+                                <div class="mt-5 flex items-center justify-between gap-3 text-xs text-gray-500">
+                                    <span class="review-chip">
+                                        <i class="fa-solid fa-trophy text-yellow-200 text-[10px]"></i>
+                                        Ranked
+                                    </span>
+                                    <span class="inline-flex items-center gap-1">
+                                        <i class="fa-solid fa-heart text-pink-200 text-[10px]"></i>61
+                                    </span>
+                                </div>
+                            </article>
+
+                            <article class="marquee__item review-card w-[18rem] sm:w-[20rem] lg:w-[22rem]">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div class="flex items-center gap-3 min-w-0">
+                                        <div
+                                            class="w-10 h-10 rounded-xl overflow-hidden border border-white/10 flex-shrink-0">
+                                            <img src="https://i.pravatar.cc/80?img=45" alt="Avatar of Emma Brooks"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="min-w-0">
+                                            <p class="text-white font-semibold text-sm truncate">Emma Brooks</p>
+                                            <p
+                                                class="text-gray-500 text-[11px] font-mono uppercase tracking-widest truncate">
+                                                Persona 5 Royal • 3d ago</p>
+                                        </div>
+                                    </div>
+                                    <div class="review-score">
+                                        <span>4.9</span>
+                                        <i class="fa-solid fa-star text-[10px]"></i>
+                                    </div>
+                                </div>
+                                <p class="mt-4 text-gray-300 text-sm leading-relaxed">
+                                    "The collection view is gorgeous. Sorting by mood is a weirdly good idea."
+                                </p>
+                                <div class="mt-5 flex items-center justify-between gap-3 text-xs text-gray-500">
+                                    <span class="review-chip">
+                                        <i class="fa-solid fa-layer-group text-violet-200 text-[10px]"></i>
+                                        Collections
+                                    </span>
+                                    <span class="inline-flex items-center gap-1">
+                                        <i class="fa-solid fa-heart text-pink-200 text-[10px]"></i>149
+                                    </span>
+                                </div>
+                            </article>
                         </div>
                     </div>
-                    <div class="relative overflow-hidden transition-all duration-500"
-                        :style="expanded ? 'max-height: 1000px' : 'max-height: 80px'">
-                        <p class="text-gray-300 font-body leading-relaxed" :class="expanded ? '' : 'line-clamp-3'">
-                            "The new update is absolutely insane. The spring physics in the UI make every tap feel
-                            tactile. I spent 4 hours just organizing my backlog because it felt so good. Best gaming
-                            companion hands down."
-                        </p>
-                    </div>
-                    <button @click="expanded = !expanded"
-                        class="mt-6 flex items-center gap-2 text-violet-400 text-xs font-bold uppercase tracking-tighter hover:text-white transition-colors cursor-pointer">
-                        <span x-text="expanded ? 'Show Less' : 'Read Full Review'"></span>
-                        <i class="fa-solid fa-chevron-down transition-transform duration-300"
-                            :class="expanded ? 'rotate-180' : ''"></i>
-                    </button>
                 </div>
 
-                <!-- Review 2 -->
-                <div x-data="{ expanded: false }"
-                    class="glass-card rounded-[2.5rem] p-8 transition-all hover:scale-[1.02] relative group border-violet-500/20 shadow-lg shadow-violet-500/5">
-                    <div class="flex items-start justify-between mb-6">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 rounded-2xl overflow-hidden border border-white/10">
-                                <img src="https://i.pravatar.cc/100?img=32" class="w-full h-full object-cover">
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-white text-sm">Sarah Chen</h4>
-                                <p class="text-[10px] text-gray-500 uppercase tracking-widest font-mono">Just now •
-                                    Friend</p>
-                            </div>
-                        </div>
-                        <div
-                            class="bg-red-500/20 text-red-400 border border-red-500/30 px-3 py-1 rounded-xl flex items-center gap-1 text-sm font-bold">
-                            <span>5.0</span>
-                            <i class="fa-solid fa-star text-xs"></i>
-                        </div>
-                    </div>
-                    <div class="relative overflow-hidden transition-all duration-500"
-                        :style="expanded ? 'max-height: 1000px' : 'max-height: 80px'">
-                        <p class="text-gray-300 font-body leading-relaxed" :class="expanded ? '' : 'line-clamp-3'">
-                            "Finally, a tracker that doesn't feel like a spreadsheet. The Appwrite realtime sync is
-                            flawless. Saw Alex's review pop up instantly. The judge (AI) called me out for 200 hours in
-                            Animal Crossing though... 10/10."
-                        </p>
-                    </div>
-                    <button @click="expanded = !expanded"
-                        class="mt-6 flex items-center gap-2 text-violet-400 text-xs font-bold uppercase tracking-tighter hover:text-white transition-colors cursor-pointer">
-                        <span x-text="expanded ? 'Show Less' : 'Read Full Review'"></span>
-                        <i class="fa-solid fa-chevron-down transition-transform duration-300"
-                            :class="expanded ? 'rotate-180' : ''"></i>
-                    </button>
-                </div>
+                <!-- Row 2: scroll right-to-left -->
+                <div class="marquee" style="--marquee-duration: 46s;">
+                    <div class="marquee__track" data-marquee-track>
+                        <div class="marquee__group" data-marquee-group>
+                            <article class="marquee__item review-card w-[18rem] sm:w-[20rem] lg:w-[22rem]">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div class="flex items-center gap-3 min-w-0">
+                                        <div
+                                            class="w-10 h-10 rounded-xl overflow-hidden border border-white/10 flex-shrink-0">
+                                            <img src="https://i.pravatar.cc/80?img=3" alt="Avatar of Noah Patel"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="min-w-0">
+                                            <p class="text-white font-semibold text-sm truncate">Noah Patel</p>
+                                            <p
+                                                class="text-gray-500 text-[11px] font-mono uppercase tracking-widest truncate">
+                                                Dark Souls III • 12h ago</p>
+                                        </div>
+                                    </div>
+                                    <div class="review-score">
+                                        <span>4.8</span>
+                                        <i class="fa-solid fa-star text-[10px]"></i>
+                                    </div>
+                                </div>
+                                <p class="mt-4 text-gray-300 text-sm leading-relaxed">
+                                    "The AI roast is a personal trainer for my bad habits. Unreasonably motivating."
+                                </p>
+                                <div class="mt-5 flex items-center justify-between gap-3 text-xs text-gray-500">
+                                    <span class="review-chip">
+                                        <i class="fa-solid fa-dumbbell text-emerald-200 text-[10px]"></i>
+                                        Coaching
+                                    </span>
+                                    <span class="inline-flex items-center gap-1">
+                                        <i class="fa-solid fa-heart text-pink-200 text-[10px]"></i>167
+                                    </span>
+                                </div>
+                            </article>
 
-                <!-- Review 3 (Teaser) -->
-                <div
-                    class="glass-card rounded-[2.5rem] p-8 flex flex-col items-center justify-center text-center border-dashed border-white/10 opacity-60">
-                    <div class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-4">
-                        <i class="fa-solid fa-plus text-gray-500 text-2xl animate-pulse"></i>
+                            <article class="marquee__item review-card w-[18rem] sm:w-[20rem] lg:w-[22rem]">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div class="flex items-center gap-3 min-w-0">
+                                        <div
+                                            class="w-10 h-10 rounded-xl overflow-hidden border border-white/10 flex-shrink-0">
+                                            <img src="https://i.pravatar.cc/80?img=9" alt="Avatar of Mia Johnson"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="min-w-0">
+                                            <p class="text-white font-semibold text-sm truncate">Mia Johnson</p>
+                                            <p
+                                                class="text-gray-500 text-[11px] font-mono uppercase tracking-widest truncate">
+                                                Animal Crossing • 2d ago</p>
+                                        </div>
+                                    </div>
+                                    <div class="review-score">
+                                        <span>4.7</span>
+                                        <i class="fa-solid fa-star text-[10px]"></i>
+                                    </div>
+                                </div>
+                                <p class="mt-4 text-gray-300 text-sm leading-relaxed">
+                                    "I never thought I'd enjoy writing reviews. The prompts make it effortless."
+                                </p>
+                                <div class="mt-5 flex items-center justify-between gap-3 text-xs text-gray-500">
+                                    <span class="review-chip">
+                                        <i class="fa-solid fa-feather text-violet-200 text-[10px]"></i>
+                                        Writing
+                                    </span>
+                                    <span class="inline-flex items-center gap-1">
+                                        <i class="fa-solid fa-heart text-pink-200 text-[10px]"></i>244
+                                    </span>
+                                </div>
+                            </article>
+
+                            <article class="marquee__item review-card w-[18rem] sm:w-[20rem] lg:w-[22rem]">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div class="flex items-center gap-3 min-w-0">
+                                        <div
+                                            class="w-10 h-10 rounded-xl overflow-hidden border border-white/10 flex-shrink-0">
+                                            <img src="https://i.pravatar.cc/80?img=14" alt="Avatar of Ethan Wright"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="min-w-0">
+                                            <p class="text-white font-semibold text-sm truncate">Ethan Wright</p>
+                                            <p
+                                                class="text-gray-500 text-[11px] font-mono uppercase tracking-widest truncate">
+                                                Fortnite • 6d ago</p>
+                                        </div>
+                                    </div>
+                                    <div class="review-score">
+                                        <span>4.4</span>
+                                        <i class="fa-solid fa-star text-[10px]"></i>
+                                    </div>
+                                </div>
+                                <p class="mt-4 text-gray-300 text-sm leading-relaxed">
+                                    "The quick-add flow is perfect. I can log a session in 10 seconds."
+                                </p>
+                                <div class="mt-5 flex items-center justify-between gap-3 text-xs text-gray-500">
+                                    <span class="review-chip">
+                                        <i class="fa-solid fa-stopwatch text-yellow-200 text-[10px]"></i>
+                                        Fast
+                                    </span>
+                                    <span class="inline-flex items-center gap-1">
+                                        <i class="fa-solid fa-heart text-pink-200 text-[10px]"></i>73
+                                    </span>
+                                </div>
+                            </article>
+
+                            <article class="marquee__item review-card w-[18rem] sm:w-[20rem] lg:w-[22rem]">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div class="flex items-center gap-3 min-w-0">
+                                        <div
+                                            class="w-10 h-10 rounded-xl overflow-hidden border border-white/10 flex-shrink-0">
+                                            <img src="https://i.pravatar.cc/80?img=24" alt="Avatar of Sofia Garcia"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="min-w-0">
+                                            <p class="text-white font-semibold text-sm truncate">Sofia Garcia</p>
+                                            <p
+                                                class="text-gray-500 text-[11px] font-mono uppercase tracking-widest truncate">
+                                                Overwatch 2 • 1w ago</p>
+                                        </div>
+                                    </div>
+                                    <div class="review-score">
+                                        <span>4.3</span>
+                                        <i class="fa-solid fa-star text-[10px]"></i>
+                                    </div>
+                                </div>
+                                <p class="mt-4 text-gray-300 text-sm leading-relaxed">
+                                    "Friend reactions on reviews are hilarious. It makes the feed feel alive."
+                                </p>
+                                <div class="mt-5 flex items-center justify-between gap-3 text-xs text-gray-500">
+                                    <span class="review-chip">
+                                        <i class="fa-solid fa-face-grin-squint text-violet-200 text-[10px]"></i>
+                                        Social
+                                    </span>
+                                    <span class="inline-flex items-center gap-1">
+                                        <i class="fa-solid fa-heart text-pink-200 text-[10px]"></i>94
+                                    </span>
+                                </div>
+                            </article>
+
+                            <article class="marquee__item review-card w-[18rem] sm:w-[20rem] lg:w-[22rem]">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div class="flex items-center gap-3 min-w-0">
+                                        <div
+                                            class="w-10 h-10 rounded-xl overflow-hidden border border-white/10 flex-shrink-0">
+                                            <img src="https://i.pravatar.cc/80?img=41" alt="Avatar of Hana Kim"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="min-w-0">
+                                            <p class="text-white font-semibold text-sm truncate">Hana Kim</p>
+                                            <p
+                                                class="text-gray-500 text-[11px] font-mono uppercase tracking-widest truncate">
+                                                Sekiro • 3d ago</p>
+                                        </div>
+                                    </div>
+                                    <div class="review-score">
+                                        <span>4.9</span>
+                                        <i class="fa-solid fa-star text-[10px]"></i>
+                                    </div>
+                                </div>
+                                <p class="mt-4 text-gray-300 text-sm leading-relaxed">
+                                    "The UI animations are so clean. Everything feels premium and deliberate."
+                                </p>
+                                <div class="mt-5 flex items-center justify-between gap-3 text-xs text-gray-500">
+                                    <span class="review-chip">
+                                        <i class="fa-solid fa-sparkles text-violet-200 text-[10px]"></i>
+                                        UI
+                                    </span>
+                                    <span class="inline-flex items-center gap-1">
+                                        <i class="fa-solid fa-heart text-pink-200 text-[10px]"></i>121
+                                    </span>
+                                </div>
+                            </article>
+
+                            <article class="marquee__item review-card w-[18rem] sm:w-[20rem] lg:w-[22rem]">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div class="flex items-center gap-3 min-w-0">
+                                        <div
+                                            class="w-10 h-10 rounded-xl overflow-hidden border border-white/10 flex-shrink-0">
+                                            <img src="https://i.pravatar.cc/80?img=56" alt="Avatar of Luca Rossi"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="min-w-0">
+                                            <p class="text-white font-semibold text-sm truncate">Luca Rossi</p>
+                                            <p
+                                                class="text-gray-500 text-[11px] font-mono uppercase tracking-widest truncate">
+                                                God of War • 9d ago</p>
+                                        </div>
+                                    </div>
+                                    <div class="review-score">
+                                        <span>4.8</span>
+                                        <i class="fa-solid fa-star text-[10px]"></i>
+                                    </div>
+                                </div>
+                                <p class="mt-4 text-gray-300 text-sm leading-relaxed">
+                                    "The library view is beautiful. It feels like a personal museum of my games."
+                                </p>
+                                <div class="mt-5 flex items-center justify-between gap-3 text-xs text-gray-500">
+                                    <span class="review-chip">
+                                        <i class="fa-solid fa-landmark text-blue-200 text-[10px]"></i>
+                                        Library
+                                    </span>
+                                    <span class="inline-flex items-center gap-1">
+                                        <i class="fa-solid fa-heart text-pink-200 text-[10px]"></i>109
+                                    </span>
+                                </div>
+                            </article>
+
+                            <article class="marquee__item review-card w-[18rem] sm:w-[20rem] lg:w-[22rem]">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div class="flex items-center gap-3 min-w-0">
+                                        <div
+                                            class="w-10 h-10 rounded-xl overflow-hidden border border-white/10 flex-shrink-0">
+                                            <img src="https://i.pravatar.cc/80?img=30" alt="Avatar of Avery Stone"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="min-w-0">
+                                            <p class="text-white font-semibold text-sm truncate">Avery Stone</p>
+                                            <p
+                                                class="text-gray-500 text-[11px] font-mono uppercase tracking-widest truncate">
+                                                Slay the Spire • 8h ago</p>
+                                        </div>
+                                    </div>
+                                    <div class="review-score">
+                                        <span>4.7</span>
+                                        <i class="fa-solid fa-star text-[10px]"></i>
+                                    </div>
+                                </div>
+                                <p class="mt-4 text-gray-300 text-sm leading-relaxed">
+                                    "I'm obsessed with the streak nudges. It keeps me consistent without being annoying."
+                                </p>
+                                <div class="mt-5 flex items-center justify-between gap-3 text-xs text-gray-500">
+                                    <span class="review-chip">
+                                        <i class="fa-solid fa-bullseye text-emerald-200 text-[10px]"></i>
+                                        Goals
+                                    </span>
+                                    <span class="inline-flex items-center gap-1">
+                                        <i class="fa-solid fa-heart text-pink-200 text-[10px]"></i>66
+                                    </span>
+                                </div>
+                            </article>
+
+                            <article class="marquee__item review-card w-[18rem] sm:w-[20rem] lg:w-[22rem]">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div class="flex items-center gap-3 min-w-0">
+                                        <div
+                                            class="w-10 h-10 rounded-xl overflow-hidden border border-white/10 flex-shrink-0">
+                                            <img src="https://i.pravatar.cc/80?img=50" alt="Avatar of Chloe Adams"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="min-w-0">
+                                            <p class="text-white font-semibold text-sm truncate">Chloe Adams</p>
+                                            <p
+                                                class="text-gray-500 text-[11px] font-mono uppercase tracking-widest truncate">
+                                                Mario Kart 8 • 2w ago</p>
+                                        </div>
+                                    </div>
+                                    <div class="review-score">
+                                        <span>4.6</span>
+                                        <i class="fa-solid fa-star text-[10px]"></i>
+                                    </div>
+                                </div>
+                                <p class="mt-4 text-gray-300 text-sm leading-relaxed">
+                                    "Even the tiny details feel thoughtful. The app has taste."
+                                </p>
+                                <div class="mt-5 flex items-center justify-between gap-3 text-xs text-gray-500">
+                                    <span class="review-chip">
+                                        <i class="fa-solid fa-heart text-pink-200 text-[10px]"></i>
+                                        Vibes
+                                    </span>
+                                    <span class="inline-flex items-center gap-1">
+                                        <i class="fa-solid fa-heart text-pink-200 text-[10px]"></i>52
+                                    </span>
+                                </div>
+                            </article>
+
+                            <article class="marquee__item review-card w-[18rem] sm:w-[20rem] lg:w-[22rem]">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div class="flex items-center gap-3 min-w-0">
+                                        <div
+                                            class="w-10 h-10 rounded-xl overflow-hidden border border-white/10 flex-shrink-0">
+                                            <img src="https://i.pravatar.cc/80?img=60" alt="Avatar of Ben Thompson"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="min-w-0">
+                                            <p class="text-white font-semibold text-sm truncate">Ben Thompson</p>
+                                            <p
+                                                class="text-gray-500 text-[11px] font-mono uppercase tracking-widest truncate">
+                                                Final Fantasy XIV • 5d ago</p>
+                                        </div>
+                                    </div>
+                                    <div class="review-score">
+                                        <span>4.5</span>
+                                        <i class="fa-solid fa-star text-[10px]"></i>
+                                    </div>
+                                </div>
+                                <p class="mt-4 text-gray-300 text-sm leading-relaxed">
+                                    "I can finally track expansions and raids without a spreadsheet. Bless."
+                                </p>
+                                <div class="mt-5 flex items-center justify-between gap-3 text-xs text-gray-500">
+                                    <span class="review-chip">
+                                        <i class="fa-solid fa-scroll text-yellow-200 text-[10px]"></i>
+                                        MMO
+                                    </span>
+                                    <span class="inline-flex items-center gap-1">
+                                        <i class="fa-solid fa-heart text-pink-200 text-[10px]"></i>81
+                                    </span>
+                                </div>
+                            </article>
+
+                            <article class="marquee__item review-card w-[18rem] sm:w-[20rem] lg:w-[22rem]">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div class="flex items-center gap-3 min-w-0">
+                                        <div
+                                            class="w-10 h-10 rounded-xl overflow-hidden border border-white/10 flex-shrink-0">
+                                            <img src="https://i.pravatar.cc/80?img=62" alt="Avatar of Zain Ali"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="min-w-0">
+                                            <p class="text-white font-semibold text-sm truncate">Zain Ali</p>
+                                            <p
+                                                class="text-gray-500 text-[11px] font-mono uppercase tracking-widest truncate">
+                                                Counter-Strike 2 • 1d ago</p>
+                                        </div>
+                                    </div>
+                                    <div class="review-score">
+                                        <span>4.2</span>
+                                        <i class="fa-solid fa-star text-[10px]"></i>
+                                    </div>
+                                </div>
+                                <p class="mt-4 text-gray-300 text-sm leading-relaxed">
+                                    "It roasts my aim but at least it's honest. The stat charts are clean."
+                                </p>
+                                <div class="mt-5 flex items-center justify-between gap-3 text-xs text-gray-500">
+                                    <span class="review-chip">
+                                        <i class="fa-solid fa-crosshairs text-red-200 text-[10px]"></i>
+                                        Competitive
+                                    </span>
+                                    <span class="inline-flex items-center gap-1">
+                                        <i class="fa-solid fa-heart text-pink-200 text-[10px]"></i>58
+                                    </span>
+                                </div>
+                            </article>
+                        </div>
                     </div>
-                    <h4 class="font-display text-2xl mb-1 text-gray-400">WAITING FOR REVIEWS</h4>
-                    <p class="text-xs text-gray-600 font-body">New community content will appear here in real-time.</p>
                 </div>
             </div>
         </section>
@@ -1159,24 +1605,62 @@
     </footer>
 
     <script>
-            (function () {
-                const track = document.querySelector('[data-marquee-track]');
-                const group = document.querySelector('[data-marquee-group]');
-                if (!track || !group) return;
+        (function () {
+            const tracks = document.querySelectorAll('[data-marquee-track]');
+            if (!tracks.length) return;
+
+            function dedupeIds(root, suffix) {
+                const idEls = root.querySelectorAll('[id]');
+                if (!idEls.length) return;
+
+                const idMap = new Map();
+                idEls.forEach((el) => {
+                    const oldId = el.id;
+                    const newId = `${oldId}-${suffix}`;
+                    idMap.set(oldId, newId);
+                    el.id = newId;
+                });
+
+                const attrs = [
+                    'href',
+                    'xlink:href',
+                    'fill',
+                    'stroke',
+                    'filter',
+                    'clip-path',
+                    'mask',
+                    'marker-start',
+                    'marker-mid',
+                    'marker-end',
+                ];
+
+                root.querySelectorAll('*').forEach((el) => {
+                    for (const attr of attrs) {
+                        const val = el.getAttribute(attr);
+                        if (!val) continue;
+
+                        let next = val;
+                        for (const [oldId, newId] of idMap) {
+                            next = next
+                                .replaceAll(`url(#${oldId})`, `url(#${newId})`)
+                                .replaceAll(`#${oldId}`, `#${newId}`);
+                        }
+
+                        if (next !== val) el.setAttribute(attr, next);
+                    }
+                });
+            }
+
+            tracks.forEach((track, i) => {
+                const group = track.querySelector('[data-marquee-group]');
+                if (!group) return;
 
                 const clone = group.cloneNode(true);
                 clone.setAttribute('aria-hidden', 'true');
-
-                const kotlinGradient = clone.querySelector('#kotlinGradient1');
-                if (kotlinGradient) {
-                    kotlinGradient.id = 'kotlinGradient2';
-                    clone.querySelectorAll('[fill="url(#kotlinGradient1)"]').forEach((el) => {
-                        el.setAttribute('fill', 'url(#kotlinGradient2)');
-                    });
-                }
-
+                dedupeIds(clone, `marquee${i + 1}`);
                 track.appendChild(clone);
-            })();
+            });
+        })();
     </script>
 
 </body>
