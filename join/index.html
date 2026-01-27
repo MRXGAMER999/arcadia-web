@@ -39,6 +39,9 @@
     <!-- Alpine.js -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+    <!-- Google Identity Services -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
     <!-- Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -190,32 +193,70 @@
 
     <main class="max-w-xl mx-auto px-6 pb-32">
         <div class="glass-card rounded-3xl p-5 md:p-8">
-            <form id="betaForm" class="space-y-8">
-                <div class="space-y-2">
-                    <input id="userName" name="userName" type="text" autocomplete="name" placeholder="Full Name"
-                        required
-                        class="w-full px-0 py-4 bg-transparent border-b-2 border-white/20 text-white text-lg placeholder-gray-500 focus:outline-none focus:border-white" />
+            <!-- Sign-In Container -->
+            <div id="signInContainer" class="space-y-6">
+                <!-- Google Sign-In Button -->
+                <button id="googleSignInBtn" type="button"
+                    class="w-full px-8 py-4 bg-white text-navy-900 font-body font-bold text-base tracking-wide rounded-2xl hover:bg-gray-100 transition-all shadow-lg flex items-center justify-center gap-3">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24">
+                        <path fill="#4285F4"
+                            d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                        <path fill="#34A853"
+                            d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                        <path fill="#FBBC05"
+                            d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
+                        <path fill="#EA4335"
+                            d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+                    </svg>
+                    CONTINUE WITH GOOGLE
+                </button>
+
+                <!-- Divider -->
+                <div class="flex items-center gap-4">
+                    <div class="flex-1 h-px bg-white/10"></div>
+                    <span class="text-gray-500 text-sm font-body">or</span>
+                    <div class="flex-1 h-px bg-white/10"></div>
                 </div>
 
-                <div class="space-y-2">
-                    <input id="userEmail" name="userEmail" type="email" autocomplete="email" placeholder="Email Address"
-                        required
-                        class="w-full px-0 py-4 bg-transparent border-b-2 border-white/20 text-white text-lg placeholder-gray-500 focus:outline-none focus:border-white" />
-                    <p class="text-xs text-gray-500 px-0">Use the same email as your Google Play account</p>
-                </div>
+                <!-- Manual Form -->
+                <form id="betaForm" class="space-y-6">
+                    <div class="space-y-2">
+                        <input id="userName" name="userName" type="text" autocomplete="name" placeholder="Full Name"
+                            required
+                            class="w-full px-0 py-4 bg-transparent border-b-2 border-white/20 text-white text-lg placeholder-gray-500 focus:outline-none focus:border-white" />
+                    </div>
 
-                <div class="pt-3 space-y-4">
+                    <div class="space-y-2">
+                        <input id="userEmail" name="userEmail" type="email" autocomplete="email"
+                            placeholder="Email Address" required
+                            class="w-full px-0 py-4 bg-transparent border-b-2 border-white/20 text-white text-lg placeholder-gray-500 focus:outline-none focus:border-white" />
+                        <p class="text-xs text-gray-500 px-0">Use the same email as your Google Play account</p>
+                    </div>
+
                     <button type="submit"
-                        class="w-full px-8 py-4 bg-white text-navy-900 font-body font-bold text-base tracking-wide rounded-2xl hover:bg-gray-100 transition-all shadow-lg">
+                        class="w-full px-8 py-4 bg-gradient-to-r from-cyan-500 to-violet-500 text-white font-body font-bold text-base tracking-wide rounded-2xl hover:opacity-90 transition-all shadow-lg">
                         REQUEST ACCESS
                     </button>
-                    <div id="status" class="text-sm font-semibold text-center min-h-[20px]" role="status"
-                        aria-live="polite"></div>
+                </form>
+
+                <div id="status" class="text-sm font-semibold text-center min-h-[20px]" role="status"
+                    aria-live="polite"></div>
+            </div>
+
+            <!-- Success state (hidden by default) -->
+            <div id="successContainer" class="hidden space-y-6 text-center">
+                <div
+                    class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-green-400 to-cyan-500 flex items-center justify-center">
+                    <i class="fa-solid fa-check text-3xl text-white"></i>
                 </div>
-            </form>
+                <h2 class="font-body text-2xl font-semibold text-white">You're on the list!</h2>
+                <p id="successEmail" class="text-cyan-400 font-mono text-sm"></p>
+                <p class="text-sm text-gray-400">We'll send you an invite email soon.<br><span
+                        class="text-xs text-gray-500">Check your inbox and spam folder</span></p>
+            </div>
 
             <div class="mt-5 pt-8 border-t border-white/10 space-y-3 text-center">
-                <p class="text-sm text-gray-400">After submitting, we'll add you to Google Play Console and send you an
+                <p class="text-sm text-gray-400">After signing up, we'll add you to Google Play Console and send you an
                     invite email with the app link.</p>
             </div>
         </div>
@@ -238,8 +279,110 @@
     </footer>
 
     <script>
+        // Configuration
+        const GOOGLE_CLIENT_ID = '885431104790-ldh81hcamilundviuoiga5io68vc4f3o.apps.googleusercontent.com'; // Replace with your Google OAuth Client ID
+        const APPWRITE_FUNCTION_URL = 'https://6978c55d00295a6420ae.fra.appwrite.run';
+
+        // DOM Elements
+        const signInBtn = document.getElementById('googleSignInBtn');
+        const statusEl = document.getElementById('status');
+        const signInContainer = document.getElementById('signInContainer');
+        const successContainer = document.getElementById('successContainer');
+        const successEmail = document.getElementById('successEmail');
+
+        // Initialize Google Identity Services
+        let googleClient;
+
+        function initGoogleSignIn() {
+            googleClient = google.accounts.oauth2.initTokenClient({
+                client_id: GOOGLE_CLIENT_ID,
+                scope: 'email profile',
+                callback: handleGoogleResponse,
+            });
+        }
+
+        // Wait for Google Identity Services to load
+        window.onload = function () {
+            if (typeof google !== 'undefined') {
+                initGoogleSignIn();
+            } else {
+                // Retry after a short delay if not loaded yet
+                setTimeout(() => {
+                    if (typeof google !== 'undefined') {
+                        initGoogleSignIn();
+                    } else {
+                        statusEl.textContent = 'Failed to load Google Sign-In. Please refresh the page.';
+                        statusEl.classList.add('text-red-400');
+                    }
+                }, 1000);
+            }
+        };
+
+        // Handle Google Sign-In button click
+        signInBtn.addEventListener('click', () => {
+            if (!googleClient) {
+                statusEl.textContent = 'Google Sign-In is still loading. Please try again.';
+                statusEl.classList.add('text-yellow-400');
+                return;
+            }
+
+            statusEl.textContent = '';
+            statusEl.className = 'text-sm font-semibold text-center min-h-[20px]';
+            googleClient.requestAccessToken();
+        });
+
+        // Handle Google OAuth response
+        async function handleGoogleResponse(response) {
+            if (response.error) {
+                statusEl.textContent = 'Google Sign-In was cancelled or failed.';
+                statusEl.classList.add('text-red-400');
+                return;
+            }
+
+            // Update button state
+            const originalText = signInBtn.innerHTML;
+            signInBtn.disabled = true;
+            signInBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>SIGNING UP...';
+
+            try {
+                // Get user info from Google
+                const userInfoResponse = await fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
+                    headers: { Authorization: `Bearer ${response.access_token}` }
+                });
+
+                if (!userInfoResponse.ok) {
+                    throw new Error('Failed to get user info from Google');
+                }
+
+                const userInfo = await userInfoResponse.json();
+                const payload = {
+                    userName: userInfo.name,
+                    userEmail: userInfo.email
+                };
+
+                // Send to backend
+                const result = await sendBetaRequest(payload);
+
+                if (result.success) {
+                    // Show success state
+                    signInContainer.classList.add('hidden');
+                    successContainer.classList.remove('hidden');
+                    successEmail.textContent = userInfo.email;
+                } else {
+                    statusEl.textContent = result.error || 'Failed to submit. Please try again.';
+                    statusEl.classList.add('text-red-400');
+                }
+            } catch (err) {
+                console.error('Error:', err);
+                statusEl.textContent = 'Network error. Please check your connection and try again.';
+                statusEl.classList.add('text-red-400');
+            } finally {
+                signInBtn.disabled = false;
+                signInBtn.innerHTML = originalText;
+            }
+        }
+
         async function sendBetaRequest(payload) {
-            const APPWRITE_FUNCTION_URL = 'https://6978c55d00295a6420ae.fra.appwrite.run'; // Update this after deploying the function
 
             const res = await fetch(APPWRITE_FUNCTION_URL, {
                 method: 'POST',
@@ -255,22 +398,16 @@
             return data;
         }
 
-        function getPayloadFromForm(form) {
-            const userName = (form.userName.value || '').trim();
-            const userEmail = (form.userEmail.value || '').trim();
-
-            return { userName, userEmail };
-        }
-
+        // Handle manual form submission
         const form = document.getElementById('betaForm');
-        const statusEl = document.getElementById('status');
-
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             statusEl.textContent = '';
-            statusEl.className = 'text-sm font-semibold text-center';
+            statusEl.className = 'text-sm font-semibold text-center min-h-[20px]';
 
-            const payload = getPayloadFromForm(form);
+            const userName = (form.userName.value || '').trim();
+            const userEmail = (form.userEmail.value || '').trim();
+            const payload = { userName, userEmail };
 
             const btn = form.querySelector('button[type="submit"]');
             const originalText = btn.innerHTML;
@@ -281,20 +418,17 @@
                 const result = await sendBetaRequest(payload);
 
                 if (result.success) {
-                    statusEl.textContent = 'Request submitted successfully!';
-                    statusEl.classList.add('text-green-400');
-                    form.reset();
-
-                    setTimeout(() => {
-                        statusEl.innerHTML = 'We\'ll send you an invite email soon<br><span class="text-xs text-gray-500">Check your inbox and spam folder</span>';
-                    }, 2000);
+                    // Show success state
+                    signInContainer.classList.add('hidden');
+                    successContainer.classList.remove('hidden');
+                    successEmail.textContent = userEmail;
                 } else {
-                    // Show specific error message from backend
-                    statusEl.textContent = `${result.error || 'Failed to submit. Please try again.'}`;
+                    statusEl.textContent = result.error || 'Failed to submit. Please try again.';
                     statusEl.classList.add('text-red-400');
                 }
             } catch (err) {
-                statusEl.textContent = '✗ Network error. Please check your connection and try again.';
+                console.error('Error:', err);
+                statusEl.textContent = 'Network error. Please check your connection and try again.';
                 statusEl.classList.add('text-red-400');
             } finally {
                 btn.disabled = false;
