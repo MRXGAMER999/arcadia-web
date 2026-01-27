@@ -38,6 +38,9 @@
     <!-- Alpine.js -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+    <!-- Appwrite Web SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/appwrite@20.0.0"></script>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -213,21 +216,11 @@
 
                     <!-- Email -->
                     <div>
-<<<<<<< HEAD
                         <label for="email" class="block font-body font-semibold text-white mb-4 text-lg">Email</label>
                         <input type="email" id="email" x-model="email" required
                             class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 font-body text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all"
                             placeholder="your@email.com">
                         <p class="mt-2 text-sm text-gray-500 font-body ml-2">We use this to send a confirmation and follow up if needed.</p>
-=======
-                        <label for="email" class="block font-body font-semibold text-white mb-4 text-lg">Email
-                            (optional)</label>
-                        <input type="email" id="email" x-model="email"
-                            class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 font-body text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all"
-                            placeholder="your@email.com">
-                        <p class="mt-2 text-sm text-gray-500 font-body ml-2">We'll only use this to follow up if needed.
-                        </p>
->>>>>>> 01efaedd518e90d60864cd242ffbe937ff61e9f5
                     </div>
 
                     <!-- Message -->
@@ -331,36 +324,40 @@
 
     <script>
         function feedbackForm() {
-            const APPWRITE_FUNCTION_URL = 'https://69793d45003864a22715.fra.appwrite.run';
+            const APPWRITE_ENDPOINT = 'https://fra.cloud.appwrite.io/v1';
+            const APPWRITE_PROJECT_ID = '693aa4d3000d8cb02bbe';
+            const FEEDBACK_FUNCTION_ID = '69793d45003864a22715';
 
             async function sendViaAppwriteFunction(payload) {
-                if (!APPWRITE_FUNCTION_URL) throw new Error('Appwrite endpoint not configured');
-
-                const res = await fetch(APPWRITE_FUNCTION_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(payload)
-                });
-
-                const text = await res.text();
-                if (!res.ok) {
-                    let msg = 'Request failed';
-                    try {
-                        const parsed = JSON.parse(text);
-                        msg = parsed?.error || parsed?.message || msg;
-                    } catch {
-                        // ignore
-                    }
-                    throw new Error(msg);
+                if (typeof Appwrite === 'undefined') {
+                    throw new Error('Appwrite SDK failed to load');
+                }
+                if (!APPWRITE_PROJECT_ID || APPWRITE_PROJECT_ID.startsWith('REPLACE_')) {
+                    throw new Error('Appwrite project not configured');
+                }
+                if (!FEEDBACK_FUNCTION_ID || FEEDBACK_FUNCTION_ID.startsWith('REPLACE_')) {
+                    throw new Error('Feedback function not configured');
                 }
 
+                const client = new Appwrite.Client()
+                    .setEndpoint(APPWRITE_ENDPOINT)
+                    .setProject(APPWRITE_PROJECT_ID);
+
+                const functions = new Appwrite.Functions(client);
+
+                const execution = await functions.createExecution({
+                    functionId: FEEDBACK_FUNCTION_ID,
+                    body: JSON.stringify(payload),
+                    async: false,
+                });
+
+                const body = execution?.responseBody;
+                if (!body) return execution;
+
                 try {
-                    return JSON.parse(text);
+                    return JSON.parse(body);
                 } catch {
-                    return { raw: text };
+                    return { raw: body, execution };
                 }
             }
 
@@ -375,6 +372,8 @@
 
                 async submitFeedback() {
                     this.errorMessage = '';
+
+                    if (this.submitting) return;
 
                     const email = (this.email || '').trim().toLowerCase();
                     const message = (this.message || '').trim();
@@ -408,14 +407,14 @@
                             userEmail: email,
                             message: composedMessage
                         });
+                        this.submitted = true;
                     } catch (err) {
                         this.errorMessage = (err && err.message) ? err.message : 'Failed to send feedback. Please try again.';
-                        this.submitting = false;
+                        this.submitted = false;
                         return;
+                    } finally {
+                        this.submitting = false;
                     }
-
-                    this.submitting = false;
-                    this.submitted = true;
 
                     // Reset form after 3 seconds
                     setTimeout(() => {
