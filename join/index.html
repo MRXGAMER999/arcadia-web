@@ -281,16 +281,16 @@
                 const result = await sendBetaRequest(payload);
 
                 if (result.success) {
-                    statusEl.textContent = '✓ Request submitted successfully!';
+                    statusEl.textContent = 'Request submitted successfully!';
                     statusEl.classList.add('text-green-400');
                     form.reset();
 
                     setTimeout(() => {
-                        statusEl.innerHTML = '📧 We\'ll send you an invite email soon<br><span class="text-xs text-gray-500">Check your inbox and spam folder</span>';
+                        statusEl.innerHTML = 'We\'ll send you an invite email soon<br><span class="text-xs text-gray-500">Check your inbox and spam folder</span>';
                     }, 2000);
                 } else {
                     // Show specific error message from backend
-                    statusEl.textContent = `✗ ${result.error || 'Failed to submit. Please try again.'}`;
+                    statusEl.textContent = `${result.error || 'Failed to submit. Please try again.'}`;
                     statusEl.classList.add('text-red-400');
                 }
             } catch (err) {
