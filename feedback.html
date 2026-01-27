@@ -213,6 +213,13 @@
 
                     <!-- Email -->
                     <div>
+<<<<<<< HEAD
+                        <label for="email" class="block font-body font-semibold text-white mb-4 text-lg">Email</label>
+                        <input type="email" id="email" x-model="email" required
+                            class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 font-body text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all"
+                            placeholder="your@email.com">
+                        <p class="mt-2 text-sm text-gray-500 font-body ml-2">We use this to send a confirmation and follow up if needed.</p>
+=======
                         <label for="email" class="block font-body font-semibold text-white mb-4 text-lg">Email
                             (optional)</label>
                         <input type="email" id="email" x-model="email"
@@ -220,6 +227,7 @@
                             placeholder="your@email.com">
                         <p class="mt-2 text-sm text-gray-500 font-body ml-2">We'll only use this to follow up if needed.
                         </p>
+>>>>>>> 01efaedd518e90d60864cd242ffbe937ff61e9f5
                     </div>
 
                     <!-- Message -->
@@ -258,6 +266,18 @@
                                 SENDING...
                             </span>
                         </button>
+                    </div>
+
+                    <!-- Error Message -->
+                    <div x-show="errorMessage" x-transition
+                        class="mt-6 p-6 bg-red-500/10 border-l-4 border-red-500 rounded-xl" role="status" aria-live="polite">
+                        <div class="flex items-start gap-3 text-red-300">
+                            <i class="fa-solid fa-triangle-exclamation text-2xl mt-0.5"></i>
+                            <div>
+                                <p class="font-body font-semibold text-base">Couldn't send your feedback</p>
+                                <p class="text-sm text-red-400/80 mt-1" x-text="errorMessage"></p>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Success Message -->
@@ -311,6 +331,39 @@
 
     <script>
         function feedbackForm() {
+            const APPWRITE_FUNCTION_URL = 'https://69793d45003864a22715.fra.appwrite.run';
+
+            async function sendViaAppwriteFunction(payload) {
+                if (!APPWRITE_FUNCTION_URL) throw new Error('Appwrite endpoint not configured');
+
+                const res = await fetch(APPWRITE_FUNCTION_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                const text = await res.text();
+                if (!res.ok) {
+                    let msg = 'Request failed';
+                    try {
+                        const parsed = JSON.parse(text);
+                        msg = parsed?.error || parsed?.message || msg;
+                    } catch {
+                        // ignore
+                    }
+                    throw new Error(msg);
+                }
+
+                try {
+                    return JSON.parse(text);
+                } catch {
+                    return { raw: text };
+                }
+            }
+
             return {
                 type: 'bug',
                 email: '',
@@ -318,21 +371,48 @@
                 rating: 0,
                 submitting: false,
                 submitted: false,
+                errorMessage: '',
 
                 async submitFeedback() {
-                    if (!this.message.trim()) return;
+                    this.errorMessage = '';
+
+                    const email = (this.email || '').trim().toLowerCase();
+                    const message = (this.message || '').trim();
+
+                    if (!email) {
+                        this.errorMessage = 'Please enter your email.';
+                        return;
+                    }
+                    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                        this.errorMessage = 'Please enter a valid email address.';
+                        return;
+                    }
+                    if (!message) {
+                        this.errorMessage = 'Please enter your feedback message.';
+                        return;
+                    }
 
                     this.submitting = true;
 
-                    // Simulate API call
-                    await new Promise(resolve => setTimeout(resolve, 1500));
+                    const composedMessage = [
+                        message,
+                        '',
+                        `Type: ${this.type}`,
+                        `Rating: ${this.rating || 0}/5`,
+                        `Submitted at (client): ${new Date().toISOString()}`,
+                        `User agent: ${navigator.userAgent}`
+                    ].join('\n');
 
-                    console.log('Feedback submitted:', {
-                        type: this.type,
-                        email: this.email,
-                        message: this.message,
-                        rating: this.rating
-                    });
+                    try {
+                        await sendViaAppwriteFunction({
+                            userEmail: email,
+                            message: composedMessage
+                        });
+                    } catch (err) {
+                        this.errorMessage = (err && err.message) ? err.message : 'Failed to send feedback. Please try again.';
+                        this.submitting = false;
+                        return;
+                    }
 
                     this.submitting = false;
                     this.submitted = true;
@@ -344,6 +424,7 @@
                         this.message = '';
                         this.rating = 0;
                         this.submitted = false;
+                        this.errorMessage = '';
                     }, 3000);
                 }
             }
