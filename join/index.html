@@ -239,7 +239,7 @@
                     </button>
                 </form>
 
-                <div id="status" class="text-sm font-semibold text-center min-h-[20px]" role="status"
+                <div id="status" class="hidden none text-sm font-semibold text-center min-h-[20px]" role="status"
                     aria-live="polite"></div>
             </div>
 
@@ -311,6 +311,7 @@
                     if (typeof google !== 'undefined') {
                         initGoogleSignIn();
                     } else {
+                        statusEl.classList.remove('hidden');
                         statusEl.textContent = 'Failed to load Google Sign-In. Please refresh the page.';
                         statusEl.classList.add('text-red-400');
                     }
@@ -321,6 +322,7 @@
         // Handle Google Sign-In button click
         signInBtn.addEventListener('click', () => {
             if (!googleClient) {
+                statusEl.classList.remove('hidden');
                 statusEl.textContent = 'Google Sign-In is still loading. Please try again.';
                 statusEl.classList.add('text-yellow-400');
                 return;
@@ -334,6 +336,7 @@
         // Handle Google OAuth response
         async function handleGoogleResponse(response) {
             if (response.error) {
+                statusEl.classList.remove('hidden');
                 statusEl.textContent = 'Google Sign-In was cancelled or failed.';
                 statusEl.classList.add('text-red-400');
                 return;
@@ -369,11 +372,13 @@
                     successContainer.classList.remove('hidden');
                     successEmail.textContent = userInfo.email;
                 } else {
+                    statusEl.classList.remove('hidden');
                     statusEl.textContent = result.error || 'Failed to submit. Please try again.';
                     statusEl.classList.add('text-red-400');
                 }
             } catch (err) {
                 console.error('Error:', err);
+                statusEl.classList.remove('hidden');
                 statusEl.textContent = 'Network error. Please check your connection and try again.';
                 statusEl.classList.add('text-red-400');
             } finally {
@@ -402,6 +407,7 @@
         const form = document.getElementById('betaForm');
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
+            statusEl.classList.remove('hidden');
             statusEl.textContent = '';
             statusEl.className = 'text-sm font-semibold text-center min-h-[20px]';
 
@@ -423,11 +429,13 @@
                     successContainer.classList.remove('hidden');
                     successEmail.textContent = userEmail;
                 } else {
+                    statusEl.classList.remove('hidden');
                     statusEl.textContent = result.error || 'Failed to submit. Please try again.';
                     statusEl.classList.add('text-red-400');
                 }
             } catch (err) {
                 console.error('Error:', err);
+                statusEl.classList.remove('hidden');
                 statusEl.textContent = 'Network error. Please check your connection and try again.';
                 statusEl.classList.add('text-red-400');
             } finally {
