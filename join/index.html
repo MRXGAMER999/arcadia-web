@@ -327,7 +327,9 @@
                 statusEl.classList.add('text-yellow-400');
                 return;
             }
-
+            if (!statusEl.classList.contains('hidden')) {
+                statusEl.classList.add('hidden');
+            }
             statusEl.textContent = '';
             statusEl.className = 'text-sm font-semibold text-center min-h-[20px]';
             googleClient.requestAccessToken();
@@ -407,7 +409,10 @@
         const form = document.getElementById('betaForm');
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            statusEl.classList.remove('hidden');
+            if (!statusEl.classList.contains('hidden')) {
+                statusEl.classList.add('hidden');
+            }
+
             statusEl.textContent = '';
             statusEl.className = 'text-sm font-semibold text-center min-h-[20px]';
 
