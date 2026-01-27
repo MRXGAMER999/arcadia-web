@@ -97,6 +97,15 @@
 </head>
 
 <body class="bg-navy-900 text-white antialiased overflow-x-hidden selection:bg-violet-600 selection:text-white">
+    
+    <!-- Background Effects -->
+    <div class="absolute inset-0 pointer-events-none overflow-x-hidden">
+        <div
+            class="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-600/20 blur-[120px] rounded-full mix-blend-screen animate-pulse">
+        </div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-600/10 blur-[120px] rounded-full mix-blend-screen">
+        </div>
+    </div>
 
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 px-4 bg-navy-900/90 backdrop-blur-md border-b border-white/10 py-3 shadow-2xl">
@@ -162,20 +171,14 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="relative min-h-[40vh] flex flex-col justify-center items-center text-center px-4 overflow-hidden pt-32 pb-16">
-        <!-- Background Effects -->
-        <div class="absolute inset-0 pointer-events-none">
-            <div
-                class="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-600/20 blur-[120px] rounded-full mix-blend-screen animate-pulse">
-            </div>
-            <div
-                class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-600/10 blur-[120px] rounded-full mix-blend-screen">
-            </div>
-        </div>
+    <header
+        class="relative min-h-[40vh] flex flex-col justify-center items-center text-center px-4 overflow-hidden pt-32 pb-16">
+
 
         <div class="relative z-10 max-w-4xl mx-auto">
             <h1 class="font-display text-6xl sm:text-7xl md:text-8xl leading-[0.9] tracking-tight mb-6">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-violet-200 to-white text-glow">PRIVACY</span><br>
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-violet-200 to-white text-glow">PRIVACY</span><br>
                 <span class="text-white">POLICY</span>
             </h1>
             <p class="font-body text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-8 font-light leading-relaxed">
@@ -191,7 +194,9 @@
         <section class="my-16 pb-10 border-b border-white/20">
             <h2 class="font-display text-3xl md:text-4xl mb-6 text-white">OVERVIEW</h2>
             <p class="text-gray-300 font-body text-base leading-relaxed">
-                Arcadia ("we", "our", or "the app") is a game library management and social gaming companion. This Privacy Policy explains how we collect, use, and protect your information when you use our Android application.
+                Arcadia ("we", "our", or "the app") is a game library management and social gaming companion. This
+                Privacy Policy explains how we collect, use, and protect your information when you use our Android
+                application.
             </p>
         </section>
 
@@ -201,7 +206,8 @@
 
             <div class="space-y-8">
                 <div>
-                    <h3 class="font-body text-xl font-semibold text-white mb-3 pl-4 border-l-4 border-violet-500">Account Information</h3>
+                    <h3 class="font-body text-xl font-semibold text-white mb-3 pl-4 border-l-4 border-violet-500">
+                        Account Information</h3>
                     <p class="text-gray-400 mb-3 ml-8 text-sm">When you sign in with Google, we collect:</p>
                     <ul class="space-y-2 ml-12 text-gray-300 text-sm">
                         <li class="pl-3 border-l-2 border-white/20">Email address</li>
@@ -212,18 +218,23 @@
                 </div>
 
                 <div>
-                    <h3 class="font-body text-xl font-semibold text-white mb-3 pl-4 border-l-4 border-violet-500">User-Generated Content</h3>
+                    <h3 class="font-body text-xl font-semibold text-white mb-3 pl-4 border-l-4 border-violet-500">
+                        User-Generated Content</h3>
                     <ul class="space-y-2 ml-12 text-gray-300 text-sm">
-                        <li class="pl-3 border-l-2 border-white/20">Game library entries (games you add, status, ratings, hours played)</li>
+                        <li class="pl-3 border-l-2 border-white/20">Game library entries (games you add, status,
+                            ratings, hours played)</li>
                         <li class="pl-3 border-l-2 border-white/20">Reviews you write</li>
                         <li class="pl-3 border-l-2 border-white/20">Friend connections and friend requests</li>
-                        <li class="pl-3 border-l-2 border-white/20">Profile information you provide (username, bio, featured badges)</li>
-                        <li class="pl-3 border-l-2 border-white/20">AI-generated roasts and badges you choose to save</li>
+                        <li class="pl-3 border-l-2 border-white/20">Profile information you provide (username, bio,
+                            featured badges)</li>
+                        <li class="pl-3 border-l-2 border-white/20">AI-generated roasts and badges you choose to save
+                        </li>
                     </ul>
                 </div>
 
                 <div>
-                    <h3 class="font-body text-xl font-semibold text-white mb-3 pl-4 border-l-4 border-violet-500">Automatically Collected Data</h3>
+                    <h3 class="font-body text-xl font-semibold text-white mb-3 pl-4 border-l-4 border-violet-500">
+                        Automatically Collected Data</h3>
                     <ul class="space-y-2 ml-12 text-gray-300 text-sm">
                         <li class="pl-3 border-l-2 border-white/20">OneSignal Player ID (for push notifications)</li>
                         <li class="pl-3 border-l-2 border-white/20">Basic device information for app functionality</li>
@@ -237,16 +248,21 @@
             <h2 class="font-display text-3xl md:text-4xl mb-6 text-white">HOW WE USE YOUR INFORMATION</h2>
             <ul class="space-y-3 ml-8 text-gray-300 text-sm">
                 <li class="pl-4 border-l-2 border-white/20">
-                    <strong class="text-white font-semibold">Core Functionality:</strong> To manage your game library, display your profile, and enable social features (friends, reviews, realtime sync)
+                    <strong class="text-white font-semibold">Core Functionality:</strong> To manage your game library,
+                    display your profile, and enable social features (friends, reviews, realtime sync)
                 </li>
                 <li class="pl-4 border-l-2 border-white/20">
-                    <strong class="text-white font-semibold">AI Recommendations:</strong> Your library data is sent to AI services (Groq, Google Gemini) to generate personalized game recommendations, insights, and roasts
+                    <strong class="text-white font-semibold">AI Recommendations:</strong> Your library data is sent to
+                    AI services (Groq, Google Gemini) to generate personalized game recommendations, insights, and
+                    roasts
                 </li>
                 <li class="pl-4 border-l-2 border-white/20">
-                    <strong class="text-white font-semibold">Push Notifications:</strong> To notify you of friend requests, friend acceptances, and other relevant updates via OneSignal
+                    <strong class="text-white font-semibold">Push Notifications:</strong> To notify you of friend
+                    requests, friend acceptances, and other relevant updates via OneSignal
                 </li>
                 <li class="pl-4 border-l-2 border-white/20">
-                    <strong class="text-white font-semibold">Social Features:</strong> To connect you with friends, display shared gaming activity, and show friend reviews first in game details
+                    <strong class="text-white font-semibold">Social Features:</strong> To connect you with friends,
+                    display shared gaming activity, and show friend reviews first in game details
                 </li>
             </ul>
         </section>
@@ -260,41 +276,69 @@
                 <table class="w-full text-left border-collapse border border-white/20 text-sm">
                     <thead>
                         <tr class="bg-white/5">
-                            <th class="py-3 px-4 font-body font-semibold text-white text-xs uppercase tracking-wider border-b border-r border-white/20">Service</th>
-                            <th class="py-3 px-4 font-body font-semibold text-white text-xs uppercase tracking-wider border-b border-r border-white/20">Purpose</th>
-                            <th class="py-3 px-4 font-body font-semibold text-white text-xs uppercase tracking-wider border-b border-white/20">Privacy Policy</th>
+                            <th
+                                class="py-3 px-4 font-body font-semibold text-white text-xs uppercase tracking-wider border-b border-r border-white/20">
+                                Service</th>
+                            <th
+                                class="py-3 px-4 font-body font-semibold text-white text-xs uppercase tracking-wider border-b border-r border-white/20">
+                                Purpose</th>
+                            <th
+                                class="py-3 px-4 font-body font-semibold text-white text-xs uppercase tracking-wider border-b border-white/20">
+                                Privacy Policy</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="border-b border-white/10">
-                            <td class="py-3 px-4 font-body font-semibold text-white border-r border-white/10">Appwrite</td>
-                            <td class="py-3 px-4 text-gray-300 border-r border-white/10">Authentication, database, storage, real-time sync</td>
-                            <td class="py-3 px-4"><a href="https://appwrite.io/privacy" target="_blank" rel="noopener" class="text-violet-400 hover:text-violet-300 underline">appwrite.io/privacy</a></td>
+                            <td class="py-3 px-4 font-body font-semibold text-white border-r border-white/10">Appwrite
+                            </td>
+                            <td class="py-3 px-4 text-gray-300 border-r border-white/10">Authentication, database,
+                                storage, real-time sync</td>
+                            <td class="py-3 px-4"><a href="https://appwrite.io/privacy" target="_blank" rel="noopener"
+                                    class="text-violet-400 hover:text-violet-300 underline">appwrite.io/privacy</a></td>
                         </tr>
                         <tr class="border-b border-white/10">
-                            <td class="py-3 px-4 font-body font-semibold text-white border-r border-white/10">Google Sign-In</td>
+                            <td class="py-3 px-4 font-body font-semibold text-white border-r border-white/10">Google
+                                Sign-In</td>
                             <td class="py-3 px-4 text-gray-300 border-r border-white/10">Account authentication</td>
-                            <td class="py-3 px-4"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="text-violet-400 hover:text-violet-300 underline">policies.google.com/privacy</a></td>
+                            <td class="py-3 px-4"><a href="https://policies.google.com/privacy" target="_blank"
+                                    rel="noopener"
+                                    class="text-violet-400 hover:text-violet-300 underline">policies.google.com/privacy</a>
+                            </td>
                         </tr>
                         <tr class="border-b border-white/10">
-                            <td class="py-3 px-4 font-body font-semibold text-white border-r border-white/10">OneSignal</td>
+                            <td class="py-3 px-4 font-body font-semibold text-white border-r border-white/10">OneSignal
+                            </td>
                             <td class="py-3 px-4 text-gray-300 border-r border-white/10">Push notifications</td>
-                            <td class="py-3 px-4"><a href="https://onesignal.com/privacy_policy" target="_blank" rel="noopener" class="text-violet-400 hover:text-violet-300 underline">onesignal.com/privacy</a></td>
+                            <td class="py-3 px-4"><a href="https://onesignal.com/privacy_policy" target="_blank"
+                                    rel="noopener"
+                                    class="text-violet-400 hover:text-violet-300 underline">onesignal.com/privacy</a>
+                            </td>
                         </tr>
                         <tr class="border-b border-white/10">
                             <td class="py-3 px-4 font-body font-semibold text-white border-r border-white/10">Groq</td>
-                            <td class="py-3 px-4 text-gray-300 border-r border-white/10">AI recommendations and insights</td>
-                            <td class="py-3 px-4"><a href="https://groq.com/privacy-policy/" target="_blank" rel="noopener" class="text-violet-400 hover:text-violet-300 underline">groq.com/privacy</a></td>
+                            <td class="py-3 px-4 text-gray-300 border-r border-white/10">AI recommendations and insights
+                            </td>
+                            <td class="py-3 px-4"><a href="https://groq.com/privacy-policy/" target="_blank"
+                                    rel="noopener"
+                                    class="text-violet-400 hover:text-violet-300 underline">groq.com/privacy</a></td>
                         </tr>
                         <tr class="border-b border-white/10">
-                            <td class="py-3 px-4 font-body font-semibold text-white border-r border-white/10">Google Gemini</td>
-                            <td class="py-3 px-4 text-gray-300 border-r border-white/10">AI recommendations (fallback)</td>
-                            <td class="py-3 px-4"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="text-violet-400 hover:text-violet-300 underline">policies.google.com/privacy</a></td>
+                            <td class="py-3 px-4 font-body font-semibold text-white border-r border-white/10">Google
+                                Gemini</td>
+                            <td class="py-3 px-4 text-gray-300 border-r border-white/10">AI recommendations (fallback)
+                            </td>
+                            <td class="py-3 px-4"><a href="https://policies.google.com/privacy" target="_blank"
+                                    rel="noopener"
+                                    class="text-violet-400 hover:text-violet-300 underline">policies.google.com/privacy</a>
+                            </td>
                         </tr>
                         <tr>
                             <td class="py-3 px-4 font-body font-semibold text-white border-r border-white/10">IGDB</td>
-                            <td class="py-3 px-4 text-gray-300 border-r border-white/10">Game metadata and information</td>
-                            <td class="py-3 px-4"><a href="https://www.igdb.com/privacy_policy" target="_blank" rel="noopener" class="text-violet-400 hover:text-violet-300 underline">igdb.com/privacy</a></td>
+                            <td class="py-3 px-4 text-gray-300 border-r border-white/10">Game metadata and information
+                            </td>
+                            <td class="py-3 px-4"><a href="https://www.igdb.com/privacy_policy" target="_blank"
+                                    rel="noopener"
+                                    class="text-violet-400 hover:text-violet-300 underline">igdb.com/privacy</a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -305,11 +349,15 @@
         <section class="mb-16 pb-10 border-b border-white/20">
             <h2 class="font-display text-3xl md:text-4xl mb-6 text-white">DATA STORAGE AND SECURITY</h2>
             <ul class="space-y-2 ml-8 text-gray-300 text-sm">
-                <li class="pl-4 border-l-2 border-white/20">Your data is stored securely on Appwrite cloud infrastructure with industry-standard security practices</li>
-                <li class="pl-4 border-l-2 border-white/20">Authentication tokens are stored in encrypted SharedPreferences on your device</li>
+                <li class="pl-4 border-l-2 border-white/20">Your data is stored securely on Appwrite cloud
+                    infrastructure with industry-standard security practices</li>
+                <li class="pl-4 border-l-2 border-white/20">Authentication tokens are stored in encrypted
+                    SharedPreferences on your device</li>
                 <li class="pl-4 border-l-2 border-white/20">We use HTTPS encryption for all network communications</li>
-                <li class="pl-4 border-l-2 border-white/20">API keys are proxied through secure servers and not embedded in the app</li>
-                <li class="pl-4 border-l-2 border-white/20">Local cache uses Room database with offline-first architecture for fast, reliable access</li>
+                <li class="pl-4 border-l-2 border-white/20">API keys are proxied through secure servers and not embedded
+                    in the app</li>
+                <li class="pl-4 border-l-2 border-white/20">Local cache uses Room database with offline-first
+                    architecture for fast, reliable access</li>
             </ul>
         </section>
 
@@ -317,7 +365,9 @@
         <section class="mb-16 pb-10 border-b border-white/20">
             <h2 class="font-display text-3xl md:text-4xl mb-6 text-white">CAMERA PERMISSION</h2>
             <p class="text-gray-300 text-sm leading-relaxed ml-8 pl-4 border-l-2 border-white/20">
-                The app requests camera access solely for QR code scanning to add friends. Camera data is processed locally using MLKit and is <strong class="text-white font-semibold">not stored or transmitted</strong> to any server.
+                The app requests camera access solely for QR code scanning to add friends. Camera data is processed
+                locally using MLKit and is <strong class="text-white font-semibold">not stored or transmitted</strong>
+                to any server.
             </p>
         </section>
 
@@ -329,8 +379,10 @@
             </div>
             <p class="text-gray-400 mb-3 text-sm ml-8">Your data may be shared only:</p>
             <ul class="space-y-2 ml-8 text-gray-300 text-sm">
-                <li class="pl-4 border-l-2 border-white/20">With AI providers (Groq, Gemini) to generate recommendations and insights based on your library</li>
-                <li class="pl-4 border-l-2 border-white/20">With other users according to your privacy settings (profile visibility, friend connections, public reviews)</li>
+                <li class="pl-4 border-l-2 border-white/20">With AI providers (Groq, Gemini) to generate recommendations
+                    and insights based on your library</li>
+                <li class="pl-4 border-l-2 border-white/20">With other users according to your privacy settings (profile
+                    visibility, friend connections, public reviews)</li>
                 <li class="pl-4 border-l-2 border-white/20">If required by law or to protect our rights</li>
             </ul>
         </section>
@@ -340,9 +392,12 @@
             <h2 class="font-display text-3xl md:text-4xl mb-6 text-white">YOUR RIGHTS</h2>
             <p class="text-gray-400 mb-4 text-sm ml-8">You have full control over your data:</p>
             <ul class="space-y-2 ml-8 text-gray-300 text-sm">
-                <li class="pl-4 border-l-2 border-white/20"><strong class="text-white font-semibold">Access:</strong> View and export your data through the app's profile and settings</li>
-                <li class="pl-4 border-l-2 border-white/20"><strong class="text-white font-semibold">Edit:</strong> Update your profile, reviews, library entries, and friend connections at any time</li>
-                <li class="pl-4 border-l-2 border-white/20"><strong class="text-white font-semibold">Delete:</strong> Remove your reviews, library entries, and request full account deletion</li>
+                <li class="pl-4 border-l-2 border-white/20"><strong class="text-white font-semibold">Access:</strong>
+                    View and export your data through the app's profile and settings</li>
+                <li class="pl-4 border-l-2 border-white/20"><strong class="text-white font-semibold">Edit:</strong>
+                    Update your profile, reviews, library entries, and friend connections at any time</li>
+                <li class="pl-4 border-l-2 border-white/20"><strong class="text-white font-semibold">Delete:</strong>
+                    Remove your reviews, library entries, and request full account deletion</li>
             </ul>
         </section>
 
@@ -354,7 +409,7 @@
             </p>
 
             <div class="text-center my-8">
-                <a href="./delete-account/" 
+                <a href="./delete-account/"
                     class="inline-block px-10 py-3 bg-red-600 hover:bg-red-500 text-white font-body font-semibold text-base tracking-wide transition-all border border-red-500">
                     Delete Account / Data Request
                 </a>
@@ -363,17 +418,22 @@
             <div class="space-y-4 ml-8">
                 <div class="pl-4 border-l-4 border-violet-500 py-2">
                     <p class="text-gray-300 text-sm leading-relaxed">
-                        <strong class="text-white font-semibold">Verification Required:</strong> To process requests and prevent fraud, we may ask you to verify ownership by replying from the same email address used in Arcadia.
+                        <strong class="text-white font-semibold">Verification Required:</strong> To process requests and
+                        prevent fraud, we may ask you to verify ownership by replying from the same email address used
+                        in Arcadia.
                     </p>
                 </div>
                 <div class="pl-4 border-l-4 border-violet-500 py-2">
                     <p class="text-gray-300 text-sm leading-relaxed">
-                        <strong class="text-white font-semibold">Retention Period:</strong> We retain deletion request emails for up to 90 days after completion, then permanently delete them.
+                        <strong class="text-white font-semibold">Retention Period:</strong> We retain deletion request
+                        emails for up to 90 days after completion, then permanently delete them.
                     </p>
                 </div>
                 <div class="pl-4 border-l-4 border-red-500 py-2">
                     <p class="text-gray-300 text-sm leading-relaxed">
-                        <strong class="text-white font-semibold">Permanent Action:</strong> Account deletion is irreversible. All your library data, reviews, friend connections, and profile information will be permanently removed.
+                        <strong class="text-white font-semibold">Permanent Action:</strong> Account deletion is
+                        irreversible. All your library data, reviews, friend connections, and profile information will
+                        be permanently removed.
                     </p>
                 </div>
             </div>
@@ -383,7 +443,9 @@
         <section class="mb-16 pb-10 border-b border-white/20">
             <h2 class="font-display text-3xl md:text-4xl mb-6 text-white">CHILDREN'S PRIVACY</h2>
             <p class="text-gray-300 text-sm leading-relaxed ml-8 pl-4 border-l-2 border-white/20">
-                Arcadia is not directed at children under 13. We do not knowingly collect personal information from children under 13. If you believe we have collected such information, please contact us immediately at the email below.
+                Arcadia is not directed at children under 13. We do not knowingly collect personal information from
+                children under 13. If you believe we have collected such information, please contact us immediately at
+                the email below.
             </p>
         </section>
 
@@ -391,18 +453,23 @@
         <section class="mb-16 pb-10 border-b border-white/20">
             <h2 class="font-display text-3xl md:text-4xl mb-6 text-white">CHANGES TO THIS POLICY</h2>
             <p class="text-gray-300 text-sm leading-relaxed ml-8 pl-4 border-l-2 border-white/20">
-                We may update this Privacy Policy from time to time. We will notify you of significant changes through the app or by updating the "Last updated" date at the top of this page. Your continued use of Arcadia after changes constitutes acceptance of the updated policy.
+                We may update this Privacy Policy from time to time. We will notify you of significant changes through
+                the app or by updating the "Last updated" date at the top of this page. Your continued use of Arcadia
+                after changes constitutes acceptance of the updated policy.
             </p>
         </section>
 
         <!-- Contact Us -->
         <section class="mb-16">
             <h2 class="font-display text-3xl md:text-4xl mb-6 text-white">CONTACT US</h2>
-            <p class="text-gray-300 mb-6 text-sm ml-8">If you have questions about this Privacy Policy or your data, please contact:</p>
+            <p class="text-gray-300 mb-6 text-sm ml-8">If you have questions about this Privacy Policy or your data,
+                please contact:</p>
 
             <div class="ml-8 space-y-3 pl-4 border-l-2 border-white/20">
                 <p class="text-gray-300 text-sm">
-                    <strong class="text-white font-semibold">Email:</strong> <a href="mailto:ahmedbobos.rashid@gmail.com" class="text-violet-400 hover:text-violet-300 underline">ahmedbobos.rashid@gmail.com</a>
+                    <strong class="text-white font-semibold">Email:</strong> <a
+                        href="mailto:ahmedbobos.rashid@gmail.com"
+                        class="text-violet-400 hover:text-violet-300 underline">ahmedbobos.rashid@gmail.com</a>
                 </p>
                 <p class="text-gray-300 text-sm">
                     <strong class="text-white font-semibold">Developer:</strong> Ahmad Abbas

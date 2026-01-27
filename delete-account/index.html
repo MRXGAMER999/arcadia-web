@@ -96,7 +96,15 @@
 </head>
 
 <body class="bg-navy-900 text-white antialiased overflow-x-hidden selection:bg-violet-600 selection:text-white">
-
+    <!-- Background Effects -->
+    <div class="absolute inset-0 pointer-events-none">
+        <div
+            class="absolute top-1/4 left-1/4 w-96 h-96 bg-red-600/20 blur-[120px] rounded-full mix-blend-screen animate-pulse">
+        </div>
+        <div
+            class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-600/10 blur-[120px] rounded-full mix-blend-screen">
+        </div>
+    </div>
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 px-4 bg-navy-900/90 backdrop-blur-md border-b border-white/10 py-3 shadow-2xl">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
@@ -161,20 +169,14 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="relative min-h-[40vh] flex flex-col justify-center items-center text-center px-4 overflow-hidden pt-32 pb-16">
-        <!-- Background Effects -->
-        <div class="absolute inset-0 pointer-events-none">
-            <div
-                class="absolute top-1/4 left-1/4 w-96 h-96 bg-red-600/20 blur-[120px] rounded-full mix-blend-screen animate-pulse">
-            </div>
-            <div
-                class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-600/10 blur-[120px] rounded-full mix-blend-screen">
-            </div>
-        </div>
+    <header
+        class="relative min-h-[40vh] flex flex-col justify-center items-center text-center px-4 overflow-hidden pt-32 pb-16">
+
 
         <div class="relative z-10 max-w-4xl mx-auto">
             <h1 class="font-display text-6xl sm:text-7xl md:text-8xl leading-[0.9] tracking-tight mb-6">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-red-200 to-white text-glow">DELETE</span><br>
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-red-200 to-white text-glow">DELETE</span><br>
                 <span class="text-white">ACCOUNT</span>
             </h1>
             <p class="font-body text-slate-400 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
@@ -185,25 +187,27 @@
 
     <main class="max-w-6xl mx-auto px-6 pb-32">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            
+
             <!-- Main Form -->
             <div class="lg:col-span-2">
                 <div class="glass-card rounded-2xl p-8">
                     <h2 class="font-display text-3xl mb-6 text-white">REQUEST FORM</h2>
-                    
+
                     <form id="deleteForm" class="space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label for="userEmail" class="block text-sm font-semibold text-gray-300 mb-2">Email Address</label>
-                                <input id="userEmail" name="userEmail" type="email" autocomplete="email" 
+                                <label for="userEmail" class="block text-sm font-semibold text-gray-300 mb-2">Email
+                                    Address</label>
+                                <input id="userEmail" name="userEmail" type="email" autocomplete="email"
                                     placeholder="you@example.com" required
                                     class="w-full px-4 py-3 bg-navy-800/60 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all" />
                                 <p class="text-xs text-gray-500 mt-1.5">The email linked to your Google Sign-In</p>
                             </div>
-                            
+
                             <div>
-                                <label for="arcadiaUsername" class="block text-sm font-semibold text-gray-300 mb-2">Arcadia Username</label>
-                                <input id="arcadiaUsername" name="arcadiaUsername" type="text" autocomplete="username" 
+                                <label for="arcadiaUsername"
+                                    class="block text-sm font-semibold text-gray-300 mb-2">Arcadia Username</label>
+                                <input id="arcadiaUsername" name="arcadiaUsername" type="text" autocomplete="username"
                                     placeholder="your_username" required
                                     class="w-full px-4 py-3 bg-navy-800/60 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all" />
                                 <p class="text-xs text-gray-500 mt-1.5">Your unique display name in the app</p>
@@ -211,7 +215,8 @@
                         </div>
 
                         <div>
-                            <label for="deletionType" class="block text-sm font-semibold text-gray-300 mb-2">Deletion Type</label>
+                            <label for="deletionType" class="block text-sm font-semibold text-gray-300 mb-2">Deletion
+                                Type</label>
                             <select id="deletionType" name="deletionType" required
                                 class="w-full px-4 py-3 bg-navy-800/60 border border-white/10 rounded-lg text-white focus:outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all">
                                 <option value="full" selected>Full deletion (account + all data)</option>
@@ -220,7 +225,8 @@
                         </div>
 
                         <div>
-                            <label for="notes" class="block text-sm font-semibold text-gray-300 mb-2">Additional Notes (Optional)</label>
+                            <label for="notes" class="block text-sm font-semibold text-gray-300 mb-2">Additional Notes
+                                (Optional)</label>
                             <textarea id="notes" name="notes" rows="4"
                                 placeholder="e.g. 'Only delete my reviews' or context to help us find your account."
                                 class="w-full px-4 py-3 bg-navy-800/60 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all resize-vertical"></textarea>
@@ -230,8 +236,10 @@
                             <input id="confirm" name="confirm" type="checkbox" required
                                 class="mt-1 w-5 h-5 accent-violet-500 cursor-pointer" />
                             <div>
-                                <label for="confirm" class="text-sm font-semibold text-white cursor-pointer">I confirm I own this account</label>
-                                <p class="text-xs text-gray-500 mt-1">We may email you to verify ownership before processing</p>
+                                <label for="confirm" class="text-sm font-semibold text-white cursor-pointer">I confirm I
+                                    own this account</label>
+                                <p class="text-xs text-gray-500 mt-1">We may email you to verify ownership before
+                                    processing</p>
                             </div>
                         </div>
 
@@ -254,8 +262,9 @@
             <div class="lg:col-span-1">
                 <div class="glass-card rounded-2xl p-6 sticky top-24">
                     <h3 class="font-display text-2xl mb-4 text-white">PROCESS INFO</h3>
-                    
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-500/20 text-violet-300 border border-violet-500/30 mb-6">
+
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-500/20 text-violet-300 border border-violet-500/30 mb-6">
                         <i class="fa-solid fa-clock text-xs"></i>
                         <span class="font-body text-xs font-semibold">Processing: Up to 30 days</span>
                     </div>
@@ -263,23 +272,29 @@
                     <div class="space-y-4 text-sm">
                         <div class="pb-4 border-b border-white/10">
                             <h4 class="font-semibold text-white mb-2">Full Deletion</h4>
-                            <p class="text-gray-400 leading-relaxed">We remove your account record, profile data, and personal identifiers from our database.</p>
+                            <p class="text-gray-400 leading-relaxed">We remove your account record, profile data, and
+                                personal identifiers from our database.</p>
                         </div>
-                        
+
                         <div class="pb-4 border-b border-white/10">
                             <h4 class="font-semibold text-white mb-2">Partial Deletion</h4>
-                            <p class="text-gray-400 leading-relaxed">Use the notes field to specify exactly what to remove (e.g., "Remove all my reviews").</p>
+                            <p class="text-gray-400 leading-relaxed">Use the notes field to specify exactly what to
+                                remove (e.g., "Remove all my reviews").</p>
                         </div>
-                        
+
                         <div class="pb-4 border-b border-white/10">
                             <h4 class="font-semibold text-white mb-2">Data Retention</h4>
-                            <p class="text-gray-400 leading-relaxed">We keep this request record for 90 days for compliance, then permanently delete it.</p>
+                            <p class="text-gray-400 leading-relaxed">We keep this request record for 90 days for
+                                compliance, then permanently delete it.</p>
                         </div>
 
                         <div class="pt-2">
                             <p class="text-gray-500 text-xs leading-relaxed">
-                                Questions? See our <a href="../privacy.html" class="text-violet-400 hover:text-violet-300 underline">Privacy Policy</a> or email us at 
-                                <a href="mailto:ahmedbobos.rashid@gmail.com" class="text-violet-400 hover:text-violet-300 underline">ahmedbobos.rashid@gmail.com</a>.
+                                Questions? See our <a href="../privacy.html"
+                                    class="text-violet-400 hover:text-violet-300 underline">Privacy Policy</a> or email
+                                us at
+                                <a href="mailto:ahmedbobos.rashid@gmail.com"
+                                    class="text-violet-400 hover:text-violet-300 underline">ahmedbobos.rashid@gmail.com</a>.
                             </p>
                         </div>
                     </div>
@@ -297,6 +312,7 @@
             <a href="#" class="hover:text-white transition-colors">Terms</a>
             <a href="../feedback.html" class="hover:text-white transition-colors">Feedback</a>
             <a href="./" class="hover:text-white transition-colors text-red-400">Delete Account</a>
+            <a href="../beta.html" class="hover:text-white transition-colors">Join Beta</a>
             <a href="#" class="hover:text-white transition-colors flex items-center gap-2"><i
                     class="fa-brands fa-discord"></i> Discord</a>
         </div>
@@ -304,106 +320,106 @@
     </footer>
 
     <script>
-    const DEVELOPER_EMAIL = 'ahmedbobos.rashid@gmail.com';
+        const DEVELOPER_EMAIL = 'ahmedbobos.rashid@gmail.com';
 
-    function buildRequestText(payload) {
-      return [
-        'Arcadia deletion request',
-        '',
-        `Email used in Arcadia: ${payload.userEmail}`,
-        `Arcadia username: ${payload.arcadiaUsername}`,
-        `Deletion type: ${payload.deletionType}`,
-        `Notes: ${payload.notes || '(none)'}`,
-        '',
-        `Requested at (client): ${new Date().toISOString()}`,
-        `User agent: ${navigator.userAgent}`
-      ].join('\n');
-    }
+        function buildRequestText(payload) {
+            return [
+                'Arcadia deletion request',
+                '',
+                `Email used in Arcadia: ${payload.userEmail}`,
+                `Arcadia username: ${payload.arcadiaUsername}`,
+                `Deletion type: ${payload.deletionType}`,
+                `Notes: ${payload.notes || '(none)'}`,
+                '',
+                `Requested at (client): ${new Date().toISOString()}`,
+                `User agent: ${navigator.userAgent}`
+            ].join('\n');
+        }
 
-    function openMailto(payload) {
-      const subject = encodeURIComponent('Arcadia - Account/Data Deletion Request');
-      const body = encodeURIComponent(buildRequestText(payload));
-      window.location.href = `mailto:${DEVELOPER_EMAIL}?subject=${subject}&body=${body}`;
-    }
+        function openMailto(payload) {
+            const subject = encodeURIComponent('Arcadia - Account/Data Deletion Request');
+            const body = encodeURIComponent(buildRequestText(payload));
+            window.location.href = `mailto:${DEVELOPER_EMAIL}?subject=${subject}&body=${body}`;
+        }
 
-    async function sendViaAppwriteFunction(payload) {
-      const APPWRITE_FUNCTION_URL = 'https://69729caf0037838b51e0.fra.appwrite.run';
+        async function sendViaAppwriteFunction(payload) {
+            const APPWRITE_FUNCTION_URL = 'https://69729caf0037838b51e0.fra.appwrite.run';
 
-      if (!APPWRITE_FUNCTION_URL || APPWRITE_FUNCTION_URL === 'REPLACE_WITH_APPWRITE_FUNCTION_URL') {
-        throw new Error('Appwrite endpoint not configured');
-      }
+            if (!APPWRITE_FUNCTION_URL || APPWRITE_FUNCTION_URL === 'REPLACE_WITH_APPWRITE_FUNCTION_URL') {
+                throw new Error('Appwrite endpoint not configured');
+            }
 
-      const res = await fetch(APPWRITE_FUNCTION_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          userEmail: payload.userEmail,
-          arcadiaUsername: payload.arcadiaUsername,
-          deletionType: payload.deletionType,
-          notes: payload.notes || ''
-        })
-      });
+            const res = await fetch(APPWRITE_FUNCTION_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    userEmail: payload.userEmail,
+                    arcadiaUsername: payload.arcadiaUsername,
+                    deletionType: payload.deletionType,
+                    notes: payload.notes || ''
+                })
+            });
 
-      if (!res.ok) {
-        throw new Error('Appwrite request failed');
-      }
+            if (!res.ok) {
+                throw new Error('Appwrite request failed');
+            }
 
-      const text = await res.text();
-      try {
-        return JSON.parse(text);
-      } catch {
-        return { raw: text };
-      }
-    }
+            const text = await res.text();
+            try {
+                return JSON.parse(text);
+            } catch {
+                return { raw: text };
+            }
+        }
 
-    function getPayloadFromForm(form) {
-      const userEmail = (form.userEmail.value || '').trim();
-      const arcadiaUsername = (form.arcadiaUsername.value || '').trim();
-      const deletionType = form.deletionType.value;
-      const notes = (form.notes.value || '').trim();
+        function getPayloadFromForm(form) {
+            const userEmail = (form.userEmail.value || '').trim();
+            const arcadiaUsername = (form.arcadiaUsername.value || '').trim();
+            const deletionType = form.deletionType.value;
+            const notes = (form.notes.value || '').trim();
 
-      return { userEmail, arcadiaUsername, deletionType, notes };
-    }
+            return { userEmail, arcadiaUsername, deletionType, notes };
+        }
 
-    const form = document.getElementById('deleteForm');
-    const statusEl = document.getElementById('status');
-    const fallbackBtn = document.getElementById('fallbackMailto');
+        const form = document.getElementById('deleteForm');
+        const statusEl = document.getElementById('status');
+        const fallbackBtn = document.getElementById('fallbackMailto');
 
-    fallbackBtn.addEventListener('click', () => {
-      const payload = getPayloadFromForm(form);
-      openMailto(payload);
-    });
+        fallbackBtn.addEventListener('click', () => {
+            const payload = getPayloadFromForm(form);
+            openMailto(payload);
+        });
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      statusEl.textContent = '';
-      statusEl.className = 'text-sm font-semibold';
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            statusEl.textContent = '';
+            statusEl.className = 'text-sm font-semibold';
 
-      const payload = getPayloadFromForm(form);
+            const payload = getPayloadFromForm(form);
 
-      const btn = form.querySelector('button[type="submit"]');
-      const originalText = btn.innerHTML;
-      btn.disabled = true;
-      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>SENDING...';
+            const btn = form.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>SENDING...';
 
-      try {
-        await sendViaAppwriteFunction(payload);
-        statusEl.textContent = '✓ Sent successfully';
-        statusEl.classList.add('text-green-400');
-        form.reset();
-      } catch (err) {
-        statusEl.textContent = '⚠ Opening email app...';
-        statusEl.classList.add('text-yellow-400');
-        setTimeout(() => openMailto(payload), 300);
-      } finally {
-        btn.disabled = false;
-        btn.innerHTML = originalText;
-      }
-    });
-  </script>
+            try {
+                await sendViaAppwriteFunction(payload);
+                statusEl.textContent = '✓ Sent successfully';
+                statusEl.classList.add('text-green-400');
+                form.reset();
+            } catch (err) {
+                statusEl.textContent = '⚠ Opening email app...';
+                statusEl.classList.add('text-yellow-400');
+                setTimeout(() => openMailto(payload), 300);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+            }
+        });
+    </script>
 </body>
 
 </html>
