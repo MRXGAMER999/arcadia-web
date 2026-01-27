@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback | Arcadia</title>
+    <link rel="shortcut icon" href="logo.svg" type="image/x-icon">
+    <meta name="description" content="Share your thoughts and help us improve Arcadia.">
+
+    <!-- Critical CSS -->
+    <style>
+        body {
+            background-color: #0F0F23;
+            color: #ffffff;
+            font-family: sans-serif;
+            margin: 0;
+            opacity: 1;
+        }
+
+        .glass-fallback {
+            background: rgba(30, 42, 71, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            900: '#0F0F23',
+                            800: '#151530',
+                            700: '#1E1E3F',
+                        },
+                        violet: {
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            glow: '#A78BFA',
+                        },
+                    },
+                    fontFamily: {
+                        display: ['"Bebas Neue"', 'sans-serif'],
+                        body: ['"Outfit"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer base {
+            body::before {
+                content: "";
+                @apply fixed inset-0 opacity-[0.03] pointer-events-none z-[60];
+                background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+            }
+        }
+        @layer utilities {
+            .glass-panel {
+                @apply bg-navy-800/40 backdrop-blur-xl border border-white/10;
+            }
+            .text-glow {
+                text-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-navy-900 text-white antialiased overflow-x-hidden selection:bg-violet-600 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 px-4 bg-navy-900/90 backdrop-blur-md border-b border-white/10 py-3 shadow-2xl">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="./index.html" class="flex items-center">
+                <span class="font-display text-3xl tracking-wide flex items-center pt-1 gap-0.5">
+                    <span>A</span>
+                    <svg class="h-7 w-7 mb-1" xmlns="http://www.w3.org/2000/svg" viewBox="30 30 320 320">
+                        <defs>
+                            <clipPath id="1bc524fdbf">
+                                <path d="M 135 59.429688 L 329.863281 59.429688 L 329.863281 324.929688 L 135 324.929688 Z M 135 59.429688 " clip-rule="nonzero"></path>
+                            </clipPath>
+                            <clipPath id="b307a93635">
+                                <path d="M 53.863281 59.429688 L 179 59.429688 L 179 126 L 53.863281 126 Z M 53.863281 59.429688 " clip-rule="nonzero"></path>
+                            </clipPath>
+                            <clipPath id="0f2c6a1c71">
+                                <path d="M 136 92 L 297 92 L 297 324.929688 L 136 324.929688 Z M 136 92 " clip-rule="nonzero"></path>
+                            </clipPath>
+                            <clipPath id="f8e2f9d8ea">
+                                <path d="M 53.863281 59.429688 L 179 59.429688 L 179 126 L 53.863281 126 Z M 53.863281 59.429688 " clip-rule="nonzero"></path>
+                            </clipPath>
+                        </defs>
+                        <g clip-path="url(#1bc524fdbf)">
+                            <path fill="#fbb02e" d="M 258.703125 245.925781 L 311.164062 324.566406 L 230.675781 324.566406 L 180.15625 248.816406 L 135.984375 182.53125 C 135.984375 182.53125 235.371094 182.53125 235.410156 182.53125 C 250.863281 182.53125 263.820312 169.5625 263.820312 154.125 C 263.820312 138.453125 251.082031 125.714844 235.410156 125.714844 L 211.5 125.714844 L 167.328125 59.429688 L 235.410156 59.429688 C 287.726562 59.429688 330.101562 101.808594 330.101562 154.125 C 330.101562 180.257812 319.496094 203.933594 302.355469 221.070312 C 290.578125 232.847656 274.832031 241.8125 258.703125 245.925781 " fill-opacity="1" fill-rule="evenodd"></path>
+                        </g>
+                        <g clip-path="url(#b307a93635)">
+                            <path fill="#e8e5de" d="M 178.582031 125.714844 L 98.089844 125.714844 L 53.898438 59.429688 L 134.398438 59.429688 Z M 178.582031 125.714844 " fill-opacity="1" fill-rule="evenodd"></path>
+                        </g>
+                        <g clip-path="url(#0f2c6a1c71)">
+                            <path fill="#fbb02e" d="M 234.335938 217.777344 L 203.699219 217.777344 L 224.320312 248.78125 L 274.84375 324.566406 L 230.652344 324.566406 L 198.839844 276.769531 L 136.015625 182.5 C 136.015625 182.5 235.371094 182.5 235.441406 182.5 C 250.832031 182.5 263.796875 169.539062 263.796875 154.144531 C 263.796875 138.457031 251.054688 125.714844 235.441406 125.714844 L 211.515625 125.714844 L 189.425781 92.574219 L 234.335938 92.574219 C 268.953125 92.574219 296.9375 120.632812 296.9375 155.175781 C 296.9375 189.71875 268.953125 217.777344 234.335938 217.777344 " fill-opacity="1" fill-rule="evenodd"></path>
+                        </g>
+                        <g clip-path="url(#f8e2f9d8ea)">
+                            <path fill="#e8e5de" d="M 53.898438 59.429688 L 98.089844 125.714844 L 178.582031 125.714844 L 156.488281 92.574219 L 122.957031 92.574219 C 97.167969 92.574219 72.660156 81.308594 55.875 61.734375 Z M 53.898438 59.429688 " fill-opacity="1" fill-rule="evenodd"></path>
+                        </g>
+                    </svg>
+                    <span>CADIA</span>
+                </span>
+            </a>
+
+            <a href="./index.html"
+                class="bg-white text-navy-900 px-6 py-2.5 rounded-full font-body font-bold text-sm tracking-wide hover:bg-violet-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900">
+                <i class="fa-solid fa-arrow-left mr-2"></i>BACK TO HOME
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-[40vh] flex flex-col justify-center items-center text-center px-4 overflow-hidden pt-32 pb-16">
+        <!-- Background Effects -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div
+                class="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-600/20 blur-[120px] rounded-full mix-blend-screen animate-pulse">
+            </div>
+            <div
+                class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-600/10 blur-[120px] rounded-full mix-blend-screen">
+            </div>
+        </div>
+
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <h1 class="font-display text-6xl sm:text-7xl md:text-8xl leading-[0.9] tracking-tight mb-6">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-violet-200 to-white text-glow">WE'RE</span><br>
+                <span class="text-white">LISTENING</span>
+            </h1>
+            <p class="font-body text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-8 font-light leading-relaxed">
+                Your feedback shapes Arcadia. Tell us what you love, what needs work, or what features you're dreaming of.
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 pb-32">
+        <div class="max-w-3xl mx-auto">
+
+            <!-- Feedback Form -->
+            <div class="glass-panel rounded-[2.5rem] p-8 md:p-12 mb-16" x-data="feedbackForm()">
+                <form @submit.prevent="submitFeedback" class="space-y-6">
+                    <!-- Feedback Type -->
+                    <div>
+                        <label class="block font-body font-semibold text-white mb-4 text-lg">What's this about?</label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            <button type="button" @click="type = 'bug'" 
+                                :class="type === 'bug' ? 'bg-violet-500/20 border-violet-500/50 text-violet-200' : 'bg-white/5 border-white/10 text-gray-400 hover:border-white/20'"
+                                class="p-4 rounded-2xl border-2 transition-all font-body font-medium text-sm">
+                                <i class="fa-solid fa-bug block text-2xl mb-2"></i>
+                                Bug
+                            </button>
+                            <button type="button" @click="type = 'feature'" 
+                                :class="type === 'feature' ? 'bg-violet-500/20 border-violet-500/50 text-violet-200' : 'bg-white/5 border-white/10 text-gray-400 hover:border-white/20'"
+                                class="p-4 rounded-2xl border-2 transition-all font-body font-medium text-sm">
+                                <i class="fa-solid fa-lightbulb block text-2xl mb-2"></i>
+                                Feature
+                            </button>
+                            <button type="button" @click="type = 'improvement'" 
+                                :class="type === 'improvement' ? 'bg-violet-500/20 border-violet-500/50 text-violet-200' : 'bg-white/5 border-white/10 text-gray-400 hover:border-white/20'"
+                                class="p-4 rounded-2xl border-2 transition-all font-body font-medium text-sm">
+                                <i class="fa-solid fa-wrench block text-2xl mb-2"></i>
+                                Improve
+                            </button>
+                            <button type="button" @click="type = 'other'" 
+                                :class="type === 'other' ? 'bg-violet-500/20 border-violet-500/50 text-violet-200' : 'bg-white/5 border-white/10 text-gray-400 hover:border-white/20'"
+                                class="p-4 rounded-2xl border-2 transition-all font-body font-medium text-sm">
+                                <i class="fa-solid fa-comment block text-2xl mb-2"></i>
+                                Other
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label for="email" class="block font-body font-semibold text-white mb-4 text-lg">Email (optional)</label>
+                        <input type="email" id="email" x-model="email"
+                            class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 font-body text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all"
+                            placeholder="your@email.com">
+                        <p class="mt-2 text-sm text-gray-500 font-body ml-2">We'll only use this to follow up if needed.</p>
+                    </div>
+
+                    <!-- Message -->
+                    <div>
+                        <label for="message" class="block font-body font-semibold text-white mb-4 text-lg">Your Feedback</label>
+                        <textarea id="message" x-model="message" rows="6" required
+                            class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 font-body text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all resize-none"
+                            placeholder="Tell us everything..."></textarea>
+                        <p class="mt-2 text-sm text-gray-500 font-body ml-2" x-text="`${message.length} characters`"></p>
+                    </div>
+
+                    <!-- Rating -->
+                    <div>
+                        <label class="block font-body font-semibold text-white mb-4 text-lg">How's your experience so far?</label>
+                        <div class="flex gap-2">
+                            <template x-for="star in 5" :key="star">
+                                <button type="button" @click="rating = star"
+                                    class="text-3xl transition-all hover:scale-110"
+                                    :class="star <= rating ? 'text-yellow-400' : 'text-gray-600'">
+                                    <i class="fa-solid fa-star"></i>
+                                </button>
+                            </template>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="pt-6">
+                        <button type="submit" :disabled="submitting"
+                            class="w-full bg-violet-600 text-white px-8 py-5 rounded-full font-body font-bold text-lg tracking-wide transition-all hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(124,58,237,0.5)] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100">
+                            <span x-show="!submitting">SEND FEEDBACK</span>
+                            <span x-show="submitting" class="flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-spinner fa-spin"></i>
+                                SENDING...
+                            </span>
+                        </button>
+                    </div>
+
+                    <!-- Success Message -->
+                    <div x-show="submitted" x-transition
+                        class="mt-6 p-6 bg-emerald-500/10 border-l-4 border-emerald-500 rounded-xl">
+                        <div class="flex items-start gap-3 text-emerald-300">
+                            <i class="fa-solid fa-check-circle text-2xl mt-0.5"></i>
+                            <div>
+                                <p class="font-body font-semibold text-base">Thanks for your feedback!</p>
+                                <p class="text-sm text-emerald-400/80 mt-1">We'll review it and get back to you if needed.</p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="glass-panel rounded-2xl p-6 text-center">
+                    <div class="text-4xl font-display text-violet-400 mb-2">1.2K+</div>
+                    <div class="text-sm font-body text-gray-400 uppercase tracking-wider">Feedback Received</div>
+                </div>
+                <div class="glass-panel rounded-2xl p-6 text-center">
+                    <div class="text-4xl font-display text-violet-400 mb-2">87%</div>
+                    <div class="text-sm font-body text-gray-400 uppercase tracking-wider">Implemented</div>
+                </div>
+                <div class="glass-panel rounded-2xl p-6 text-center">
+                    <div class="text-4xl font-display text-violet-400 mb-2">24h</div>
+                    <div class="text-sm font-body text-gray-400 uppercase tracking-wider">Avg Response Time</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 bg-black py-12 px-4 text-center">
+        <h2 class="font-display text-[15vw] leading-none text-white/5 select-none pointer-events-none mb-8">ARCADIA</h2>
+        <div class="flex justify-center gap-8 text-sm text-gray-500 font-body flex-wrap">
+            <a href="./index.html" class="hover:text-white transition-colors">Home</a>
+            <a href="./privacy.html" class="hover:text-white transition-colors">Privacy</a>
+            <a href="./delete-account/" class="hover:text-white transition-colors">Delete Account</a>
+            <a href="#" class="hover:text-white transition-colors flex items-center gap-2"><i
+                    class="fa-brands fa-discord"></i> Discord</a>
+        </div>
+        <p class="mt-8 text-gray-700 text-xs">© 2026 Arcadia Inc. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function feedbackForm() {
+            return {
+                type: 'bug',
+                email: '',
+                message: '',
+                rating: 0,
+                submitting: false,
+                submitted: false,
+
+                async submitFeedback() {
+                    if (!this.message.trim()) return;
+
+                    this.submitting = true;
+
+                    // Simulate API call
+                    await new Promise(resolve => setTimeout(resolve, 1500));
+
+                    console.log('Feedback submitted:', {
+                        type: this.type,
+                        email: this.email,
+                        message: this.message,
+                        rating: this.rating
+                    });
+
+                    this.submitting = false;
+                    this.submitted = true;
+
+                    // Reset form after 3 seconds
+                    setTimeout(() => {
+                        this.type = 'bug';
+                        this.email = '';
+                        this.message = '';
+                        this.rating = 0;
+                        this.submitted = false;
+                    }, 3000);
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

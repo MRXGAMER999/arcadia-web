@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | Arcadia</title>
+    <link rel="shortcut icon" href="logo.svg" type="image/x-icon">
+    <meta name="description" content="Arcadia Terms of Service - Rules and guidelines for using the app.">
+
+    <!-- Critical CSS to prevent FOUC -->
+    <style>
+        body {
+            background-color: #0F0F23;
+            color: #ffffff;
+            font-family: sans-serif;
+            margin: 0;
+            opacity: 1;
+        }
+
+        .glass-fallback {
+            background: rgba(30, 42, 71, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            900: '#0F0F23',
+                            800: '#151530',
+                            700: '#1E1E3F',
+                        },
+                        violet: {
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            glow: '#A78BFA',
+                        },
+                        red: {
+                            500: '#ef4444',
+                            600: '#FF1744',
+                        }
+                    },
+                    fontFamily: {
+                        display: ['"Bebas Neue"', 'sans-serif'],
+                        body: ['"Outfit"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    backgroundImage: {
+                        'hero-glow': 'radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.15) 0%, rgba(15, 15, 35, 0) 70%)',
+                        'noise': "url('https://grainy-gradients.vercel.app/noise.svg')",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer base {
+            body::before {
+                content: "";
+                @apply fixed inset-0 bg-noise opacity-[0.03] pointer-events-none z-[60];
+            }
+        }
+        @layer utilities {
+            .glass-panel {
+                @apply bg-navy-800/40 backdrop-blur-xl border border-white/10;
+            }
+            .glass-card {
+                @apply bg-navy-800/60 backdrop-blur-md border border-white/5 hover:border-white/20 transition-all duration-300;
+            }
+            .text-glow {
+                text-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-navy-900 text-white antialiased overflow-x-hidden selection:bg-violet-600 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 px-4 bg-navy-900/90 backdrop-blur-md border-b border-white/10 py-3 shadow-2xl">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <a href="./index.html" class="flex items-center">
+                <span class="font-display text-3xl tracking-wide flex items-center pt-1 gap-0.5">
+                    <span>A</span>
+                    <svg class="h-7 w-7 mb-1" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="30 30 320 320">
+                        <defs>
+                            <clipPath id="1bc524fdbf">
+                                <path
+                                    d="M 135 59.429688 L 329.863281 59.429688 L 329.863281 324.929688 L 135 324.929688 Z M 135 59.429688 "
+                                    clip-rule="nonzero"></path>
+                            </clipPath>
+                            <clipPath id="b307a93635">
+                                <path
+                                    d="M 53.863281 59.429688 L 179 59.429688 L 179 126 L 53.863281 126 Z M 53.863281 59.429688 "
+                                    clip-rule="nonzero"></path>
+                            </clipPath>
+                            <clipPath id="0f2c6a1c71">
+                                <path d="M 136 92 L 297 92 L 297 324.929688 L 136 324.929688 Z M 136 92 "
+                                    clip-rule="nonzero"></path>
+                            </clipPath>
+                            <clipPath id="f8e2f9d8ea">
+                                <path
+                                    d="M 53.863281 59.429688 L 179 59.429688 L 179 126 L 53.863281 126 Z M 53.863281 59.429688 "
+                                    clip-rule="nonzero"></path>
+                            </clipPath>
+                        </defs>
+                        <g clip-path="url(#1bc524fdbf)">
+                            <path fill="#fbb02e"
+                                d="M 258.703125 245.925781 L 311.164062 324.566406 L 230.675781 324.566406 L 180.15625 248.816406 L 135.984375 182.53125 C 135.984375 182.53125 235.371094 182.53125 235.410156 182.53125 C 250.863281 182.53125 263.820312 169.5625 263.820312 154.125 C 263.820312 138.453125 251.082031 125.714844 235.410156 125.714844 L 211.5 125.714844 L 167.328125 59.429688 L 235.410156 59.429688 C 287.726562 59.429688 330.101562 101.808594 330.101562 154.125 C 330.101562 180.257812 319.496094 203.933594 302.355469 221.070312 C 290.578125 232.847656 274.832031 241.8125 258.703125 245.925781 "
+                                fill-opacity="1" fill-rule="evenodd"></path>
+                        </g>
+                        <g clip-path="url(#b307a93635)">
+                            <path fill="#e8e5de"
+                                d="M 178.582031 125.714844 L 98.089844 125.714844 L 53.898438 59.429688 L 134.398438 59.429688 Z M 178.582031 125.714844 "
+                                fill-opacity="1" fill-rule="evenodd"></path>
+                        </g>
+                        <g clip-path="url(#0f2c6a1c71)">
+                            <path fill="#fbb02e"
+                                d="M 234.335938 217.777344 L 203.699219 217.777344 L 224.320312 248.78125 L 274.84375 324.566406 L 230.652344 324.566406 L 198.839844 276.769531 L 136.015625 182.5 C 136.015625 182.5 235.371094 182.5 235.441406 182.5 C 250.832031 182.5 263.796875 169.539062 263.796875 154.144531 C 263.796875 138.457031 251.054688 125.714844 235.441406 125.714844 L 211.515625 125.714844 L 189.425781 92.574219 L 234.335938 92.574219 C 268.953125 92.574219 296.9375 120.632812 296.9375 155.175781 C 296.9375 189.71875 268.953125 217.777344 234.335938 217.777344 "
+                                fill-opacity="1" fill-rule="evenodd"></path>
+                        </g>
+                        <g clip-path="url(#f8e2f9d8ea)">
+                            <path fill="#e8e5de"
+                                d="M 53.898438 59.429688 L 98.089844 125.714844 L 178.582031 125.714844 L 156.488281 92.574219 L 122.957031 92.574219 C 97.167969 92.574219 72.660156 81.308594 55.875 61.734375 Z M 53.898438 59.429688 "
+                                fill-opacity="1" fill-rule="evenodd"></path>
+                        </g>
+                    </svg>
+                    <span>CADIA</span>
+                </span>
+            </a>
+
+            <!-- Back to Home -->
+            <a href="./index.html"
+                class="bg-white text-navy-900 px-6 py-2.5 rounded-full font-body font-bold text-sm tracking-wide hover:bg-violet-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-900">
+                <i class="fa-solid fa-arrow-left mr-2"></i>BACK TO HOME
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-[40vh] flex flex-col justify-center items-center text-center px-4 overflow-hidden pt-32 pb-16">
+        <!-- Background Effects -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div
+                class="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-600/20 blur-[120px] rounded-full mix-blend-screen animate-pulse">
+            </div>
+            <div
+                class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-600/10 blur-[120px] rounded-full mix-blend-screen">
+            </div>
+        </div>
+
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <h1 class="font-display text-6xl sm:text-7xl md:text-8xl leading-[0.9] tracking-tight mb-6">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-violet-200 to-white text-glow">TERMS OF</span><br>
+                <span class="text-white">SERVICE</span>
+            </h1>
+            <p class="font-body text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-8 font-light leading-relaxed">
+                The rules and guidelines for using Arcadia. By using the app, you agree to these terms.
+            </p>
+            <p class="font-body text-sm text-gray-400">Last updated: January 27, 2026</p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 pb-32">
+
+        <!-- Agreement -->
+        <section class="my-16 pb-10 border-b border-white/20">
+            <h2 class="font-display text-3xl md:text-4xl mb-6 text-white">AGREEMENT TO TERMS</h2>
+            <p class="text-gray-300 font-body text-base leading-relaxed">
+                By downloading, installing, or using Arcadia ("the app", "we", "our"), you agree to be bound by these Terms of Service. If you do not agree to these terms, do not use the app.
+            </p>
+        </section>
+
+        <!-- Eligibility -->
+        <section class="mb-16 pb-10 border-b border-white/20">
+            <h2 class="font-display text-3xl md:text-4xl mb-6 text-white">ELIGIBILITY</h2>
+            <ul class="space-y-3 ml-8 text-gray-300 text-sm">
+                <li class="pl-4 border-l-2 border-white/20">You must be at least 13 years old to use Arcadia</li>
+                <li class="pl-4 border-l-2 border-white/20">If you are under 18, you must have parental or guardian consent</li>
+                <li class="pl-4 border-l-2 border-white/20">You must provide accurate information when creating an account</li>
+                <li class="pl-4 border-l-2 border-white/20">You are responsible for maintaining the security of your account</li>
+            </ul>
+        </section>
+
+        <!-- Account and Authentication -->
+        <section class="mb-16 pb-10 border-b border-white/20">
+            <h2 class="font-display text-3xl md:text-4xl mb-6 text-white">ACCOUNT AND AUTHENTICATION</h2>
+            
+            <div class="space-y-6">
+                <div>
+                    <h3 class="font-body text-xl font-semibold text-white mb-3 pl-4 border-l-4 border-violet-500">Google Sign-In</h3>
+                    <p class="text-gray-300 text-sm ml-8 leading-relaxed">
+                        Arcadia uses Google Sign-In for authentication. By signing in, you authorize us to access your Google account information (email, name, profile picture) as described in our <a href="./privacy.html" class="text-violet-400 hover:text-violet-300 underline">Privacy Policy</a>.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="font-body text-xl font-semibold text-white mb-3 pl-4 border-l-4 border-violet-500">Account Security</h3>
+                    <ul class="space-y-2 ml-12 text-gray-300 text-sm">
+                        <li class="pl-3 border-l-2 border-white/20">You are responsible for all activity under your account</li>
+                        <li class="pl-3 border-l-2 border-white/20">Notify us immediately if you suspect unauthorized access</li>
+                        <li class="pl-3 border-l-2 border-white/20">Do not share your account credentials with others</li>
+                        <li class="pl-3 border-l-2 border-white/20">We reserve the right to suspend accounts that violate these terms</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- User Content and Conduct -->
+        <section class="mb-16 pb-10 border-b border-white/20">
+            <h2 class="font-display text-3xl md:text-4xl mb-6 text-white">USER CONTENT AND CONDUCT</h2>
+
+            <div class="space-y-8">
+                <div>
+                    <h3 class="font-body text-xl font-semibold text-white mb-3 pl-4 border-l-4 border-violet-500">Your Content</h3>
+                    <p class="text-gray-400 mb-3 ml-8 text-sm">You retain ownership of content you create in Arcadia, including:</p>
+                    <ul class="space-y-2 ml-12 text-gray-300 text-sm">
+                        <li class="pl-3 border-l-2 border-white/20">Game library entries (ratings, status, hours played)</li>
+                        <li class="pl-3 border-l-2 border-white/20">Reviews and written feedback</li>
+                        <li class="pl-3 border-l-2 border-white/20">Profile information (username, bio, profile picture)</li>
+                        <li class="pl-3 border-l-2 border-white/20">AI-generated roasts and badges you save</li>
+                    </ul>
+                    <p class="text-gray-400 mt-4 ml-8 text-sm">
+                        By posting content, you grant Arcadia a non-exclusive, worldwide license to use, display, and distribute your content within the app and for promotional purposes.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="font-body text-xl font-semibold text-white mb-3 pl-4 border-l-4 border-red-500">Prohibited Conduct</h3>
+                    <p class="text-gray-400 mb-3 ml-8 text-sm">You agree NOT to:</p>
+                    <ul class="space-y-2 ml-12 text-gray-300 text-sm">
+                        <li class="pl-3 border-l-2 border-red-500/50">Post content that is illegal, harmful, threatening, abusive, harassing, defamatory, vulgar, obscene, or otherwise objectionable</li>
+                        <li class="pl-3 border-l-2 border-red-500/50">Impersonate any person or entity, or falsely represent your affiliation</li>
+                        <li class="pl-3 border-l-2 border-red-500/50">Spam, harass, or abuse other users through reviews, friend requests, or any other feature</li>
+                        <li class="pl-3 border-l-2 border-red-500/50">Attempt to reverse engineer, decompile, or hack the app</li>
+                        <li class="pl-3 border-l-2 border-red-500/50">Use automated tools (bots, scripts) to interact with the app</li>
+                        <li class="pl-3 border-l-2 border-red-500/50">Violate any applicable laws or regulations</li>
+                        <li class="pl-3 border-l-2 border-red-500/50">Abuse rate limits or attempt to overload our servers</li>
+                    </ul>
+                </div>
+
+                <div class="ml-8 p-4 bg-red-500/10 border-l-4 border-red-500">
+                    <p class="text-white font-body font-semibold text-sm">
+                        Violation of these rules may result in content removal, account suspension, or permanent ban without notice.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features and Services -->
+        <section class="mb-16 pb-10 border-b border-white/20">
+            <h2 class="font-display text-3xl md:text-4xl mb-6 text-white">FEATURES AND SERVICES</h2>
+
+            <div class="space-y-6">
+                <div>
+                    <h3 class="font-body text-xl font-semibold text-white mb-3 pl-4 border-l-4 border-violet-500">Library Tracking</h3>
+                    <p class="text-gray-300 text-sm ml-8 leading-relaxed">
+                        Track your game library with status, ratings, hours played, and reviews. Your library data is synced to the cloud and cached locally for offline access.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="font-body text-xl font-semibold text-white mb-3 pl-4 border-l-4 border-violet-500">AI Features</h3>
+                    <p class="text-gray-300 text-sm ml-8 leading-relaxed mb-3">
+                        Arcadia uses AI services (Groq, Google Gemini) to provide personalized recommendations, insights, and roasts based on your library data. By using AI features, you acknowledge:
+                    </p>
+                    <ul class="space-y-2 ml-12 text-gray-300 text-sm">
+                        <li class="pl-3 border-l-2 border-white/20">Your library data is sent to third-party AI providers</li>
+                        <li class="pl-3 border-l-2 border-white/20">AI-generated content may be inaccurate, biased, or inappropriate</li>
+                        <li class="pl-3 border-l-2 border-white/20">Roasts are intended as humor and may contain sarcastic or critical language</li>
+                        <li class="pl-3 border-l-2 border-white/20">We are not responsible for AI-generated content that offends or harms you</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-body text-xl font-semibold text-white mb-3 pl-4 border-l-4 border-violet-500">Social Features</h3>
+                    <p class="text-gray-300 text-sm ml-8 leading-relaxed mb-3">
+                        Connect with friends, send friend requests, view profiles, and interact with community reviews. Social features are subject to daily limits:
+                    </p>
+                    <ul class="space-y-2 ml-12 text-gray-300 text-sm">
+                        <li class="pl-3 border-l-2 border-white/20">Daily friend request limit to prevent spam</li>
+                        <li class="pl-3 border-l-2 border-white/20">Maximum pending outgoing requests cap</li>
+                        <li class="pl-3 border-l-2 border-white/20">Maximum friends cap (may be adjusted)</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-body text-xl font-semibold text-white mb-3 pl-4 border-l-4 border-violet-500">Community Reviews</h3>
+                    <p class="text-gray-300 text-sm ml-8 leading-relaxed">
+                        Write and read game reviews, like reviews, and see friend reviews first. Reviews are public and visible to all users. You can edit or delete your reviews at any time.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="font-body text-xl font-semibold text-white mb-3 pl-4 border-l-4 border-violet-500">Push Notifications</h3>
+                    <p class="text-gray-300 text-sm ml-8 leading-relaxed">
+                        Receive notifications for friend requests, friend acceptances, and other updates via OneSignal. You can disable notifications in your device settings.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Third-Party Services -->
+        <section class="mb-16 pb-10 border-b border-white/20">
+            <h2 class="font-display text-3xl md:text-4xl mb-6 text-white">THIRD-PARTY SERVICES</h2>
+            <p class="text-gray-400 mb-4 text-sm ml-8">Arcadia integrates with third-party services:</p>
+            <ul class="space-y-2 ml-12 text-gray-300 text-sm">
+                <li class="pl-3 border-l-2 border-white/20"><strong class="text-white">IGDB:</strong> Game metadata and information</li>
+                <li class="pl-3 border-l-2 border-white/20"><strong class="text-white">Appwrite:</strong> Cloud database, authentication, and storage</li>
+                <li class="pl-3 border-l-2 border-white/20"><strong class="text-white">Groq & Google Gemini:</strong> AI recommendations and insights</li>
+                <li class="pl-3 border-l-2 border-white/20"><strong class="text-white">OneSignal:</strong> Push notifications</li>
+                <li class="pl-3 border-l-2 border-white/20"><strong class="text-white">Google Sign-In:</strong> Authentication</li>
+            </ul>
+            <p class="text-gray-400 mt-4 ml-8 text-sm">
+                These services have their own terms and privacy policies. We are not responsible for their practices or any issues arising from their use.
+            </p>
+        </section>
+
+        <!-- Intellectual Property -->
+        <section class="mb-16 pb-10 border-b border-white/20">
+            <h2 class="font-display text-3xl md:text-4xl mb-6 text-white">INTELLECTUAL PROPERTY</h2>
+            
+            <div class="space-y-6">
+                <div>
+                    <h3 class="font-body text-xl font-semibold text-white mb-3 pl-4 border-l-4 border-violet-500">Our Rights</h3>
+                    <p class="text-gray-300 text-sm ml-8 leading-relaxed">
+                        Arcadia, its logo, design, code, and all related materials are owned by us or our licensors. You may not copy, modify, distribute, or create derivative works without our permission.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="font-body text-xl font-semibold text-white mb-3 pl-4 border-l-4 border-violet-500">Game Data</h3>
+                    <p class="text-gray-300 text-sm ml-8 leading-relaxed">
+                        Game metadata (titles, cover art, descriptions) is provided by IGDB and is owned by their respective copyright holders. We do not claim ownership of this content.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Disclaimers and Limitations -->
+        <section class="mb-16 pb-10 border-b border-white/20">
+            <h2 class="font-display text-3xl md:text-4xl mb-6 text-white">DISCLAIMERS AND LIMITATIONS</h2>
+
+            <div class="space-y-6">
+                <div class="ml-8 p-4 bg-yellow-500/10 border-l-4 border-yellow-500">
+                    <p class="text-white font-body font-semibold text-sm mb-2">AS-IS SERVICE</p>
+                    <p class="text-gray-300 text-sm">
+                        Arcadia is provided "as is" without warranties of any kind. We do not guarantee that the app will be error-free, secure, or always available.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="font-body text-xl font-semibold text-white mb-3 pl-4 border-l-4 border-violet-500">No Liability</h3>
+                    <p class="text-gray-300 text-sm ml-8 leading-relaxed mb-3">
+                        To the maximum extent permitted by law, we are not liable for:
+                    </p>
+                    <ul class="space-y-2 ml-12 text-gray-300 text-sm">
+                        <li class="pl-3 border-l-2 border-white/20">Loss of data or content</li>
+                        <li class="pl-3 border-l-2 border-white/20">Service interruptions or downtime</li>
+                        <li class="pl-3 border-l-2 border-white/20">Inaccurate AI-generated content</li>
+                        <li class="pl-3 border-l-2 border-white/20">Actions of other users</li>
+                        <li class="pl-3 border-l-2 border-white/20">Third-party service failures</li>
+                        <li class="pl-3 border-l-2 border-white/20">Any indirect, incidental, or consequential damages</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-body text-xl font-semibold text-white mb-3 pl-4 border-l-4 border-violet-500">Data Backup</h3>
+                    <p class="text-gray-300 text-sm ml-8 leading-relaxed">
+                        While we implement backup systems, you are responsible for maintaining your own backups of important data. We are not liable for data loss.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Termination -->
+        <section class="mb-16 pb-10 border-b border-white/20">
+            <h2 class="font-display text-3xl md:text-4xl mb-6 text-white">TERMINATION</h2>
+            
+            <div class="space-y-4 ml-8">
+                <div class="pl-4 border-l-4 border-violet-500 py-2">
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        <strong class="text-white font-semibold">Your Right:</strong> You may stop using Arcadia and delete your account at any time through our <a href="./delete-account/" class="text-violet-400 hover:text-violet-300 underline">account deletion page</a>.
+                    </p>
+                </div>
+                <div class="pl-4 border-l-4 border-red-500 py-2">
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        <strong class="text-white font-semibold">Our Right:</strong> We may suspend or terminate your account at any time for violating these terms, with or without notice.
+                    </p>
+                </div>
+                <div class="pl-4 border-l-4 border-violet-500 py-2">
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        <strong class="text-white font-semibold">Effect:</strong> Upon termination, your access to the app will cease, but these terms will continue to apply to past use.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Changes to Terms -->
+        <section class="mb-16 pb-10 border-b border-white/20">
+            <h2 class="font-display text-3xl md:text-4xl mb-6 text-white">CHANGES TO THESE TERMS</h2>
+            <p class="text-gray-300 text-sm leading-relaxed ml-8 pl-4 border-l-2 border-white/20">
+                We may update these Terms of Service from time to time. We will notify you of significant changes through the app or by updating the "Last updated" date. Your continued use after changes constitutes acceptance of the updated terms. If you do not agree, stop using the app.
+            </p>
+        </section>
+
+        <!-- Governing Law -->
+        <section class="mb-16 pb-10 border-b border-white/20">
+            <h2 class="font-display text-3xl md:text-4xl mb-6 text-white">GOVERNING LAW</h2>
+            <p class="text-gray-300 text-sm leading-relaxed ml-8 pl-4 border-l-2 border-white/20">
+                These terms are governed by and construed in accordance with applicable laws. Any disputes will be resolved through binding arbitration or in courts of competent jurisdiction.
+            </p>
+        </section>
+
+        <!-- Contact -->
+        <section class="mb-16">
+            <h2 class="font-display text-3xl md:text-4xl mb-6 text-white">CONTACT US</h2>
+            <p class="text-gray-300 mb-6 text-sm ml-8">Questions about these Terms of Service? Contact us:</p>
+
+            <div class="ml-8 space-y-3 pl-4 border-l-2 border-white/20">
+                <p class="text-gray-300 text-sm">
+                    <strong class="text-white font-semibold">Email:</strong> <a href="mailto:ahmedbobos.rashid@gmail.com" class="text-violet-400 hover:text-violet-300 underline">ahmedbobos.rashid@gmail.com</a>
+                </p>
+                <p class="text-gray-300 text-sm">
+                    <strong class="text-white font-semibold">Developer:</strong> Ahmad Abbas
+                </p>
+                <p class="text-gray-300 text-sm">
+                    <strong class="text-white font-semibold">Feedback:</strong> <a href="./feedback.html" class="text-violet-400 hover:text-violet-300 underline">Submit Feedback</a>
+                </p>
+            </div>
+        </section>
+
+        <!-- Agreement Footer -->
+        <section class="text-center pt-12 border-t border-white/20">
+            <p class="text-gray-400 font-body text-base mb-4">
+                By using Arcadia, you agree to these Terms of Service.
+            </p>
+            <div class="flex justify-center gap-4 flex-wrap">
+                <a href="./privacy.html" class="text-violet-400 hover:text-violet-300 underline text-sm">Privacy Policy</a>
+                <a href="./delete-account/" class="text-violet-400 hover:text-violet-300 underline text-sm">Delete Account</a>
+                <a href="./feedback.html" class="text-violet-400 hover:text-violet-300 underline text-sm">Feedback</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 bg-black py-12 px-4 text-center">
+        <h2 class="font-display text-[15vw] leading-none text-white/5 select-none pointer-events-none mb-8">ARCADIA</h2>
+        <div class="flex justify-center gap-8 text-sm text-gray-500 font-body flex-wrap">
+            <a href="./index.html" class="hover:text-white transition-colors">Home</a>
+            <a href="./privacy.html" class="hover:text-white transition-colors">Privacy</a>
+            <a href="./terms.html" class="hover:text-white transition-colors text-violet-400">Terms</a>
+            <a href="./delete-account/" class="hover:text-white transition-colors">Delete Account</a>
+            <a href="#" class="hover:text-white transition-colors flex items-center gap-2"><i
+                    class="fa-brands fa-discord"></i> Discord</a>
+        </div>
+        <p class="mt-8 text-gray-700 text-xs">© 2026 Arcadia Inc. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
