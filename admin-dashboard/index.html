@@ -1552,6 +1552,30 @@
 
         async function updateBetaStatus(id, status) {
             try {
+                // If accepting, call the send-beta-access function first (it will update status)
+                if (status === 'accepted') {
+                    try {
+                        const sendBetaAccessFunctionId = '69799e840007bbcae1e1';
+                        await appwriteFetch(
+                            `/functions/${sendBetaAccessFunctionId}/executions`,
+                            {
+                                method: 'POST',
+                                body: JSON.stringify({
+                                    signupId: id
+                                })
+                            }
+                        );
+                        showToast('Signup accepted and beta access email sent!', 'success');
+                        loadBetaSignups();
+                        return;
+                    } catch (functionError) {
+                        console.error('Failed to send beta access email:', functionError);
+                        // Show error but continue to update status manually
+                        showToast('Failed to send beta access email. Status will still be updated.', 'error');
+                    }
+                }
+                
+                // Update the signup status (for reject, or if function call failed)
                 await appwriteFetch(
                     `/databases/${appwriteConfig.databaseId}/collections/${COLLECTIONS.betaSignups}/documents/${id}`,
                     {
@@ -1563,6 +1587,7 @@
                         })
                     }
                 );
+                
                 showToast(`Signup ${status} successfully`, 'success');
                 loadBetaSignups();
             } catch (error) {
