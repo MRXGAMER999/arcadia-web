@@ -479,7 +479,7 @@
                             }))
                             .filter((img) => img && img.data);
 
-                        const result = await sendViaAppwriteFunction({
+                        const finalPayload = {
                             type: this.type,
                             email: email || undefined,
                             message,
