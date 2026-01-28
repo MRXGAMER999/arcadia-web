@@ -1561,7 +1561,9 @@
                             {
                                 method: 'POST',
                                 body: JSON.stringify({
-                                    data: JSON.stringify({ signupId: id })
+                                    body: JSON.stringify({ signupId: id }),
+                                    method: 'POST',
+                                    headers: JSON.stringify({ 'Content-Type': 'application/json' })
                                 })
                             }
                         );
