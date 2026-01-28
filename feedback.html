@@ -344,6 +344,48 @@
 
     <script>
         function feedbackForm() {
+            const APPWRITE_ENDPOINT = 'https://fra.cloud.appwrite.io/v1';
+            const APPWRITE_PROJECT_ID = '693aa4d3000d8cb02bbe';
+            const FEEDBACK_FUNCTION_ID = '69793d45003864a22715';
+
+            async function sendViaAppwriteFunction(payload) {
+                if (typeof Appwrite === 'undefined') {
+                    throw new Error('Appwrite SDK failed to load');
+                }
+                if (!APPWRITE_PROJECT_ID || APPWRITE_PROJECT_ID.startsWith('REPLACE_')) {
+                    throw new Error('Appwrite project not configured');
+                }
+                if (!FEEDBACK_FUNCTION_ID || FEEDBACK_FUNCTION_ID.startsWith('REPLACE_')) {
+                    throw new Error('Feedback function not configured');
+                }
+
+                const client = new Appwrite.Client()
+                    .setEndpoint(APPWRITE_ENDPOINT)
+                    .setProject(APPWRITE_PROJECT_ID);
+
+                const functions = new Appwrite.Functions(client);
+
+                const execution = await functions.createExecution({
+                    functionId: FEEDBACK_FUNCTION_ID,
+                    body: JSON.stringify(payload),
+                    async: false,
+                });
+
+                const statusCode = execution?.responseStatusCode;
+                const body = execution?.responseBody;
+                if (!body) return { execution, statusCode };
+
+                try {
+                    const parsed = JSON.parse(body);
+                    if (parsed && typeof parsed === 'object') {
+                        parsed._statusCode = statusCode;
+                    }
+                    return parsed;
+                } catch {
+                    return { raw: body, execution, statusCode };
+                }
+            }
+
             return {
                 type: 'bug',
                 email: '',
@@ -355,43 +397,42 @@
                 errorMessage: '',
 
                 handleFileSelect(event) {
-                    const files = Array.from(event.target.files);
+                    this.errorMessage = '';
+                    const files = Array.from((event && event.target && event.target.files) ? event.target.files : []);
                     const maxFiles = 3;
-                    const maxSize = 5 * 1024 * 1024; // 5MB
+                    const maxSize = 5 * 1024 * 1024;
 
-                    // Check if adding these files would exceed max
                     if (this.images.length + files.length > maxFiles) {
-                        alert(`You can only upload up to ${maxFiles} images`);
+                        this.errorMessage = `You can only upload up to ${maxFiles} images.`;
+                        if (event && event.target) event.target.value = '';
                         return;
                     }
 
-                    files.forEach(file => {
-                        // Validate file size
-                        if (file.size > maxSize) {
-                            alert(`${file.name} is too large. Maximum size is 5MB`);
-                            return;
+                    for (const file of files) {
+                        if (!file) continue;
+
+                        if (!file.type || !file.type.startsWith('image/')) {
+                            this.errorMessage = `${file.name} is not an image file.`;
+                            continue;
                         }
 
-                        // Validate file type
-                        if (!file.type.startsWith('image/')) {
-                            alert(`${file.name} is not an image file`);
-                            return;
+                        if (typeof file.size === 'number' && file.size > maxSize) {
+                            this.errorMessage = `${file.name} is too large. Maximum size is 5MB.`;
+                            continue;
                         }
 
-                        // Create preview
                         const reader = new FileReader();
                         reader.onload = (e) => {
                             this.images.push({
-                                file: file,
-                                preview: e.target.result,
-                                name: file.name
+                                file,
+                                preview: e && e.target ? e.target.result : null,
+                                name: file.name,
                             });
                         };
                         reader.readAsDataURL(file);
-                    });
+                    }
 
-                    // Reset input
-                    event.target.value = '';
+                    if (event && event.target) event.target.value = '';
                 },
 
                 removeImage(index) {
@@ -407,38 +448,51 @@
                 },
 
                 async submitFeedback() {
-                    if (!this.message.trim()) return;
+                    this.errorMessage = '';
+                    this.submitted = false;
+                    if (this.submitting) return;
+
+                    const email = (this.email || '').trim().toLowerCase();
+                    const message = (this.message || '').trim();
+
+                    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                        this.errorMessage = 'Please enter a valid email address.';
+                        return;
+                    }
+
+                    if (!message) {
+                        this.errorMessage = 'Please enter your feedback message.';
+                        return;
+                    }
 
                     this.submitting = true;
 
                     try {
-                        // Create FormData and append all fields
-                        const formData = new FormData();
-                        formData.append('type', this.type);
-                        if (this.email) formData.append('email', this.email);
-                        formData.append('message', this.message);
-                        formData.append('rating', this.rating.toString());
+                        const images = (this.images || [])
+                            .map((img) => ({
+                                name: (img && (img.name || (img.file && img.file.name))) ? (img.name || img.file.name) : 'image',
+                                mimeType: (img && img.file && img.file.type) ? img.file.type : 'application/octet-stream',
+                                data: img ? img.preview : null,
+                            }))
+                            .filter((img) => img && img.data);
 
-                        // Append image files directly
-                        this.images.forEach((image, index) => {
-                            formData.append(`image_${index}`, image.file);
+                        const result = await sendViaAppwriteFunction({
+                            type: this.type,
+                            email: email || undefined,
+                            message,
+                            rating: this.rating || 0,
+                            images,
                         });
 
-                        const response = await fetch('https://69793d46000749f0524b.fra.appwrite.run', {
-                            method: 'POST',
-                            body: formData
-                        });
-
-                        const result = await response.json();
-
-                        if (!response.ok) {
-                            throw new Error(result.error || 'Failed to submit feedback');
+                        if (!result || result.success !== true) {
+                            const msg = (result && (result.error || result.message))
+                                ? (result.error || result.message)
+                                : 'Failed to send feedback. Please try again.';
+                            throw new Error(msg);
                         }
 
-                        this.submitting = false;
                         this.submitted = true;
 
-                        // Reset form after 3 seconds
                         setTimeout(() => {
                             this.type = 'bug';
                             this.email = '';
@@ -446,18 +500,16 @@
                             this.rating = 0;
                             this.images = [];
                             this.submitted = false;
+                            this.errorMessage = '';
+                            if (this.$refs && this.$refs.fileInput) this.$refs.fileInput.value = '';
                         }, 3000);
                     } catch (err) {
-                        console.error('Feedback submission error:', err);
+                        this.errorMessage = (err && err.message) ? err.message : 'Failed to submit feedback. Please try again.';
+                    } finally {
                         this.submitting = false;
-                        this.errorMessage = err.message || 'Failed to submit feedback. Please try again.';
-                        // Show error for 5 seconds
-                        setTimeout(() => {
-                            this.errorMessage = '';
-                        }, 5000);
                     }
                 }
-            }
+            };
         }
     </script>
 
