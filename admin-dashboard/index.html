@@ -1442,7 +1442,7 @@
         async function loadBetaSignups() {
             try {
                 const data = await appwriteFetch(
-                    `/databases/${appwriteConfig.databaseId}/collections/${COLLECTIONS.betaSignups}/documents?queries[]=limit(1000)`
+                    `/databases/${appwriteConfig.databaseId}/collections/${COLLECTIONS.betaSignups}/documents?queries[]=${encodeURIComponent('limit(100)')}`
                 );
                 betaSignups = data.documents || [];
                 renderBetaSignups();
@@ -1639,7 +1639,7 @@
         async function loadDeletionRequests() {
             try {
                 const data = await appwriteFetch(
-                    `/databases/${appwriteConfig.databaseId}/collections/${COLLECTIONS.deletionRequests}/documents?queries[]=limit(1000)`
+                    `/databases/${appwriteConfig.databaseId}/collections/${COLLECTIONS.deletionRequests}/documents?queries[]=${encodeURIComponent('limit(100)')}`
                 );
                 deletionRequests = data.documents || [];
                 renderDeletionRequests();
@@ -1787,7 +1787,7 @@
         async function loadFeedback() {
             try {
                 const data = await appwriteFetch(
-                    `/databases/${appwriteConfig.databaseId}/collections/${COLLECTIONS.feedback}/documents?queries[]=limit(1000)`
+                    `/databases/${appwriteConfig.databaseId}/collections/${COLLECTIONS.feedback}/documents?queries[]=${encodeURIComponent('limit(100)')}`
                 );
                 feedbackSubmissions = data.documents || [];
                 renderFeedback();
