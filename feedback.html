@@ -485,6 +485,8 @@
                             message,
                             rating: this.rating || 0,
                             images,
+                            userAgent: navigator.userAgent,
+                            origin: window.location.origin,
                         });
 
                         if (!result || result.success !== true) {
