@@ -959,6 +959,45 @@
         .hidden {
             display: none !important;
         }
+
+        /* Copy Icon Button */
+        .copy-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 8px;
+            padding: 4px;
+            background: transparent;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: var(--gray-400);
+            transition: all 0.15s;
+            vertical-align: middle;
+        }
+
+        .copy-btn:hover {
+            background: var(--gray-100);
+            color: var(--primary);
+        }
+
+        .copy-btn svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .copy-btn.copied {
+            color: var(--success);
+        }
+
+        .cell-primary .copy-btn {
+            opacity: 0;
+        }
+
+        tr:hover .cell-primary .copy-btn,
+        .detail-value:hover .copy-btn {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -1499,7 +1538,7 @@
                                     <div class="cell-primary">${escapeHtml(s.userName)}</div>
                                 </td>
                                 <td>
-                                    <div class="cell-primary">${escapeHtml(s.userEmail)}</div>
+                                    <div class="cell-primary">${escapeHtml(s.userEmail)}<button class="copy-btn" id="copy-beta-${s.$id}" onclick="copyToClipboard('${escapeHtml(s.userEmail)}', 'copy-beta-${s.$id}')" title="Copy email"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div>
                                 </td>
                                 <td>
                                     <span class="badge badge-${s.status}">
@@ -1609,7 +1648,7 @@
                 </div>
                 <div class="detail-row">
                     <div class="detail-label">Email</div>
-                    <div class="detail-value">${escapeHtml(signup.userEmail)}</div>
+                    <div class="detail-value">${escapeHtml(signup.userEmail)}<button class="copy-btn" id="copy-beta-detail" onclick="copyToClipboard('${escapeHtml(signup.userEmail)}', 'copy-beta-detail')" title="Copy email"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div>
                 </div>
                 <div class="detail-row">
                     <div class="detail-label">Status</div>
@@ -1715,7 +1754,7 @@
                                     <div class="cell-primary">${escapeHtml(r.arcadiaUsername)}</div>
                                 </td>
                                 <td>
-                                    <div class="cell-primary">${escapeHtml(r.userEmail)}</div>
+                                    <div class="cell-primary">${escapeHtml(r.userEmail)}<button class="copy-btn" id="copy-del-${r.$id}" onclick="copyToClipboard('${escapeHtml(r.userEmail)}', 'copy-del-${r.$id}')" title="Copy email"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div>
                                 </td>
                                 <td>
                                     <span class="badge badge-${r.deletionType === 'full' ? 'rejected' : 'warning'}">
@@ -1764,7 +1803,7 @@
                 </div>
                 <div class="detail-row">
                     <div class="detail-label">Email</div>
-                    <div class="detail-value">${escapeHtml(request.userEmail)}</div>
+                    <div class="detail-value">${escapeHtml(request.userEmail)}<button class="copy-btn" id="copy-del-detail" onclick="copyToClipboard('${escapeHtml(request.userEmail)}', 'copy-del-detail')" title="Copy email"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div>
                 </div>
                 <div class="detail-row">
                     <div class="detail-label">Deletion Type</div>
@@ -1870,7 +1909,7 @@
                                 </td>
                                 <td>
                                     <div class="cell-primary">${escapeHtml(f.message?.substring(0, 60) || '')}${f.message?.length > 60 ? '...' : ''}</div>
-                                    ${f.email ? `<div class="cell-secondary">${escapeHtml(f.email)}</div>` : ''}
+                                    ${f.email ? `<div class="cell-secondary">${escapeHtml(f.email)}<button class="copy-btn" id="copy-fb-${f.$id}" onclick="copyToClipboard('${escapeHtml(f.email)}', 'copy-fb-${f.$id}')" title="Copy email"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div>` : ''}
                                 </td>
                                 <td>
                                     <span class="badge badge-${f.status || 'new'}">
@@ -1959,7 +1998,7 @@
                 ${feedback.email ? `
                 <div class="detail-row">
                     <div class="detail-label">Email</div>
-                    <div class="detail-value">${escapeHtml(feedback.email)}</div>
+                    <div class="detail-value">${escapeHtml(feedback.email)}<button class="copy-btn" id="copy-fb-detail" onclick="copyToClipboard('${escapeHtml(feedback.email)}', 'copy-fb-detail')" title="Copy email"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div>
                 </div>
                 ` : ''}
                 <div class="detail-row">
@@ -2110,6 +2149,23 @@
             const div = document.createElement('div');
             div.textContent = text;
             return div.innerHTML;
+        }
+
+        async function copyToClipboard(text, btnId) {
+            try {
+                await navigator.clipboard.writeText(text);
+                const btn = document.getElementById(btnId);
+                if (btn) {
+                    btn.classList.add('copied');
+                    btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+                    setTimeout(() => {
+                        btn.classList.remove('copied');
+                        btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`;
+                    }, 2000);
+                }
+            } catch (err) {
+                console.error('Failed to copy:', err);
+            }
         }
 
         function formatDate(dateStr) {
