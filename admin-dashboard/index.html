@@ -1558,8 +1558,7 @@
                         method: 'PATCH',
                         body: JSON.stringify({
                             data: { 
-                                status,
-                                acceptedAt: status === 'accepted' ? new Date().toISOString() : undefined
+                                status
                             }
                         })
                     }
@@ -1598,12 +1597,6 @@
                     <div class="detail-label">Submitted</div>
                     <div class="detail-value">${formatDateTime(signup.$createdAt)}</div>
                 </div>
-                ${signup.acceptedAt ? `
-                <div class="detail-row">
-                    <div class="detail-label">Accepted</div>
-                    <div class="detail-value">${formatDateTime(signup.acceptedAt)}</div>
-                </div>
-                ` : ''}
                 <div class="detail-row">
                     <div class="detail-label">IP Address</div>
                     <div class="detail-value">${escapeHtml(signup.ip || 'N/A')}</div>
