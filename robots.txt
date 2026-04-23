@@ -1,0 +1,21 @@
+Sitemap: https://arcadiatracker.app/sitemap.xml
+
+Content-Signal: ai-train=no, search=yes, ai-input=no
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: OAI-SearchBot
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: *
+Allow: /
+Disallow: /admin-dashboard/
+Disallow: /profile/
+Disallow: /delete-account/
