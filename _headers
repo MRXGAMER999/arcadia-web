@@ -1,0 +1,14 @@
+/*
+  Link: </.well-known/api-catalog>; rel="api-catalog"
+  Link: </docs/api>; rel="service-doc"
+  Link: </.well-known/mcp/server-card.json>; rel="mcp-server-card"
+  Link: </.well-known/agent-skills/index.json>; rel="agent-skills"
+
+/.well-known/api-catalog
+  Content-Type: application/linkset+json
+
+/.well-known/openid-configuration
+  Content-Type: application/json
+
+/.well-known/oauth-protected-resource
+  Content-Type: application/json
