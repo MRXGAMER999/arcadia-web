@@ -1,0 +1,15 @@
+{
+  "serverInfo": {
+    "name": "Arcadia Web MCP",
+    "version": "1.0.0"
+  },
+  "transport": {
+    "type": "sse",
+    "endpoint": "https://arcadiatracker.app/mcp/sse"
+  },
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false
+  }
+}

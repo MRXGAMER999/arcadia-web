@@ -1,0 +1,12 @@
+{
+  "$schema": "https://agentskills.io/schema/v0.2.0/index.json",
+  "skills": [
+    {
+      "name": "arcadia-tools",
+      "type": "core",
+      "description": "Arcadia web agent tools",
+      "url": "https://arcadiatracker.app",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ]
+}

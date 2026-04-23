@@ -1,0 +1,7 @@
+{
+  "issuer": "https://arcadiatracker.app",
+  "authorization_endpoint": "https://arcadiatracker.app/oauth/authorize",
+  "token_endpoint": "https://arcadiatracker.app/oauth/token",
+  "jwks_uri": "https://arcadiatracker.app/oauth/jwks",
+  "grant_types_supported": ["authorization_code", "client_credentials"]
+}

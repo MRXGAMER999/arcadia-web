@@ -1,0 +1,7 @@
+{
+  "resource": "https://arcadiatracker.app/api",
+  "authorization_servers": [
+    "https://arcadiatracker.app"
+  ],
+  "scopes_supported": ["read", "write"]
+}

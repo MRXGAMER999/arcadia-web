@@ -1,0 +1,16 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://arcadiatracker.app/api",
+      "service-desc": [
+        {"href": "https://arcadiatracker.app/openapi.yaml", "type": "application/openapi+yaml"}
+      ],
+      "service-doc": [
+        {"href": "https://arcadiatracker.app/docs/api", "type": "text/html"}
+      ],
+      "status": [
+        {"href": "https://arcadiatracker.app/api/health", "type": "application/json"}
+      ]
+    }
+  ]
+}
