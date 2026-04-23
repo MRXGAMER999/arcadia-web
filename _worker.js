@@ -26,10 +26,18 @@ export default {
       
       return new Response(markdown, {
         headers: {
-          'Content-Type': 'text/markdown',
-          'x-markdown-tokens': String(Math.ceil(markdown.length / 4))
+          'Content-Type': 'text/markdown; charset=utf-8',
+          'Vary': 'Accept',
+          'x-markdown-tokens': String(Math.ceil(markdown.length / 4)),
+          'content-signal': 'ai-train=yes, search=yes, ai-input=yes'
         }
       });
+    }
+    
+    if (contentType.includes('text/html')) {
+      const newResponse = new Response(response.body, response);
+      newResponse.headers.set('Vary', 'Accept');
+      return newResponse;
     }
     
     return response;
